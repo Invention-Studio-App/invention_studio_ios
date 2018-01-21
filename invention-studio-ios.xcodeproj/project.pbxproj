@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4F8FB693201547DB00DBCD35 /* InitialLandingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F8FB692201547DB00DBCD35 /* InitialLandingViewController.swift */; };
+		4F8FB69520154C7F00DBCD35 /* DefaultColorTheme.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F8FB69420154C7F00DBCD35 /* DefaultColorTheme.xcassets */; };
 		B2D384941FBA383C00D91650 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2D384931FBA383C00D91650 /* AppDelegate.swift */; };
 		B2D384961FBA383C00D91650 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2D384951FBA383C00D91650 /* ViewController.swift */; };
 		B2D384991FBA383C00D91650 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B2D384971FBA383C00D91650 /* Main.storyboard */; };
@@ -35,6 +37,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4F8FB692201547DB00DBCD35 /* InitialLandingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialLandingViewController.swift; sourceTree = "<group>"; };
+		4F8FB69420154C7F00DBCD35 /* DefaultColorTheme.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = DefaultColorTheme.xcassets; sourceTree = "<group>"; };
 		B2D384901FBA383C00D91650 /* invention-studio-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "invention-studio-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B2D384931FBA383C00D91650 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B2D384951FBA383C00D91650 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -102,6 +106,8 @@
 				B2D384931FBA383C00D91650 /* AppDelegate.swift */,
 				B2D384951FBA383C00D91650 /* ViewController.swift */,
 				B2D384971FBA383C00D91650 /* Main.storyboard */,
+				4F8FB69420154C7F00DBCD35 /* DefaultColorTheme.xcassets */,
+				4F8FB692201547DB00DBCD35 /* InitialLandingViewController.swift */,
 				B2D3849D1FBA383C00D91650 /* Assets.xcassets */,
 				B2D3849F1FBA383C00D91650 /* LaunchScreen.storyboard */,
 				B2D384A21FBA383C00D91650 /* Info.plist */,
@@ -236,6 +242,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B2D384A11FBA383C00D91650 /* LaunchScreen.storyboard in Resources */,
+				4F8FB69520154C7F00DBCD35 /* DefaultColorTheme.xcassets in Resources */,
 				B2D3849E1FBA383C00D91650 /* Assets.xcassets in Resources */,
 				B2D384991FBA383C00D91650 /* Main.storyboard in Resources */,
 			);
@@ -265,6 +272,7 @@
 				B2D384961FBA383C00D91650 /* ViewController.swift in Sources */,
 				B2D384941FBA383C00D91650 /* AppDelegate.swift in Sources */,
 				B2D3849C1FBA383C00D91650 /* invention_studio_ios.xcdatamodeld in Sources */,
+				4F8FB693201547DB00DBCD35 /* InitialLandingViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -431,7 +439,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = KXWDJEL2WR;
 				INFOPLIST_FILE = "invention-studio-ios/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.Invention-Studio-GT.invention-studio-ios";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -445,7 +455,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = KXWDJEL2WR;
 				INFOPLIST_FILE = "invention-studio-ios/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.Invention-Studio-GT.invention-studio-ios";
 				PRODUCT_NAME = "$(TARGET_NAME)";
