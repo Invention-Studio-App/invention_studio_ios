@@ -53,14 +53,14 @@
         <scene sceneID="97Y-Iy-Qlt">
             <objects>
                 <navigationController id="clO-xB-r6j" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Home" id="CjQ-WY-LtR"/>
+                    <tabBarItem key="tabBarItem" title="Home" image="Home Icon" selectedImage="Home Icon" id="CjQ-WY-LtR"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="njW-Lq-vKZ">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" name="MainText"/>
-                        <color key="barTintColor" name="Bar"/>
+                        <color key="barTintColor" name="MainText"/>
                         <textAttributes key="titleTextAttributes">
-                            <color key="textColor" name="MainText"/>
+                            <color key="textColor" name="Background"/>
                         </textAttributes>
                     </navigationBar>
                     <connections>
@@ -104,10 +104,19 @@
         <scene sceneID="Hig-7h-Ccf">
             <objects>
                 <tabBarController id="FCz-Is-acD" sceneMemberID="viewController">
-                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Urx-LM-SOe">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" id="Urx-LM-SOe">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="tintColor" red="0.90196078430000004" green="0.70588235290000001" blue="0.27450980390000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="barTintColor" name="MainText"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="tintColor">
+                                <color key="value" red="0.96967888544053593" green="0.79447005309360419" blue="0.39730241435768726" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="unselectedItemTintColor">
+                                <color key="value" red="0.84212071166658531" green="0.83805249566819595" blue="0.84618892766497456" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
                     </tabBar>
                     <connections>
                         <segue destination="clO-xB-r6j" kind="relationship" relationship="viewControllers" id="8h8-7N-LhF"/>
@@ -125,15 +134,15 @@
         <scene sceneID="FLf-bb-6fm">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Ozw-rN-tTn" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Equipment" id="kpK-jk-nr8"/>
+                    <tabBarItem key="tabBarItem" title="Equipment" image="3D Printer Icon" selectedImage="3D Printer Icon" id="kpK-jk-nr8"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="hUe-3o-ANm">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" name="MainText"/>
-                        <color key="barTintColor" name="Bar"/>
+                        <color key="barTintColor" name="MainText"/>
                         <textAttributes key="titleTextAttributes">
-                            <color key="textColor" name="MainText"/>
+                            <color key="textColor" name="Background"/>
                         </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -178,15 +187,15 @@
         <scene sceneID="INA-v0-mEy">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="u8j-VH-okk" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Queues" id="iku-HD-Qv4"/>
+                    <tabBarItem key="tabBarItem" title="Queues" image="Queue Icon" selectedImage="Queue Icon" id="iku-HD-Qv4"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="vpF-w4-v4D">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" name="MainText"/>
-                        <color key="barTintColor" name="Bar"/>
+                        <color key="barTintColor" name="MainText"/>
                         <textAttributes key="titleTextAttributes">
-                            <color key="textColor" name="MainText"/>
+                            <color key="textColor" name="Background"/>
                         </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -227,19 +236,44 @@
             </objects>
             <point key="canvasLocation" x="1097" y="3131"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="DRX-5y-Sxb">
+            <objects>
+                <viewController id="Uib-l1-hO6" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="VHx-dg-hN9">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="VTi-qe-5rT">
+                                <rect key="frame" x="67" y="135" width="240" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <string key="text">Attribution: Home Icon created by Viktor Vorobyev from Noun Project. 3D printer icon created by Peter van Driel from Noun Project. Queue Icon created by Deepak M from Noun Project.  Feedback Icon Created by dilakuscan from Noun Project. Other Icon created by Ilaria Bernareggi from Noun Project.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="BON-PX-0sc"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nS4-aI-2h2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1845" y="3466"/>
+        </scene>
         <!--Feedback-->
         <scene sceneID="DzH-kc-ZzA">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="GGN-l2-XTQ" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Feedback" id="ti5-bJ-bsA"/>
+                    <tabBarItem key="tabBarItem" title="Feedback" image="Feedback Icon" selectedImage="Feedback Icon" id="ti5-bJ-bsA"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="qyI-ea-cQr">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" name="MainText"/>
-                        <color key="barTintColor" name="Bar"/>
+                        <color key="barTintColor" name="MainText"/>
                         <textAttributes key="titleTextAttributes">
-                            <color key="textColor" name="MainText"/>
+                            <color key="textColor" name="Background"/>
                         </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -284,15 +318,15 @@
         <scene sceneID="zqu-IQ-bgv">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="JGc-t6-uI9" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Other" id="2ve-GZ-3aE"/>
+                    <tabBarItem key="tabBarItem" title="Other" image="Other Icon" selectedImage="Other Icon" id="2ve-GZ-3aE"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="vCR-eJ-UZj">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" name="MainText"/>
-                        <color key="barTintColor" name="Bar"/>
+                        <color key="barTintColor" name="MainText"/>
                         <textAttributes key="titleTextAttributes">
-                            <color key="textColor" name="MainText"/>
+                            <color key="textColor" name="Background"/>
                         </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -343,7 +377,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                                 <state key="normal" title="Log In">
-                                    <color key="titleColor" name="MainText"/>
+                                    <color key="titleColor" name="Background"/>
                                 </state>
                                 <connections>
                                     <segue destination="Zy1-F1-7B9" kind="show" id="aCk-ty-2Aq"/>
@@ -383,10 +417,10 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="1vz-tn-E9Q">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="tintColor" name="MainText"/>
-                        <color key="barTintColor" name="Bar"/>
+                        <color key="tintColor" name="Background"/>
+                        <color key="barTintColor" name="MainText"/>
                         <textAttributes key="titleTextAttributes">
-                            <color key="textColor" name="MainText"/>
+                            <color key="textColor" name="Background"/>
                         </textAttributes>
                     </navigationBar>
                     <connections>
@@ -399,12 +433,17 @@
         </scene>
     </scenes>
     <resources>
+        <image name="3D Printer Icon" width="35" height="30"/>
+        <image name="Feedback Icon" width="35" height="30"/>
+        <image name="Home Icon" width="35" height="30"/>
+        <image name="Other Icon" width="35" height="30"/>
         <image name="PlaceholderStudioImage2" width="300" height="225"/>
+        <image name="Queue Icon" width="35" height="30"/>
         <namedColor name="Background">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <namedColor name="Bar">
-            <color red="0.94509803921568625" green="0.74117647058823533" blue="0.10588235294117647" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <namedColor name="Background">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="Bar">
             <color red="0.94509803921568625" green="0.74117647058823533" blue="0.10588235294117647" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
