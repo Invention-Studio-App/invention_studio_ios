@@ -11,23 +11,38 @@ import UIKit
 import WebKit
 
 class LogInViewController: UIViewController, WKUIDelegate, WKNavigationDelegate, WKHTTPCookieStoreObserver {
-    var webView: WKWebView!
-    var dataStore: WKWebsiteDataStore!
-    let storage = WKWebsiteDataStore.default()
     
+    
+    // VARIABLE DECLARATIONS
+    //The Web View
+    var webView: WKWebView!
+    //The cookie we will receive once authenticated
+    var CAScookie: HTTPCookie!
+    //The flag used to know if the cookie has been received (used to know when to segue)
+    var cookieReceived = false
+    //The storage that will containt the cookies
+    let storage = WKWebsiteDataStore.default()
     var cookieStore:WKHTTPCookieStore!
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        //Preparing the request for the login page
         let myURL = URL(string: "https://login.gatech.edu/cas/login")
         let myRequest = URLRequest(url: myURL!)
+        
+        //Setting up the cookie store
         cookieStore = storage.httpCookieStore
         cookieStore.add(self)
+        
+        //Making this class the navigation delegate
         webView.navigationDelegate = self
+        
+        //Requesting the login page
         webView.load(myRequest)
-        
-        
-        
     }
     
     override func didReceiveMemoryWarning() {
@@ -36,6 +51,7 @@ class LogInViewController: UIViewController, WKUIDelegate, WKNavigationDelegate,
     }
     
     override func loadView() {
+        //Setting up the webview
         let webConfiguration = WKWebViewConfiguration()
         webView = WKWebView(frame: .zero, configuration: webConfiguration)
         webView.uiDelegate = self
@@ -43,11 +59,29 @@ class LogInViewController: UIViewController, WKUIDelegate, WKNavigationDelegate,
     }
 
 
+    //This function is called when navigation is finished
+    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+        print("Navigation Finished")
+        if self.cookieReceived {
+            //Navigation has finished and we have the cookie:
+            print("Authenticated")
+            self.performSegue(withIdentifier: "cookieReceivedSegue", sender: self)
+        }
+    }
+    
+    //This function is called whenever there are changes to the cookie store
     func cookiesDidChange(in cookieStore:WKHTTPCookieStore) {
         cookieStore.getAllCookies({ (cookies) in
             for index in 0..<cookies.count {
+                //Checking for the CAS cookie
                 if cookies[index].name == "CASTGT" {
-                    print("Have CAS cookie")
+                    //Checking if the CAS cookie has changed
+                    if cookies[index] != self.CAScookie {
+                        print("CAS cookie  obtained")
+                        //Updating our stored cookie and setting the cookie flag to true
+                        self.CAScookie = cookies[index]
+                        self.cookieReceived = true
+                    }
                 }
             }
         })

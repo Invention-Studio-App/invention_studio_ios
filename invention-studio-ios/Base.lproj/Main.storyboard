@@ -342,10 +342,13 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="9PO-ZW-XRL"/>
                     </view>
+                    <connections>
+                        <segue destination="FCz-Is-acD" kind="presentation" identifier="cookieReceivedSegue" id="xX8-5t-its"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FMt-JZ-Jsv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2925" y="2339"/>
+            <point key="canvasLocation" x="-2866" y="2334"/>
         </scene>
         <!--Home-->
         <scene sceneID="XJi-5b-rbO">
