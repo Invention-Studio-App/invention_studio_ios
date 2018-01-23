@@ -11,7 +11,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Initial Landing View Controller-->
+        <!--Home-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="InitialLandingViewController" customModule="invention_studio_ios" customModuleProvider="target" sceneMemberID="viewController">
@@ -43,7 +43,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <navigationItem key="navigationItem" id="5AM-mv-0u6"/>
+                    <navigationItem key="navigationItem" title="Home" id="5AM-mv-0u6"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -57,7 +57,11 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="njW-Lq-vKZ">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" name="MainText"/>
                         <color key="barTintColor" name="Bar"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" name="MainText"/>
+                        </textAttributes>
                     </navigationBar>
                     <connections>
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="d5r-ni-CEf"/>
@@ -67,7 +71,7 @@
             </objects>
             <point key="canvasLocation" x="30" y="813"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Equipment-->
         <scene sceneID="rO4-l8-Glg">
             <objects>
                 <tableViewController id="63x-J9-9EN" sceneMemberID="viewController">
@@ -90,7 +94,7 @@
                             <outlet property="delegate" destination="63x-J9-9EN" id="TDv-jL-LoO"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="Jhe-HK-3IQ"/>
+                    <navigationItem key="navigationItem" title="Equipment" id="Jhe-HK-3IQ"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="D0L-Yi-cZV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -126,7 +130,11 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="hUe-3o-ANm">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" name="MainText"/>
                         <color key="barTintColor" name="Bar"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" name="MainText"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -137,7 +145,7 @@
             </objects>
             <point key="canvasLocation" x="33" y="1557"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Queues-->
         <scene sceneID="ZIP-2J-AL3">
             <objects>
                 <tableViewController id="tWF-7Y-t6t" sceneMemberID="viewController">
@@ -160,7 +168,7 @@
                             <outlet property="delegate" destination="tWF-7Y-t6t" id="Fyl-53-DL5"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="XmE-q5-YQ8"/>
+                    <navigationItem key="navigationItem" title="Queues" id="XmE-q5-YQ8"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fA0-GT-qJ6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -175,7 +183,11 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="vpF-w4-v4D">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" name="MainText"/>
                         <color key="barTintColor" name="Bar"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" name="MainText"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -186,7 +198,7 @@
             </objects>
             <point key="canvasLocation" x="33" y="2334"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Feedback-->
         <scene sceneID="PSs-Ec-7DP">
             <objects>
                 <tableViewController id="N2K-SL-XV0" sceneMemberID="viewController">
@@ -209,7 +221,7 @@
                             <outlet property="delegate" destination="N2K-SL-XV0" id="8mC-hI-grP"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="kf8-4G-XEi"/>
+                    <navigationItem key="navigationItem" title="Feedback" id="kf8-4G-XEi"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YLF-tc-N0f" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -224,7 +236,11 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="qyI-ea-cQr">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" name="MainText"/>
                         <color key="barTintColor" name="Bar"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" name="MainText"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -235,7 +251,7 @@
             </objects>
             <point key="canvasLocation" x="33" y="3131"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Other-->
         <scene sceneID="3Q8-1d-MEg">
             <objects>
                 <tableViewController id="ocj-cH-d0J" sceneMemberID="viewController">
@@ -258,7 +274,7 @@
                             <outlet property="delegate" destination="ocj-cH-d0J" id="5ky-kE-r7r"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="725-9c-YcF"/>
+                    <navigationItem key="navigationItem" title="Other" id="725-9c-YcF"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oyl-8h-V98" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -273,7 +289,11 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="vCR-eJ-UZj">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" name="MainText"/>
                         <color key="barTintColor" name="Bar"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" name="MainText"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
