@@ -1,5 +1,5 @@
 //
-//  EquipmentController.swift
+//  MachineGroupsController.swift
 //  invention-studio-ios
 //
 //  Created by Noah Sutter on 1/23/18.
@@ -8,15 +8,13 @@
 
 import UIKit
 
-class EquipmentController: UITableViewController {
+class MachinesController: UITableViewController {
 
-    
-    var equipmentGroups = [String]()
+    var machines = [String]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        getEquipmentGroups()
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -38,25 +36,33 @@ class EquipmentController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return self.equipmentGroups.count
-    }
-    
-    private func getEquipmentGroups() {
-        var groups = [String]()
-        groups.append(contentsOf: ["EquipmentGroupA", "EquipmentGroupB", "EquipmentGroupC", "EquipmentGroupD", "EquipmentGroupE"])
-        self.equipmentGroups = groups
+        return self.machines.count
     }
 
+    private func getMachineGroups() {
+        var m = [String]()
+        m.append(contentsOf: ["MachineGroupA", "MachineGroupB", "EquipmentGroupC", "EquipmentGroupD", "EquipmentGroupE"])
+        self.machines = m
+    }
+    
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "EquipmentGroupCell", for: indexPath) as? EquipmentGroupCell else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "MachineCell", for: indexPath) as? MachineCell else {
             fatalError("The dequeued cell is not an instance of EquipmentGroupCell.")
         }
         cell.equipmentLabel.text = self.equipmentGroups[indexPath.row]
+        
+        return cell
+    }
+    /*
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+
+        // Configure the cell...
 
         return cell
     }
-    
+    */
 
     /*
     // Override to support conditional editing of the table view.
