@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4F46B06920164CD400D5B3E9 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F46B06820164CD400D5B3E9 /* LogInViewController.swift */; };
 		4F8FB693201547DB00DBCD35 /* InitialLandingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F8FB692201547DB00DBCD35 /* InitialLandingViewController.swift */; };
 		4F8FB69520154C7F00DBCD35 /* DefaultColorTheme.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F8FB69420154C7F00DBCD35 /* DefaultColorTheme.xcassets */; };
 		B2D384941FBA383C00D91650 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2D384931FBA383C00D91650 /* AppDelegate.swift */; };
@@ -37,6 +38,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4F46B06820164CD400D5B3E9 /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		4F8FB692201547DB00DBCD35 /* InitialLandingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialLandingViewController.swift; sourceTree = "<group>"; };
 		4F8FB69420154C7F00DBCD35 /* DefaultColorTheme.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = DefaultColorTheme.xcassets; sourceTree = "<group>"; };
 		B2D384901FBA383C00D91650 /* invention-studio-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "invention-studio-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -103,6 +105,7 @@
 		B2D384921FBA383C00D91650 /* invention-studio-ios */ = {
 			isa = PBXGroup;
 			children = (
+				4F46B06820164CD400D5B3E9 /* LogInViewController.swift */,
 				B2D384931FBA383C00D91650 /* AppDelegate.swift */,
 				B2D384951FBA383C00D91650 /* ViewController.swift */,
 				B2D384971FBA383C00D91650 /* Main.storyboard */,
@@ -272,6 +275,7 @@
 				B2D384961FBA383C00D91650 /* ViewController.swift in Sources */,
 				B2D384941FBA383C00D91650 /* AppDelegate.swift in Sources */,
 				B2D3849C1FBA383C00D91650 /* invention_studio_ios.xcdatamodeld in Sources */,
+				4F46B06920164CD400D5B3E9 /* LogInViewController.swift in Sources */,
 				4F8FB693201547DB00DBCD35 /* InitialLandingViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
