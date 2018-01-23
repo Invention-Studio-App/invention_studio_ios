@@ -11,6 +11,8 @@
 		4F4932422017B79B0093CCFA /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F4932412017B79B0093CCFA /* TabBarViewController.swift */; };
 		4F8FB693201547DB00DBCD35 /* InitialLandingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F8FB692201547DB00DBCD35 /* InitialLandingViewController.swift */; };
 		4F8FB69520154C7F00DBCD35 /* DefaultColorTheme.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F8FB69420154C7F00DBCD35 /* DefaultColorTheme.xcassets */; };
+		4FC7717F2017D068008A13D9 /* EquipmentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FC7717E2017D068008A13D9 /* EquipmentController.swift */; };
+		4FC771812017D1CA008A13D9 /* EquipmentGroupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FC771802017D1CA008A13D9 /* EquipmentGroupCell.swift */; };
 		B2D384941FBA383C00D91650 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2D384931FBA383C00D91650 /* AppDelegate.swift */; };
 		B2D384961FBA383C00D91650 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2D384951FBA383C00D91650 /* ViewController.swift */; };
 		B2D384991FBA383C00D91650 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B2D384971FBA383C00D91650 /* Main.storyboard */; };
@@ -43,6 +45,8 @@
 		4F4932412017B79B0093CCFA /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		4F8FB692201547DB00DBCD35 /* InitialLandingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialLandingViewController.swift; sourceTree = "<group>"; };
 		4F8FB69420154C7F00DBCD35 /* DefaultColorTheme.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = DefaultColorTheme.xcassets; sourceTree = "<group>"; };
+		4FC7717E2017D068008A13D9 /* EquipmentController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EquipmentController.swift; sourceTree = "<group>"; };
+		4FC771802017D1CA008A13D9 /* EquipmentGroupCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EquipmentGroupCell.swift; sourceTree = "<group>"; };
 		B2D384901FBA383C00D91650 /* invention-studio-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "invention-studio-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B2D384931FBA383C00D91650 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B2D384951FBA383C00D91650 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -110,6 +114,8 @@
 				B2D384931FBA383C00D91650 /* AppDelegate.swift */,
 				B2D384951FBA383C00D91650 /* ViewController.swift */,
 				B2D384971FBA383C00D91650 /* Main.storyboard */,
+				4FC7717E2017D068008A13D9 /* EquipmentController.swift */,
+				4FC771802017D1CA008A13D9 /* EquipmentGroupCell.swift */,
 				4F8FB69420154C7F00DBCD35 /* DefaultColorTheme.xcassets */,
 				4F8FB692201547DB00DBCD35 /* InitialLandingViewController.swift */,
 				4F46B06820164CD400D5B3E9 /* LogInViewController.swift */,
@@ -275,10 +281,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4FC771812017D1CA008A13D9 /* EquipmentGroupCell.swift in Sources */,
 				B2D384961FBA383C00D91650 /* ViewController.swift in Sources */,
 				B2D384941FBA383C00D91650 /* AppDelegate.swift in Sources */,
 				B2D3849C1FBA383C00D91650 /* invention_studio_ios.xcdatamodeld in Sources */,
 				4F46B06920164CD400D5B3E9 /* LogInViewController.swift in Sources */,
+				4FC7717F2017D068008A13D9 /* EquipmentController.swift in Sources */,
 				4F4932422017B79B0093CCFA /* TabBarViewController.swift in Sources */,
 				4F8FB693201547DB00DBCD35 /* InitialLandingViewController.swift in Sources */,
 			);
