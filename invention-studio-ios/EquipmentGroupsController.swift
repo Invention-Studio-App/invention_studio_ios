@@ -54,7 +54,7 @@ class EquipmentGroupsController: UITableViewController {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "EquipmentGroupCell", for: indexPath) as? EquipmentGroupCell else {
             fatalError("The dequeued cell is not an instance of EquipmentGroupCell.")
         }
-        cell.equipmentLabel.text = self.equipmentGroups[indexPath.row]
+        cell.TitleLabel.text = self.equipmentGroups[indexPath.row]
 
         return cell
     }

@@ -50,7 +50,7 @@ class MachinesController: UITableViewController {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "MachineCell", for: indexPath) as? MachineCell else {
             fatalError("The dequeued cell is not an instance of EquipmentGroupCell.")
         }
-        cell.equipmentLabel.text = self.equipmentGroups[indexPath.row]
+        //cell.equipmentLabel.text = self.equipmentGroups[indexPath.row]
         
         return cell
     }

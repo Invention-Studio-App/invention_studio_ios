@@ -10,7 +10,7 @@ import UIKit
 
 class EquipmentGroupCell: UITableViewCell {
 
-    @IBOutlet weak var equipmentLabel: UILabel!
+    @IBOutlet weak var TitleLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
