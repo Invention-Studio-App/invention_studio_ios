@@ -45,7 +45,7 @@ class EquipmentGroupsController: UITableViewController {
     
     private func getEquipmentGroups() {
         var groups = [String]()
-        groups.append(contentsOf: ["EquipmentGroupA", "EquipmentGroupB", "EquipmentGroupC", "EquipmentGroupD", "EquipmentGroupE"])
+        groups.append(contentsOf: ["EG A", "EG B", "EG C", "EG D", "EG E"])
         self.equipmentGroups = groups
     }
 
@@ -59,6 +59,12 @@ class EquipmentGroupsController: UITableViewController {
         return cell
     }
     
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let mVC = storyboard?.instantiateViewController(withIdentifier: "MachinesViewController") as! MachinesViewController
+        mVC.equipmentGroup = self.equipmentGroups[indexPath.row]
+        navigationController?.pushViewController(mVC, animated: true)
+        self.tableView.deselectRow(at: indexPath, animated: true)
+    }
 
     /*
     // Override to support conditional editing of the table view.

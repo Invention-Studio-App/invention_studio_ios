@@ -14,6 +14,7 @@ class MachinesViewController: UIViewController, UITableViewDelegate, UITableView
 
     @IBOutlet weak var MachinesTable: UITableView!
     var machines = [Machine]()
+    var equipmentGroup:String = "Equipment Group"
     
     enum Status {
         case AVAILABLE
@@ -29,12 +30,16 @@ class MachinesViewController: UIViewController, UITableViewDelegate, UITableView
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.navigationItem.title = equipmentGroup
         getMachines()
         // Handling the table in this view controller
         MachinesTable.delegate = self
         MachinesTable.dataSource = self
     }
 
+    
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -57,7 +62,7 @@ class MachinesViewController: UIViewController, UITableViewDelegate, UITableView
         var ms = [Machine]()
         for index in 1..<20 {
             let m = Machine()
-            m.name = "A" + String(index)
+            m.name = "Machine " + String(index)
             let num = arc4random_uniform(4)
             if num == 0 {
                 m.status = Status.AVAILABLE
@@ -98,6 +103,13 @@ class MachinesViewController: UIViewController, UITableViewDelegate, UITableView
         }
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let mVC = storyboard?.instantiateViewController(withIdentifier: "MachineViewController") as! MachineViewController
+        mVC.machine = self.machines[indexPath.row].name
+        navigationController?.pushViewController(mVC, animated: true)
+        self.MachinesTable.deselectRow(at: indexPath, animated: true)
     }
     
     /*

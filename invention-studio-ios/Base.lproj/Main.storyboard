@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="g4I-dc-FdM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="FCz-Is-acD">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -58,7 +58,6 @@
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="TitleLabel" destination="3qk-po-Tso" id="clZ-2l-IRa"/>
-                                    <segue destination="DoD-FV-0uu" kind="show" id="xXz-8L-AFL"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -73,20 +72,20 @@
             </objects>
             <point key="canvasLocation" x="1096.8" y="1556.6716641679161"/>
         </scene>
-        <!--Machines View Controller-->
+        <!--EQ1-->
         <scene sceneID="vwA-QB-Mcn">
             <objects>
-                <viewController id="DoD-FV-0uu" customClass="MachinesViewController" customModule="invention_studio_ios" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController restorationIdentifier="MachinesViewController" storyboardIdentifier="MachinesViewController" title="EQ1" id="DoD-FV-0uu" customClass="MachinesViewController" customModule="invention_studio_ios" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="NCj-An-pLg">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="554"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" insetsLayoutMarginsFromSafeArea="NO" image="PlaceholderStudioImage2" translatesAutoresizingMaskIntoConstraints="NO" id="2cd-vh-mch">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="219"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="332"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleAspectFill" fixedFrame="YES" insetsLayoutMarginsFromSafeArea="NO" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="FSe-a9-1c1">
-                                <rect key="frame" x="0.0" y="344" width="375" height="210"/>
+                                <rect key="frame" x="0.0" y="457" width="375" height="210"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
@@ -126,7 +125,7 @@
                                 </prototypes>
                             </tableView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="ozP-h9-zdm">
-                                <rect key="frame" x="6" y="227" width="359" height="110"/>
+                                <rect key="frame" x="6" y="340" width="359" height="110"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <mutableString key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</mutableString>
@@ -143,7 +142,63 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AVb-fg-TcX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1944.8" y="1556.6716641679161"/>
+            <point key="canvasLocation" x="2039" y="1557"/>
+        </scene>
+        <!--Machine View Controller-->
+        <scene sceneID="quB-yu-ZzD">
+            <objects>
+                <pageViewController storyboardIdentifier="MachineViewController" autoresizesArchivedViewToFullSize="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="SL0-B5-edK" customClass="MachineViewController" customModule="invention_studio_ios" customModuleProvider="target" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="A2O-z6-phZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2977" y="1557"/>
+        </scene>
+        <!--Info-->
+        <scene sceneID="NyF-9J-DZb">
+            <objects>
+                <viewController storyboardIdentifier="MachineInfoViewController" title="Info" useStoryboardIdentifierAsRestorationIdentifier="YES" id="zfQ-ok-Gtl" customClass="MachineInfoViewController" customModule="invention_studio_ios" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="mil-qT-WDe">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Info" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="slc-hA-fcd">
+                                <rect key="frame" x="173" y="20" width="29" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="cd3-Oq-aIf"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BB6-rM-BoZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2686" y="2259"/>
+        </scene>
+        <!--Report-->
+        <scene sceneID="lvP-h2-kJf">
+            <objects>
+                <viewController storyboardIdentifier="MachineReportProblemViewController" title="Report" useStoryboardIdentifierAsRestorationIdentifier="YES" id="0aE-IQ-hz2" customClass="MachineReportProblemViewController" customModule="invention_studio_ios" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="aYW-7o-BSU">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Report" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3jm-L0-sSH">
+                                <rect key="frame" x="161" y="20" width="52" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="jKv-1E-92n"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3Yp-jh-xD1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3359" y="2258"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="Hig-7h-Ccf">
