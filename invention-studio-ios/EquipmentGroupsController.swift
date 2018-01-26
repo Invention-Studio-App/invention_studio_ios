@@ -51,7 +51,7 @@ class EquipmentGroupsController: UITableViewController {
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "equipmentPrototype", for: indexPath) as? EquipmentGroupCell else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "equipmentGroupPrototype", for: indexPath) as? EquipmentGroupCell else {
             fatalError("The dequeued cell is not an instance of EquipmentGroupCell.")
         }
         cell.TitleLabel.text = self.equipmentGroups[indexPath.row]
