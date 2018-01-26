@@ -16,11 +16,11 @@ class MachinesViewController: UIViewController, UITableViewDelegate, UITableView
     var machines = [Machine]()
     var equipmentGroup:String = "Equipment Group"
     
-    enum Status {
-        case AVAILABLE
-        case INUSE
-        case DOWN
-        case UNKNOWN
+    enum Status:Int {
+        case AVAILABLE = 0
+        case INUSE = 1
+        case DOWN = 2
+        case UNKNOWN = 3
     }
     
     class Machine {
@@ -74,6 +74,12 @@ class MachinesViewController: UIViewController, UITableViewDelegate, UITableView
                 m.status = Status.UNKNOWN
             }
             ms.append(m)
+        }
+        ms = ms.sorted{
+            if $0.status == $1.status {
+                return $0.name.uppercased() < $1.name.uppercased()
+            }
+            return $0.status.rawValue < $1.status.rawValue
         }
         self.machines = ms
     }
