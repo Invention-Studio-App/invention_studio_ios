@@ -64,18 +64,19 @@ class EquipmentGroupTVC: UITableViewController {
         return UITableViewAutomaticDimension
     }
 
-
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "equipmentPrototype", for: indexPath) as! EquipmentCell
         
         cell.titleLabel?.text = "Testing"
 
-        if indexPath.row % 3 == 0 {
-            cell.status = EquipmentCell.Status.available
-        } else if indexPath.row % 3 == 1 {
-            cell.status = EquipmentCell.Status.inUse
+        if indexPath.row % 4 == 0 {
+            cell.status = Tool.Status.AVAILABLE
+        } else if indexPath.row % 4 == 1 {
+            cell.status = Tool.Status.INUSE
+        } else if indexPath.row % 4 == 2 {
+            cell.status = Tool.Status.DOWN
         } else {
-            cell.status = EquipmentCell.Status.down
+            cell.status = Tool.Status.UNKNOWN
         }
 
         return cell

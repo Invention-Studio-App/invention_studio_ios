@@ -8,21 +8,45 @@
 
 import UIKit
 
-class EquipmentVC: UIViewController {
+class EquipmentVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     @IBOutlet weak var segmentContainer: UIView!
     @IBOutlet weak var segmentControl: UISegmentedControl!
-    @IBOutlet weak var informationView: UIView!
-    @IBOutlet weak var reportProblemView: UIView!
 
-    var segmentViews = Array<UIView>()
+    @IBOutlet weak var informationView: UIView!
+    @IBOutlet weak var statusIcon: UIView!
+    @IBOutlet weak var statusLabel: UILabel!
     
+    @IBOutlet weak var reportProblemTableView: UITableView!
+    
+    private var _status: Tool.Status = Tool.Status.AVAILABLE
+    var status: Tool.Status {
+        get {
+            return _status
+        }
+        set {
+            _status = newValue
+            self.statusLabel.text = _status.rawValue
+
+            switch(_status) {
+            case .AVAILABLE:
+                self.statusIcon.backgroundColor = UIColor(named: "StatusColorAvailable")
+            case .INUSE:
+                self.statusIcon.backgroundColor = UIColor(named: "StatusColorInUse")
+            case .DOWN:
+                self.statusIcon.backgroundColor = UIColor(named: "StatusColorDown")
+            case .UNKNOWN:
+                self.statusIcon.backgroundColor = UIColor(named: "StatusColorUnknown")
+            }
+        }
+    }
+    var segmentViews = Array<UIView>()
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         self.segmentViews.append(informationView)
-        self.segmentViews.append(reportProblemView)
+        self.segmentViews.append(reportProblemTableView)
         // Do any additional setup after loading the view.
     }
 
@@ -35,6 +59,8 @@ class EquipmentVC: UIViewController {
         line.strokeColor = UIColor.lightGray.cgColor
         line.lineWidth = 0.5
         segmentContainer.layer.addSublayer(line)
+
+        status = Tool.Status.AVAILABLE
     }
 
     override func didReceiveMemoryWarning() {
@@ -50,6 +76,32 @@ class EquipmentVC: UIViewController {
                 view.isHidden = true
             }
         }
+    }
+
+    func numberOfSections(in tableView: UITableView) -> Int {
+        // #warning Incomplete implementation, return the number of sections
+        return 1
+    }
+
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        // #warning Incomplete implementation, return the number of rows
+        return 10
+    }
+
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableViewAutomaticDimension
+    }
+
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableViewAutomaticDimension
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "reportProblemPrototype", for: indexPath)
+
+        cell.textLabel?.text = "Testing"
+
+        return cell
     }
 
     /*

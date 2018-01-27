@@ -237,8 +237,8 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IMz-LU-x7J">
-                                            <rect key="frame" x="268" y="12" width="44" height="20.5"/>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Status" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IMz-LU-x7J">
+                                            <rect key="frame" x="262.5" y="12" width="49.5" height="20.5"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -315,9 +315,6 @@
                                     <constraint firstItem="hFI-j8-bwK" firstAttribute="centerY" secondItem="hIP-nz-nTe" secondAttribute="centerY" id="qIw-cl-VYC"/>
                                 </constraints>
                             </view>
-                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cho-qU-DAn">
-                                <rect key="frame" x="0.0" y="44" width="375" height="510"/>
-                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tUP-Tx-N6g">
                                 <rect key="frame" x="0.0" y="44" width="375" height="510"/>
                                 <subviews>
@@ -355,8 +352,8 @@
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
                                                     </view>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1be-Lw-MaD">
-                                                        <rect key="frame" x="102" y="227" width="42" height="21"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Status" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1be-Lw-MaD">
+                                                        <rect key="frame" x="102" y="227" width="49.5" height="21"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -406,29 +403,50 @@
                                     <constraint firstItem="NcK-sV-8ry" firstAttribute="top" secondItem="tUP-Tx-N6g" secondAttribute="top" id="osB-Mg-nqL"/>
                                 </constraints>
                             </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="fli-fl-UOe">
+                                <rect key="frame" x="0.0" y="44" width="375" height="510"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="reportProblemPrototype" id="FmE-jT-Q6K">
+                                        <rect key="frame" x="0.0" y="55.5" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="FmE-jT-Q6K" id="xQT-ZE-Sy5">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="LQ8-s6-WLF" id="zjV-jP-E1X"/>
+                                    <outlet property="delegate" destination="LQ8-s6-WLF" id="YII-ml-V6x"/>
+                                </connections>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="Odg-aG-A8k" firstAttribute="trailing" secondItem="tUP-Tx-N6g" secondAttribute="trailing" id="Hmh-ab-Cc5"/>
+                            <constraint firstItem="fli-fl-UOe" firstAttribute="bottom" secondItem="Odg-aG-A8k" secondAttribute="bottom" id="1Uz-Mv-Fl7"/>
+                            <constraint firstItem="fli-fl-UOe" firstAttribute="trailing" secondItem="Odg-aG-A8k" secondAttribute="trailing" id="4PQ-t9-o5H"/>
+                            <constraint firstItem="tUP-Tx-N6g" firstAttribute="trailing" secondItem="Odg-aG-A8k" secondAttribute="trailing" id="Hmh-ab-Cc5"/>
                             <constraint firstItem="hIP-nz-nTe" firstAttribute="trailing" secondItem="Odg-aG-A8k" secondAttribute="trailing" id="HsQ-C7-kpV"/>
-                            <constraint firstItem="Odg-aG-A8k" firstAttribute="bottom" secondItem="cho-qU-DAn" secondAttribute="bottom" id="J9x-tJ-a6Q"/>
                             <constraint firstItem="tUP-Tx-N6g" firstAttribute="width" secondItem="bUk-BD-Om1" secondAttribute="width" id="LFo-Ic-pMa"/>
                             <constraint firstItem="hIP-nz-nTe" firstAttribute="leading" secondItem="Odg-aG-A8k" secondAttribute="leading" id="Po7-or-BuU"/>
-                            <constraint firstItem="Odg-aG-A8k" firstAttribute="bottom" secondItem="tUP-Tx-N6g" secondAttribute="bottom" id="eNz-7L-d7z"/>
-                            <constraint firstItem="cho-qU-DAn" firstAttribute="top" secondItem="hIP-nz-nTe" secondAttribute="bottom" id="eXp-FT-evK"/>
+                            <constraint firstItem="fli-fl-UOe" firstAttribute="width" secondItem="bUk-BD-Om1" secondAttribute="width" id="VaC-do-KHD"/>
+                            <constraint firstItem="fli-fl-UOe" firstAttribute="leading" secondItem="Odg-aG-A8k" secondAttribute="leading" id="YDT-On-qQt"/>
+                            <constraint firstItem="tUP-Tx-N6g" firstAttribute="bottom" secondItem="Odg-aG-A8k" secondAttribute="bottom" id="eNz-7L-d7z"/>
                             <constraint firstItem="hIP-nz-nTe" firstAttribute="top" secondItem="Odg-aG-A8k" secondAttribute="top" id="efL-GV-zVS"/>
                             <constraint firstItem="tUP-Tx-N6g" firstAttribute="leading" secondItem="Odg-aG-A8k" secondAttribute="leading" id="gEj-Xi-TRe"/>
-                            <constraint firstItem="Odg-aG-A8k" firstAttribute="trailing" secondItem="cho-qU-DAn" secondAttribute="trailing" id="iLa-Yh-QQC"/>
-                            <constraint firstItem="cho-qU-DAn" firstAttribute="leading" secondItem="Odg-aG-A8k" secondAttribute="leading" id="iaQ-c4-d63"/>
                             <constraint firstItem="tUP-Tx-N6g" firstAttribute="top" secondItem="hIP-nz-nTe" secondAttribute="bottom" id="yzG-nn-Ace"/>
+                            <constraint firstItem="fli-fl-UOe" firstAttribute="top" secondItem="hIP-nz-nTe" secondAttribute="bottom" id="zTB-Qn-iUk"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Odg-aG-A8k"/>
                     </view>
                     <connections>
                         <outlet property="informationView" destination="tUP-Tx-N6g" id="3GN-BV-31s"/>
-                        <outlet property="reportProblemView" destination="cho-qU-DAn" id="uUW-z4-bnu"/>
+                        <outlet property="reportProblemTableView" destination="fli-fl-UOe" id="x5A-FY-5gV"/>
                         <outlet property="segmentContainer" destination="hIP-nz-nTe" id="IRF-R0-vi3"/>
                         <outlet property="segmentControl" destination="hFI-j8-bwK" id="uDM-bQ-tLu"/>
+                        <outlet property="statusIcon" destination="j1I-oN-vE2" id="1et-oU-0iR"/>
+                        <outlet property="statusLabel" destination="1be-Lw-MaD" id="mnL-pA-2Yu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KJF-aO-60r" userLabel="First Responder" sceneMemberID="firstResponder"/>

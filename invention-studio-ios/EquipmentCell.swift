@@ -10,22 +10,13 @@ import UIKit
 
 class EquipmentCell: UITableViewCell {
 
-    enum Status: String {
-        case available = "Available"
-        case inUse = "In Use"
-        case down = "Down"
-    }
-
-    let statusColorAvailable = UIColor(red: 0/255, green: 204/255, blue: 0/255, alpha: 255/255)
-    let statusColorInUse = UIColor(red: 255/255, green: 165/255, blue: 0/255, alpha: 255/255)
-    let statusColorDown = UIColor(red: 255/255, green: 0/255, blue: 0/255, alpha: 255/255)
-
+    
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var statusLabel: UILabel!
     @IBOutlet weak var statusIcon: UIView!
 
-    private var _status: Status = Status.available
-    var status: Status {
+    private var _status: Tool.Status = Tool.Status.AVAILABLE
+    var status: Tool.Status {
         get {
             return _status
         }
@@ -34,12 +25,14 @@ class EquipmentCell: UITableViewCell {
             self.statusLabel.text = _status.rawValue
 
             switch(_status) {
-            case .available:
-                self.statusIcon.backgroundColor = statusColorAvailable
-            case .inUse:
-                self.statusIcon.backgroundColor = statusColorInUse
-            case .down:
-                self.statusIcon.backgroundColor = statusColorDown
+            case .AVAILABLE:
+                self.statusIcon.backgroundColor = UIColor(named: "StatusColorAvailable")
+            case .INUSE:
+                self.statusIcon.backgroundColor = UIColor(named: "StatusColorInUse")
+            case .DOWN:
+                self.statusIcon.backgroundColor = UIColor(named: "StatusColorDown")
+            case .UNKNOWN:
+                self.statusIcon.backgroundColor = UIColor(named: "StatusColorUnknown")
             }
         }
     }
