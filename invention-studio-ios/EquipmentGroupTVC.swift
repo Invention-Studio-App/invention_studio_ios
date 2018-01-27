@@ -1,24 +1,28 @@
 //
-//  EquipmentController.swift
+//  EquipmentGroupTVC.swift
 //  invention-studio-ios
 //
-//  Created by Noah Sutter on 1/23/18.
+//  Created by Nick's Creative Studio on 1/25/18.
 //  Copyright © 2018 Invention Studio at Georgia Tech. All rights reserved.
 //
 
 import UIKit
 
-class EquipmentGroupsController: UITableViewController {
+class EquipmentGroupTVC: UITableViewController {
 
-    
-    var equipmentGroups = [String]()
-    
+    let headerViewHeight = CGFloat(422)
+    var headerView: UIView!
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        getEquipmentGroups()
-        
-        
+        headerView = tableView.tableHeaderView
+        tableView.tableHeaderView = nil
+        tableView.addSubview(headerView)
+        tableView.contentInset = UIEdgeInsets(top: headerViewHeight, left: 0, bottom: 0, right: 0)
+        tableView.contentOffset = CGPoint(x: 0, y: -headerViewHeight)
+        updateHeaderView()
+
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -31,6 +35,15 @@ class EquipmentGroupsController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    func updateHeaderView() {
+        var headerRect = CGRect(x: 0, y: -headerViewHeight, width: tableView.bounds.width, height: headerViewHeight)
+        if tableView.contentOffset.y < -headerViewHeight {
+            headerRect.origin.y = tableView.contentOffset.y
+            headerRect.size.height = -tableView.contentOffset.y
+        }
+        headerView.frame = headerRect
+    }
+
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -40,31 +53,34 @@ class EquipmentGroupsController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return self.equipmentGroups.count
-    }
-    
-    private func getEquipmentGroups() {
-        var groups = [String]()
-        groups.append(contentsOf: ["EG A", "EG B", "EG C", "EG D", "EG E"])
-        self.equipmentGroups = groups
+        return 10
     }
 
-    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableViewAutomaticDimension
+    }
+
+    override func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableViewAutomaticDimension
+    }
+
+
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "equipmentGroupPrototype", for: indexPath) as? EquipmentGroupCell else {
-            fatalError("The dequeued cell is not an instance of EquipmentGroupCell.")
+        let cell = tableView.dequeueReusableCell(withIdentifier: "equipmentPrototype", for: indexPath) as! EquipmentCell
+        
+        cell.titleLabel?.text = "Testing"
+
+        if indexPath.row % 3 == 0 {
+            cell.status = EquipmentCell.Status.available
+        } else if indexPath.row % 3 == 1 {
+            cell.status = EquipmentCell.Status.inUse
+        } else {
+            cell.status = EquipmentCell.Status.down
         }
-        cell.TitleLabel.text = self.equipmentGroups[indexPath.row]
 
         return cell
     }
-    
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let mVC = storyboard?.instantiateViewController(withIdentifier: "MachinesViewController") as! MachinesViewController
-        mVC.equipmentGroup = self.equipmentGroups[indexPath.row]
-        navigationController?.pushViewController(mVC, animated: true)
-        self.tableView.deselectRow(at: indexPath, animated: true)
-    }
+
 
     /*
     // Override to support conditional editing of the table view.
@@ -110,5 +126,11 @@ class EquipmentGroupsController: UITableViewController {
         // Pass the selected object to the new view controller.
     }
     */
+
+    // MARK: - Scroll view delegate
+
+    override func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        updateHeaderView()
+    }
 
 }

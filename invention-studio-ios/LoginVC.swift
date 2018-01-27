@@ -1,5 +1,5 @@
 //
-//  LogInViewController.swift
+//  LoginVC.swift
 //  invention-studio-ios
 //
 //  Created by Noah Sutter on 1/22/18.
@@ -10,7 +10,7 @@
 import UIKit
 import WebKit
 
-class LogInViewController: UIViewController, WKUIDelegate, WKNavigationDelegate, WKHTTPCookieStoreObserver {
+class LoginVC: UIViewController, WKUIDelegate, WKNavigationDelegate, WKHTTPCookieStoreObserver {
     
     
     // VARIABLE DECLARATIONS

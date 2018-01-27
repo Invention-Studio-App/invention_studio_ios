@@ -1,5 +1,5 @@
 //
-//  InitialLandingViewController.swift
+//  LandingVC.swift
 //  invention-studio-ios
 //
 //  Created by Noah Sutter on 1/21/18.
@@ -8,9 +8,10 @@
 
 import UIKit
 
-class InitialLandingViewController: UIViewController {
+class LandingVC: UIViewController {
     
-    
+    @IBOutlet weak var loginItem: UIBarButtonItem!
+
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.

@@ -7,25 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4F46B06920164CD400D5B3E9 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F46B06820164CD400D5B3E9 /* LogInViewController.swift */; };
-		4F4932422017B79B0093CCFA /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F4932412017B79B0093CCFA /* TabBarViewController.swift */; };
-		4F8FB693201547DB00DBCD35 /* InitialLandingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F8FB692201547DB00DBCD35 /* InitialLandingViewController.swift */; };
+		4F46B06920164CD400D5B3E9 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F46B06820164CD400D5B3E9 /* LoginVC.swift */; };
+		4F4932422017B79B0093CCFA /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F4932412017B79B0093CCFA /* TabBarController.swift */; };
+		4F8FB693201547DB00DBCD35 /* LandingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F8FB692201547DB00DBCD35 /* LandingVC.swift */; };
 		4F8FB69520154C7F00DBCD35 /* DefaultColorTheme.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F8FB69420154C7F00DBCD35 /* DefaultColorTheme.xcassets */; };
-		4FC7717F2017D068008A13D9 /* EquipmentGroupsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FC7717E2017D068008A13D9 /* EquipmentGroupsController.swift */; };
-		4FC771812017D1CA008A13D9 /* EquipmentGroupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FC771802017D1CA008A13D9 /* EquipmentGroupCell.swift */; };
-		4FC771852017E042008A13D9 /* MachineCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FC771842017E042008A13D9 /* MachineCell.swift */; };
-		4FE6FFE4201961C700811AC7 /* MachinesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FE6FFE3201961C700811AC7 /* MachinesViewController.swift */; };
-		4FE6FFE6201A788300811AC7 /* MachineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FE6FFE5201A788300811AC7 /* MachineViewController.swift */; };
-		4FE6FFE8201A78DB00811AC7 /* MachineInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FE6FFE7201A78DB00811AC7 /* MachineInfoViewController.swift */; };
-		4FE6FFEA201A78EB00811AC7 /* MachineReportProblemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FE6FFE9201A78EB00811AC7 /* MachineReportProblemViewController.swift */; };
+		4FC7717F2017D068008A13D9 /* EquipmentGroupListTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FC7717E2017D068008A13D9 /* EquipmentGroupListTVC.swift */; };
 		B2D384941FBA383C00D91650 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2D384931FBA383C00D91650 /* AppDelegate.swift */; };
-		B2D384961FBA383C00D91650 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2D384951FBA383C00D91650 /* ViewController.swift */; };
 		B2D384991FBA383C00D91650 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B2D384971FBA383C00D91650 /* Main.storyboard */; };
 		B2D3849C1FBA383C00D91650 /* invention_studio_ios.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B2D3849A1FBA383C00D91650 /* invention_studio_ios.xcdatamodeld */; };
 		B2D3849E1FBA383C00D91650 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B2D3849D1FBA383C00D91650 /* Assets.xcassets */; };
 		B2D384A11FBA383C00D91650 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B2D3849F1FBA383C00D91650 /* LaunchScreen.storyboard */; };
 		B2D384AC1FBA383C00D91650 /* invention_studio_iosTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2D384AB1FBA383C00D91650 /* invention_studio_iosTests.swift */; };
 		B2D384B71FBA383C00D91650 /* invention_studio_iosUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2D384B61FBA383C00D91650 /* invention_studio_iosUITests.swift */; };
+		B2D5D7BC201AEB3E00CFCCB1 /* EquipmentGroupTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2D5D7BB201AEB3E00CFCCB1 /* EquipmentGroupTVC.swift */; };
+		B2D5D7BE201BC40F00CFCCB1 /* EquipmentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2D5D7BD201BC40F00CFCCB1 /* EquipmentCell.swift */; };
+		B2D5D7C0201BDFD500CFCCB1 /* EquipmentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2D5D7BF201BDFD500CFCCB1 /* EquipmentVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,20 +42,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		4F46B06820164CD400D5B3E9 /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
-		4F4932412017B79B0093CCFA /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
-		4F8FB692201547DB00DBCD35 /* InitialLandingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialLandingViewController.swift; sourceTree = "<group>"; };
+		4F46B06820164CD400D5B3E9 /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
+		4F4932412017B79B0093CCFA /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		4F8FB692201547DB00DBCD35 /* LandingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingVC.swift; sourceTree = "<group>"; };
 		4F8FB69420154C7F00DBCD35 /* DefaultColorTheme.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = DefaultColorTheme.xcassets; sourceTree = "<group>"; };
-		4FC7717E2017D068008A13D9 /* EquipmentGroupsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EquipmentGroupsController.swift; sourceTree = "<group>"; };
-		4FC771802017D1CA008A13D9 /* EquipmentGroupCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EquipmentGroupCell.swift; sourceTree = "<group>"; };
-		4FC771842017E042008A13D9 /* MachineCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MachineCell.swift; sourceTree = "<group>"; };
-		4FE6FFE3201961C700811AC7 /* MachinesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MachinesViewController.swift; sourceTree = "<group>"; };
-		4FE6FFE5201A788300811AC7 /* MachineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MachineViewController.swift; sourceTree = "<group>"; };
-		4FE6FFE7201A78DB00811AC7 /* MachineInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MachineInfoViewController.swift; sourceTree = "<group>"; };
-		4FE6FFE9201A78EB00811AC7 /* MachineReportProblemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MachineReportProblemViewController.swift; sourceTree = "<group>"; };
+		4FC7717E2017D068008A13D9 /* EquipmentGroupListTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EquipmentGroupListTVC.swift; sourceTree = "<group>"; };
 		B2D384901FBA383C00D91650 /* invention-studio-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "invention-studio-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B2D384931FBA383C00D91650 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		B2D384951FBA383C00D91650 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		B2D384981FBA383C00D91650 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B2D3849B1FBA383C00D91650 /* invention_studio_ios.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = invention_studio_ios.xcdatamodel; sourceTree = "<group>"; };
 		B2D3849D1FBA383C00D91650 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -71,6 +60,9 @@
 		B2D384B21FBA383C00D91650 /* invention-studio-iosUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "invention-studio-iosUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B2D384B61FBA383C00D91650 /* invention_studio_iosUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = invention_studio_iosUITests.swift; sourceTree = "<group>"; };
 		B2D384B81FBA383C00D91650 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B2D5D7BB201AEB3E00CFCCB1 /* EquipmentGroupTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EquipmentGroupTVC.swift; sourceTree = "<group>"; };
+		B2D5D7BD201BC40F00CFCCB1 /* EquipmentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EquipmentCell.swift; sourceTree = "<group>"; };
+		B2D5D7BF201BDFD500CFCCB1 /* EquipmentVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EquipmentVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,17 +114,13 @@
 			isa = PBXGroup;
 			children = (
 				B2D384931FBA383C00D91650 /* AppDelegate.swift */,
-				B2D384951FBA383C00D91650 /* ViewController.swift */,
-				4FC7717E2017D068008A13D9 /* EquipmentGroupsController.swift */,
-				4FC771802017D1CA008A13D9 /* EquipmentGroupCell.swift */,
-				4FE6FFE3201961C700811AC7 /* MachinesViewController.swift */,
-				4FC771842017E042008A13D9 /* MachineCell.swift */,
-				4FE6FFE5201A788300811AC7 /* MachineViewController.swift */,
-				4FE6FFE7201A78DB00811AC7 /* MachineInfoViewController.swift */,
-				4FE6FFE9201A78EB00811AC7 /* MachineReportProblemViewController.swift */,
-				4F8FB692201547DB00DBCD35 /* InitialLandingViewController.swift */,
-				4F46B06820164CD400D5B3E9 /* LogInViewController.swift */,
-				4F4932412017B79B0093CCFA /* TabBarViewController.swift */,
+				4F4932412017B79B0093CCFA /* TabBarController.swift */,
+				4F8FB692201547DB00DBCD35 /* LandingVC.swift */,
+				4F46B06820164CD400D5B3E9 /* LoginVC.swift */,
+				4FC7717E2017D068008A13D9 /* EquipmentGroupListTVC.swift */,
+				B2D5D7BB201AEB3E00CFCCB1 /* EquipmentGroupTVC.swift */,
+				B2D5D7BD201BC40F00CFCCB1 /* EquipmentCell.swift */,
+				B2D5D7BF201BDFD500CFCCB1 /* EquipmentVC.swift */,
 				4F8FB69420154C7F00DBCD35 /* DefaultColorTheme.xcassets */,
 				B2D3849D1FBA383C00D91650 /* Assets.xcassets */,
 				B2D384971FBA383C00D91650 /* Main.storyboard */,
@@ -296,19 +284,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4FE6FFE4201961C700811AC7 /* MachinesViewController.swift in Sources */,
-				4FC771812017D1CA008A13D9 /* EquipmentGroupCell.swift in Sources */,
-				B2D384961FBA383C00D91650 /* ViewController.swift in Sources */,
-				4FC771852017E042008A13D9 /* MachineCell.swift in Sources */,
-				4FE6FFE6201A788300811AC7 /* MachineViewController.swift in Sources */,
+				B2D5D7BC201AEB3E00CFCCB1 /* EquipmentGroupTVC.swift in Sources */,
 				B2D384941FBA383C00D91650 /* AppDelegate.swift in Sources */,
 				B2D3849C1FBA383C00D91650 /* invention_studio_ios.xcdatamodeld in Sources */,
-				4F46B06920164CD400D5B3E9 /* LogInViewController.swift in Sources */,
-				4FC7717F2017D068008A13D9 /* EquipmentGroupsController.swift in Sources */,
-				4F4932422017B79B0093CCFA /* TabBarViewController.swift in Sources */,
-				4FE6FFEA201A78EB00811AC7 /* MachineReportProblemViewController.swift in Sources */,
-				4FE6FFE8201A78DB00811AC7 /* MachineInfoViewController.swift in Sources */,
-				4F8FB693201547DB00DBCD35 /* InitialLandingViewController.swift in Sources */,
+				4F46B06920164CD400D5B3E9 /* LoginVC.swift in Sources */,
+				4FC7717F2017D068008A13D9 /* EquipmentGroupListTVC.swift in Sources */,
+				4F4932422017B79B0093CCFA /* TabBarController.swift in Sources */,
+				B2D5D7C0201BDFD500CFCCB1 /* EquipmentVC.swift in Sources */,
+				B2D5D7BE201BC40F00CFCCB1 /* EquipmentCell.swift in Sources */,
+				4F8FB693201547DB00DBCD35 /* LandingVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
