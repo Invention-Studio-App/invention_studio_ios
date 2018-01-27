@@ -35,7 +35,7 @@ class EquipmentGroupTVC: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
 
-    func updateHeaderView() {
+    private func updateHeaderView() {
         var headerRect = CGRect(x: 0, y: -headerViewHeight, width: tableView.bounds.width, height: headerViewHeight)
         if tableView.contentOffset.y < -headerViewHeight {
             headerRect.origin.y = tableView.contentOffset.y

@@ -15,6 +15,12 @@ class QueuesTVC: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        let items = ["3D Printers", "Laser Cutters", "Waterjet"]
+        segmentControl.removeAllSegments()
+        for (i, item) in items.enumerated() {
+            segmentControl.insertSegment(withTitle: item, at: i, animated: false)
+        }
+        segmentControl.selectedSegmentIndex = 0
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 

@@ -45,7 +45,7 @@ class EquipmentGroupListTVC: UITableViewController {
     
     private func getEquipmentGroups() {
         var groups = [String]()
-        groups.append(contentsOf: ["EG A", "EG B", "EG C", "EG D", "EG E"])
+        groups.append(contentsOf: ["3D Printers", "Laser Cutters", "Waterjet"])
         self.equipmentGroups = groups
     }
 

@@ -8,16 +8,20 @@
 
 import UIKit
 
-class FeedbackTVC: UITableViewController {
+class FeedbackTVC: UITableViewController, UIPickerViewDataSource, UIPickerViewDelegate {
+
+    let feedbackTypes = ["Machine Broken", "PI Feedback", "General Feedback"]
+
+    var feedbackTypePicker: UIPickerView
 
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+    override func viewDidLayoutSubviews() {
+        feedbackTypePicker.dataSource = self
+        feedbackTypePicker.delegate = self
+        feedbackTypePicker.selectedRow(inComponent: 0)
     }
 
     override func didReceiveMemoryWarning() {
@@ -28,13 +32,93 @@ class FeedbackTVC: UITableViewController {
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 1
+        switch feedbackTypePicker.selectedRow(inComponent: 0) {
+        case 0: //Machine Broken
+            return 5
+        case 1: //PI Feedback
+            return 4
+        case 2: //General Feedback
+            return 3
+        default:
+            return 0
+        }
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 1
+        switch section {
+        case 0: //Your Name
+            return 1
+        case 1: //Type
+            return 2
+        case 2: //Custom
+            switch feedbackTypePicker.selectedRow(inComponent: 0) {
+            case 0: //Machine Broken
+                return 2
+            case 1: //PI Feedback
+                return 1
+            case 2: //General Feedback
+                return 1
+            default:
+                return 0
+            }
+        case 3: //Custom
+            switch feedbackTypePicker.selectedRow(inComponent: 0) {
+            case 0: //Machine Broken
+                return 1
+            case 1: //PI Feedback
+                return 1
+            default: //Includes: General Feedback
+                return 0
+            }
+        case 4: //Custom
+            switch feedbackTypePicker.selectedRow(inComponent: 0) {
+            case 0: //Machine Broken
+                return 1
+            default: //Includes: PI Feedback, General Feedback
+                return 0
+            }
+        default:
+            return 0
+        }
+    }
+
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        switch section {
+        case 0:
+            return "Your Name"
+        case 1:
+            return "Type"
+        case 2:
+            switch feedbackTypePicker.selectedRow(inComponent: 0) {
+            case 0:
+                return "Machine"
+            case 1:
+                return "Rating"
+            case 2:
+                return "Comments"
+            default:
+                return nil
+            }
+        case 3:
+            switch feedbackTypePicker.selectedRow(inComponent: 0) {
+            case 0:
+                return "Problem"
+            case 1:
+                return "Comments"
+            default:
+                return nil
+            }
+        case 4:
+            switch feedbackTypePicker.selectedRow(inComponent: 0) {
+            case 0:
+                return "Comments"
+            default:
+                return nil
+            }
+        default:
+            return nil
+        }
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -79,6 +163,20 @@ class FeedbackTVC: UITableViewController {
         return true
     }
     */
+
+    //MARK: - Picker View Delegate
+
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return feedbackTypes.count
+    }
+
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return feedbackTypes[row]
+    }
 
     /*
     // MARK: - Navigation
