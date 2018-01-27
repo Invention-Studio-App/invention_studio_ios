@@ -15,6 +15,7 @@
 		B2A3A82D201C0EB600F3AF7F /* Tool.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2A3A82C201C0EB600F3AF7F /* Tool.swift */; };
 		B2A3A82F201C1B1400F3AF7F /* QueuesTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2A3A82E201C1B1400F3AF7F /* QueuesTVC.swift */; };
 		B2A3A831201C1B2A00F3AF7F /* FeedbackTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2A3A830201C1B2A00F3AF7F /* FeedbackTVC.swift */; };
+		B2A3A833201C1C3500F3AF7F /* OtherTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2A3A832201C1C3500F3AF7F /* OtherTVC.swift */; };
 		B2D384941FBA383C00D91650 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2D384931FBA383C00D91650 /* AppDelegate.swift */; };
 		B2D384991FBA383C00D91650 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B2D384971FBA383C00D91650 /* Main.storyboard */; };
 		B2D3849C1FBA383C00D91650 /* invention_studio_ios.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B2D3849A1FBA383C00D91650 /* invention_studio_ios.xcdatamodeld */; };
@@ -53,6 +54,7 @@
 		B2A3A82C201C0EB600F3AF7F /* Tool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tool.swift; sourceTree = "<group>"; };
 		B2A3A82E201C1B1400F3AF7F /* QueuesTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueuesTVC.swift; sourceTree = "<group>"; };
 		B2A3A830201C1B2A00F3AF7F /* FeedbackTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackTVC.swift; sourceTree = "<group>"; };
+		B2A3A832201C1C3500F3AF7F /* OtherTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherTVC.swift; sourceTree = "<group>"; };
 		B2D384901FBA383C00D91650 /* invention-studio-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "invention-studio-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B2D384931FBA383C00D91650 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B2D384981FBA383C00D91650 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -146,6 +148,7 @@
 				B2D5D7BF201BDFD500CFCCB1 /* EquipmentVC.swift */,
 				B2A3A82E201C1B1400F3AF7F /* QueuesTVC.swift */,
 				B2A3A830201C1B2A00F3AF7F /* FeedbackTVC.swift */,
+				B2A3A832201C1C3500F3AF7F /* OtherTVC.swift */,
 				4F8FB69420154C7F00DBCD35 /* DefaultColorTheme.xcassets */,
 				B2D3849D1FBA383C00D91650 /* Assets.xcassets */,
 				B2D384971FBA383C00D91650 /* Main.storyboard */,
@@ -309,6 +312,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B2A3A833201C1C3500F3AF7F /* OtherTVC.swift in Sources */,
 				B2D5D7BC201AEB3E00CFCCB1 /* EquipmentGroupTVC.swift in Sources */,
 				B2D384941FBA383C00D91650 /* AppDelegate.swift in Sources */,
 				B2D3849C1FBA383C00D91650 /* invention_studio_ios.xcdatamodeld in Sources */,

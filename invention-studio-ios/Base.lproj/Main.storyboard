@@ -461,9 +461,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="554"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="VTi-qe-5rT">
-                                <rect key="frame" x="0.0" y="63" width="375" height="604"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="VTi-qe-5rT">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="554"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <string key="text">Attribution: Home Icon created by Viktor Vorobyev from Noun Project. 3D printer icon created by Peter van Driel from Noun Project. Queue Icon created by Deepak M from Noun Project.  Feedback Icon Created by dilakuscan from Noun Project. Other Icon created by Ilaria Bernareggi from Noun Project.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -471,12 +470,18 @@
                             </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="BON-PX-0sc" firstAttribute="bottom" secondItem="VTi-qe-5rT" secondAttribute="bottom" id="1Zy-r1-ING"/>
+                            <constraint firstItem="BON-PX-0sc" firstAttribute="trailing" secondItem="VTi-qe-5rT" secondAttribute="trailing" id="Sds-HZ-JbO"/>
+                            <constraint firstItem="VTi-qe-5rT" firstAttribute="top" secondItem="BON-PX-0sc" secondAttribute="top" id="i36-EF-p9t"/>
+                            <constraint firstItem="VTi-qe-5rT" firstAttribute="leading" secondItem="BON-PX-0sc" secondAttribute="leading" id="ykI-Nk-fd0"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="BON-PX-0sc"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nS4-aI-2h2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2038" y="3948"/>
+            <point key="canvasLocation" x="2037.5999999999999" y="3947.6761619190406"/>
         </scene>
         <!--Feedback-->
         <scene sceneID="DzH-kc-ZzA">
