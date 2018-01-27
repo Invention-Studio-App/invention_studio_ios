@@ -10,6 +10,8 @@ import UIKit
 
 class QueuesTVC: UITableViewController {
 
+    @IBOutlet weak var segmentControl: UISegmentedControl!
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -24,28 +26,33 @@ class QueuesTVC: UITableViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
+    @IBAction func segmentChanged(_ sender: UISegmentedControl) {
+        tableView.reloadData()
+    }
+    
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return 5
     }
 
-    /*
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return segmentControl.titleForSegment(at: segmentControl.selectedSegmentIndex)
+    }
 
-        // Configure the cell...
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "queuesPrototype", for: indexPath)
+        cell.textLabel?.text = String(format: "%d. Jane Doe", indexPath.row + 1)
 
         return cell
     }
-    */
 
     /*
     // Override to support conditional editing of the table view.

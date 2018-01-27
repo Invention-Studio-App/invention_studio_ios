@@ -111,14 +111,35 @@
         <!--Queues-->
         <scene sceneID="ZIP-2J-AL3">
             <objects>
-                <tableViewController id="tWF-7Y-t6t" sceneMemberID="viewController">
+                <tableViewController id="tWF-7Y-t6t" customClass="QueuesTVC" customModule="invention_studio_ios" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="zwc-5M-lWX">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="554"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <view key="tableHeaderView" contentMode="scaleToFill" id="xdR-GA-EkQ">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Y4n-bh-lOe">
+                                    <rect key="frame" x="127" y="7.5" width="121" height="29"/>
+                                    <segments>
+                                        <segment title="First"/>
+                                        <segment title="Second"/>
+                                    </segments>
+                                    <connections>
+                                        <action selector="segmentChanged:" destination="tWF-7Y-t6t" eventType="valueChanged" id="K3K-4s-jpc"/>
+                                    </connections>
+                                </segmentedControl>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstItem="Y4n-bh-lOe" firstAttribute="centerY" secondItem="xdR-GA-EkQ" secondAttribute="centerY" id="nEM-vg-OUn"/>
+                                <constraint firstItem="Y4n-bh-lOe" firstAttribute="centerX" secondItem="xdR-GA-EkQ" secondAttribute="centerX" id="u9B-b4-e9n"/>
+                            </constraints>
+                        </view>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="queuePrototype" id="dhX-H1-Jys">
-                                <rect key="frame" x="0.0" y="55.5" width="375" height="44"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="queuesPrototype" id="dhX-H1-Jys">
+                                <rect key="frame" x="0.0" y="99.5" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="dhX-H1-Jys" id="k0U-Wl-CSk">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
@@ -132,6 +153,9 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Queues" id="XmE-q5-YQ8"/>
+                    <connections>
+                        <outlet property="segmentControl" destination="Y4n-bh-lOe" id="h9j-5I-Yyz"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fA0-GT-qJ6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -159,7 +183,7 @@
         <!--Feedback-->
         <scene sceneID="PSs-Ec-7DP">
             <objects>
-                <tableViewController id="N2K-SL-XV0" sceneMemberID="viewController">
+                <tableViewController id="N2K-SL-XV0" customClass="FeedbackTVC" customModule="invention_studio_ios" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="38h-lX-mQt">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="554"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -481,7 +505,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nS4-aI-2h2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2037.5999999999999" y="3947.6761619190406"/>
+            <point key="canvasLocation" x="2038" y="3948"/>
         </scene>
         <!--Feedback-->
         <scene sceneID="DzH-kc-ZzA">
@@ -505,19 +529,22 @@
         <!--Other-->
         <scene sceneID="3Q8-1d-MEg">
             <objects>
-                <tableViewController id="ocj-cH-d0J" sceneMemberID="viewController">
+                <tableViewController id="ocj-cH-d0J" customClass="OtherTVC" customModule="invention_studio_ios" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="Vqp-fl-rHu">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="554"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="otherPrototype" id="MhE-wH-qjm">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="otherPrototype" id="MhE-wH-qjm">
                                 <rect key="frame" x="0.0" y="55.5" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="MhE-wH-qjm" id="e2p-QY-9Uo">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="341" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="Uib-l1-hO6" kind="show" id="gEN-hy-5M8"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -526,9 +553,6 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Other" id="725-9c-YcF"/>
-                    <connections>
-                        <segue destination="Uib-l1-hO6" kind="show" identifier="creditsSegue" id="mbQ-gN-Feh"/>
-                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oyl-8h-V98" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
