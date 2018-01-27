@@ -34,17 +34,29 @@ class QueuesTVC: UITableViewController {
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 1
+        return 2
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 5
+        switch section {
+        case 0:
+            return 0
+        case 1:
+            return 5
+        default:
+            return 0
+        }
     }
 
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return segmentControl.titleForSegment(at: segmentControl.selectedSegmentIndex)
+        switch section {
+        case 0:
+            return "To join a queue, head  to the SUMS kiosk for the room you're interested in"
+        case 1:
+            return segmentControl.titleForSegment(at: segmentControl.selectedSegmentIndex)
+        default:
+            return nil
+        }
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
