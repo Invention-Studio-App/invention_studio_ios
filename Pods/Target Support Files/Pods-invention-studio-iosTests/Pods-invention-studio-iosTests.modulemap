@@ -1,0 +1,6 @@
+framework module Pods_invention_studio_iosTests {
+  umbrella header "Pods-invention-studio-iosTests-umbrella.h"
+
+  export *
+  module * { export * }
+}
