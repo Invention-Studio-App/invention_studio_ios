@@ -35,11 +35,11 @@ class FeedbackTVC: UITableViewController, UIPickerViewDataSource, UIPickerViewDe
     override func numberOfSections(in tableView: UITableView) -> Int {
         switch feedbackTypePicker.selectedRow(inComponent: 0) {
         case 0: //Machine Broken
-            return 5
+            return 5 //Name, Type, Machine, Problem, Comment
         case 1: //PI Feedback
-            return 4
+            return 4 //Name, Type, Rating, Comment
         case 2: //General Feedback
-            return 3
+            return 3 //Name, Type, Comment
         default:
             return 0
         }
@@ -48,37 +48,32 @@ class FeedbackTVC: UITableViewController, UIPickerViewDataSource, UIPickerViewDe
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         switch section {
-        case 0: //Your Name
+        case 0: //Your Name - Name/Anonymous Switch
             return 1
-        case 1: //Type
-            return 1
-        case 2: //Custom
+        case 1: //Type - Header, Dropdown
+            return 2
+        case 2:
             switch feedbackTypePicker.selectedRow(inComponent: 0) {
             case 0: //Machine Broken
-                return 2
+                return 4 //Machine Group Header, Dropdown, Machine Name Header, Dropdown
             case 1: //PI Feedback
-                return 1
+                return 1 //Rating slider
             case 2: //General Feedback
-                return 1
+                return 1 //Comments
             default:
                 return 0
             }
-        case 3: //Custom
+        case 3:
             switch feedbackTypePicker.selectedRow(inComponent: 0) {
             case 0: //Machine Broken
-                return 1
+                return 2 //Common Problems Header, Dropdown
             case 1: //PI Feedback
-                return 1
+                return 1 //Comments
             default: //Includes: General Feedback
                 return 0
             }
-        case 4: //Custom
-            switch feedbackTypePicker.selectedRow(inComponent: 0) {
-            case 0: //Machine Broken
-                return 1
-            default: //Includes: PI Feedback, General Feedback
-                return 0
-            }
+        case 4: //Machine Broken - Comments
+            return 1
         default:
             return 0
         }
@@ -111,23 +106,83 @@ class FeedbackTVC: UITableViewController, UIPickerViewDataSource, UIPickerViewDe
                 return nil
             }
         case 4:
-            switch feedbackTypePicker.selectedRow(inComponent: 0) {
-            case 0:
-                return "Comments"
-            default:
-                return nil
-            }
+            return "Comments"
         default:
             return nil
         }
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "commentsPrototype", for: indexPath)
-
+        switch indexPath.section {
+        case 0: //Name - Name Field
+            let cell = tableView.dequeueReusableCell(withIdentifier: "namePrototype", for: indexPath)
+            cell.textLabel?.text = "John Doe"
+            return cell
+        case 1: //Type
+            switch indexPath.row {
+            case 0: //Type Header
+                 let cell = tableView.dequeueReusableCell(withIdentifier: "pickerHeaderPrototype", for: indexPath)
+                 return cell
+            case 1: //Type Dropdown
+                 let cell = tableView.dequeueReusableCell(withIdentifier: "pickerDropdownPrototype", for: indexPath)
+                 return cell
+            default:
+                return UITableViewCell()
+            }
+        case 2:
+            switch feedbackTypePicker.selectedRow(inComponent: 0) {
+            case 0: //Machine Broken
+                switch indexPath.row {
+                case 0: //Machine Group Header
+                     let cell = tableView.dequeueReusableCell(withIdentifier: "pickerHeaderPrototype", for: indexPath)
+                     return cell
+                case 1: //Machine Group Dropdown
+                     let cell = tableView.dequeueReusableCell(withIdentifier: "pickerDropdownPrototype", for: indexPath)
+                     return cell
+                case 2: //Machine Header
+                     let cell = tableView.dequeueReusableCell(withIdentifier: "pickerHeaderPrototype", for: indexPath)
+                     return cell
+                case 3: //Machine Dropdown
+                     let cell = tableView.dequeueReusableCell(withIdentifier: "pickerDropdownPrototype", for: indexPath)
+                     return cell
+                default:
+                    return UITableViewCell()
+                }
+            case 1: //PI Feedback - Rating Slider
+                 let cell = tableView.dequeueReusableCell(withIdentifier: "ratingPrototype", for: indexPath)
+                 return cell
+            case 2: //General Feedback - Comments
+                 let cell = tableView.dequeueReusableCell(withIdentifier: "commentsPrototype", for: indexPath)
+                 return cell
+            default:
+                return UITableViewCell()
+            }
+        case 3:
+            switch feedbackTypePicker.selectedRow(inComponent: 0) {
+            case 0: //Machine Broken
+                switch indexPath.row {
+                case 0: //Problem Header
+                     let cell = tableView.dequeueReusableCell(withIdentifier: "pickerHeaderPrototype", for: indexPath)
+                     return cell
+                case 1: //Problem dropdown
+                     let cell = tableView.dequeueReusableCell(withIdentifier: "pickerDropdownPrototype", for: indexPath)
+                     return cell
+                default:
+                    return UITableViewCell()
+                }
+            case 1: //PI Feedback - Comments
+                 let cell = tableView.dequeueReusableCell(withIdentifier: "commentsPrototype", for: indexPath)
+                 return cell
+            default: //Includes: General Feedback
+                return UITableViewCell()
+            }
+        case 4: // Machine Broken - Comments
+             let cell = tableView.dequeueReusableCell(withIdentifier: "commentsPrototype", for: indexPath)
+             return cell
+        default:
+            return UITableViewCell()
+        }
         // Configure the cell...
-
-        return cell
     }
 
     /*

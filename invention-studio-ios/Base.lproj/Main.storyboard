@@ -116,12 +116,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="554"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                        <view key="tableHeaderView" contentMode="scaleToFill" misplaced="YES" id="xdR-GA-EkQ">
+                        <view key="tableHeaderView" contentMode="scaleToFill" id="xdR-GA-EkQ">
                             <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Y4n-bh-lOe">
-                                    <rect key="frame" x="127" y="-14" width="121" height="29"/>
+                                    <rect key="frame" x="127" y="8" width="121" height="29"/>
                                     <segments>
                                         <segment title="First"/>
                                         <segment title="Second"/>
@@ -199,19 +199,10 @@
                                         <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="nE4-Qy-IOC">
                                             <rect key="frame" x="308" y="6" width="51" height="31"/>
                                         </switch>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="John Doe" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dks-UF-gVg">
-                                            <rect key="frame" x="16" y="12" width="284" height="20.5"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
                                     </subviews>
                                     <constraints>
                                         <constraint firstAttribute="trailing" secondItem="nE4-Qy-IOC" secondAttribute="trailing" constant="18" id="2wL-Mg-Lic"/>
                                         <constraint firstItem="nE4-Qy-IOC" firstAttribute="centerY" secondItem="8hx-mc-oWX" secondAttribute="centerY" id="Hhc-zb-dyp"/>
-                                        <constraint firstItem="dks-UF-gVg" firstAttribute="leading" secondItem="8hx-mc-oWX" secondAttribute="leading" constant="16" id="M25-ow-k8q"/>
-                                        <constraint firstItem="dks-UF-gVg" firstAttribute="centerY" secondItem="8hx-mc-oWX" secondAttribute="centerY" id="dYT-11-M6E"/>
-                                        <constraint firstItem="nE4-Qy-IOC" firstAttribute="leading" secondItem="dks-UF-gVg" secondAttribute="trailing" constant="8" id="jzH-ng-bzS"/>
                                     </constraints>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -245,18 +236,7 @@
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="k6Z-nI-lJp" id="MRq-dV-1WG">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="215.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7Yu-bo-h4I">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="216"/>
-                                        </pickerView>
-                                    </subviews>
                                 </tableViewCellContentView>
-                                <constraints>
-                                    <constraint firstItem="7Yu-bo-h4I" firstAttribute="leading" secondItem="k6Z-nI-lJp" secondAttribute="leading" id="bUK-tL-NEx"/>
-                                    <constraint firstAttribute="trailing" secondItem="7Yu-bo-h4I" secondAttribute="trailing" id="cAr-xa-OaF"/>
-                                    <constraint firstItem="7Yu-bo-h4I" firstAttribute="top" secondItem="k6Z-nI-lJp" secondAttribute="top" id="sE9-lR-Ito"/>
-                                    <constraint firstAttribute="bottom" secondItem="7Yu-bo-h4I" secondAttribute="bottom" id="vrF-Ql-8Ck"/>
-                                </constraints>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="ratingPrototype" id="wTW-Y9-0Pg">
                                 <rect key="frame" x="0.0" y="359.5" width="375" height="44"/>
@@ -308,15 +288,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="554"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                        <view key="tableHeaderView" contentMode="scaleToFill" misplaced="YES" id="VOP-rI-fuv">
+                        <view key="tableHeaderView" contentMode="scaleToFill" id="VOP-rI-fuv">
                             <rect key="frame" x="0.0" y="0.0" width="375" height="422"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="1" image="PlaceholderStudioImage2" translatesAutoresizingMaskIntoConstraints="NO" id="GVD-Yd-kGY">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="98"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="211"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="211" id="S0Y-r9-hWI"/>
+                                    </constraints>
                                 </imageView>
                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalHuggingPriority="1000" scrollEnabled="NO" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6sq-0i-6rT">
-                                    <rect key="frame" x="8" y="101" width="359" height="200"/>
+                                    <rect key="frame" x="8" y="214" width="359" height="200"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="200" id="YJo-Bg-P06"/>
