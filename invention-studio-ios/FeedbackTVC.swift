@@ -12,7 +12,7 @@ class FeedbackTVC: UITableViewController, UIPickerViewDataSource, UIPickerViewDe
 
     let feedbackTypes = ["Machine Broken", "PI Feedback", "General Feedback"]
 
-    var feedbackTypePicker: UIPickerView
+    var feedbackTypePicker: UIPickerView = UIPickerView()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,7 +50,7 @@ class FeedbackTVC: UITableViewController, UIPickerViewDataSource, UIPickerViewDe
         case 0: //Your Name
             return 1
         case 1: //Type
-            return 2
+            return 1
         case 2: //Custom
             switch feedbackTypePicker.selectedRow(inComponent: 0) {
             case 0: //Machine Broken
@@ -122,7 +122,7 @@ class FeedbackTVC: UITableViewController, UIPickerViewDataSource, UIPickerViewDe
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "feedbackPrototype", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "commentsPrototype", for: indexPath)
 
         // Configure the cell...
 
