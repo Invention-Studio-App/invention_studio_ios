@@ -189,7 +189,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="namePrototype" id="CWc-RM-FeU">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="namePrototype" id="CWc-RM-FeU" customClass="FeedbackNameCell" customModule="invention_studio_ios" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="55.5" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="CWc-RM-FeU" id="8hx-mc-oWX">
@@ -205,8 +205,11 @@
                                         <constraint firstItem="nE4-Qy-IOC" firstAttribute="centerY" secondItem="8hx-mc-oWX" secondAttribute="centerY" id="Hhc-zb-dyp"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="anonymousSwitch" destination="nE4-Qy-IOC" id="c7e-Wm-zCM"/>
+                                </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="pickerHeaderPrototype" textLabel="Bky-FB-kXQ" detailTextLabel="uj2-ds-CeF" style="IBUITableViewCellStyleValue1" id="ob6-eZ-V8u">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="pickerHeaderPrototype" textLabel="Bky-FB-kXQ" detailTextLabel="uj2-ds-CeF" style="IBUITableViewCellStyleValue1" id="ob6-eZ-V8u" customClass="FeedbackPickerHeaderCell" customModule="invention_studio_ios" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="99.5" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ob6-eZ-V8u" id="orx-2f-B2M">
@@ -230,15 +233,29 @@
                                     </subviews>
                                 </tableViewCellContentView>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="pickerDropdownPrototype" rowHeight="216" id="k6Z-nI-lJp">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="pickerDropdownPrototype" rowHeight="216" id="k6Z-nI-lJp" customClass="FeedbackPickerDropdownCell" customModule="invention_studio_ios" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="143.5" width="375" height="216"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="k6Z-nI-lJp" id="MRq-dV-1WG">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="215.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fKe-TN-aQT">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="216"/>
+                                        </pickerView>
+                                    </subviews>
                                 </tableViewCellContentView>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="fKe-TN-aQT" secondAttribute="trailing" id="HR9-OR-YLf"/>
+                                    <constraint firstItem="fKe-TN-aQT" firstAttribute="leading" secondItem="k6Z-nI-lJp" secondAttribute="leading" id="Lal-Jo-aCq"/>
+                                    <constraint firstAttribute="bottom" secondItem="fKe-TN-aQT" secondAttribute="bottom" id="Ld5-s0-uVf"/>
+                                    <constraint firstItem="fKe-TN-aQT" firstAttribute="top" secondItem="k6Z-nI-lJp" secondAttribute="top" id="YcX-Da-UcF"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="pickerView" destination="fKe-TN-aQT" id="5Yd-VR-bEK"/>
+                                </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="ratingPrototype" id="wTW-Y9-0Pg">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="ratingPrototype" id="wTW-Y9-0Pg" customClass="FeedbackRatingCell" customModule="invention_studio_ios" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="359.5" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="wTW-Y9-0Pg" id="pgI-SU-2LH">
@@ -246,7 +263,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="commentsPrototype" rowHeight="216" id="xm2-WQ-e9h">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="commentsPrototype" rowHeight="216" id="xm2-WQ-e9h" customClass="FeedbackCommentsCell" customModule="invention_studio_ios" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="403.5" width="375" height="216"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="xm2-WQ-e9h" id="faq-Zl-qtH">
@@ -267,6 +284,9 @@
                                         <constraint firstAttribute="trailing" secondItem="WDB-eV-fbd" secondAttribute="trailing" constant="16" id="tzV-j8-jRr"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="commentBox" destination="WDB-eV-fbd" id="0WG-rj-dOP"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>

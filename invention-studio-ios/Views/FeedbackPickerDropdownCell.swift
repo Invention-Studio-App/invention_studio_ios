@@ -10,6 +10,8 @@ import UIKit
 
 class FeedbackPickerDropdownCell: UITableViewCell {
 
+    @IBOutlet weak var pickerView: UIPickerView!
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
