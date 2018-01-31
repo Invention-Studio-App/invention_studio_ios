@@ -136,6 +136,30 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		B233FFC120216D1C0024A5C6 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				4F4932412017B79B0093CCFA /* TabBarController.swift */,
+				4F8FB692201547DB00DBCD35 /* LandingVC.swift */,
+				4F46B06820164CD400D5B3E9 /* LoginVC.swift */,
+				4FC7717E2017D068008A13D9 /* EquipmentGroupListTVC.swift */,
+				B2D5D7BB201AEB3E00CFCCB1 /* EquipmentGroupTVC.swift */,
+				B2D5D7BF201BDFD500CFCCB1 /* EquipmentVC.swift */,
+				B2A3A82E201C1B1400F3AF7F /* QueuesTVC.swift */,
+				B2A3A830201C1B2A00F3AF7F /* FeedbackTVC.swift */,
+				B2A3A832201C1C3500F3AF7F /* OtherTVC.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		B233FFC220216D2C0024A5C6 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				B2D5D7BD201BC40F00CFCCB1 /* EquipmentCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		B2A3A82A201C0D4C00F3AF7F /* API */ = {
 			isa = PBXGroup;
 			children = (
@@ -178,17 +202,9 @@
 			isa = PBXGroup;
 			children = (
 				B2A3A82A201C0D4C00F3AF7F /* API */,
+				B233FFC120216D1C0024A5C6 /* Controllers */,
+				B233FFC220216D2C0024A5C6 /* Views */,
 				B2D384931FBA383C00D91650 /* AppDelegate.swift */,
-				4F4932412017B79B0093CCFA /* TabBarController.swift */,
-				4F8FB692201547DB00DBCD35 /* LandingVC.swift */,
-				4F46B06820164CD400D5B3E9 /* LoginVC.swift */,
-				4FC7717E2017D068008A13D9 /* EquipmentGroupListTVC.swift */,
-				B2D5D7BB201AEB3E00CFCCB1 /* EquipmentGroupTVC.swift */,
-				B2D5D7BD201BC40F00CFCCB1 /* EquipmentCell.swift */,
-				B2D5D7BF201BDFD500CFCCB1 /* EquipmentVC.swift */,
-				B2A3A82E201C1B1400F3AF7F /* QueuesTVC.swift */,
-				B2A3A830201C1B2A00F3AF7F /* FeedbackTVC.swift */,
-				B2A3A832201C1C3500F3AF7F /* OtherTVC.swift */,
 				4F8FB69420154C7F00DBCD35 /* DefaultColorTheme.xcassets */,
 				B2D3849D1FBA383C00D91650 /* Assets.xcassets */,
 				B2D384971FBA383C00D91650 /* Main.storyboard */,
