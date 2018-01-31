@@ -15,6 +15,11 @@
 		4F8FB69520154C7F00DBCD35 /* DefaultColorTheme.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F8FB69420154C7F00DBCD35 /* DefaultColorTheme.xcassets */; };
 		4FC7717F2017D068008A13D9 /* EquipmentGroupListTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FC7717E2017D068008A13D9 /* EquipmentGroupListTVC.swift */; };
 		93B4A7E4809E293F4650C3DB /* Pods_invention_studio_iosUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 225D7FB4887E2F08CF0BAAC4 /* Pods_invention_studio_iosUITests.framework */; };
+		B233FFC420216DFD0024A5C6 /* FeedbackNameCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B233FFC320216DFD0024A5C6 /* FeedbackNameCell.swift */; };
+		B233FFC620216E5C0024A5C6 /* FeedbackPickerHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B233FFC520216E5C0024A5C6 /* FeedbackPickerHeaderCell.swift */; };
+		B233FFC820216E720024A5C6 /* FeedbackPickerDropdownCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B233FFC720216E720024A5C6 /* FeedbackPickerDropdownCell.swift */; };
+		B233FFCA20216E9E0024A5C6 /* FeedbackRatingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B233FFC920216E9E0024A5C6 /* FeedbackRatingCell.swift */; };
+		B233FFCC20216EAB0024A5C6 /* FeedbackCommentsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B233FFCB20216EAB0024A5C6 /* FeedbackCommentsCell.swift */; };
 		B2A3A82D201C0EB600F3AF7F /* Tool.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2A3A82C201C0EB600F3AF7F /* Tool.swift */; };
 		B2A3A82F201C1B1400F3AF7F /* QueuesTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2A3A82E201C1B1400F3AF7F /* QueuesTVC.swift */; };
 		B2A3A831201C1B2A00F3AF7F /* FeedbackTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2A3A830201C1B2A00F3AF7F /* FeedbackTVC.swift */; };
@@ -61,6 +66,11 @@
 		4FC7717E2017D068008A13D9 /* EquipmentGroupListTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EquipmentGroupListTVC.swift; sourceTree = "<group>"; };
 		5CD21A0AFD35E1BE8BFF581B /* Pods_invention_studio_ios.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_invention_studio_ios.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		62DCFEF488633AA8D11B1636 /* Pods-invention-studio-ios.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-invention-studio-ios.debug.xcconfig"; path = "Pods/Target Support Files/Pods-invention-studio-ios/Pods-invention-studio-ios.debug.xcconfig"; sourceTree = "<group>"; };
+		B233FFC320216DFD0024A5C6 /* FeedbackNameCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackNameCell.swift; sourceTree = "<group>"; };
+		B233FFC520216E5C0024A5C6 /* FeedbackPickerHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackPickerHeaderCell.swift; sourceTree = "<group>"; };
+		B233FFC720216E720024A5C6 /* FeedbackPickerDropdownCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackPickerDropdownCell.swift; sourceTree = "<group>"; };
+		B233FFC920216E9E0024A5C6 /* FeedbackRatingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackRatingCell.swift; sourceTree = "<group>"; };
+		B233FFCB20216EAB0024A5C6 /* FeedbackCommentsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackCommentsCell.swift; sourceTree = "<group>"; };
 		B2A3A82C201C0EB600F3AF7F /* Tool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tool.swift; sourceTree = "<group>"; };
 		B2A3A82E201C1B1400F3AF7F /* QueuesTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueuesTVC.swift; sourceTree = "<group>"; };
 		B2A3A830201C1B2A00F3AF7F /* FeedbackTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackTVC.swift; sourceTree = "<group>"; };
@@ -156,6 +166,11 @@
 			isa = PBXGroup;
 			children = (
 				B2D5D7BD201BC40F00CFCCB1 /* EquipmentCell.swift */,
+				B233FFC320216DFD0024A5C6 /* FeedbackNameCell.swift */,
+				B233FFC520216E5C0024A5C6 /* FeedbackPickerHeaderCell.swift */,
+				B233FFC720216E720024A5C6 /* FeedbackPickerDropdownCell.swift */,
+				B233FFC920216E9E0024A5C6 /* FeedbackRatingCell.swift */,
+				B233FFCB20216EAB0024A5C6 /* FeedbackCommentsCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -532,6 +547,10 @@
 				B2D384941FBA383C00D91650 /* AppDelegate.swift in Sources */,
 				B2D3849C1FBA383C00D91650 /* invention_studio_ios.xcdatamodeld in Sources */,
 				B2A3A82F201C1B1400F3AF7F /* QueuesTVC.swift in Sources */,
+				B233FFCA20216E9E0024A5C6 /* FeedbackRatingCell.swift in Sources */,
+				B233FFC420216DFD0024A5C6 /* FeedbackNameCell.swift in Sources */,
+				B233FFC820216E720024A5C6 /* FeedbackPickerDropdownCell.swift in Sources */,
+				B233FFC620216E5C0024A5C6 /* FeedbackPickerHeaderCell.swift in Sources */,
 				B2A3A82D201C0EB600F3AF7F /* Tool.swift in Sources */,
 				4F46B06920164CD400D5B3E9 /* LoginVC.swift in Sources */,
 				B2A3A831201C1B2A00F3AF7F /* FeedbackTVC.swift in Sources */,
@@ -539,6 +558,7 @@
 				4F4932422017B79B0093CCFA /* TabBarController.swift in Sources */,
 				B2D5D7C0201BDFD500CFCCB1 /* EquipmentVC.swift in Sources */,
 				B2D5D7BE201BC40F00CFCCB1 /* EquipmentCell.swift in Sources */,
+				B233FFCC20216EAB0024A5C6 /* FeedbackCommentsCell.swift in Sources */,
 				4F8FB693201547DB00DBCD35 /* LandingVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
