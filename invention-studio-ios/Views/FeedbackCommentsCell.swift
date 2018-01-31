@@ -10,7 +10,7 @@ import UIKit
 
 class FeedbackCommentsCell: UITableViewCell {
 
-    @IBOutlet weak var commentBox: UITextField!
+    @IBOutlet weak var commentBox: UITextView!
     
     override func awakeFromNib() {
         super.awakeFromNib()

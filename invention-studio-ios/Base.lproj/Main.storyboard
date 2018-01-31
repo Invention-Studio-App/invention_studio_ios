@@ -270,22 +270,22 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="215.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" placeholder="Comments" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WDB-eV-fbd">
+                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="fze-P5-nBj">
                                             <rect key="frame" x="16" y="11" width="343" height="194"/>
-                                            <nil key="textColor"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                            <textInputTraits key="textInputTraits"/>
-                                        </textField>
+                                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                        </textView>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="WDB-eV-fbd" firstAttribute="top" secondItem="faq-Zl-qtH" secondAttribute="top" constant="11" id="6T8-Hu-3H1"/>
-                                        <constraint firstAttribute="bottom" secondItem="WDB-eV-fbd" secondAttribute="bottom" constant="10.5" id="QIe-FP-nB3"/>
-                                        <constraint firstItem="WDB-eV-fbd" firstAttribute="leading" secondItem="faq-Zl-qtH" secondAttribute="leading" constant="16" id="a3d-Y5-hSv"/>
-                                        <constraint firstAttribute="trailing" secondItem="WDB-eV-fbd" secondAttribute="trailing" constant="16" id="tzV-j8-jRr"/>
+                                        <constraint firstItem="fze-P5-nBj" firstAttribute="leading" secondItem="faq-Zl-qtH" secondAttribute="leading" constant="16" id="R8V-DO-94X"/>
+                                        <constraint firstItem="fze-P5-nBj" firstAttribute="top" secondItem="faq-Zl-qtH" secondAttribute="top" constant="11" id="c7v-CS-1NC"/>
+                                        <constraint firstAttribute="bottom" secondItem="fze-P5-nBj" secondAttribute="bottom" constant="10.5" id="kmd-VI-SX5"/>
+                                        <constraint firstAttribute="trailing" secondItem="fze-P5-nBj" secondAttribute="trailing" constant="16" id="w90-61-d2i"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="commentBox" destination="WDB-eV-fbd" id="0WG-rj-dOP"/>
+                                    <outlet property="commentBox" destination="fze-P5-nBj" id="iUh-Zc-iD4"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
