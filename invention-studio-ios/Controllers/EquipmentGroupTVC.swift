@@ -69,11 +69,11 @@ class EquipmentGroupTVC: UITableViewController {
         
         cell.titleLabel?.text = "Testing"
 
-        if indexPath.row % 4 == 0 {
+        if indexPath.row < 3 {
             cell.status = Tool.Status.AVAILABLE
-        } else if indexPath.row % 4 == 1 {
+        } else if indexPath.row < 6 {
             cell.status = Tool.Status.INUSE
-        } else if indexPath.row % 4 == 2 {
+        } else if indexPath.row < 8{
             cell.status = Tool.Status.DOWN
         } else {
             cell.status = Tool.Status.UNKNOWN
