@@ -7,8 +7,20 @@
 //
 
 import UIKit
+import TGPControls
 
 class FeedbackRatingCell: UITableViewCell {
+
+    @IBOutlet weak var camelLabels: TGPCamelLabels!
+    @IBOutlet weak var slider: TGPDiscreteSlider!
+
+    override func layoutSubviews() {
+        slider.minimumValue = 0
+        slider.value = 0
+        camelLabels.names = ["N/A", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10"]
+        camelLabels.value = 0
+        slider.ticksListener = camelLabels
+    }
 
     override func awakeFromNib() {
         super.awakeFromNib()

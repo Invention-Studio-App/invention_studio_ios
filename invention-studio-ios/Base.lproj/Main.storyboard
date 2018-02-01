@@ -231,16 +231,54 @@
                                     <outlet property="pickerView" destination="fKe-TN-aQT" id="5Yd-VR-bEK"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="ratingPrototype" id="wTW-Y9-0Pg" customClass="FeedbackRatingCell" customModule="invention_studio_ios" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="359.5" width="375" height="44"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="ratingPrototype" rowHeight="77" id="wTW-Y9-0Pg" customClass="FeedbackRatingCell" customModule="invention_studio_ios" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="359.5" width="375" height="77"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="wTW-Y9-0Pg" id="pgI-SU-2LH">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="76.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EvC-XC-1go" customClass="TGPCamelLabels">
+                                            <rect key="frame" x="16" y="11" width="343" height="22"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="tickCount">
+                                                    <integer key="value" value="11"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
+                                        </view>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YwT-ay-H4x" customClass="TGPDiscreteSlider">
+                                            <rect key="frame" x="16" y="33" width="343" height="44"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="size" keyPath="tickSize">
+                                                    <size key="value" width="1" height="10"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="tickCount">
+                                                    <integer key="value" value="11"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
+                                        </view>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="trailing" secondItem="YwT-ay-H4x" secondAttribute="trailing" constant="16" id="4Jb-PJ-Gp6"/>
+                                        <constraint firstItem="EvC-XC-1go" firstAttribute="leading" secondItem="pgI-SU-2LH" secondAttribute="leading" constant="16" id="Fdq-jM-guo"/>
+                                        <constraint firstItem="YwT-ay-H4x" firstAttribute="top" secondItem="pgI-SU-2LH" secondAttribute="top" constant="33" id="J6T-oR-FoE"/>
+                                        <constraint firstItem="YwT-ay-H4x" firstAttribute="top" secondItem="EvC-XC-1go" secondAttribute="bottom" id="Kqt-Jq-DWm"/>
+                                        <constraint firstAttribute="trailing" secondItem="EvC-XC-1go" secondAttribute="trailing" constant="16" id="LJ6-Zo-y1N"/>
+                                        <constraint firstItem="YwT-ay-H4x" firstAttribute="leading" secondItem="pgI-SU-2LH" secondAttribute="leading" constant="16" id="QaP-z4-tbl"/>
+                                        <constraint firstAttribute="bottom" secondItem="YwT-ay-H4x" secondAttribute="bottom" constant="-0.5" id="Sai-UU-xu1"/>
+                                        <constraint firstItem="EvC-XC-1go" firstAttribute="top" secondItem="pgI-SU-2LH" secondAttribute="top" constant="11" id="VdA-KZ-IKq"/>
+                                        <constraint firstAttribute="bottom" secondItem="EvC-XC-1go" secondAttribute="bottom" constant="43.5" id="ypR-mQ-nhj"/>
+                                    </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="camelLabels" destination="EvC-XC-1go" id="Vxf-9e-XeU"/>
+                                    <outlet property="slider" destination="YwT-ay-H4x" id="QPW-on-Gec"/>
+                                </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="commentsPrototype" rowHeight="216" id="xm2-WQ-e9h" customClass="FeedbackCommentsCell" customModule="invention_studio_ios" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="403.5" width="375" height="216"/>
+                                <rect key="frame" x="0.0" y="436.5" width="375" height="216"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="xm2-WQ-e9h" id="faq-Zl-qtH">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="215.5"/>

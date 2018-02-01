@@ -187,6 +187,8 @@ class FeedbackTVC: UITableViewController, UIPickerViewDataSource, UIPickerViewDe
             return 0
         } else if prototype == "commentsPrototype" {
             return 216
+        } else if prototype == "ratingPrototype" {
+            return 77
         }
         return UITableViewAutomaticDimension
     }
