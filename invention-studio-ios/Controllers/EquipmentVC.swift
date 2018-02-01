@@ -19,16 +19,12 @@ class EquipmentVC: UIViewController, UITableViewDataSource, UITableViewDelegate,
     
     @IBOutlet weak var reportProblemTableView: UITableView!
 
-    var pickerValues = ["Group": ["3D Printers", "Laser Cutters", "Waterjet"],
-                        "Tool": ["Baymax", "Rick"],
-                        "Problem": ["Nozzle Not Extruding", "Bed Shifted"]]
+    var pickerValues = ["Problem": ["Nozzle Not Extruding", "Bed Shifted"]]
     let toolBrokenHeaders = ["Your Name", "Tool", "Problem", "Comments"]
     let toolBrokenPrototypes = [["namePrototype"],
-                                ["pickerHeaderPrototype", "pickerDropdownPrototype", "pickerHeaderPrototype", "pickerDropdownPrototype"],
                                 ["pickerHeaderPrototype", "pickerDropdownPrototype"],
                                 ["commentsPrototype"]]
     let toolBrokenCells = [["Your Name"],
-                           ["Group", "ToolGroupDropdown", "Tool", "ToolDropdown"],
                            ["Problem", "ProblemDropdown"],
                            ["Comments"]]
 
@@ -38,7 +34,7 @@ class EquipmentVC: UIViewController, UITableViewDataSource, UITableViewDelegate,
     var toolGroupPicker: UIPickerView = UIPickerView()
     var toolPicker: UIPickerView = UIPickerView()
     var problemPicker: UIPickerView = UIPickerView()
-    var pickerSelections = ["Group": "", "Tool": "", "Problem": ""]
+    var pickerSelections = ["Problem": ""]
 
     var name = "Nick Rupert"
 
@@ -169,16 +165,6 @@ class EquipmentVC: UIViewController, UITableViewDataSource, UITableViewDelegate,
         case "pickerDropdownPrototype":
             let cell = tableView.dequeueReusableCell(withIdentifier: prototype, for: indexPath) as! FeedbackPickerDropdownCell
             switch cellName {
-            case "ToolGroupDropdown":
-                toolGroupPicker = cell.pickerView
-                toolGroupPicker.dataSource = self
-                toolGroupPicker.delegate = self
-                cell.pickerView.selectRow(pickerValues["Group"]!.index(of: pickerSelections["Group"]!)!, inComponent: 0, animated: false)
-            case "ToolDropdown":
-                toolPicker = cell.pickerView
-                toolPicker.dataSource = self
-                toolPicker.delegate = self
-                cell.pickerView.selectRow(pickerValues["Tool"]!.index(of: pickerSelections["Tool"]!)!, inComponent: 0, animated: false)
             case "ProblemDropdown":
                 problemPicker = cell.pickerView
                 problemPicker.dataSource = self
@@ -204,11 +190,7 @@ class EquipmentVC: UIViewController, UITableViewDataSource, UITableViewDelegate,
     }
 
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        if pickerView == self.toolGroupPicker {
-            return pickerValues["Group"]!.count
-        } else if pickerView == self.toolPicker {
-            return pickerValues["Tool"]!.count
-        } else if pickerView == self.problemPicker {
+        if pickerView == self.problemPicker {
             return pickerValues["Problem"]!.count
         } else {
             return 0
@@ -216,11 +198,7 @@ class EquipmentVC: UIViewController, UITableViewDataSource, UITableViewDelegate,
     }
 
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        if pickerView == self.toolGroupPicker {
-            return pickerValues["Group"]?[row]
-        } else if pickerView == self.toolPicker {
-            return pickerValues["Tool"]?[row]
-        } else if pickerView == self.problemPicker {
+        if pickerView == self.problemPicker {
             return pickerValues["Problem"]?[row]
         } else {
             return nil
@@ -229,11 +207,7 @@ class EquipmentVC: UIViewController, UITableViewDataSource, UITableViewDelegate,
 
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         let title = self.pickerView(pickerView, titleForRow: row, forComponent: component)
-        if pickerView == self.toolGroupPicker {
-            self.pickerSelections["Group"] = title
-        } else if pickerView == self.toolPicker {
-            self.pickerSelections["Tool"] = title
-        } else if pickerView == self.problemPicker {
+        if pickerView == self.problemPicker {
             self.pickerSelections["Problem"] = title
         }
         reportProblemTableView.reloadData()
