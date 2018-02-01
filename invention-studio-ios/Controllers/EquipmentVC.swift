@@ -73,8 +73,6 @@ class EquipmentVC: UIViewController, UITableViewDataSource, UITableViewDelegate,
         view.addGestureRecognizer(tap)
 
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWasShown(_:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
-
 
         self.segmentViews.append(informationView)
         self.segmentViews.append(reportProblemTableView)
@@ -267,19 +265,18 @@ class EquipmentVC: UIViewController, UITableViewDataSource, UITableViewDelegate,
 
     @objc func dismissKeyboard() {
         view.endEditing(true)
-    }
-
-    //TODO: Fix content insets when keyboard appears
-    @objc func keyboardWasShown(_ notification : Notification) {
-        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
-            reportProblemTableView.contentInset = UIEdgeInsetsMake(0, 0, keyboardSize.height, 0)
+        let contentInsets = UIEdgeInsets.zero
+        UIView.animate(withDuration: 0.3) {
+            self.reportProblemTableView.contentInset = contentInsets
+            self.reportProblemTableView.scrollIndicatorInsets = contentInsets
         }
     }
 
-    @objc func keyboardWillHide(_ notification : Notification) {
-        let contentInsets = UIEdgeInsets.zero
-        reportProblemTableView.contentInset = contentInsets
-        reportProblemTableView.scrollIndicatorInsets = contentInsets
+    @objc func keyboardWasShown(_ notification : Notification) {
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            reportProblemTableView.contentInset = UIEdgeInsetsMake(0, 0, keyboardSize.height, 0)
+            reportProblemTableView.contentOffset = CGPoint(x: 0, y:keyboardSize.height)
+        }
     }
 
     /*
