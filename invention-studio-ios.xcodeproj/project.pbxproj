@@ -261,6 +261,7 @@
 				B2D3848E1FBA383C00D91650 /* Resources */,
 				C8D9B6B9BDB36EA683C94161 /* [CP] Embed Pods Frameworks */,
 				C90D3EC53BB0B7A18896F36B /* [CP] Copy Pods Resources */,
+				B2AE581A2022275E006F7A63 /* Flag TODO and FIXME */,
 			);
 			buildRules = (
 			);
@@ -501,6 +502,20 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-invention-studio-iosUITests/Pods-invention-studio-iosUITests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		B2AE581A2022275E006F7A63 /* Flag TODO and FIXME */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Flag TODO and FIXME";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "TAGS=\"TODO:|FIXME:\"\necho \"searching ${SRCROOT} for ${TAGS}\"\nfind \"${SRCROOT}\" \\( -name \"*.swift\" \\) -print0 \\\n| xargs -0 egrep --with-filename --line-number --only-matching \"($TAGS).*\\$\" \\\n| perl -p -e \"s/($TAGS)/ warning: \\$1/\"";
 		};
 		C8D9B6B9BDB36EA683C94161 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
