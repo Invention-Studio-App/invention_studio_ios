@@ -94,7 +94,7 @@ class FeedbackTVC: UITableViewController, UIPickerViewDataSource, UIPickerViewDe
         }
     }
 
-    // MARK: - Table view data source
+    // MARK: - Table View Data Source/Delegate
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         return currentPrototypes.count
@@ -286,13 +286,13 @@ class FeedbackTVC: UITableViewController, UIPickerViewDataSource, UIPickerViewDe
         } else if pickerView == self.problemPicker {
             self.pickerSelections["Problem"] = title
         }
-        self.tableView.reloadData()
+        tableView.reloadData()
     }
 
     // MARK: - Switch
 
     @objc func anonymousSwitchChanged() {
-        self.tableView.reloadData()
+        tableView.reloadData()
     }
 
     /*
