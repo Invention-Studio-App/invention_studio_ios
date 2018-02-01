@@ -11,52 +11,52 @@ import TGPControls
 
 class FeedbackTVC: UITableViewController, UIPickerViewDataSource, UIPickerViewDelegate {
 
-    var pickerValues = ["Feedback": ["Tool Broken", "PI Feedback", "General Feedback"],
-                        "Group": ["3D Printers", "Laser Cutters", "Waterjet"],
-                        "Tool": ["Baymax", "Rick"],
-                        "Problem": ["Nozzle Not Extruding", "Bed Shifted"]]
-    let toolBrokenHeaders = ["Your Name", "Feedback", "Tool", "Problem", "Comments"]
-    let toolBrokenPrototypes = [["namePrototype"],
+    private let toolBrokenHeaders = ["Your Name", "Feedback", "Tool", "Problem", "Comments"]
+    private let toolBrokenPrototypes = [["namePrototype"],
                               ["pickerHeaderPrototype", "pickerDropdownPrototype"],
                               ["pickerHeaderPrototype", "pickerDropdownPrototype", "pickerHeaderPrototype", "pickerDropdownPrototype"],
                               ["pickerHeaderPrototype", "pickerDropdownPrototype"],
                               ["commentsPrototype"]]
-    let toolBrokenCells = [["Your Name"],
+    private let toolBrokenCells = [["Your Name"],
                               ["Feedback", "FeedbackDropdown"],
                               ["Group", "ToolGroupDropdown", "Tool", "ToolDropdown"],
                               ["Problem", "ProblemDropdown"],
                               ["Comments"]]
-    let piFeedbackHeaders = ["Your Name", "Feedback", "Rating", "Comments"]
-    let piFeedbackPrototypes = [["namePrototype"],
+    private let piFeedbackHeaders = ["Your Name", "Feedback", "Rating", "Comments"]
+    private let piFeedbackPrototypes = [["namePrototype"],
                            ["pickerHeaderPrototype", "pickerDropdownPrototype"],
                            ["ratingPrototype"],
                            ["commentsPrototype"]]
-    let piFeedbackCells = [["Your Name"],
+    private let piFeedbackCells = [["Your Name"],
                            ["Feedback", "FeedbackDropdown"],
                            ["Rating"],
                            ["Comments"]]
-    let generalFeedbackHeaders = ["YourName", "Feedback", "Comments"]
-    let generalFeedbackPrototypes = [["namePrototype"],
+    private let generalFeedbackHeaders = ["YourName", "Feedback", "Comments"]
+    private let generalFeedbackPrototypes = [["namePrototype"],
                                 ["pickerHeaderPrototype", "pickerDropdownPrototype"],
                                 ["commentsPrototype"]]
-    let generalFeedbackCells = [["Your Name"],
+    private let generalFeedbackCells = [["Your Name"],
                                  ["Feedback", "FeedbackDropdown"],
                                  ["Comments"]]
 
-    var currentHeaders = [String]()
-    var currentPrototypes = [[String]]()
-    var currentCells = [[String]]()
+    private var currentHeaders = [String]()
+    private var currentPrototypes = [[String]]()
+    private var currentCells = [[String]]()
 
-    var currentDropdownHeader: IndexPath? = nil
-    var currentDropdown: IndexPath? = nil
+    private var currentDropdownHeader: IndexPath? = nil
+    private var currentDropdown: IndexPath? = nil
 
-    var feedbackTypePicker: UIPickerView = UIPickerView()
-    var toolGroupPicker: UIPickerView = UIPickerView()
-    var toolPicker: UIPickerView = UIPickerView()
-    var problemPicker: UIPickerView = UIPickerView()
-    var pickerSelections = ["Feedback": "", "Group": "", "Tool": "", "Problem": ""]
+    private var feedbackTypePicker: UIPickerView = UIPickerView()
+    private var toolGroupPicker: UIPickerView = UIPickerView()
+    private var toolPicker: UIPickerView = UIPickerView()
+    private var problemPicker: UIPickerView = UIPickerView()
+    private var pickerSelections = ["Feedback": "", "Group": "", "Tool": "", "Problem": ""]
 
-    var name = ""
+    var name = "Nick Rupert"
+    var pickerValues = ["Feedback": ["Tool Broken", "PI Feedback", "General Feedback"],
+                        "Group": ["3D Printers", "Laser Cutters", "Waterjet"],
+                        "Tool": ["Baymax", "Rick"],
+                        "Problem": ["Nozzle Not Extruding", "Bed Shifted"]]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -70,8 +70,6 @@ class FeedbackTVC: UITableViewController, UIPickerViewDataSource, UIPickerViewDe
         }
 
         setFeedbackType()
-
-        name = "Nick Rupert"
     }
 
     override func didReceiveMemoryWarning() {

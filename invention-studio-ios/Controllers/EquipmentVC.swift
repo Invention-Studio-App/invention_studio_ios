@@ -19,24 +19,24 @@ class EquipmentVC: UIViewController, UITableViewDataSource, UITableViewDelegate,
     
     @IBOutlet weak var reportProblemTableView: UITableView!
 
-    var pickerValues = ["Problem": ["Nozzle Not Extruding", "Bed Shifted"]]
-    let toolBrokenHeaders = ["Your Name", "Tool", "Problem", "Comments"]
-    let toolBrokenPrototypes = [["namePrototype"],
+    private let toolBrokenHeaders = ["Your Name", "Tool", "Problem", "Comments"]
+    private let toolBrokenPrototypes = [["namePrototype"],
                                 ["pickerHeaderPrototype", "pickerDropdownPrototype"],
                                 ["commentsPrototype"]]
-    let toolBrokenCells = [["Your Name"],
+    private let toolBrokenCells = [["Your Name"],
                            ["Problem", "ProblemDropdown"],
                            ["Comments"]]
 
-    var currentDropdownHeader: IndexPath? = nil
-    var currentDropdown: IndexPath? = nil
+    private var currentDropdownHeader: IndexPath? = nil
+    private var currentDropdown: IndexPath? = nil
 
-    var toolGroupPicker: UIPickerView = UIPickerView()
-    var toolPicker: UIPickerView = UIPickerView()
-    var problemPicker: UIPickerView = UIPickerView()
-    var pickerSelections = ["Problem": ""]
+    private var toolGroupPicker: UIPickerView = UIPickerView()
+    private var toolPicker: UIPickerView = UIPickerView()
+    private var problemPicker: UIPickerView = UIPickerView()
+    private var pickerSelections = ["Problem": ""]
 
     var name = "Nick Rupert"
+    var pickerValues = ["Problem": ["Nozzle Not Extruding", "Bed Shifted"]]
 
     private var _status: Tool.Status = Tool.Status.AVAILABLE
     var status: Tool.Status {
