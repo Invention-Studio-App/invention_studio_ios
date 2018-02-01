@@ -10,17 +10,12 @@ import UIKit
 
 class QueuesTVC: UITableViewController {
 
-    @IBOutlet weak var segmentControl: UISegmentedControl!
+    let items = ["3D Printers", "Laser Cutters", "Waterjet"]
+    var selectedSection: Int? = nil
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let items = ["3D Printers", "Laser Cutters", "Waterjet"]
-        segmentControl.removeAllSegments()
-        for (i, item) in items.enumerated() {
-            segmentControl.insertSegment(withTitle: item, at: i, animated: false)
-        }
-        segmentControl.selectedSegmentIndex = 0
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -33,24 +28,18 @@ class QueuesTVC: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func segmentChanged(_ sender: UISegmentedControl) {
-        tableView.reloadData()
-    }
-    
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        return items.count + 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
         case 0:
             return 0
-        case 1:
-            return 5
         default:
-            return 0
+            return 5
         }
     }
 
@@ -58,18 +47,63 @@ class QueuesTVC: UITableViewController {
         switch section {
         case 0:
             return "To join a queue, head  to the SUMS kiosk for the room you're interested in"
-        case 1:
-            return segmentControl.titleForSegment(at: segmentControl.selectedSegmentIndex)
         default:
             return nil
         }
     }
 
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        switch section {
+        case 0:
+            return UITableViewAutomaticDimension
+        default:
+            return 2
+        }
+    }
+
+    override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        switch section {
+        case 0:
+            return UITableViewAutomaticDimension
+        default:
+            return 2
+        }
+    }
+
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "queuesPrototype", for: indexPath)
-        cell.textLabel?.text = String(format: "%d. Jane Doe", indexPath.row + 1)
+        if indexPath.row == 0 {
+            cell.textLabel?.text = items[indexPath.section - 1]
+            cell.textLabel?.font = UIFont.boldSystemFont(ofSize: 18)
+        } else {
+            cell.textLabel?.text = String(format: "%d. Jane Doe", indexPath.row)
+            cell.textLabel?.font = UIFont.systemFont(ofSize: 17)
+        }
 
         return cell
+    }
+
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if indexPath.row == 0 || indexPath.section == selectedSection {
+            return UITableViewAutomaticDimension
+        } else {
+            return 0
+        }
+    }
+
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.row == 0 {
+            let oldSelectedSection: Int? = selectedSection
+            if indexPath.section == selectedSection {
+                selectedSection = nil
+            } else {
+                selectedSection = indexPath.section
+            }
+            if oldSelectedSection != nil && oldSelectedSection != selectedSection {
+                tableView.reloadSections([oldSelectedSection!], with: UITableViewRowAnimation.fade)
+            }
+            tableView.reloadSections([indexPath.section], with: UITableViewRowAnimation.fade)
+        }
     }
 
     /*
