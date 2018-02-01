@@ -8,7 +8,7 @@
 
 import UIKit
 
-class EquipmentVC: UIViewController, UITableViewDataSource, UITableViewDelegate, UIPickerViewDataSource, UIPickerViewDelegate {
+class EquipmentVC: UIViewController, UITableViewDataSource, UITableViewDelegate, UIPickerViewDataSource, UIPickerViewDelegate, UITextViewDelegate {
 
     @IBOutlet weak var segmentContainer: UIView!
     @IBOutlet weak var segmentControl: UISegmentedControl!
@@ -67,6 +67,14 @@ class EquipmentVC: UIViewController, UITableViewDataSource, UITableViewDelegate,
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
+
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWasShown(_:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+
 
         self.segmentViews.append(informationView)
         self.segmentViews.append(reportProblemTableView)
@@ -184,6 +192,7 @@ class EquipmentVC: UIViewController, UITableViewDataSource, UITableViewDelegate,
             return cell
         case "commentsPrototype":
             let cell = tableView.dequeueReusableCell(withIdentifier: prototype, for: indexPath) as! FeedbackCommentsCell
+            cell.commentBox.delegate = self
             return cell
         default:
             return UITableViewCell()
@@ -250,10 +259,27 @@ class EquipmentVC: UIViewController, UITableViewDataSource, UITableViewDelegate,
         }
     }
 
-    // MARK: - Switch
+    // MARK: - Supporting Functions
 
     @objc func anonymousSwitchChanged() {
         reportProblemTableView.reloadData()
+    }
+
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
+    }
+
+    //TODO: Fix content insets when keyboard appears
+    @objc func keyboardWasShown(_ notification : Notification) {
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            reportProblemTableView.contentInset = UIEdgeInsetsMake(0, 0, keyboardSize.height, 0)
+        }
+    }
+
+    @objc func keyboardWillHide(_ notification : Notification) {
+        let contentInsets = UIEdgeInsets.zero
+        reportProblemTableView.contentInset = contentInsets
+        reportProblemTableView.scrollIndicatorInsets = contentInsets
     }
 
     /*

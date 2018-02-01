@@ -61,6 +61,10 @@ class FeedbackTVC: UITableViewController, UIPickerViewDataSource, UIPickerViewDe
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
+
         for picker in pickerSelections.keys {
             pickerSelections[picker] = pickerValues[picker]![0]
         }
@@ -289,10 +293,14 @@ class FeedbackTVC: UITableViewController, UIPickerViewDataSource, UIPickerViewDe
         tableView.reloadData()
     }
 
-    // MARK: - Switch
+    /// MARK: - Supporting Functions
 
     @objc func anonymousSwitchChanged() {
         tableView.reloadData()
+    }
+
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
     }
 
     /*
