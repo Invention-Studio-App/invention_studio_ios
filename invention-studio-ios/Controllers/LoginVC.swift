@@ -6,7 +6,6 @@
 //  Copyright © 2018 Invention Studio at Georgia Tech. All rights reserved.
 //
 
-
 import UIKit
 import WebKit
 
@@ -31,7 +30,7 @@ class LoginVC: UIViewController, WKUIDelegate, WKNavigationDelegate, WKHTTPCooki
         // Do any additional setup after loading the view, typically from a nib.
         
         //Preparing the request for the login page
-        let myURL = URL(string: "https://login.gatech.edu/cas/login?service=https://sums.gatech.edu/casReturn.aspx")
+        let myURL = URL(string: "https://login.gatech.edu/cas/login?service=https://sums-dev.gatech.edu/EditResearcherProfile.aspx")
         let myRequest = URLRequest(url: myURL!)
         
         //Setting up the cookie store
@@ -65,9 +64,17 @@ class LoginVC: UIViewController, WKUIDelegate, WKNavigationDelegate, WKHTTPCooki
         if self.cookieReceived {
             //Navigation has finished and we have the cookie:
             print("Authenticated")
+            var userKey = ""
             webView.evaluateJavaScript("document.body.innerHTML", completionHandler: { (result, err) in
-                print(result as! String)
+                let userInfoPage = result as! String
+                let calendarLink = "https://sums.gatech.edu/SUMS/rest/iCalendar/ReturnData?Key="
+                if let linkRange = userInfoPage.range(of: calendarLink) {
+                    let keyLowerBound = String.Index(encodedOffset: linkRange.upperBound.encodedOffset)
+                    let keyUpperBound = String.Index(encodedOffset: keyLowerBound.encodedOffset + 20)
+                    userKey = String(userInfoPage[keyLowerBound..<keyUpperBound])
+                }
             })
+            print("User Key: \(userKey)")
             
             //TODO: Implement a check to see if the person has signed the safety agreement
             //      before performing the segue. If they have not perform a different segue
