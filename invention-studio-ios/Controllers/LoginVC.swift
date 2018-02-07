@@ -31,7 +31,7 @@ class LoginVC: UIViewController, WKUIDelegate, WKNavigationDelegate, WKHTTPCooki
         // Do any additional setup after loading the view, typically from a nib.
         
         //Preparing the request for the login page
-        let myURL = URL(string: "https://login.gatech.edu/cas/login")
+        let myURL = URL(string: "https://login.gatech.edu/cas/login?service=https://sums.gatech.edu/casReturn.aspx")
         let myRequest = URLRequest(url: myURL!)
         
         //Setting up the cookie store
