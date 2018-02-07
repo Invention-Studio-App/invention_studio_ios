@@ -72,9 +72,10 @@ class LoginVC: UIViewController, WKUIDelegate, WKNavigationDelegate, WKHTTPCooki
                     let keyLowerBound = String.Index(encodedOffset: linkRange.upperBound.encodedOffset)
                     let keyUpperBound = String.Index(encodedOffset: keyLowerBound.encodedOffset + 20)
                     userKey = String(userInfoPage[keyLowerBound..<keyUpperBound])
+
+                    print("User Key: \(userKey)")
                 }
             })
-            print("User Key: \(userKey)")
             
             //TODO: Implement a check to see if the person has signed the safety agreement
             //      before performing the segue. If they have not perform a different segue
