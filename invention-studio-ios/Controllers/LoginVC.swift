@@ -65,6 +65,9 @@ class LoginVC: UIViewController, WKUIDelegate, WKNavigationDelegate, WKHTTPCooki
         if self.cookieReceived {
             //Navigation has finished and we have the cookie:
             print("Authenticated")
+            webView.evaluateJavaScript("document.body.innerHTML", completionHandler: { (result, err) in
+                print(result as! String)
+            })
             
             //TODO: Implement a check to see if the person has signed the safety agreement
             //      before performing the segue. If they have not perform a different segue
