@@ -119,11 +119,11 @@ class FeedbackTVC: UITableViewController, UIPickerViewDataSource, UIPickerViewDe
             cell.anonymousSwitch.addTarget(self, action: #selector(anonymousSwitchChanged), for: UIControlEvents.valueChanged)
             //TODO: Use color assets
             if cell.anonymousSwitch.isOn {
-                cell.textLabel?.textColor = UIColor.black
-                cell.textLabel?.text = name
+                cell.titleLabel?.textColor = UIColor(named: "IS_Title")
+                cell.titleLabel?.text = name
             } else {
-                cell.textLabel?.textColor = UIColor.gray
-                cell.textLabel?.text = "John Doe"
+                cell.titleLabel?.textColor = UIColor(named: "IS_Text")
+                cell.titleLabel?.text = "John Doe"
             }
             return cell
         case "pickerHeaderPrototype":
@@ -133,9 +133,9 @@ class FeedbackTVC: UITableViewController, UIPickerViewDataSource, UIPickerViewDe
 
             //TODO: Use color assets
             if indexPath == currentDropdownHeader {
-                cell.detailTextLabel?.textColor = UIColor.red
+                cell.detailTextLabel?.textColor = UIColor(named: "IS_AccentPrimary")
             } else {
-                cell.detailTextLabel?.textColor = UIColor.black
+                cell.detailTextLabel?.textColor = UIColor(named: "IS_Title")
             }
             return cell
         case "pickerDropdownPrototype":
@@ -188,7 +188,7 @@ class FeedbackTVC: UITableViewController, UIPickerViewDataSource, UIPickerViewDe
         } else if prototype == "ratingPrototype" {
             return 77
         }
-        return UITableViewAutomaticDimension
+        return 44
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -203,9 +203,9 @@ class FeedbackTVC: UITableViewController, UIPickerViewDataSource, UIPickerViewDe
                 currentDropdown = IndexPath(row: indexPath.row + 1, section: indexPath.section)
             }
             if oldDropdownSection != nil && oldDropdownSection != indexPath.section {
-                tableView.reloadSections([oldDropdownSection!], with: UITableViewRowAnimation.fade)
+                tableView.reloadSections([oldDropdownSection!], with: UITableViewRowAnimation.automatic)
             }
-            tableView.reloadSections([indexPath.section], with: UITableViewRowAnimation.fade)
+            tableView.reloadSections([indexPath.section], with: UITableViewRowAnimation.automatic)
         }
     }
 
@@ -273,6 +273,20 @@ class FeedbackTVC: UITableViewController, UIPickerViewDataSource, UIPickerViewDe
             return pickerValues["Tool"]?[row]
         } else if pickerView == self.problemPicker {
             return pickerValues["Problem"]?[row]
+        } else {
+            return nil
+        }
+    }
+
+    func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
+        if pickerView == self.feedbackTypePicker {
+            return NSAttributedString(string:(pickerValues["Feedback"]?[row])!, attributes: [NSAttributedStringKey.foregroundColor : UIColor(named: "IS_Title")!])
+        } else if pickerView == self.toolGroupPicker {
+            return NSAttributedString(string:(pickerValues["Group"]?[row])!, attributes: [NSAttributedStringKey.foregroundColor : UIColor(named: "IS_Title")!])
+        } else if pickerView == self.toolPicker {
+            return NSAttributedString(string:(pickerValues["Tool"]?[row])!, attributes: [NSAttributedStringKey.foregroundColor : UIColor(named: "IS_Title")!])
+        } else if pickerView == self.problemPicker {
+            return NSAttributedString(string:(pickerValues["Problem"]?[row])!, attributes: [NSAttributedStringKey.foregroundColor : UIColor(named: "IS_Title")!])
         } else {
             return nil
         }

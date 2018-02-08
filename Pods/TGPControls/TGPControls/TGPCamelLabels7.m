@@ -138,7 +138,7 @@
 #pragma mark TGPCamelLabels
 
 - (void)initProperties {
-    _ticksDistance = 44.0;
+    _ticksDistance = UITableViewAutomaticDimension;
     _value = 0;
     [self debugNames:10];
 

@@ -10,6 +10,7 @@ import UIKit
 
 class FeedbackNameCell: UITableViewCell {
 
+    @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var anonymousSwitch: UISwitch!
 
     override func awakeFromNib() {

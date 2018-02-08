@@ -68,6 +68,7 @@ class LoginVC: UIViewController, WKUIDelegate, WKNavigationDelegate, WKHTTPCooki
             webView.evaluateJavaScript("document.body.innerHTML", completionHandler: { (result, err) in
                 let userInfoPage = result as! String
                 let calendarLink = "https://sums.gatech.edu/SUMS/rest/iCalendar/ReturnData?Key="
+                print(userInfoPage)
                 if let linkRange = userInfoPage.range(of: calendarLink) {
                     let keyLowerBound = String.Index(encodedOffset: linkRange.upperBound.encodedOffset)
                     let keyUpperBound = String.Index(encodedOffset: keyLowerBound.encodedOffset + 20)

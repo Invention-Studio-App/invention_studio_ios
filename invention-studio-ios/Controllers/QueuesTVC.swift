@@ -75,9 +75,11 @@ class QueuesTVC: UITableViewController {
         if indexPath.row == 0 {
             cell.textLabel?.text = items[indexPath.section - 1]
             cell.textLabel?.font = UIFont.boldSystemFont(ofSize: 18)
+            cell.textLabel?.textColor = UIColor(named: "IS_Title")
         } else {
             cell.textLabel?.text = String(format: "%d. Jane Doe", indexPath.row)
             cell.textLabel?.font = UIFont.systemFont(ofSize: 17)
+            cell.textLabel?.textColor = UIColor(named: "IS_Title")
         }
 
         return cell

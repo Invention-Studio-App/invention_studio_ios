@@ -84,7 +84,7 @@ class EquipmentVC: UIViewController, UITableViewDataSource, UITableViewDelegate,
         linePath.move(to: CGPoint(x: segmentContainer.frame.minX, y: segmentContainer.frame.maxY))
         linePath.addLine(to: CGPoint(x: segmentContainer.frame.maxX, y: segmentContainer.frame.maxY))
         line.path = linePath.cgPath
-        line.strokeColor = UIColor.lightGray.cgColor
+        line.strokeColor = UIColor(named: "IS_AccentSecondary")?.cgColor
         line.lineWidth = 0.5
         segmentContainer.layer.addSublayer(line)
 
@@ -131,7 +131,7 @@ class EquipmentVC: UIViewController, UITableViewDataSource, UITableViewDelegate,
         } else if prototype == "commentsPrototype" {
             return 216
         }
-        return UITableViewAutomaticDimension
+        return 44
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -141,13 +141,12 @@ class EquipmentVC: UIViewController, UITableViewDataSource, UITableViewDelegate,
         case "namePrototype":
             let cell = tableView.dequeueReusableCell(withIdentifier: prototype, for: indexPath) as! FeedbackNameCell
             cell.anonymousSwitch.addTarget(self, action: #selector(anonymousSwitchChanged), for: UIControlEvents.valueChanged)
-            //TODO: Use color assets
             if cell.anonymousSwitch.isOn {
-                cell.textLabel?.textColor = UIColor.black
-                cell.textLabel?.text = name
+                cell.titleLabel?.textColor = UIColor(named: "IS_Title")
+                cell.titleLabel?.text = name
             } else {
-                cell.textLabel?.textColor = UIColor.gray
-                cell.textLabel?.text = "John Doe"
+                cell.titleLabel?.textColor = UIColor(named: "IS_Text")
+                cell.titleLabel?.text = "John Doe"
             }
             return cell
         case "pickerHeaderPrototype":
@@ -155,11 +154,11 @@ class EquipmentVC: UIViewController, UITableViewDataSource, UITableViewDelegate,
             cell.textLabel?.text = cellName
             cell.detailTextLabel?.text = pickerSelections[cellName]
 
-            //TODO: Use color assets
             if indexPath == currentDropdownHeader {
-                cell.detailTextLabel?.textColor = UIColor.red
+                print("\nSUCCESS\n")
+                cell.detailTextLabel?.textColor = UIColor(named: "IS_AccentPrimary")
             } else {
-                cell.detailTextLabel?.textColor = UIColor.black
+                cell.detailTextLabel?.textColor = UIColor(named: "IS_Title")
             }
             return cell
         case "pickerDropdownPrototype":
@@ -205,6 +204,14 @@ class EquipmentVC: UIViewController, UITableViewDataSource, UITableViewDelegate,
         }
     }
 
+    func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
+        if pickerView == self.problemPicker {
+            return NSAttributedString(string:(pickerValues["Problem"]?[row])!, attributes: [NSAttributedStringKey.foregroundColor : UIColor(named: "IS_Title")!])
+        } else {
+            return nil
+        }
+    }
+
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         let title = self.pickerView(pickerView, titleForRow: row, forComponent: component)
         if pickerView == self.problemPicker {
@@ -225,9 +232,9 @@ class EquipmentVC: UIViewController, UITableViewDataSource, UITableViewDelegate,
                 currentDropdown = IndexPath(row: indexPath.row + 1, section: indexPath.section)
             }
             if oldDropdownSection != nil && oldDropdownSection != indexPath.section {
-                tableView.reloadSections([oldDropdownSection!], with: UITableViewRowAnimation.fade)
+                tableView.reloadSections([oldDropdownSection!], with: UITableViewRowAnimation.automatic)
             }
-            tableView.reloadSections([indexPath.section], with: UITableViewRowAnimation.fade)
+            tableView.reloadSections([indexPath.section], with: UITableViewRowAnimation.automatic)
         }
     }
 
