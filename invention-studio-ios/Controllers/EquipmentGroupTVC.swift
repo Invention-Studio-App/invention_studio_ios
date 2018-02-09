@@ -42,11 +42,11 @@ class EquipmentGroupTVC: UITableViewController {
         //TODO: Use dynamic text
         headerTextView.text = "Is this the real life? Is this just fantasy? Caught in a landslide, no escape from reality. Open your eyes, look up to the skies and see... I'm just a poor boy, I need no sympathy. Because I'm easy come, easy go. Little high, little low. Everywhere the wind blows doesn't really matter to me. To me..."
         let headerTextViewSize = headerTextView.sizeThatFits(CGSize(width: view.frame.width - 16, height: CGFloat.greatestFiniteMagnitude))
-        headerTextView.frame = CGRect(x: 8, y: headerImageView.frame.height + 8, width: view.frame.width - 16, height: headerTextViewSize.height)
+        headerTextView.frame = CGRect(x: 8, y: headerImageView.frame.maxY + 8, width: view.frame.width - 16, height: headerTextViewSize.height)
         headerView.addSubview(headerTextView)
 
         //Calculate header height and set frame
-        let headerViewHeight = headerImageView.frame.height + headerTextView.frame.height + 16
+        let headerViewHeight = headerTextView.frame.maxY + 16
         headerView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: headerViewHeight)
 
         //Add header to Tableview
@@ -157,8 +157,8 @@ class EquipmentGroupTVC: UITableViewController {
         //updateHeaderView()
     }
 
-    @IBAction func refresh(_ sender: Any) {
-        refreshControl?.endRefreshing()
+    @IBAction func refresh(_ sender: UIRefreshControl) {
+        sender.endRefreshing()
     }
 
 }

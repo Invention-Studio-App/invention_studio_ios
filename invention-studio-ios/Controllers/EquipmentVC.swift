@@ -48,17 +48,18 @@ class EquipmentVC: UIViewController, UITableViewDataSource, UITableViewDelegate,
         }
         set {
             _status = newValue
-            self.statusLabel.text = _status.rawValue
+            statusLabel.text = _status.rawValue
+            statusLabel.frame.size = statusLabel.sizeThatFits(CGSize(width: CGFloat.greatestFiniteMagnitude, height: 21))
 
             switch(_status) {
             case .AVAILABLE:
-                self.statusIcon.backgroundColor = UIColor(named: "StatusColorAvailable")
+                statusIcon.backgroundColor = UIColor(named: "StatusColorAvailable")
             case .INUSE:
-                self.statusIcon.backgroundColor = UIColor(named: "StatusColorInUse")
+                statusIcon.backgroundColor = UIColor(named: "StatusColorInUse")
             case .DOWN:
-                self.statusIcon.backgroundColor = UIColor(named: "StatusColorDown")
+                statusIcon.backgroundColor = UIColor(named: "StatusColorDown")
             case .UNKNOWN:
-                self.statusIcon.backgroundColor = UIColor(named: "StatusColorUnknown")
+                statusIcon.backgroundColor = UIColor(named: "StatusColorUnknown")
             }
         }
     }
@@ -67,15 +68,86 @@ class EquipmentVC: UIViewController, UITableViewDataSource, UITableViewDelegate,
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        /**
+         ** General Setup
+         **/
+        status = Tool.Status.AVAILABLE
+
+        /**
+         ** Set Up Segment Controller
+         **/
+        segmentViews.append(informationView)
+        segmentViews.append(reportProblemTableView)
+
+        /**
+         ** Set Up Information View
+         **/
+
+        //Set Up Image
+        let informationImageView = UIImageView()
+        informationImageView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.width / 16.0 * 9.0)
+        //TODO: Use dynamic photo
+        informationImageView.image = UIImage(named: "PlaceholderStudioImage2")
+        informationImageView.contentMode = UIViewContentMode.scaleAspectFill
+        informationImageView.clipsToBounds = true
+        informationScrollView.addSubview(informationImageView)
+
+        //Set Up Status Label
+        //"Status:" Label
+        let statusTitleLabel = UILabel()
+        statusTitleLabel.textColor = UIColor(named: "IS_Title")
+        statusTitleLabel.text = "Status:"
+        let statusTitleLabelSize = statusTitleLabel.sizeThatFits(CGSize(width: CGFloat.greatestFiniteMagnitude, height: 21))
+        statusTitleLabel.frame = CGRect(x: 16, y: informationImageView.frame.maxY + 16, width: statusTitleLabelSize.width, height: 21)
+        informationScrollView.addSubview(statusTitleLabel)
+        print(statusTitleLabel.frame.origin.y)
+
+        //Status icon
+        let statusIconSize: CGFloat = 16.0
+        statusIcon.frame.size = CGSize(width: statusIconSize, height: statusIconSize)
+        statusIcon.frame.origin.x = statusTitleLabel.frame.maxX + 8
+        statusIcon.center.y = statusTitleLabel.center.y
+        statusIcon.layer.cornerRadius = statusIconSize / 2.0
+        informationScrollView.addSubview(statusIcon)
+
+        //Status label
+        statusLabel.textColor = UIColor(named: "IS_Title")
+        statusLabel.frame.origin.x = statusIcon.frame.maxX + 8
+        statusLabel.center.y = statusTitleLabel.center.y
+        informationScrollView.addSubview(statusLabel)
+
+        //Set Up TextView
+        let informationTextView = UITextView()
+        informationTextView.isEditable = false
+        informationTextView.isSelectable = false
+        informationTextView.isScrollEnabled = false
+        informationTextView.bounces = false
+        informationTextView.bouncesZoom = false
+        informationTextView.backgroundColor = UIColor.clear
+        informationTextView.textColor = UIColor(named: "IS_Text")
+        informationTextView.font = UIFont.systemFont(ofSize: 16)
+        //TODO: Use dynamic text
+        informationTextView.text = "Is this the real life? Is this just fantasy? Caught in a landslide, no escape from reality. Open your eyes, look up to the skies and see... I'm just a poor boy, I need no sympathy. Because I'm easy come, easy go. Little high, little low. Everywhere the wind blows doesn't really matter to me. To me..."
+        let informationTextViewSize = informationTextView.sizeThatFits(CGSize(width: view.frame.width - 16, height: CGFloat.greatestFiniteMagnitude))
+        informationTextView.frame = CGRect(x: 8, y: statusTitleLabel.frame.maxY + 8, width: view.frame.width - 16, height: informationTextViewSize.height)
+        informationScrollView.addSubview(informationTextView)
+
+        //Set ScrollView content size
+        informationScrollView.contentSize = CGSize(width: view.frame.width, height: informationTextView.frame.maxY + 8)
+
+        /**
+         ** Set Up "Report Problem" TableView
+         **/
+
+        //Dismiss keyboard on tap
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         tap.cancelsTouchesInView = false
         view.addGestureRecognizer(tap)
 
+        //Scroll when keyboard appears
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWasShown(_:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
 
-        self.segmentViews.append(informationView)
-        self.segmentViews.append(reportProblemTableView)
-
+        //Set Up PickerView
         for picker in pickerSelections.keys {
             pickerSelections[picker] = pickerValues[picker]![0]
         }
@@ -90,8 +162,6 @@ class EquipmentVC: UIViewController, UITableViewDataSource, UITableViewDelegate,
         line.strokeColor = UIColor(named: "IS_AccentSecondary")?.cgColor
         line.lineWidth = 0.5
         segmentContainer.layer.addSublayer(line)
-
-        status = Tool.Status.AVAILABLE
     }
 
     override func didReceiveMemoryWarning() {
@@ -192,7 +262,7 @@ class EquipmentVC: UIViewController, UITableViewDataSource, UITableViewDelegate,
     }
 
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        if pickerView == self.problemPicker {
+        if pickerView == problemPicker {
             return pickerValues["Problem"]!.count
         } else {
             return 0
@@ -200,7 +270,7 @@ class EquipmentVC: UIViewController, UITableViewDataSource, UITableViewDelegate,
     }
 
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        if pickerView == self.problemPicker {
+        if pickerView == problemPicker {
             return pickerValues["Problem"]?[row]
         } else {
             return nil
@@ -208,7 +278,7 @@ class EquipmentVC: UIViewController, UITableViewDataSource, UITableViewDelegate,
     }
 
     func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
-        if pickerView == self.problemPicker {
+        if pickerView == problemPicker {
             return NSAttributedString(string:(pickerValues["Problem"]?[row])!, attributes: [NSAttributedStringKey.foregroundColor : UIColor(named: "IS_Title")!])
         } else {
             return nil
@@ -217,8 +287,8 @@ class EquipmentVC: UIViewController, UITableViewDataSource, UITableViewDelegate,
 
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         let title = self.pickerView(pickerView, titleForRow: row, forComponent: component)
-        if pickerView == self.problemPicker {
-            self.pickerSelections["Problem"] = title
+        if pickerView == problemPicker {
+            pickerSelections["Problem"] = title
         }
         reportProblemTableView.reloadData()
     }
