@@ -78,8 +78,8 @@ class LoginVC: UIViewController, WKUIDelegate, WKNavigationDelegate, WKHTTPCooki
                 }
             })
             
-            //TODO: Implement a check to see if the person has signed the safety agreement
-            //      before performing the segue. If they have not perform a different segue
+            //TODO: Implement a check to see if the person is part of the Invention Studio group
+            //      before performing the segue. If they have not, perform a different segue
             self.performSegue(withIdentifier: "cookieReceivedSegue", sender: self)
         }
     }
@@ -105,6 +105,9 @@ class LoginVC: UIViewController, WKUIDelegate, WKNavigationDelegate, WKHTTPCooki
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "cookieReceivedSegue" {
             UserDefaults.standard.set(true, forKey: "LoggedIn")
+            let weekInterval: TimeInterval = 60 * 60 * 24 * 7
+            //TODO: Use server time
+            UserDefaults.standard.set(NSDate().addingTimeInterval(weekInterval).timeIntervalSince1970, forKey:"LoginSession")
         }
     }
 

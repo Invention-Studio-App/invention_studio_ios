@@ -15,7 +15,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+
+        self.window = UIWindow(frame: UIScreen.main.bounds)
+
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+
+        var initialViewController: UIViewController
+        let loginSession = UserDefaults.standard.double(forKey: "LoginSession") //0 if DNE
+        //TODO: Use server time
+        let timeStamp = NSDate().timeIntervalSince1970
+        //Check that the threshold for staying logged in has not passed
+        //If the user has never logged in before, this will automatically fail since loginSession == 0
+        if timeStamp < loginSession {
+            initialViewController = storyboard.instantiateViewController(withIdentifier: "TabBarController")
+        } else {
+            initialViewController = storyboard.instantiateViewController(withIdentifier: "LandingViewController")
+            UserDefaults.standard.set(false, forKey: "LoggedIn")
+        }
+        self.window?.rootViewController = initialViewController
+        self.window?.makeKeyAndVisible()
+
         return true
     }
 

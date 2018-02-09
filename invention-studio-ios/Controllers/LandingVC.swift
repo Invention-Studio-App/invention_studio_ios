@@ -53,8 +53,6 @@ class LandingVC: UIViewController {
     }
     
     override func didReceiveMemoryWarning() {
-        //Your code here
-
         super.didReceiveMemoryWarning()
     }
     
