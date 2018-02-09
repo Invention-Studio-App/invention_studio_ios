@@ -433,6 +433,12 @@
                             <outlet property="delegate" destination="nNU-Ty-eHS" id="O2C-QU-gqv"/>
                         </connections>
                     </tableView>
+                    <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="f8I-vX-vV9">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <connections>
+                            <action selector="refresh:" destination="nNU-Ty-eHS" eventType="valueChanged" id="FIa-gd-a7S"/>
+                        </connections>
+                    </refreshControl>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QGz-cc-GgM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

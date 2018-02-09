@@ -117,7 +117,7 @@ class FeedbackTVC: UITableViewController, UIPickerViewDataSource, UIPickerViewDe
         case "namePrototype":
             let cell = tableView.dequeueReusableCell(withIdentifier: prototype, for: indexPath) as! FeedbackNameCell
             cell.anonymousSwitch.addTarget(self, action: #selector(anonymousSwitchChanged), for: UIControlEvents.valueChanged)
-            //TODO: Use color assets
+
             if cell.anonymousSwitch.isOn {
                 cell.titleLabel?.textColor = UIColor(named: "IS_Title")
                 cell.titleLabel?.text = name
@@ -131,7 +131,6 @@ class FeedbackTVC: UITableViewController, UIPickerViewDataSource, UIPickerViewDe
             cell.textLabel?.text = cellName
             cell.detailTextLabel?.text = pickerSelections[cellName]
 
-            //TODO: Use color assets
             if indexPath == currentDropdownHeader {
                 cell.detailTextLabel?.textColor = UIColor(named: "IS_AccentPrimary")
             } else {

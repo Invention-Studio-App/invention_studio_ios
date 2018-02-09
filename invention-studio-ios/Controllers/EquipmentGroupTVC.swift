@@ -10,13 +10,16 @@ import UIKit
 
 class EquipmentGroupTVC: UITableViewController {
 
-    let headerView = UIView()
+    private let headerView = UIView()
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        headerView.frame = CGRect(x: 0, y: -300, width: view.frame.width, height: 300)
+        self.refreshControl = UIRefreshControl()
+        refreshControl?.addTarget(self, action: #selector(refresh), for: .valueChanged)
+
         headerView.backgroundColor = UIColor(named: "IS_FocusBackground")
+
         let headerImageView = UIImageView()
         headerImageView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.width / 16.0 * 9.0)
         headerImageView.image = UIImage(named: "PlaceholderStudioImage")
@@ -24,16 +27,24 @@ class EquipmentGroupTVC: UITableViewController {
         headerImageView.clipsToBounds = true
         headerView.addSubview(headerImageView)
 
-        tableView.addSubview(headerView)
-        tableView.contentInset = UIEdgeInsets(top: headerView.frame.height, left: 0, bottom: 0, right: 0)
-        tableView.contentOffset = CGPoint(x: 0, y: -300)
-//        updateHeaderView()
+        let headerTextView = UITextView()
+        headerTextView.isEditable = false
+        headerTextView.isSelectable = false
+        headerTextView.isScrollEnabled = false
+        headerTextView.bounces = false
+        headerTextView.bouncesZoom = false
+        headerTextView.backgroundColor = UIColor.clear
+        headerTextView.textColor = UIColor(named: "IS_Text")
+        headerTextView.font = UIFont.systemFont(ofSize: 16)
+        headerTextView.text = "Is this the real life? Is this just fantasy? Caught in a landslide, no escape from reality. Open your eyes, look up to the skies and see... I'm just a poor boy, I need no sympathy. Because I'm easy come, easy go. Little high, little low. Everywhere the wind blows doesn't really matter to me. To me..."
+        let headerTextViewSize = headerTextView.sizeThatFits(CGSize(width: view.frame.width - 16, height: CGFloat.greatestFiniteMagnitude))
+        headerTextView.frame = CGRect(x: 8, y: headerImageView.frame.height + 8, width: view.frame.width - 16, height: headerTextViewSize.height)
+        headerView.addSubview(headerTextView)
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
+        let headerViewHeight = headerImageView.frame.height + headerTextView.frame.height + 16
+        headerView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: headerViewHeight)
 
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        tableView.tableHeaderView = headerView
     }
 
     override func didReceiveMemoryWarning() {
@@ -82,6 +93,10 @@ class EquipmentGroupTVC: UITableViewController {
         }
 
         return cell
+    }
+
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 44
     }
 
 
@@ -134,6 +149,10 @@ class EquipmentGroupTVC: UITableViewController {
 
     override func scrollViewDidScroll(_ scrollView: UIScrollView) {
         //updateHeaderView()
+    }
+
+    @IBAction func refresh(_ sender: Any) {
+        refreshControl?.endRefreshing()
     }
 
 }
