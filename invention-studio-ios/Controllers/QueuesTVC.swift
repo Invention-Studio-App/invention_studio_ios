@@ -153,4 +153,8 @@ class QueuesTVC: UITableViewController {
     }
     */
 
+    @IBAction func refresh(_ sender: UIRefreshControl) {
+        sender.endRefreshing()
+    }
+
 }

@@ -153,6 +153,12 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Queues" id="XmE-q5-YQ8"/>
+                    <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="hvY-r0-ged">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <connections>
+                            <action selector="refresh:" destination="tWF-7Y-t6t" eventType="valueChanged" id="pPU-7T-sna"/>
+                        </connections>
+                    </refreshControl>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fA0-GT-qJ6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
