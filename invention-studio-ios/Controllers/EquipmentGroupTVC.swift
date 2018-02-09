@@ -158,6 +158,8 @@ class EquipmentGroupTVC: UITableViewController {
     }
 
     @IBAction func refresh(_ sender: UIRefreshControl) {
+        //Your code here
+        
         sender.endRefreshing()
     }
 
