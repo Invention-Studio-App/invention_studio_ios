@@ -10,18 +10,24 @@ import UIKit
 
 class EquipmentGroupTVC: UITableViewController {
 
-    let headerViewHeight = CGFloat(422)
-    var headerView: UIView!
+    let headerView = UIView()
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        headerView = tableView.tableHeaderView
-        tableView.tableHeaderView = nil
+        headerView.frame = CGRect(x: 0, y: -300, width: view.frame.width, height: 300)
+        headerView.backgroundColor = UIColor(named: "IS_FocusBackground")
+        let headerImageView = UIImageView()
+        headerImageView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.width / 16.0 * 9.0)
+        headerImageView.image = UIImage(named: "PlaceholderStudioImage")
+        headerImageView.contentMode = UIViewContentMode.scaleAspectFill
+        headerImageView.clipsToBounds = true
+        headerView.addSubview(headerImageView)
+
         tableView.addSubview(headerView)
-        tableView.contentInset = UIEdgeInsets(top: headerViewHeight, left: 0, bottom: 0, right: 0)
-        tableView.contentOffset = CGPoint(x: 0, y: -headerViewHeight)
-        updateHeaderView()
+        tableView.contentInset = UIEdgeInsets(top: headerView.frame.height, left: 0, bottom: 0, right: 0)
+        tableView.contentOffset = CGPoint(x: 0, y: -300)
+//        updateHeaderView()
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -36,8 +42,8 @@ class EquipmentGroupTVC: UITableViewController {
     }
 
     private func updateHeaderView() {
-        var headerRect = CGRect(x: 0, y: -headerViewHeight, width: tableView.bounds.width, height: headerViewHeight)
-        if tableView.contentOffset.y < -headerViewHeight {
+        var headerRect = CGRect(x: 0, y: 0, width: tableView.bounds.width, height: headerView.frame.height)
+        if tableView.contentOffset.y < -headerView.frame.height {
             headerRect.origin.y = tableView.contentOffset.y
             headerRect.size.height = -tableView.contentOffset.y
         }
@@ -127,7 +133,7 @@ class EquipmentGroupTVC: UITableViewController {
     // MARK: - Scroll view delegate
 
     override func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        updateHeaderView()
+        //updateHeaderView()
     }
 
 }

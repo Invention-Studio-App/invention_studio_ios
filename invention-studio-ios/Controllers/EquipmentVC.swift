@@ -14,9 +14,12 @@ class EquipmentVC: UIViewController, UITableViewDataSource, UITableViewDelegate,
     @IBOutlet weak var segmentControl: UISegmentedControl!
 
     @IBOutlet weak var informationView: UIView!
-    @IBOutlet weak var statusIcon: UIView!
-    @IBOutlet weak var statusLabel: UILabel!
-    
+    @IBOutlet weak var informationScrollView: UIScrollView!
+    let statusIcon = UIView()
+    let statusLabel = UILabel()
+//    @IBOutlet weak var statusIcon: UIView!
+//    @IBOutlet weak var statusLabel: UILabel!
+
     @IBOutlet weak var reportProblemTableView: UITableView!
 
     private let toolBrokenHeaders = ["Your Name", "Tool", "Problem", "Comments"]

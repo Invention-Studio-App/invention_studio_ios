@@ -102,6 +102,11 @@ class LoginVC: UIViewController, WKUIDelegate, WKNavigationDelegate, WKHTTPCooki
         })
     }
 
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "cookieReceivedSegue" {
+            UserDefaults.standard.set(true, forKey: "LoggedIn")
+        }
+    }
 
 }
 
