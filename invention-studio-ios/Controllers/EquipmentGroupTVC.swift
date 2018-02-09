@@ -15,18 +15,21 @@ class EquipmentGroupTVC: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.refreshControl = UIRefreshControl()
-        refreshControl?.addTarget(self, action: #selector(refresh), for: .valueChanged)
-
+        /**
+         ** Set Up TableView Header
+         **/
         headerView.backgroundColor = UIColor(named: "IS_FocusBackground")
 
+        //Draw header image
         let headerImageView = UIImageView()
         headerImageView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.width / 16.0 * 9.0)
+        //TODO: Use dynamic photo
         headerImageView.image = UIImage(named: "PlaceholderStudioImage")
         headerImageView.contentMode = UIViewContentMode.scaleAspectFill
         headerImageView.clipsToBounds = true
         headerView.addSubview(headerImageView)
 
+        //Draw header TextView
         let headerTextView = UITextView()
         headerTextView.isEditable = false
         headerTextView.isSelectable = false
@@ -36,14 +39,17 @@ class EquipmentGroupTVC: UITableViewController {
         headerTextView.backgroundColor = UIColor.clear
         headerTextView.textColor = UIColor(named: "IS_Text")
         headerTextView.font = UIFont.systemFont(ofSize: 16)
+        //TODO: Use dynamic text
         headerTextView.text = "Is this the real life? Is this just fantasy? Caught in a landslide, no escape from reality. Open your eyes, look up to the skies and see... I'm just a poor boy, I need no sympathy. Because I'm easy come, easy go. Little high, little low. Everywhere the wind blows doesn't really matter to me. To me..."
         let headerTextViewSize = headerTextView.sizeThatFits(CGSize(width: view.frame.width - 16, height: CGFloat.greatestFiniteMagnitude))
         headerTextView.frame = CGRect(x: 8, y: headerImageView.frame.height + 8, width: view.frame.width - 16, height: headerTextViewSize.height)
         headerView.addSubview(headerTextView)
 
+        //Calculate header height and set frame
         let headerViewHeight = headerImageView.frame.height + headerTextView.frame.height + 16
         headerView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: headerViewHeight)
 
+        //Add header to Tableview
         tableView.tableHeaderView = headerView
     }
 
