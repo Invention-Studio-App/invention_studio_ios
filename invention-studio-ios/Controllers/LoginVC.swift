@@ -60,27 +60,42 @@ class LoginVC: UIViewController, WKUIDelegate, WKNavigationDelegate, WKHTTPCooki
 
     //This function is called when navigation is finished
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
-        print("Navigation Finished")
         if self.cookieReceived {
             //Navigation has finished and we have the cookie:
-            print("Authenticated")
             var userKey = ""
+            var username = ""
             webView.evaluateJavaScript("document.body.innerHTML", completionHandler: { (result, err) in
                 let userInfoPage = result as! String
+
+                let usernameDiv = "<td class=\"Text_right ThemeGrid_Width4\" style=\"vertical-align: middle\">Username</td>"
+                if let usernameDivRange = userInfoPage.range(of: usernameDiv) {
+                    let searchLowerBound = String.Index(encodedOffset: usernameDivRange.upperBound.encodedOffset + 32)
+                    let searchUpperBound = String.Index(encodedOffset: searchLowerBound.encodedOffset + 20)
+                    let searchString = String(userInfoPage[searchLowerBound..<searchUpperBound])
+                    let usernameDivEnd = "</td>"
+                    if let usernameEndDivRange = searchString.range(of: usernameDivEnd) {
+                        let userNameLowerBound = String.Index(encodedOffset: 0)
+                        let userNameUpperBound = String.Index(encodedOffset: usernameEndDivRange.lowerBound.encodedOffset)
+                        username = String(searchString[userNameLowerBound..<userNameUpperBound])
+                    }
+
+                    print("setting defaults")
+                    UserDefaults.standard.set(username, forKey: "Username")
+                }
+
                 let calendarLink = "https://sums.gatech.edu/SUMS/rest/iCalendar/ReturnData?Key="
-                print(userInfoPage)
                 if let linkRange = userInfoPage.range(of: calendarLink) {
                     let keyLowerBound = String.Index(encodedOffset: linkRange.upperBound.encodedOffset)
                     let keyUpperBound = String.Index(encodedOffset: keyLowerBound.encodedOffset + 20)
                     userKey = String(userInfoPage[keyLowerBound..<keyUpperBound])
 
-                    print("User Key: \(userKey)")
+                    UserDefaults.standard.set(userKey, forKey: "UserKey")
                 }
+
+                //TODO: Implement a check to see if the person is part of the Invention Studio group
+                //      before performing the segue. If they have not, perform a different segue
+                self.performSegue(withIdentifier: "cookieReceivedSegue", sender: self)
             })
-            
-            //TODO: Implement a check to see if the person is part of the Invention Studio group
-            //      before performing the segue. If they have not, perform a different segue
-            self.performSegue(withIdentifier: "cookieReceivedSegue", sender: self)
         }
     }
     
@@ -92,7 +107,6 @@ class LoginVC: UIViewController, WKUIDelegate, WKNavigationDelegate, WKHTTPCooki
                 if cookies[index].name == "CASTGT" {
                     //Checking if the CAS cookie has changed
                     if cookies[index] != self.CAScookie {
-                        print("CAS cookie  obtained")
                         //Updating our stored cookie and setting the cookie flag to true
                         self.CAScookie = cookies[index]
                         self.cookieReceived = true

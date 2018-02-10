@@ -12,12 +12,13 @@ import Foundation
 
 class API {
 
-    let baseURL = "https://sums.gatech.edu/SUMSAPI/rest/API/"
+    private let baseURL = "https://sums.gatech.edu/SUMSAPI/rest/API/"
 
     class User {
 
         static func Info() {
-
+            let userKey = UserDefaults.standard.value(forKey: "UserKey")
+            let username = UserDefaults.standard.value(forKey: "Username")
         }
 
     }

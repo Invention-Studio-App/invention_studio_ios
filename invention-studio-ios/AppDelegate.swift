@@ -16,17 +16,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
 
-        self.window = UIWindow(frame: UIScreen.main.bounds)
+//        UserDefaults.standard.set(nil, forKey: "Username") //For debugging purposes
+//        UserDefaults.standard.set(nil, forKey: "UserKey") //For debugging purposes
 
+        self.window = UIWindow(frame: UIScreen.main.bounds)
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
 
         var initialViewController: UIViewController
         let loginSession = UserDefaults.standard.double(forKey: "LoginSession") //0 if DNE
         //TODO: Use server time
         let timeStamp = NSDate().timeIntervalSince1970
+
+        let shouldLogin = false //Used for debuggin purposes
+
         //Check that the threshold for staying logged in has not passed
         //If the user has never logged in before, this will automatically fail since loginSession == 0
-        if timeStamp < loginSession {
+        if timeStamp < loginSession && shouldLogin {
             initialViewController = storyboard.instantiateViewController(withIdentifier: "TabBarController")
         } else {
             initialViewController = storyboard.instantiateViewController(withIdentifier: "LandingViewController")
