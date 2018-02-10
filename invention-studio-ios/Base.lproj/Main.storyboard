@@ -655,7 +655,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="VTi-qe-5rT">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VTi-qe-5rT">
                                 <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                                 <string key="text">Attribution: Home Icon created by Viktor Vorobyev from Noun Project. 3D printer icon created by Peter van Driel from Noun Project. Queue Icon created by Deepak M from Noun Project.  Feedback Icon Created by dilakuscan from Noun Project. Other Icon created by Ilaria Bernareggi from Noun Project.</string>
                                 <color key="textColor" name="IS_Text"/>
