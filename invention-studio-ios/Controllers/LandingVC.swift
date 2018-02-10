@@ -51,9 +51,10 @@ class LandingVC: UIViewController {
         //Set ScrollView content size
         scrollView.contentSize = CGSize(width: view.frame.width, height: textView.frame.maxY + 8)
     }
-    
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-    
+
 }
+

@@ -17,18 +17,18 @@ class EquipmentVC: UIViewController, UITableViewDataSource, UITableViewDelegate,
     @IBOutlet weak var informationScrollView: UIScrollView!
     let statusIcon = UIView()
     let statusLabel = UILabel()
-//    @IBOutlet weak var statusIcon: UIView!
-//    @IBOutlet weak var statusLabel: UILabel!
+    //    @IBOutlet weak var statusIcon: UIView!
+    //    @IBOutlet weak var statusLabel: UILabel!
 
     @IBOutlet weak var reportProblemTableView: UITableView!
 
     private let toolBrokenHeaders = ["Your Name", "Tool", "Problem", "Comments"]
     private let toolBrokenPrototypes = [["namePrototype"],
-                                ["pickerHeaderPrototype", "pickerDropdownPrototype"],
-                                ["commentsPrototype"]]
+                                        ["pickerHeaderPrototype", "pickerDropdownPrototype"],
+                                        ["commentsPrototype"]]
     private let toolBrokenCells = [["Your Name"],
-                           ["Problem", "ProblemDropdown"],
-                           ["Comments"]]
+                                   ["Problem", "ProblemDropdown"],
+                                   ["Comments"]]
 
     private var currentDropdownHeader: IndexPath? = nil
     private var currentDropdown: IndexPath? = nil
@@ -64,7 +64,7 @@ class EquipmentVC: UIViewController, UITableViewDataSource, UITableViewDelegate,
         }
     }
     var segmentViews = Array<UIView>()
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -168,7 +168,7 @@ class EquipmentVC: UIViewController, UITableViewDataSource, UITableViewDelegate,
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
+
     @IBAction func segmentChanged(_ sender: UISegmentedControl) {
         for (i, view) in segmentViews.enumerated() {
             if i == sender.selectedSegmentIndex {
@@ -334,13 +334,14 @@ class EquipmentVC: UIViewController, UITableViewDataSource, UITableViewDelegate,
     }
 
     /*
-    // MARK: - Navigation
+     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destinationViewController.
+     // Pass the selected object to the new view controller.
+     }
+     */
 
 }
+

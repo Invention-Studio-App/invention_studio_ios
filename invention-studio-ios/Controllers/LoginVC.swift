@@ -10,8 +10,8 @@ import UIKit
 import WebKit
 
 class LoginVC: UIViewController, WKUIDelegate, WKNavigationDelegate, WKHTTPCookieStoreObserver {
-    
-    
+
+
     // VARIABLE DECLARATIONS
     //The Web View
     var webView: WKWebView!
@@ -22,33 +22,33 @@ class LoginVC: UIViewController, WKUIDelegate, WKNavigationDelegate, WKHTTPCooki
     //The storage that will containt the cookies
     let storage = WKWebsiteDataStore.default()
     var cookieStore:WKHTTPCookieStore!
-    
-    
-    
+
+
+
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        
+
         //Preparing the request for the login page
         let myURL = URL(string: "https://login.gatech.edu/cas/login?service=https://sums-dev.gatech.edu/EditResearcherProfile.aspx")
         let myRequest = URLRequest(url: myURL!)
-        
+
         //Setting up the cookie store
         cookieStore = storage.httpCookieStore
         cookieStore.add(self)
-        
+
         //Making this class the navigation delegate
         webView.navigationDelegate = self
-        
+
         //Requesting the login page
         webView.load(myRequest)
     }
-    
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
+
     override func loadView() {
         //Setting up the webview
         let webConfiguration = WKWebViewConfiguration()
@@ -98,7 +98,7 @@ class LoginVC: UIViewController, WKUIDelegate, WKNavigationDelegate, WKHTTPCooki
             })
         }
     }
-    
+
     //This function is called whenever there are changes to the cookie store
     func cookiesDidChange(in cookieStore:WKHTTPCookieStore) {
         cookieStore.getAllCookies({ (cookies) in
@@ -126,5 +126,3 @@ class LoginVC: UIViewController, WKUIDelegate, WKNavigationDelegate, WKHTTPCooki
     }
 
 }
-
-
