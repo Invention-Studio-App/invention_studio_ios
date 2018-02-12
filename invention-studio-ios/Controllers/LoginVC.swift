@@ -62,40 +62,36 @@ class LoginVC: UIViewController, WKUIDelegate, WKNavigationDelegate, WKHTTPCooki
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         if self.cookieReceived {
             //Navigation has finished and we have the cookie:
-            var userKey = ""
-            var username = ""
-            webView.evaluateJavaScript("document.body.innerHTML", completionHandler: { (result, err) in
-                let userInfoPage = result as! String
+            //Static ID names for username and calendar fields
+            let usernameDisplayId = "LiverpoolTheme_wt1_block_wtMainContent_SilkUIFramework_wt8_block_wtColumn2_wt14_SilkUIFramework_wt14_block_wtContent1_wt15_SilkUIFramework_wt382_block_wtPanelContent_SilkUIFramework_wt109_block_wtColumn2_SilkUIFramework_wt289_block_wtPanelContent_SilkUIFramework_wtBrief_block_wtContent_wtUsernameDisplay"
+            let calendarDisplayId = "LiverpoolTheme_wt1_block_wtMainContent_SilkUIFramework_wt8_block_wtColumn2_wt14_SilkUIFramework_wt14_block_wtContent1_wt15_SilkUIFramework_wt382_block_wtPanelContent_SilkUIFramework_wt109_block_wtColumn2_SilkUIFramework_wt289_block_wtPanelContent_SilkUIFramework_wtBrief_block_wtContent_wtCalendarLink"
 
-                let usernameDiv = "<td class=\"Text_right ThemeGrid_Width4\" style=\"vertical-align: middle\">Username</td>"
-                if let usernameDivRange = userInfoPage.range(of: usernameDiv) {
-                    let searchLowerBound = String.Index(encodedOffset: usernameDivRange.upperBound.encodedOffset + 32)
-                    let searchUpperBound = String.Index(encodedOffset: searchLowerBound.encodedOffset + 20)
-                    let searchString = String(userInfoPage[searchLowerBound..<searchUpperBound])
-                    let usernameDivEnd = "</td>"
-                    if let usernameEndDivRange = searchString.range(of: usernameDivEnd) {
-                        let userNameLowerBound = String.Index(encodedOffset: 0)
-                        let userNameUpperBound = String.Index(encodedOffset: usernameEndDivRange.lowerBound.encodedOffset)
-                        username = String(searchString[userNameLowerBound..<userNameUpperBound])
-                    }
+            let jsEvalGroup = DispatchGroup() //Create an asynchronus dispatch group
 
-                    print("setting defaults")
-                    UserDefaults.standard.set(username, forKey: "Username")
-                }
+            jsEvalGroup.enter() //Enter the dispatch group to block until completed
+            webView.evaluateJavaScript("document.getElementById(\"\(usernameDisplayId)\").innerText", completionHandler: { (result, err) in
+                let username = result as! String //Get the results
+                UserDefaults.standard.set(username, forKey: "Username") //Save to user defaults
+                jsEvalGroup.leave() //Mark action as completed in dispatch group
+            });
 
-                let calendarLink = "https://sums.gatech.edu/SUMS/rest/iCalendar/ReturnData?Key="
-                if let linkRange = userInfoPage.range(of: calendarLink) {
-                    let keyLowerBound = String.Index(encodedOffset: linkRange.upperBound.encodedOffset)
-                    let keyUpperBound = String.Index(encodedOffset: keyLowerBound.encodedOffset + 20)
-                    userKey = String(userInfoPage[keyLowerBound..<keyUpperBound])
+            jsEvalGroup.enter() //Enter the dispatch group to block until completed
+            webView.evaluateJavaScript("document.getElementById(\"\(calendarDisplayId)\").innerText",
+            completionHandler: { (result, err) in
+                let calendarDisplay = result as! String //Get the results
+                let calendarLink = "https://sums.gatech.edu/SUMS/rest/iCalendar/ReturnData?Key=" //Static calendar link to be stripped
+                let userKey = calendarDisplay.replacingOccurrences(of: calendarLink, with: "") //Strip the calendar link
+                UserDefaults.standard.set(userKey, forKey: "UserKey") //Save to user defaults
+                jsEvalGroup.leave() //Mark action as completed in dispatch group
+            });
 
-                    UserDefaults.standard.set(userKey, forKey: "UserKey")
-                }
+            //When both evaluateJavaScript calls complete, segue out
+            jsEvalGroup.notify(queue: .main, execute: {
+                self.performSegue(withIdentifier: "cookieReceivedSegue", sender: self)
+            })
 
                 //TODO: Implement a check to see if the person is part of the Invention Studio group
                 //      before performing the segue. If they have not, perform a different segue
-                self.performSegue(withIdentifier: "cookieReceivedSegue", sender: self)
-            })
         }
     }
 
