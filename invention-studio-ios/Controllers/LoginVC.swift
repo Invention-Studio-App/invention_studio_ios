@@ -23,8 +23,6 @@ class LoginVC: UIViewController, WKUIDelegate, WKNavigationDelegate, WKHTTPCooki
     let storage = WKWebsiteDataStore.default()
     var cookieStore:WKHTTPCookieStore!
 
-
-
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -77,12 +75,12 @@ class LoginVC: UIViewController, WKUIDelegate, WKNavigationDelegate, WKHTTPCooki
 
             jsEvalGroup.enter() //Enter the dispatch group to block until completed
             webView.evaluateJavaScript("document.getElementById(\"\(calendarDisplayId)\").innerText",
-            completionHandler: { (result, err) in
-                let calendarDisplay = result as! String //Get the results
-                let calendarLink = "https://sums.gatech.edu/SUMS/rest/iCalendar/ReturnData?Key=" //Static calendar link to be stripped
-                let userKey = calendarDisplay.replacingOccurrences(of: calendarLink, with: "") //Strip the calendar link
-                UserDefaults.standard.set(userKey, forKey: "UserKey") //Save to user defaults
-                jsEvalGroup.leave() //Mark action as completed in dispatch group
+                completionHandler: { (result, err) in
+                    let calendarDisplay = result as! String //Get the results
+                    let calendarLink = "https://sums.gatech.edu/SUMS/rest/iCalendar/ReturnData?Key=" //Static calendar link to be stripped
+                    let userKey = calendarDisplay.replacingOccurrences(of: calendarLink, with: "") //Strip the calendar link
+                    UserDefaults.standard.set(userKey, forKey: "UserKey") //Save to user defaults
+                    jsEvalGroup.leave() //Mark action as completed in dispatch group
             });
 
             //When both evaluateJavaScript calls complete, segue out
@@ -90,8 +88,8 @@ class LoginVC: UIViewController, WKUIDelegate, WKNavigationDelegate, WKHTTPCooki
                 self.performSegue(withIdentifier: "cookieReceivedSegue", sender: self)
             })
 
-                //TODO: Implement a check to see if the person is part of the Invention Studio group
-                //      before performing the segue. If they have not, perform a different segue
+            //TODO: Implement a check to see if the person is part of the Invention Studio group
+            //      before performing the segue. If they have not, perform a different segue
         }
     }
 
@@ -120,5 +118,5 @@ class LoginVC: UIViewController, WKUIDelegate, WKNavigationDelegate, WKHTTPCooki
             UserDefaults.standard.set(NSDate().addingTimeInterval(weekInterval).timeIntervalSince1970, forKey:"LoginSession")
         }
     }
-
 }
+
