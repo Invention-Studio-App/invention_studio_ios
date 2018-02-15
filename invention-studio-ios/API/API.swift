@@ -29,7 +29,11 @@ class API {
 
         }
 
-        static func Queues() {
+        static func QueueGroups() {
+
+        }
+
+        static func QueueUsers() {
 
         }
 
