@@ -11,6 +11,7 @@ import UIKit
 
 class Tool: Codable {
 
+    //Used externally to easily understand machine status
     enum Status: String {
         case AVAILABLE = "Available"
         case INUSE = "In Use"
@@ -53,5 +54,16 @@ class Tool: Codable {
         case locationPhone
         case toolInUseSince
         case toolIsOperational
+    }
+
+    //Automatically calculates machine's status based on given data
+    func status() -> Status {
+        if !toolIsOperational {
+            return Status.DOWN
+        } else if toolInUseSince != Date(timeIntervalSince1970: 0) {
+            return Status.INUSE
+        } else {
+            return Status.AVAILABLE
+        }
     }
 }
