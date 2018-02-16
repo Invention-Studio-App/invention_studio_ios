@@ -60,21 +60,21 @@ class LoginVC: UIViewController, WKUIDelegate, WKNavigationDelegate, WKHTTPCooki
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         if self.cookieReceived {
             //Navigation has finished and we have the cookie:
-            //Static ID names for username and calendar fields
-            let usernameDisplayId = "LiverpoolTheme_wt1_block_wtMainContent_SilkUIFramework_wt8_block_wtColumn2_wt14_SilkUIFramework_wt14_block_wtContent1_wt15_SilkUIFramework_wt382_block_wtPanelContent_SilkUIFramework_wt109_block_wtColumn2_SilkUIFramework_wt289_block_wtPanelContent_SilkUIFramework_wtBrief_block_wtContent_wtUsernameDisplay"
-            let calendarDisplayId = "LiverpoolTheme_wt1_block_wtMainContent_SilkUIFramework_wt8_block_wtColumn2_wt14_SilkUIFramework_wt14_block_wtContent1_wt15_SilkUIFramework_wt382_block_wtPanelContent_SilkUIFramework_wt109_block_wtColumn2_SilkUIFramework_wt289_block_wtPanelContent_SilkUIFramework_wtBrief_block_wtContent_wtCalendarLink"
 
-            let jsEvalGroup = DispatchGroup() //Create an asynchronus dispatch group
+            //Use this to block future calls that rely on the results of the two evaluateJavaScript (async) calls
+            let jsEvalGroup = DispatchGroup()
 
             jsEvalGroup.enter() //Enter the dispatch group to block until completed
-            webView.evaluateJavaScript("document.getElementById(\"\(usernameDisplayId)\").innerText", completionHandler: { (result, err) in
+            //Asynchronus, will return and continue before completionHandler is called
+            webView.evaluateJavaScript("document.querySelector('[id$=\"UsernameDisplay\"]').innerText", completionHandler: { (result, err) in
                 let username = result as! String //Get the results
                 UserDefaults.standard.set(username, forKey: "Username") //Save to user defaults
                 jsEvalGroup.leave() //Mark action as completed in dispatch group
             });
 
             jsEvalGroup.enter() //Enter the dispatch group to block until completed
-            webView.evaluateJavaScript("document.getElementById(\"\(calendarDisplayId)\").innerText",
+            //Asynchronus, will return and continue before completionHandler is called
+            webView.evaluateJavaScript("document.querySelector('[id$=\"CalendarLink\"]').innerText",
                 completionHandler: { (result, err) in
                     let calendarDisplay = result as! String //Get the results
                     let calendarLink = "https://sums.gatech.edu/SUMS/rest/iCalendar/ReturnData?Key=" //Static calendar link to be stripped
@@ -83,13 +83,36 @@ class LoginVC: UIViewController, WKUIDelegate, WKNavigationDelegate, WKHTTPCooki
                     jsEvalGroup.leave() //Mark action as completed in dispatch group
             });
 
-            //When both evaluateJavaScript calls complete, segue out
+            //When both evaluateJavaScript calls complete, enter this block
             jsEvalGroup.notify(queue: .main, execute: {
-                self.performSegue(withIdentifier: "cookieReceivedSegue", sender: self)
-            })
+                var isInventionStudio = false
+                //Used to block until User_Info API request is completed
+                let apiEvalGroup = DispatchGroup()
 
-            //TODO: Implement a check to see if the person is part of the Invention Studio group
-            //      before performing the segue. If they have not, perform a different segue
+                apiEvalGroup.enter()
+                //Asynchronus, will return and continue before completionHandler is called
+                API.User.Info(completion: { results in
+                    for u in results {
+                        //Check all of the user's tool groups
+                        if u.isInventionStudio() {
+                            isInventionStudio = true
+                            UserDefaults.standard.set(u.equipmentGroupId, forKey: "DepartmentId")
+                            break
+                        }
+                    }
+                    apiEvalGroup.leave()
+                })
+
+                //When API call is complete
+                apiEvalGroup.notify(queue: .main, execute: {
+                    //If the user is part of the Invention Studio tool group (i.e. they have signed the user agreement)
+                    if isInventionStudio {
+                        self.performSegue(withIdentifier: "cookieReceivedSegue", sender: self)
+                    } else {
+                        print("Needs to sign agreement")
+                    }
+                })
+            })
         }
     }
 
