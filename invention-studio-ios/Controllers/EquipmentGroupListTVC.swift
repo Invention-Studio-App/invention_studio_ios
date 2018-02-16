@@ -9,8 +9,6 @@
 import UIKit
 
 class EquipmentGroupListTVC: UITableViewController {
-
-    
     var equipmentGroups = [String]()
     var tools = [Tool]()
     
@@ -127,5 +125,9 @@ class EquipmentGroupListTVC: UITableViewController {
         // Pass the selected object to the new view controller.
     }
     */
+
+    @IBAction func refresh(_ sender: UIRefreshControl) {
+    }
+    
 
 }
