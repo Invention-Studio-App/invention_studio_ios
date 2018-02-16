@@ -8,15 +8,16 @@
 
 import Foundation
 
-class QueueGroup: NSObject {
+class QueueGroup: Codable {
 
     var name: String
     var id: Int
     var isGroup: Bool
 
-    init(with JSONDict: Dictionary<String, String>) {
-        name = JSONDict["Name"]!
-        id = Int(JSONDict["ID"]!)!
-        isGroup = Bool(JSONDict["isGroup"]!)!
+    //Used when variable name diverges from JSON Key
+    private enum CodingKeys: String, CodingKey {
+        case name = "Name"
+        case id = "ID"
+        case isGroup
     }
 }

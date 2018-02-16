@@ -8,7 +8,7 @@
 
 import Foundation
 
-class QueueUser: NSObject {
+class QueueUser: Codable {
 
     var queueGroupId: Int
     var memberName: String
@@ -18,13 +18,14 @@ class QueueUser: NSObject {
     var memberMinutesRemaining: Int
     var memberQueueLocation: Int
 
-    init(with JSONDict: Dictionary<String, String>) {
-        queueGroupId = Int(JSONDict["queueGroupId"]!)!
-        memberName = JSONDict["memberName"]!
-        memberUserName = JSONDict["memberUserName"]!
-        name = JSONDict["name"]!
-        hasBeenNotified = Bool(JSONDict["hasBeenNotified"]!)!
-        memberMinutesRemaining = Int(JSONDict["memberMinutesRemaining"]!)!
-        memberQueueLocation = Int(JSONDict["memberQueueLocation"]!)!
+    //Used when variable name diverges from JSON Key
+    private enum CodingKeys: String, CodingKey {
+        case queueGroupId
+        case memberName
+        case memberUserName
+        case name
+        case hasBeenNotified
+        case memberMinutesRemaining
+        case memberQueueLocation
     }
 }

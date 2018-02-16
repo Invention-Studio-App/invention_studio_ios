@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class Tool: NSObject {
+class Tool: Codable {
 
     enum Status: String {
         case AVAILABLE = "Available"
@@ -35,26 +35,23 @@ class Tool: NSObject {
     var toolInUseSince: Date
     var toolIsOperational: Bool
 
-    init(with JSONDict: Dictionary<String, String>) {
-        equipmentGroupId = Int(JSONDict["equipmentGroupId"]!)!
-        locationId = Int(JSONDict["locationId"]!)!
-        toolId = Int(JSONDict["toolId"]!)!
-        currentUserUserName = JSONDict["CurrentUserUserName"]!
-        equipmentGroupDescription = JSONDict["equipmentGroupdescription"]!
-        equipmentGroupName = JSONDict["equipmentGroupName"]!
-        locationAddress = JSONDict["locationAddress"]!
-        locationManager = JSONDict["locationManager"]!
-        locationName = JSONDict["locationName"]!
-        locationUrl = JSONDict["locationUrl"]!
-        toolCurrentUser = JSONDict["toolCurrentUser"]!
-        toolDescription = JSONDict["toolDescription"]!
-        toolName = JSONDict["toolName"]!
-        locationPhone = JSONDict["locationPhone"]!
-
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
-        toolInUseSince = dateFormatter.date(from: JSONDict["toolInUseSince"]!)!
-
-        toolIsOperational = Bool(JSONDict["toolIsOperational"]!)!
+    //Used when variable name diverges from JSON Key
+    private enum CodingKeys: String, CodingKey {
+        case equipmentGroupId
+        case locationId
+        case toolId
+        case currentUserUserName = "CurrentUserUserName"
+        case equipmentGroupDescription = "equipmentGroupdescription"
+        case equipmentGroupName
+        case locationAddress
+        case locationManager
+        case locationName
+        case locationUrl
+        case toolCurrentUser
+        case toolDescription
+        case toolName
+        case locationPhone
+        case toolInUseSince
+        case toolIsOperational
     }
 }
