@@ -1,11 +1,11 @@
 PODS:
-  - TGPControls (2.0.0)
+  - TGPControls (4.0.0)
 
 DEPENDENCIES:
   - TGPControls
 
 SPEC CHECKSUMS:
-  TGPControls: feb3210f617691690994d0ddfe37884150b6de9a
+  TGPControls: d7ab5a338746c100b2ae57f6b6cedee7151f116a
 
 PODFILE CHECKSUM: c87054f9bd1cf5e3f631067175fa23e6e920ef4f
 

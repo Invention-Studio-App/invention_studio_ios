@@ -11,6 +11,7 @@ import UIKit
 class EquipmentGroupTVC: UITableViewController {
 
     private let headerView = UIView()
+    var tools = [Tool]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -75,8 +76,7 @@ class EquipmentGroupTVC: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 10
+        return tools.count
     }
 
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -86,23 +86,21 @@ class EquipmentGroupTVC: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "equipmentPrototype", for: indexPath) as! EquipmentCell
 
-        cell.titleLabel?.text = "Testing"
-
-        if indexPath.row < 3 {
-            cell.status = Tool.Status.AVAILABLE
-        } else if indexPath.row < 6 {
-            cell.status = Tool.Status.INUSE
-        } else if indexPath.row < 8{
-            cell.status = Tool.Status.DOWN
-        } else {
-            cell.status = Tool.Status.UNKNOWN
-        }
-
+        cell.titleLabel?.text = tools[indexPath.row].toolName
+        cell.status = tools[indexPath.row].status()
+        
         return cell
     }
 
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 44
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let eVC  = storyboard?.instantiateViewController(withIdentifier: "EquipmentVC") as! EquipmentVC
+        eVC.tool = self.tools[indexPath.row]
+        navigationController?.pushViewController(eVC, animated: true)
+        self.tableView.deselectRow(at: indexPath, animated: true)
     }
 
 

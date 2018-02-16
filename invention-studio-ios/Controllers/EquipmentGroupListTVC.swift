@@ -12,11 +12,12 @@ class EquipmentGroupListTVC: UITableViewController {
 
     
     var equipmentGroups = [String]()
+    var tools = [Tool]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        getEquipmentGroups()
+        loadEquipmentGroups()
         
         
         // Uncomment the following line to preserve selection between presentations
@@ -43,12 +44,24 @@ class EquipmentGroupListTVC: UITableViewController {
         return self.equipmentGroups.count
     }
     
-    private func getEquipmentGroups() {
-        var groups = [String]()
-        groups.append(contentsOf: ["3D Printers", "Laser Cutters", "Waterjet"])
-        self.equipmentGroups = groups
+    //Loads the equipment groups from the API
+    private func loadEquipmentGroups() {
+        self.equipmentGroups = []
+        SumsApi.EquipmentGroup.Tools(completion: { (tools) in
+            for tool in tools {
+                if (!(self.equipmentGroups.contains(tool.locationName))) {
+                    self.equipmentGroups.append(tool.locationName)
+                }
+            }
+            self.tools = tools
+            self.equipmentGroups.sort()
+            // Must be called from main thread, not UIKit
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+            })
+        
     }
-
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "equipmentGroupPrototype", for: indexPath)
@@ -56,14 +69,20 @@ class EquipmentGroupListTVC: UITableViewController {
 
         return cell
     }
-    /*
+    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let mVC = storyboard?.instantiateViewController(withIdentifier: "MachinesViewController") as! MachinesViewController
-        mVC.equipmentGroup = self.equipmentGroups[indexPath.row]
+        let mVC = storyboard?.instantiateViewController(withIdentifier: "EquipmentGroupTVC") as! EquipmentGroupTVC
+        var sentTools = [Tool]()
+        for tool in tools {
+            if tool.locationName == self.equipmentGroups[indexPath.row] {
+                sentTools.append(tool)
+            }
+        }
+        mVC.tools = sentTools
         navigationController?.pushViewController(mVC, animated: true)
         self.tableView.deselectRow(at: indexPath, animated: true)
     }
-    */
+    
     /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {

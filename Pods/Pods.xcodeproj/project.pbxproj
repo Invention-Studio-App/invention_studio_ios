@@ -9,25 +9,20 @@
 /* Begin PBXBuildFile section */
 		027C493ACC225722EA5D2DF2499CCA52 /* Pods-invention-studio-iosTests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = B91ABFDA1390899B83935F857739CAAC /* Pods-invention-studio-iosTests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		057C53A0524D5D75AB7B1DF064788850 /* Pods-invention-studio-ios-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = F745C5C4E738B6B33492B224B9588B33 /* Pods-invention-studio-ios-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		2A5EEB7BCED1159F3EB795F11D8076C8 /* TGPDiscreteSlider.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C4CC15A342F252A367DB1503F3BD2E6 /* TGPDiscreteSlider.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		49CB27C606C970897148D2A80257E1AE /* TGPControlsTicksProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 1ACE0565886240B40B7BF911D372C4FC /* TGPControlsTicksProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0CD8BF419EFF6C75AA8D15B5991087E5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B63C6A64CF66340668996F78DA6BB482 /* UIKit.framework */; };
+		1A77724CF25069151339D59C9FD7036E /* TGPDiscreteSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B933D23D1E8B793EFCA2C4E02142456 /* TGPDiscreteSlider.swift */; };
+		1FDD4B384362603F9B50CAAFEE72A4F4 /* TGPCamelLabels.swift in Sources */ = {isa = PBXBuildFile; fileRef = A642DE0F7275F5ABCFB0D228C010797A /* TGPCamelLabels.swift */; };
+		3420E76AF59E0B0C68174FD768FA8172 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D88AAE1F92055A60CC2FC970D7D34634 /* Foundation.framework */; };
 		4D2399DEA8E0E24B95FC8336F7C8589C /* Pods-invention-studio-iosTests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = A5CD289B2AB3F8390FDEEEC159B71C2F /* Pods-invention-studio-iosTests-dummy.m */; };
-		543117041DCF0C427C4A19914296A3AE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */; };
+		543117041DCF0C427C4A19914296A3AE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D88AAE1F92055A60CC2FC970D7D34634 /* Foundation.framework */; };
 		55DCBA7D87743AD0E1F3DC2FE1C894C6 /* Pods-invention-studio-iosUITests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = A60BA347687AA288E659D2983C82DDA3 /* Pods-invention-studio-iosUITests-dummy.m */; };
-		62CF295566CABF2663698BDBF41A841A /* TGPControls-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = E079043B58286570BC7AA1167B342336 /* TGPControls-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		68D5371C35103B00336DA7F462C466EF /* TGPDiscreteSlider7.m in Sources */ = {isa = PBXBuildFile; fileRef = 54CAD384A191B2BD449355DD53923A4C /* TGPDiscreteSlider7.m */; };
-		6F22164373C213A31770ADB57CA956F3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */; };
-		721B5D98C873E8503A78D0C8173FFFC2 /* TGPDiscreteSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C5E4A6B809992FB54CE82C93FC39AEC /* TGPDiscreteSlider.m */; };
-		73D5AECFC7412DFED2579207061E6D97 /* TGPCamelLabels7.h in Headers */ = {isa = PBXBuildFile; fileRef = 207DE441546E1073A4EB57D226DC7D1D /* TGPCamelLabels7.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		A1F10E71019C72D48BCC550D82C7A44B /* TGPDiscreteSlider7.h in Headers */ = {isa = PBXBuildFile; fileRef = 5794F9A838A7F9D2C71524AA998E4C88 /* TGPDiscreteSlider7.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6BAAA7D01FE3F4BB9EDDE4B0797B396D /* TGPControls-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = FACCBA039314CCEC26C316742DBC353C /* TGPControls-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7F5AE05512FD8B6A25155C54B567CC07 /* TGPControls-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = DC4C6E9290C12DB9EE93598AB8978786 /* TGPControls-dummy.m */; };
 		B81CDDA454C7622DCAB8E2385B012F5C /* Pods-invention-studio-ios-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = FD812383A3BF7A99AC98AE493B04B79F /* Pods-invention-studio-ios-dummy.m */; };
-		BC6FED26611E612600CA809521209C0C /* TGPCamelLabels.h in Headers */ = {isa = PBXBuildFile; fileRef = 79543C0E9CBD46CB9928DD1DBC89BDD3 /* TGPCamelLabels.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BF72498B06AFF8B156FACB44A414A3AD /* TGPControlsTicksProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AEE0B1A918A771A1C19E6537882D404 /* TGPControlsTicksProtocol.swift */; };
 		C70F2B2ED422DA84FCA5591AEF5540AE /* Pods-invention-studio-iosUITests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 520B8EBE53C88E28CBCB0BEC3C1E542E /* Pods-invention-studio-iosUITests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		C94B4C0C081BCDF4ECF93A8FB5634762 /* TGPCamelLabels.m in Sources */ = {isa = PBXBuildFile; fileRef = A3B4E8E6BD7EAC5D2C6B3CD0665324CA /* TGPCamelLabels.m */; };
-		DB055AB84859FC6231C3E6065A70D601 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */; };
-		E05E1DD2F2F9FC1B4B8619A799695172 /* TGPControls-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = F203A5F6852B0762618336AA9261F412 /* TGPControls-dummy.m */; };
-		EAC3598A701D3C401474324B5D2DC05A /* TGPCamelLabels7.m in Sources */ = {isa = PBXBuildFile; fileRef = 8061E67FA0DF14D6E9411BB96AF9268C /* TGPCamelLabels7.m */; };
-		FE9F9F1D51B6471D702DED7D39F2020F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */; };
+		DB055AB84859FC6231C3E6065A70D601 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D88AAE1F92055A60CC2FC970D7D34634 /* Foundation.framework */; };
+		FE9F9F1D51B6471D702DED7D39F2020F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D88AAE1F92055A60CC2FC970D7D34634 /* Foundation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,33 +36,27 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		046A38FFC892CBEDE09BEC451938FAB8 /* TGPControls.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = TGPControls.modulemap; sourceTree = "<group>"; };
 		127C9D80ED705C2262AC54979789C52E /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		15D117FF1378623233E23A9F88FB8BA9 /* Pods-invention-studio-ios-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-invention-studio-ios-frameworks.sh"; sourceTree = "<group>"; };
-		1ACE0565886240B40B7BF911D372C4FC /* TGPControlsTicksProtocol.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = TGPControlsTicksProtocol.h; path = TGPControls/TGPControlsTicksProtocol.h; sourceTree = "<group>"; };
+		1614B6FC6235CB9A08770D80E339C247 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1C75FC9CF3164F78BD922E874060CE09 /* Pods-invention-studio-iosUITests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-invention-studio-iosUITests.modulemap"; sourceTree = "<group>"; };
-		207DE441546E1073A4EB57D226DC7D1D /* TGPCamelLabels7.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = TGPCamelLabels7.h; path = TGPControls/TGPCamelLabels7.h; sourceTree = "<group>"; };
+		1D01C59417BF42B64DB71AD344815A2C /* TGPControls.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = TGPControls.xcconfig; sourceTree = "<group>"; };
+		2547F4E7ADD002D0075B51346705B647 /* TGPControls-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "TGPControls-prefix.pch"; sourceTree = "<group>"; };
 		29136911CA9EFA0BDC92A719486DA99F /* Pods-invention-studio-iosTests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-invention-studio-iosTests-acknowledgements.plist"; sourceTree = "<group>"; };
+		2AEE0B1A918A771A1C19E6537882D404 /* TGPControlsTicksProtocol.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TGPControlsTicksProtocol.swift; path = TGPControls/TGPControlsTicksProtocol.swift; sourceTree = "<group>"; };
 		2B206A9E45DB9AFB5E8DA10293771079 /* Pods-invention-studio-iosTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-invention-studio-iosTests.release.xcconfig"; sourceTree = "<group>"; };
-		2C5E4A6B809992FB54CE82C93FC39AEC /* TGPDiscreteSlider.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = TGPDiscreteSlider.m; path = TGPControls/TGPDiscreteSlider.m; sourceTree = "<group>"; };
+		2B933D23D1E8B793EFCA2C4E02142456 /* TGPDiscreteSlider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TGPDiscreteSlider.swift; path = TGPControls/TGPDiscreteSlider.swift; sourceTree = "<group>"; };
 		2CFF1994B26A0D02F8FFEEC88C8D01C5 /* Pods-invention-studio-iosUITests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-invention-studio-iosUITests-acknowledgements.markdown"; sourceTree = "<group>"; };
 		4C2D6BC05B3CFC7BA32DB0DA725A7832 /* Pods-invention-studio-iosUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-invention-studio-iosUITests.release.xcconfig"; sourceTree = "<group>"; };
-		4EB75DCBEA098C13291D3FF2C4A4A04B /* TGPControls.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = TGPControls.xcconfig; sourceTree = "<group>"; };
 		520B8EBE53C88E28CBCB0BEC3C1E542E /* Pods-invention-studio-iosUITests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-invention-studio-iosUITests-umbrella.h"; sourceTree = "<group>"; };
 		53FEA1C963B95697760C792ED407B5FB /* TGPControls.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = TGPControls.framework; path = TGPControls.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		54CAD384A191B2BD449355DD53923A4C /* TGPDiscreteSlider7.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = TGPDiscreteSlider7.m; path = TGPControls/TGPDiscreteSlider7.m; sourceTree = "<group>"; };
-		5794F9A838A7F9D2C71524AA998E4C88 /* TGPDiscreteSlider7.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = TGPDiscreteSlider7.h; path = TGPControls/TGPDiscreteSlider7.h; sourceTree = "<group>"; };
-		5BF840378DDC33F80CEB1C9CC81BE0F6 /* TGPControls-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "TGPControls-prefix.pch"; sourceTree = "<group>"; };
 		626431D7033BB496410AAF677B56F0D0 /* Pods-invention-studio-ios.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-invention-studio-ios.debug.xcconfig"; sourceTree = "<group>"; };
-		6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		66308F31B3DD1951E9A21A0EB04FD746 /* Pods-invention-studio-ios-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-invention-studio-ios-acknowledgements.markdown"; sourceTree = "<group>"; };
 		7122963C317C008C9E158143EE365BE1 /* Pods-invention-studio-iosUITests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-invention-studio-iosUITests-acknowledgements.plist"; sourceTree = "<group>"; };
 		727A4CCE5963F4E4A3169F9D5120074D /* Pods-invention-studio-iosUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-invention-studio-iosUITests.debug.xcconfig"; sourceTree = "<group>"; };
-		73C6BE167675F4334C0262589657B7A5 /* TGPControls.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = TGPControls.modulemap; sourceTree = "<group>"; };
-		79543C0E9CBD46CB9928DD1DBC89BDD3 /* TGPCamelLabels.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = TGPCamelLabels.h; path = TGPControls/TGPCamelLabels.h; sourceTree = "<group>"; };
-		7C4CC15A342F252A367DB1503F3BD2E6 /* TGPDiscreteSlider.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = TGPDiscreteSlider.h; path = TGPControls/TGPDiscreteSlider.h; sourceTree = "<group>"; };
 		7D60C5FAE48D5C30D740B9E4BA2B5B2D /* Pods-invention-studio-ios.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-invention-studio-ios.modulemap"; sourceTree = "<group>"; };
 		7F7FE5640E802B90574CF46812A28748 /* Pods_invention_studio_iosTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_invention_studio_iosTests.framework; path = "Pods-invention-studio-iosTests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
-		8061E67FA0DF14D6E9411BB96AF9268C /* TGPCamelLabels7.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = TGPCamelLabels7.m; path = TGPControls/TGPCamelLabels7.m; sourceTree = "<group>"; };
 		80C7D8500969B9CC6AA8F0EC2EBD660B /* Pods-invention-studio-ios-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-invention-studio-ios-resources.sh"; sourceTree = "<group>"; };
 		8487634903A15C8200F75D3FD1998B5D /* Pods-invention-studio-iosTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-invention-studio-iosTests.debug.xcconfig"; sourceTree = "<group>"; };
 		8AB62F95D09D3713E3EEE5EA86411C09 /* Pods-invention-studio-iosUITests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-invention-studio-iosUITests-resources.sh"; sourceTree = "<group>"; };
@@ -76,38 +65,40 @@
 		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		9414B3730C405DD1746DCDC9E9D0A5C8 /* Pods-invention-studio-iosUITests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-invention-studio-iosUITests-frameworks.sh"; sourceTree = "<group>"; };
 		97A08F4922996653E9F046C6532A2C84 /* Pods-invention-studio-ios.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-invention-studio-ios.release.xcconfig"; sourceTree = "<group>"; };
-		A3B4E8E6BD7EAC5D2C6B3CD0665324CA /* TGPCamelLabels.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = TGPCamelLabels.m; path = TGPControls/TGPCamelLabels.m; sourceTree = "<group>"; };
 		A5CD289B2AB3F8390FDEEEC159B71C2F /* Pods-invention-studio-iosTests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-invention-studio-iosTests-dummy.m"; sourceTree = "<group>"; };
 		A60BA347687AA288E659D2983C82DDA3 /* Pods-invention-studio-iosUITests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-invention-studio-iosUITests-dummy.m"; sourceTree = "<group>"; };
+		A642DE0F7275F5ABCFB0D228C010797A /* TGPCamelLabels.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TGPCamelLabels.swift; path = TGPControls/TGPCamelLabels.swift; sourceTree = "<group>"; };
 		A65782A2A4BD814A196BA8A8460200B0 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B56B641BB50C827F8CA58AEA7365424E /* Pods_invention_studio_ios.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_invention_studio_ios.framework; path = "Pods-invention-studio-ios.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B63C6A64CF66340668996F78DA6BB482 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		B91ABFDA1390899B83935F857739CAAC /* Pods-invention-studio-iosTests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-invention-studio-iosTests-umbrella.h"; sourceTree = "<group>"; };
 		C2ED9D3A0554EB19EF84A05B0DE7770F /* Pods-invention-studio-iosTests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-invention-studio-iosTests-frameworks.sh"; sourceTree = "<group>"; };
 		C44329DBCB73583FB8E7CE8415ED0F1D /* Pods-invention-studio-ios-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-invention-studio-ios-acknowledgements.plist"; sourceTree = "<group>"; };
-		CBF3925B69A83FB6352351FD101F5637 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CE6F25563BC68C8C3A7F058B94F350F9 /* Pods-invention-studio-iosTests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-invention-studio-iosTests.modulemap"; sourceTree = "<group>"; };
-		E079043B58286570BC7AA1167B342336 /* TGPControls-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "TGPControls-umbrella.h"; sourceTree = "<group>"; };
+		D88AAE1F92055A60CC2FC970D7D34634 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		DC4C6E9290C12DB9EE93598AB8978786 /* TGPControls-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "TGPControls-dummy.m"; sourceTree = "<group>"; };
 		EB26495916504E927380C20496922C66 /* Pods-invention-studio-iosTests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-invention-studio-iosTests-resources.sh"; sourceTree = "<group>"; };
 		EED9137453D5FC1FD495E0E643941452 /* Pods-invention-studio-iosTests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-invention-studio-iosTests-acknowledgements.markdown"; sourceTree = "<group>"; };
-		F203A5F6852B0762618336AA9261F412 /* TGPControls-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "TGPControls-dummy.m"; sourceTree = "<group>"; };
 		F745C5C4E738B6B33492B224B9588B33 /* Pods-invention-studio-ios-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-invention-studio-ios-umbrella.h"; sourceTree = "<group>"; };
+		FACCBA039314CCEC26C316742DBC353C /* TGPControls-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "TGPControls-umbrella.h"; sourceTree = "<group>"; };
 		FD812383A3BF7A99AC98AE493B04B79F /* Pods-invention-studio-ios-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-invention-studio-ios-dummy.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		316F309D2F0084D84C9A3F8C1B93D1A1 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				6F22164373C213A31770ADB57CA956F3 /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		CC3D8B36AEF5A13C84702766D6135762 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				543117041DCF0C427C4A19914296A3AE /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D85FA711AB26A04B2B0194F0E7F6111F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3420E76AF59E0B0C68174FD768FA8172 /* Foundation.framework in Frameworks */,
+				0CD8BF419EFF6C75AA8D15B5991087E5 /* UIKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -130,6 +121,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		130657FEEAEFBE28B9B91F596E1D6D84 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				7CBD4B2BDC68AADD682EC3CF522CC404 /* TGPControls */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		310E068C99245338D389D2992D5DD46E /* Pods-invention-studio-iosTests */ = {
 			isa = PBXGroup;
 			children = (
@@ -148,19 +147,44 @@
 			path = "Target Support Files/Pods-invention-studio-iosTests";
 			sourceTree = "<group>";
 		};
-		5DCDEDC5BA6E57DFFF0BA2E859157593 /* TGPControls */ = {
+		3CA1A0DED928A37104A0CEBF125AAF77 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				79543C0E9CBD46CB9928DD1DBC89BDD3 /* TGPCamelLabels.h */,
-				A3B4E8E6BD7EAC5D2C6B3CD0665324CA /* TGPCamelLabels.m */,
-				207DE441546E1073A4EB57D226DC7D1D /* TGPCamelLabels7.h */,
-				8061E67FA0DF14D6E9411BB96AF9268C /* TGPCamelLabels7.m */,
-				1ACE0565886240B40B7BF911D372C4FC /* TGPControlsTicksProtocol.h */,
-				7C4CC15A342F252A367DB1503F3BD2E6 /* TGPDiscreteSlider.h */,
-				2C5E4A6B809992FB54CE82C93FC39AEC /* TGPDiscreteSlider.m */,
-				5794F9A838A7F9D2C71524AA998E4C88 /* TGPDiscreteSlider7.h */,
-				54CAD384A191B2BD449355DD53923A4C /* TGPDiscreteSlider7.m */,
-				9926DF09F0C41BB5BF8542189BA9CE73 /* Support Files */,
+				1614B6FC6235CB9A08770D80E339C247 /* Info.plist */,
+				046A38FFC892CBEDE09BEC451938FAB8 /* TGPControls.modulemap */,
+				1D01C59417BF42B64DB71AD344815A2C /* TGPControls.xcconfig */,
+				DC4C6E9290C12DB9EE93598AB8978786 /* TGPControls-dummy.m */,
+				2547F4E7ADD002D0075B51346705B647 /* TGPControls-prefix.pch */,
+				FACCBA039314CCEC26C316742DBC353C /* TGPControls-umbrella.h */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/TGPControls";
+			sourceTree = "<group>";
+		};
+		433CD3331B6C3787F473C941B61FC68F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				438B396F6B4147076630CAEFE34282C1 /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		438B396F6B4147076630CAEFE34282C1 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				D88AAE1F92055A60CC2FC970D7D34634 /* Foundation.framework */,
+				B63C6A64CF66340668996F78DA6BB482 /* UIKit.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		7CBD4B2BDC68AADD682EC3CF522CC404 /* TGPControls */ = {
+			isa = PBXGroup;
+			children = (
+				A642DE0F7275F5ABCFB0D228C010797A /* TGPCamelLabels.swift */,
+				2AEE0B1A918A771A1C19E6537882D404 /* TGPControlsTicksProtocol.swift */,
+				2B933D23D1E8B793EFCA2C4E02142456 /* TGPDiscreteSlider.swift */,
+				3CA1A0DED928A37104A0CEBF125AAF77 /* Support Files */,
 			);
 			name = TGPControls;
 			path = TGPControls;
@@ -170,8 +194,8 @@
 			isa = PBXGroup;
 			children = (
 				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
-				BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */,
-				BE7D11CE8724C178589E234A7D710AD2 /* Pods */,
+				433CD3331B6C3787F473C941B61FC68F /* Frameworks */,
+				130657FEEAEFBE28B9B91F596E1D6D84 /* Pods */,
 				F98DDEB3655608CFDCEDC8B9A95BCBE0 /* Products */,
 				DE02E377D2BEB76099CB7642DA5CE704 /* Targets Support Files */,
 			);
@@ -193,44 +217,6 @@
 			);
 			name = "Pods-invention-studio-ios";
 			path = "Target Support Files/Pods-invention-studio-ios";
-			sourceTree = "<group>";
-		};
-		9926DF09F0C41BB5BF8542189BA9CE73 /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				CBF3925B69A83FB6352351FD101F5637 /* Info.plist */,
-				73C6BE167675F4334C0262589657B7A5 /* TGPControls.modulemap */,
-				4EB75DCBEA098C13291D3FF2C4A4A04B /* TGPControls.xcconfig */,
-				F203A5F6852B0762618336AA9261F412 /* TGPControls-dummy.m */,
-				5BF840378DDC33F80CEB1C9CC81BE0F6 /* TGPControls-prefix.pch */,
-				E079043B58286570BC7AA1167B342336 /* TGPControls-umbrella.h */,
-			);
-			name = "Support Files";
-			path = "../Target Support Files/TGPControls";
-			sourceTree = "<group>";
-		};
-		BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				D35AF013A5F0BAD4F32504907A52519E /* iOS */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		BE7D11CE8724C178589E234A7D710AD2 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				5DCDEDC5BA6E57DFFF0BA2E859157593 /* TGPControls */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
-		D35AF013A5F0BAD4F32504907A52519E /* iOS */ = {
-			isa = PBXGroup;
-			children = (
-				6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */,
-			);
-			name = iOS;
 			sourceTree = "<group>";
 		};
 		DC5804A6CAD9D52A4EF03DE3EE5FE995 /* Pods-invention-studio-iosUITests */ = {
@@ -283,16 +269,11 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		4B40696DF15F1E243028873BFF31ED80 /* Headers */ = {
+		3A34A6644B18767070E81C57FEE3AA62 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BC6FED26611E612600CA809521209C0C /* TGPCamelLabels.h in Headers */,
-				73D5AECFC7412DFED2579207061E6D97 /* TGPCamelLabels7.h in Headers */,
-				62CF295566CABF2663698BDBF41A841A /* TGPControls-umbrella.h in Headers */,
-				49CB27C606C970897148D2A80257E1AE /* TGPControlsTicksProtocol.h in Headers */,
-				2A5EEB7BCED1159F3EB795F11D8076C8 /* TGPDiscreteSlider.h in Headers */,
-				A1F10E71019C72D48BCC550D82C7A44B /* TGPDiscreteSlider7.h in Headers */,
+				6BAAA7D01FE3F4BB9EDDE4B0797B396D /* TGPControls-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -319,9 +300,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5EFC15B9DE780244BC006597683FAB64 /* Build configuration list for PBXNativeTarget "TGPControls" */;
 			buildPhases = (
-				630275EA58907A9C6AE0C8AA0AD88CC3 /* Sources */,
-				316F309D2F0084D84C9A3F8C1B93D1A1 /* Frameworks */,
-				4B40696DF15F1E243028873BFF31ED80 /* Headers */,
+				9E789D06FEBCABB051DB5134812C276D /* Sources */,
+				D85FA711AB26A04B2B0194F0E7F6111F /* Frameworks */,
+				3A34A6644B18767070E81C57FEE3AA62 /* Headers */,
 			);
 			buildRules = (
 			);
@@ -430,23 +411,22 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		630275EA58907A9C6AE0C8AA0AD88CC3 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				C94B4C0C081BCDF4ECF93A8FB5634762 /* TGPCamelLabels.m in Sources */,
-				EAC3598A701D3C401474324B5D2DC05A /* TGPCamelLabels7.m in Sources */,
-				E05E1DD2F2F9FC1B4B8619A799695172 /* TGPControls-dummy.m in Sources */,
-				721B5D98C873E8503A78D0C8173FFFC2 /* TGPDiscreteSlider.m in Sources */,
-				68D5371C35103B00336DA7F462C466EF /* TGPDiscreteSlider7.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		970559997B8EBC92A1F4B8D9DC3B3717 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				B81CDDA454C7622DCAB8E2385B012F5C /* Pods-invention-studio-ios-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9E789D06FEBCABB051DB5134812C276D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1FDD4B384362603F9B50CAAFEE72A4F4 /* TGPCamelLabels.swift in Sources */,
+				7F5AE05512FD8B6A25155C54B567CC07 /* TGPControls-dummy.m in Sources */,
+				BF72498B06AFF8B156FACB44A414A3AD /* TGPControlsTicksProtocol.swift in Sources */,
+				1A77724CF25069151339D59C9FD7036E /* TGPDiscreteSlider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -462,6 +442,40 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		03F18827EA6F9F2C592D87B8FD1D1138 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 626431D7033BB496410AAF677B56F0D0 /* Pods-invention-studio-ios.debug.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-invention-studio-ios/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-invention-studio-ios/Pods-invention-studio-ios.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_invention_studio_ios;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
 		12C4B864767C59600DBFA238F1E2F8BC /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -543,6 +557,71 @@
 				PRODUCT_NAME = Pods_invention_studio_iosTests;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		347DB0F782CD447E52C9ABFA9E809B98 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1D01C59417BF42B64DB71AD344815A2C /* TGPControls.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/TGPControls/TGPControls-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/TGPControls/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/TGPControls/TGPControls.modulemap";
+				PRODUCT_NAME = TGPControls;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		3E5CEB9F42CCB3300969413DC1ECC767 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 97A08F4922996653E9F046C6532A2C84 /* Pods-invention-studio-ios.release.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-invention-studio-ios/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-invention-studio-ios/Pods-invention-studio-ios.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_invention_studio_ios;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -675,74 +754,9 @@
 			};
 			name = Debug;
 		};
-		C95658561A9CE4FFCD53AAB42770EE98 /* Release */ = {
+		DF4810990B089284089C6587893D82DC /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 97A08F4922996653E9F046C6532A2C84 /* Pods-invention-studio-ios.release.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-invention-studio-ios/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-invention-studio-ios/Pods-invention-studio-ios.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = Pods_invention_studio_ios;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		C9977F3225B645BF47BE4CCB891B59B3 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 626431D7033BB496410AAF677B56F0D0 /* Pods-invention-studio-ios.debug.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-invention-studio-ios/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-invention-studio-ios/Pods-invention-studio-ios.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = Pods_invention_studio_ios;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		DD1C87CE113CAE4C1364BED4980C22B9 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4EB75DCBEA098C13291D3FF2C4A4A04B /* TGPControls.xcconfig */;
+			baseConfigurationReference = 1D01C59417BF42B64DB71AD344815A2C /* TGPControls.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -763,36 +777,7 @@
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		E72724424B879CF6D6EBF1313B7D0163 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4EB75DCBEA098C13291D3FF2C4A4A04B /* TGPControls.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/TGPControls/TGPControls-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/TGPControls/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/TGPControls/TGPControls.modulemap";
-				PRODUCT_NAME = TGPControls;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -866,8 +851,8 @@
 		5EFC15B9DE780244BC006597683FAB64 /* Build configuration list for PBXNativeTarget "TGPControls" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				DD1C87CE113CAE4C1364BED4980C22B9 /* Debug */,
-				E72724424B879CF6D6EBF1313B7D0163 /* Release */,
+				347DB0F782CD447E52C9ABFA9E809B98 /* Debug */,
+				DF4810990B089284089C6587893D82DC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -875,8 +860,8 @@
 		F1AC4A48C3C20B2E9EF5834DD139B5DE /* Build configuration list for PBXNativeTarget "Pods-invention-studio-ios" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				C9977F3225B645BF47BE4CCB891B59B3 /* Debug */,
-				C95658561A9CE4FFCD53AAB42770EE98 /* Release */,
+				03F18827EA6F9F2C592D87B8FD1D1138 /* Debug */,
+				3E5CEB9F42CCB3300969413DC1ECC767 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

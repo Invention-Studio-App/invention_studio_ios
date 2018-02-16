@@ -40,8 +40,9 @@ class EquipmentVC: UIViewController, UITableViewDataSource, UITableViewDelegate,
 
     var name = "Nick Rupert"
     var pickerValues = ["Problem": ["Nozzle Not Extruding", "Bed Shifted"]]
+    var tool:Tool!
 
-    private var _status: Tool.Status = Tool.Status.AVAILABLE
+    private var _status: Tool.Status = Tool.Status.UNKNOWN
     var status: Tool.Status {
         get {
             return _status
@@ -71,7 +72,7 @@ class EquipmentVC: UIViewController, UITableViewDataSource, UITableViewDelegate,
         /**
          ** General Setup
          **/
-        status = Tool.Status.AVAILABLE
+        status = tool.status()
 
         /**
          ** Set Up Segment Controller
@@ -126,8 +127,7 @@ class EquipmentVC: UIViewController, UITableViewDataSource, UITableViewDelegate,
         informationTextView.backgroundColor = UIColor.clear
         informationTextView.textColor = UIColor(named: "IS_Text")
         informationTextView.font = UIFont.systemFont(ofSize: 16)
-        //TODO: Use dynamic text
-        informationTextView.text = "Is this the real life? Is this just fantasy? Caught in a landslide, no escape from reality. Open your eyes, look up to the skies and see... I'm just a poor boy, I need no sympathy. Because I'm easy come, easy go. Little high, little low. Everywhere the wind blows doesn't really matter to me. To me..."
+        informationTextView.text = tool.toolDescription
         let informationTextViewSize = informationTextView.sizeThatFits(CGSize(width: view.frame.width - 16, height: CGFloat.greatestFiniteMagnitude))
         informationTextView.frame = CGRect(x: 8, y: statusTitleLabel.frame.maxY + 8, width: view.frame.width - 16, height: informationTextViewSize.height)
         informationScrollView.addSubview(informationTextView)
