@@ -36,26 +36,6 @@ class Tool: Codable {
     var toolInUseSince: Date
     var toolIsOperational: Bool
 
-    //Used when variable name diverges from JSON Key
-    private enum CodingKeys: String, CodingKey {
-        case equipmentGroupId
-        case locationId
-        case toolId
-        case currentUserUserName = "CurrentUserUserName"
-        case equipmentGroupDescription = "equipmentGroupdescription"
-        case equipmentGroupName
-        case locationAddress
-        case locationManager
-        case locationName
-        case locationUrl
-        case toolCurrentUser
-        case toolDescription
-        case toolName
-        case locationPhone
-        case toolInUseSince
-        case toolIsOperational
-    }
-
     //Automatically calculates machine's status based on given data
     func status() -> Status {
         if !toolIsOperational {

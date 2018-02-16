@@ -17,15 +17,6 @@ class UserInfo: Codable {
     var userName: String
     var userUserName: String
 
-    private enum CodingKeys: String, CodingKey {
-        case equipmentGroupId
-        case templateId
-        case equipmentGroupName
-        case templateName
-        case userName
-        case userUserName
-    }
-
     func isInventionStudio() -> Bool {
         if equipmentGroupName == "Invention Studio at Georgia Tech" || equipmentGroupName == "Georgia Tech Invention Studio" {
             return true

@@ -13,19 +13,9 @@ class QueueUser: Codable {
     var queueGroupId: Int
     var memberName: String
     var memberUserName: String
-    var name: String
+    var queueName: String
     var hasBeenNotified: Bool
     var memberMinutesRemaining: Int
     var memberQueueLocation: Int
 
-    //Used when variable name diverges from JSON Key
-    private enum CodingKeys: String, CodingKey {
-        case queueGroupId
-        case memberName
-        case memberUserName
-        case name
-        case hasBeenNotified
-        case memberMinutesRemaining
-        case memberQueueLocation
-    }
 }

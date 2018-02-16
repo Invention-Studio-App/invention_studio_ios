@@ -14,10 +14,4 @@ class QueueGroup: Codable {
     var id: Int
     var isGroup: Bool
 
-    //Used when variable name diverges from JSON Key
-    private enum CodingKeys: String, CodingKey {
-        case name = "Name"
-        case id = "ID"
-        case isGroup
-    }
 }
