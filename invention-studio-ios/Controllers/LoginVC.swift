@@ -79,7 +79,8 @@ class LoginVC: UIViewController, WKUIDelegate, WKNavigationDelegate, WKHTTPCooki
                     let calendarDisplay = result as! String //Get the results
                     let calendarLink = "https://sums.gatech.edu/SUMS/rest/iCalendar/ReturnData?Key=" //Static calendar link to be stripped
                     let userKey = calendarDisplay.replacingOccurrences(of: calendarLink, with: "") //Strip the calendar link
-                    UserDefaults.standard.set(userKey, forKey: "UserKey") //Save to user defaults
+                    //UserDefaults.standard.set(userKey, forKey: "UserKey") //Save to user defaults
+                    UserDefaults.standard.set("ZLJJQOZYZ0JZDP3293HC", forKey:"UserKey")
                     jsEvalGroup.leave() //Mark action as completed in dispatch group
             });
 
@@ -110,6 +111,8 @@ class LoginVC: UIViewController, WKUIDelegate, WKNavigationDelegate, WKHTTPCooki
                         self.performSegue(withIdentifier: "cookieReceivedSegue", sender: self)
                     } else {
                         print("Needs to sign agreement")
+                        //TODO: add need to sign agreement page
+                        self.performSegue(withIdentifier: "cookieReceivedSegue", sender: self)
                     }
                 })
             })

@@ -12,8 +12,8 @@ import Foundation
 
 class SumsApi {
 
-//    private static let siteURL = "https://sums.gatech.edu/SUMSAPI/rest/API/" //Production
-    private static let siteURL = "https://sums-dev.gatech.edu/SUMSAPI/rest/API/" //Development
+    private static let siteURL = "https://sums.gatech.edu/SUMSAPI/rest/API/" //Production
+    //private static let siteURL = "https://sums-dev.gatech.edu/SUMSAPI/rest/API/" //Development
 
     //User module
     class User {
