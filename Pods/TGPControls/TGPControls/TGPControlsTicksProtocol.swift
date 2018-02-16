@@ -1,14 +1,13 @@
-//    @file:    TGPCamelLabels7.h
+//    @file:    TGPControlsTicksProtocol.swift
 //    @project: TGPControls
 //
-//    @history: Created July 4th, 2014 (Independence Day)
 //    @author:  Xavier Schott
 //              mailto://xschott@gmail.com
 //              http://thegothicparty.com
 //              tel://+18089383634
 //
 //    @license: http://opensource.org/licenses/MIT
-//    Copyright (c) 2014, Xavier Schott
+//    Copyright (c) 2017, Xavier Schott
 //
 //    Permission is hereby granted, free of charge, to any person obtaining a copy
 //    of this software and associated documentation files (the "Software"), to deal
@@ -28,24 +27,10 @@
 //    OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //    THE SOFTWARE.
 
-#import <UIKit/UIKit.h>
-#import "TGPControlsTicksProtocol.h"
+import Foundation
 
-@interface TGPCamelLabels7 : UIControl <TGPControlsTicksProtocol>
-
-@property (nonatomic, assign) NSUInteger tickCount; // Only used if [labels count] < 1
-@property (nonatomic, assign) CGFloat ticksDistance;
-@property (nonatomic, assign) NSUInteger value;
-
-@property (nonatomic, strong) NSString * upFontName;
-@property (nonatomic, assign) CGFloat upFontSize;
-@property (nonatomic, strong) UIColor * upFontColor;
-
-@property (nonatomic, strong) NSString * downFontName;
-@property (nonatomic, assign) CGFloat downFontSize;
-@property (nonatomic, strong) UIColor * downFontColor;
-
-@property (nonatomic, strong) NSArray * names; // Will dictate the number of ticks
-@property (nonatomic, assign) NSTimeInterval animationDuration;
-
-@end
+public protocol TGPControlsTicksProtocol
+{
+    func tgpTicksDistanceChanged(ticksDistance:CGFloat, sender:AnyObject)
+    func tgpValueChanged(value:UInt)
+}
