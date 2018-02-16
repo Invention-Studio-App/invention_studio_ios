@@ -91,7 +91,7 @@ class LoginVC: UIViewController, WKUIDelegate, WKNavigationDelegate, WKHTTPCooki
 
                 apiEvalGroup.enter()
                 //Asynchronus, will return and continue before completionHandler is called
-                API.User.Info(completion: { results in
+                SumsApi.User.Info(completion: { results in
                     for u in results {
                         //Check all of the user's tool groups
                         if u.isInventionStudio() {

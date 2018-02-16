@@ -1,5 +1,5 @@
 //
-//  API.swift
+//  SumsApi.swift
 //  invention-studio-ios
 //
 //  Created by Nick's Creative Studio on 2/9/18.
@@ -10,7 +10,7 @@
 
 import Foundation
 
-class API {
+class SumsApi {
 
 //    private static let siteURL = "https://sums.gatech.edu/SUMSAPI/rest/API/" //Production
     private static let siteURL = "https://sums-dev.gatech.edu/SUMSAPI/rest/API/" //Development
@@ -21,7 +21,7 @@ class API {
         //Info request
         //Returns a flattened array of user info and their associated equipment groups
         static func Info(completion: @escaping ([UserInfo]) -> ()) {
-            API.submitRequest(module: "user_info", parameters: nil, completion: { data in
+            SumsApi.submitRequest(module: "user_info", parameters: nil, completion: { data in
                 //Automatically decode response into a JSON array
                 let responseArray = try! JSONDecoder().decode([UserInfo].self, from: data)
                 //"Return" the data to the caller's completion handler
@@ -39,7 +39,7 @@ class API {
         static func Tools(completion: @escaping ([Tool]) -> ()) {
             let departmentId = UserDefaults.standard.integer(forKey: "DepartmentId")
             let parameters = ["DepartmentId": "\(departmentId)"]
-            API.submitRequest(module: "equipmentGroup_tools", parameters: parameters, completion: { data in
+            SumsApi.submitRequest(module: "equipmentGroup_tools", parameters: parameters, completion: { data in
                 //Automatically decode response into a JSON array
                 let decoder = JSONDecoder()
                 //Use the custom date decoder defined below to decode two possible date formats
@@ -55,7 +55,7 @@ class API {
         static func QueueGroups(completion: @escaping ([QueueGroup]) -> ()) {
             let departmentId = UserDefaults.standard.integer(forKey: "DepartmentId")
             let parameters = ["DepartmentId": "\(departmentId)"]
-            API.submitRequest(module: "equipmentGroup_queueGroups", parameters: parameters, completion: { data in
+            SumsApi.submitRequest(module: "equipmentGroup_queueGroups", parameters: parameters, completion: { data in
                 //Automatically decode response into a JSON array
                 let responseArray = try! JSONDecoder().decode([QueueGroup].self, from: data)
                 //"Return" the data to the caller's completion handler
@@ -68,7 +68,7 @@ class API {
         static func QueueUsers(completion: @escaping ([QueueUser]) -> ()) {
             let departmentId = UserDefaults.standard.integer(forKey: "DepartmentId")
             let parameters = ["DepartmentId": "\(departmentId)"]
-            API.submitRequest(module: "equipmentGroup_queueUsers", parameters: parameters, completion: { data in
+            SumsApi.submitRequest(module: "equipmentGroup_queueUsers", parameters: parameters, completion: { data in
                 //Automatically decode response into a JSON array
                 let decoder = JSONDecoder()
                 //Use the custom date decoder defined below to decode two possible date formats

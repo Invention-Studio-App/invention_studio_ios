@@ -37,7 +37,7 @@
 		B2D5D7BC201AEB3E00CFCCB1 /* EquipmentGroupTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2D5D7BB201AEB3E00CFCCB1 /* EquipmentGroupTVC.swift */; };
 		B2D5D7BE201BC40F00CFCCB1 /* EquipmentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2D5D7BD201BC40F00CFCCB1 /* EquipmentCell.swift */; };
 		B2D5D7C0201BDFD500CFCCB1 /* EquipmentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2D5D7BF201BDFD500CFCCB1 /* EquipmentVC.swift */; };
-		B2E253B9202E399C00C322AA /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2E253B8202E399C00C322AA /* API.swift */; };
+		B2E253B9202E399C00C322AA /* SumsApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2E253B8202E399C00C322AA /* SumsApi.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -98,7 +98,7 @@
 		B2D5D7BB201AEB3E00CFCCB1 /* EquipmentGroupTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EquipmentGroupTVC.swift; sourceTree = "<group>"; };
 		B2D5D7BD201BC40F00CFCCB1 /* EquipmentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EquipmentCell.swift; sourceTree = "<group>"; };
 		B2D5D7BF201BDFD500CFCCB1 /* EquipmentVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EquipmentVC.swift; sourceTree = "<group>"; };
-		B2E253B8202E399C00C322AA /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		B2E253B8202E399C00C322AA /* SumsApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SumsApi.swift; sourceTree = "<group>"; };
 		B494CC3C1F74175E510D18E1 /* Pods-invention-studio-iosTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-invention-studio-iosTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-invention-studio-iosTests/Pods-invention-studio-iosTests.debug.xcconfig"; sourceTree = "<group>"; };
 		DF0ACA6C6D3B11CF43E6BEE2 /* Pods_invention_studio_iosTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_invention_studio_iosTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -186,13 +186,13 @@
 		B2A3A82A201C0D4C00F3AF7F /* API */ = {
 			isa = PBXGroup;
 			children = (
-				B2E253B8202E399C00C322AA /* API.swift */,
-				B2A3A82B201C0D8600F3AF7F /* Model */,
+				B2E253B8202E399C00C322AA /* SumsApi.swift */,
+				B2A3A82B201C0D8600F3AF7F /* Sums Models */,
 			);
 			path = API;
 			sourceTree = "<group>";
 		};
-		B2A3A82B201C0D8600F3AF7F /* Model */ = {
+		B2A3A82B201C0D8600F3AF7F /* Sums Models */ = {
 			isa = PBXGroup;
 			children = (
 				B2A3A82C201C0EB600F3AF7F /* Tool.swift */,
@@ -200,7 +200,7 @@
 				B254C5B22036335900D6A2B4 /* QueueUser.swift */,
 				B254C5B4203633F800D6A2B4 /* UserInfo.swift */,
 			);
-			path = Model;
+			path = "Sums Models";
 			sourceTree = "<group>";
 		};
 		B2D384871FBA383C00D91650 = {
@@ -560,7 +560,7 @@
 				B2D3849C1FBA383C00D91650 /* invention_studio_ios.xcdatamodeld in Sources */,
 				B2A3A82F201C1B1400F3AF7F /* QueuesTVC.swift in Sources */,
 				B233FFCA20216E9E0024A5C6 /* FeedbackRatingCell.swift in Sources */,
-				B2E253B9202E399C00C322AA /* API.swift in Sources */,
+				B2E253B9202E399C00C322AA /* SumsApi.swift in Sources */,
 				B233FFC420216DFD0024A5C6 /* FeedbackNameCell.swift in Sources */,
 				B233FFC820216E720024A5C6 /* FeedbackPickerDropdownCell.swift in Sources */,
 				B233FFC620216E5C0024A5C6 /* FeedbackPickerHeaderCell.swift in Sources */,
