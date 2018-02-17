@@ -128,6 +128,7 @@ class EquipmentVC: UIViewController, UITableViewDataSource, UITableViewDelegate,
         informationTextView.textColor = UIColor(named: "IS_Text")
         informationTextView.font = UIFont.systemFont(ofSize: 16)
         informationTextView.text = tool.toolDescription
+        //informationTextView.text = tool.toolDescription.html2String
         let informationTextViewSize = informationTextView.sizeThatFits(CGSize(width: view.frame.width - 16, height: CGFloat.greatestFiniteMagnitude))
         informationTextView.frame = CGRect(x: 8, y: statusTitleLabel.frame.maxY + 8, width: view.frame.width - 16, height: informationTextViewSize.height)
         informationScrollView.addSubview(informationTextView)
@@ -332,6 +333,8 @@ class EquipmentVC: UIViewController, UITableViewDataSource, UITableViewDelegate,
             reportProblemTableView.contentOffset = CGPoint(x: 0, y:keyboardSize.height)
         }
     }
+    
+    
 
     /*
      // MARK: - Navigation
@@ -344,4 +347,30 @@ class EquipmentVC: UIViewController, UITableViewDataSource, UITableViewDelegate,
      */
 
 }
+
+// Extension add the ability to conver the string descriptions to attributed strings and html
+/*
+extension Data {
+    var html2AttributedString: NSAttributedString? {
+        do {
+            return try NSAttributedString(data: self, options: [.documentType: NSAttributedString.DocumentType.html, .characterEncoding: String.Encoding.utf8.rawValue], documentAttributes: nil)
+        } catch {
+            print("error:", error)
+            return  nil
+        }
+    }
+    var html2String: String {
+        return html2AttributedString?.string ?? ""
+    }
+}
+
+extension String {
+    var html2AttributedString: NSAttributedString? {
+        return Data(utf8).html2AttributedString
+    }
+    var html2String: String {
+        return html2AttributedString?.string ?? ""
+    }
+}
+ */
 

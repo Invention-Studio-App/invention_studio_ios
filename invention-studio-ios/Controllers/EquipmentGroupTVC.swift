@@ -15,6 +15,13 @@ class EquipmentGroupTVC: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        tools.sort(by: { (toolA, toolB) in
+            if (toolA.status().hashValue == toolB.status().hashValue) {
+                return toolA.toolName <= toolB.toolName
+            }
+            return toolA.status().hashValue <= toolB.status().hashValue
+        })
 
         /**
          ** Set Up TableView Header
@@ -41,7 +48,8 @@ class EquipmentGroupTVC: UITableViewController {
         headerTextView.textColor = UIColor(named: "IS_Text")
         headerTextView.font = UIFont.systemFont(ofSize: 16)
         //TODO: Use dynamic text
-        headerTextView.text = "Is this the real life? Is this just fantasy? Caught in a landslide, no escape from reality. Open your eyes, look up to the skies and see... I'm just a poor boy, I need no sympathy. Because I'm easy come, easy go. Little high, little low. Everywhere the wind blows doesn't really matter to me. To me..."
+        //headerTextView.text = "Is this the real life? Is this just fantasy? Caught in a landslide, no escape from reality. Open your eyes, look up to the skies and see... I'm just a poor boy, I need no sympathy. Because I'm easy come, easy go. Little high, little low. Everywhere the wind blows doesn't really matter to me. To me..."
+        headerTextView.text = tools[0].locationName
         let headerTextViewSize = headerTextView.sizeThatFits(CGSize(width: view.frame.width - 16, height: CGFloat.greatestFiniteMagnitude))
         headerTextView.frame = CGRect(x: 8, y: headerImageView.frame.maxY + 8, width: view.frame.width - 16, height: headerTextViewSize.height)
         headerView.addSubview(headerTextView)
