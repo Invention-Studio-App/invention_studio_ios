@@ -40,7 +40,7 @@ class Tool: Codable {
     func status() -> Status {
         if !toolIsOperational {
             return Status.DOWN
-        } else if toolInUseSince != Date(timeIntervalSince1970: 0) {
+        } else if currentUserUserName != "" {
             return Status.INUSE
         } else {
             return Status.AVAILABLE
