@@ -12,15 +12,46 @@ class QueuesTVC: UITableViewController {
 
     let items = ["3D Printers", "Laser Cutters", "Waterjet"]
     var selectedSection: Int? = nil
+    var groups = [String]()
+    var users = [QueueUser]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.refreshQueues(self)
+        
+        
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
+    }
+    
+    @IBAction func refreshQueues(_ sender: Any) {
+        SumsApi.EquipmentGroup.QueueGroups(completion: { (groups) in
+            var gs = [String]()
+            for group in groups {
+                if group.isGroup {
+                    if (!(gs.contains(group.name))) {
+                        gs.append(group.name)
+                    }
+                }
+            }
+            gs.sort()
+            self.groups = gs
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        })
+        
+        SumsApi.EquipmentGroup.QueueUsers(completion: { (users) in
+            self.users = users
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        })
     }
 
     override func didReceiveMemoryWarning() {
@@ -31,22 +62,27 @@ class QueuesTVC: UITableViewController {
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return items.count + 1
+        return self.groups.count
+        
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        switch section {
-        case 0:
-            return 0
-        default:
-            return 5
+        var count = 2
+        for user in users {
+            if (user.queueName == self.groups[section]) {
+                count += 1
+            }
         }
+        if (count > 2) {
+            count -= 1
+        }
+        return count
     }
 
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         switch section {
         case 0:
-            return "To join a queue, head  to the SUMS kiosk for the room you're interested in"
+            return "To join a queue, head to the SUMS kiosk for the room you're interested in"
         default:
             return nil
         }
@@ -73,12 +109,30 @@ class QueuesTVC: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "queuesPrototype", for: indexPath)
         if indexPath.row == 0 {
-            cell.textLabel?.text = items[indexPath.section - 1]
-            cell.textLabel?.font = UIFont.boldSystemFont(ofSize: 18)
+            cell.textLabel?.text = self.groups[indexPath.section]
+            cell.textLabel?.font = UIFont.boldSystemFont(ofSize: 20)
             cell.textLabel?.textColor = UIColor(named: "IS_Title")
         } else {
-            cell.textLabel?.text = String(format: "%d. Jane Doe", indexPath.row)
-            cell.textLabel?.font = UIFont.systemFont(ofSize: 17)
+            var u = [QueueUser]()
+            for user in self.users {
+                if (user.queueName == self.groups[indexPath.section]) {
+                    u.append(user)
+                }
+            }
+            u.sort(by: { (userA, userB) in
+                return userA.memberQueueLocation <= userB.memberQueueLocation
+            })
+            cell.textLabel?.font = UIFont.systemFont(ofSize: 16)
+            // No users in the queue
+            if (u.count == 0) {
+                cell.textLabel?.text = "No users in queue"
+            } else {
+                cell.textLabel?.text = String(format: "%d. %@", u[indexPath.row - 1].memberQueueLocation, u[indexPath.row - 1].memberName)
+                // If the current user, bold the text
+                if (u[indexPath.row - 1].memberUserName == UserDefaults.standard.string(forKey: "Username")!) {
+                    cell.textLabel?.font = UIFont.boldSystemFont(ofSize: 16)
+                }
+            }
             cell.textLabel?.textColor = UIColor(named: "IS_Title")
         }
 
