@@ -71,6 +71,7 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Equipment" id="ofD-9C-LWm"/>
                     <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="Uf1-6U-ZCN">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <connections>
                             <action selector="refresh:" destination="81I-6R-rVT" eventType="valueChanged" id="KUz-iP-yHl"/>
@@ -161,6 +162,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <connections>
                             <action selector="refresh:" destination="tWF-7Y-t6t" eventType="valueChanged" id="pPU-7T-sna"/>
+                            <action selector="refreshQueues:" destination="tWF-7Y-t6t" eventType="valueChanged" id="Kvz-4B-D79"/>
                         </connections>
                     </refreshControl>
                 </tableViewController>
@@ -777,11 +779,111 @@
                     </view>
                     <connections>
                         <segue destination="FCz-Is-acD" kind="presentation" identifier="cookieReceivedSegue" id="xX8-5t-its"/>
+                        <segue destination="BCU-x0-vSW" kind="show" identifier="safetyAgreementSegue" id="YrC-c8-MsK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FMt-JZ-Jsv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2038" y="105"/>
+        </scene>
+        <!--AgreementVC-->
+        <scene sceneID="wFd-X8-N2c">
+            <objects>
+                <viewController id="BCU-x0-vSW" customClass="AgreementVC" customModule="invention_studio_ios" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="1O1-dq-n4H">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" editable="NO" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vcM-eL-qAb">
+                                <rect key="frame" x="16" y="20" width="343" height="516"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <attributedString key="attributedText">
+                                    <fragment>
+                                        <string key="content">Hmm…
+Looks like you are not in our system.
+
+
+1. Find one of the kiosks in the Invention Studio.
+
+</string>
+                                        <attributes>
+                                            <color key="NSColor" name="IS_Text"/>
+                                            <font key="NSFont" size="14" name="Helvetica"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content="Not sure where?">
+                                        <attributes>
+                                            <color key="NSColor" name="IS_Text"/>
+                                            <font key="NSFont" size="14" name="Helvetica-Bold"/>
+                                            <font key="NSOriginalFont" size="14" name="Helvetica-Bold"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment>
+                                        <string key="content"> Kiosks are available in MRDC rooms 1001, 1002, 1003.
+
+</string>
+                                        <attributes>
+                                            <color key="NSColor" name="IS_Text"/>
+                                            <font key="NSFont" size="14" name="Helvetica"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content="For more info">
+                                        <attributes>
+                                            <color key="NSColor" name="IS_Text"/>
+                                            <font key="NSFont" size="14" name="Helvetica-Bold"/>
+                                            <font key="NSOriginalFont" size="14" name="Helvetica-Bold"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment>
+                                        <string key="content"> ask any Prototyping Instructor (PI), who are in the studio wearing GREEN arm bands.
+
+
+2. Tap your Buzzcard and sign the safety agreement by tapping "Take Test."
+
+
+3. Click the "Agreement Signed" button below. 
+</string>
+                                        <attributes>
+                                            <color key="NSColor" name="IS_Text"/>
+                                            <font key="NSFont" size="14" name="Helvetica"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q4Z-wA-htS">
+                                <rect key="frame" x="16" y="607" width="343" height="30"/>
+                                <state key="normal" title="Agreement Signed"/>
+                                <connections>
+                                    <action selector="agreementSigned:" destination="BCU-x0-vSW" eventType="touchUpInside" id="do8-Hl-OUs"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" name="IS_Background"/>
+                        <color key="tintColor" name="IS_AccentPrimary"/>
+                        <constraints>
+                            <constraint firstItem="vcM-eL-qAb" firstAttribute="top" secondItem="Iqj-j9-RZc" secondAttribute="top" id="1cZ-W3-vaU"/>
+                            <constraint firstItem="Iqj-j9-RZc" firstAttribute="trailing" secondItem="vcM-eL-qAb" secondAttribute="trailing" constant="16" id="5tV-aa-S3X"/>
+                            <constraint firstItem="Iqj-j9-RZc" firstAttribute="trailing" secondItem="q4Z-wA-htS" secondAttribute="trailing" constant="16" id="ETZ-3W-tjM"/>
+                            <constraint firstItem="vcM-eL-qAb" firstAttribute="leading" secondItem="Iqj-j9-RZc" secondAttribute="leading" constant="16" id="KnD-YD-dP3"/>
+                            <constraint firstItem="Iqj-j9-RZc" firstAttribute="bottom" secondItem="vcM-eL-qAb" secondAttribute="bottom" constant="20" id="WiG-e0-Alt"/>
+                            <constraint firstItem="q4Z-wA-htS" firstAttribute="leading" secondItem="Iqj-j9-RZc" secondAttribute="leading" constant="16" id="dA9-zT-5vx"/>
+                            <constraint firstItem="Iqj-j9-RZc" firstAttribute="bottom" secondItem="q4Z-wA-htS" secondAttribute="bottom" constant="30" id="wyz-pX-WiU"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Iqj-j9-RZc"/>
+                    </view>
+                    <connections>
+                        <segue destination="FCz-Is-acD" kind="presentation" identifier="agreementSignedSegue" id="jlu-yE-rRx"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tOB-Za-K23" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2997.5999999999999" y="104.7976011994003"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="q9w-or-bAd">
@@ -829,7 +931,8 @@
                     <navigationItem key="navigationItem" title="Invention Studio" id="msf-ZK-FVb">
                         <barButtonItem key="rightBarButtonItem" title="Login" id="Zwq-kV-68f">
                             <connections>
-                                <segue destination="Zy1-F1-7B9" kind="showDetail" action="showViewController:sender:" id="hZZ-xe-BNj"/>
+                                <action selector="logIn:" destination="rO1-qZ-nzB" id="1Wp-ve-BYz"/>
+                                <segue destination="Zy1-F1-7B9" kind="show" id="t9r-Ln-o8m"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -872,5 +975,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="TEf-nP-AS4"/>
+        <segue reference="xX8-5t-its"/>
     </inferredMetricsTieBreakers>
 </document>

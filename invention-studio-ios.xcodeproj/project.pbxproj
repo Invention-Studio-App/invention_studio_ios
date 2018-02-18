@@ -14,6 +14,7 @@
 		4F8FB693201547DB00DBCD35 /* LandingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F8FB692201547DB00DBCD35 /* LandingVC.swift */; };
 		4F8FB69520154C7F00DBCD35 /* DefaultColorTheme.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F8FB69420154C7F00DBCD35 /* DefaultColorTheme.xcassets */; };
 		4FC7717F2017D068008A13D9 /* EquipmentGroupListTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FC7717E2017D068008A13D9 /* EquipmentGroupListTVC.swift */; };
+		4FDBD2A1203A17F30034173E /* AgreementVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FDBD2A0203A17F30034173E /* AgreementVC.swift */; };
 		93B4A7E4809E293F4650C3DB /* Pods_invention_studio_iosUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 225D7FB4887E2F08CF0BAAC4 /* Pods_invention_studio_iosUITests.framework */; };
 		B233FFC420216DFD0024A5C6 /* FeedbackNameCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B233FFC320216DFD0024A5C6 /* FeedbackNameCell.swift */; };
 		B233FFC620216E5C0024A5C6 /* FeedbackPickerHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B233FFC520216E5C0024A5C6 /* FeedbackPickerHeaderCell.swift */; };
@@ -68,6 +69,7 @@
 		4F8FB692201547DB00DBCD35 /* LandingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingVC.swift; sourceTree = "<group>"; };
 		4F8FB69420154C7F00DBCD35 /* DefaultColorTheme.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = DefaultColorTheme.xcassets; sourceTree = "<group>"; };
 		4FC7717E2017D068008A13D9 /* EquipmentGroupListTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EquipmentGroupListTVC.swift; sourceTree = "<group>"; };
+		4FDBD2A0203A17F30034173E /* AgreementVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgreementVC.swift; sourceTree = "<group>"; };
 		5CD21A0AFD35E1BE8BFF581B /* Pods_invention_studio_ios.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_invention_studio_ios.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		62DCFEF488633AA8D11B1636 /* Pods-invention-studio-ios.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-invention-studio-ios.debug.xcconfig"; path = "Pods/Target Support Files/Pods-invention-studio-ios/Pods-invention-studio-ios.debug.xcconfig"; sourceTree = "<group>"; };
 		B233FFC320216DFD0024A5C6 /* FeedbackNameCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackNameCell.swift; sourceTree = "<group>"; };
@@ -160,6 +162,7 @@
 				4F4932412017B79B0093CCFA /* TabBarController.swift */,
 				4F8FB692201547DB00DBCD35 /* LandingVC.swift */,
 				4F46B06820164CD400D5B3E9 /* LoginVC.swift */,
+				4FDBD2A0203A17F30034173E /* AgreementVC.swift */,
 				4FC7717E2017D068008A13D9 /* EquipmentGroupListTVC.swift */,
 				B2D5D7BB201AEB3E00CFCCB1 /* EquipmentGroupTVC.swift */,
 				B2D5D7BF201BDFD500CFCCB1 /* EquipmentVC.swift */,
@@ -559,6 +562,7 @@
 				B2D384941FBA383C00D91650 /* AppDelegate.swift in Sources */,
 				B2D3849C1FBA383C00D91650 /* invention_studio_ios.xcdatamodeld in Sources */,
 				B2A3A82F201C1B1400F3AF7F /* QueuesTVC.swift in Sources */,
+				4FDBD2A1203A17F30034173E /* AgreementVC.swift in Sources */,
 				B233FFCA20216E9E0024A5C6 /* FeedbackRatingCell.swift in Sources */,
 				B2E253B9202E399C00C322AA /* SumsApi.swift in Sources */,
 				B233FFC420216DFD0024A5C6 /* FeedbackNameCell.swift in Sources */,

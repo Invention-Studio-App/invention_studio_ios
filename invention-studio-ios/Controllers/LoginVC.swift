@@ -10,7 +10,7 @@ import UIKit
 import WebKit
 
 class LoginVC: UIViewController, WKUIDelegate, WKNavigationDelegate, WKHTTPCookieStoreObserver {
-
+    
 
     // VARIABLE DECLARATIONS
     //The Web View
@@ -26,7 +26,7 @@ class LoginVC: UIViewController, WKUIDelegate, WKNavigationDelegate, WKHTTPCooki
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-
+        
         //Preparing the request for the login page
         let myURL = URL(string: "https://login.gatech.edu/cas/login?service=https://sums-dev.gatech.edu/EditResearcherProfile.aspx")
         let myRequest = URLRequest(url: myURL!)
@@ -107,13 +107,15 @@ class LoginVC: UIViewController, WKUIDelegate, WKNavigationDelegate, WKHTTPCooki
                 //When API call is complete
                 apiEvalGroup.notify(queue: .main, execute: {
                     //If the user is part of the Invention Studio tool group (i.e. they have signed the user agreement)
+                    self.performSegue(withIdentifier: "safetyAgreementSegue", sender: self)
+                    /*
                     if isInventionStudio {
                         self.performSegue(withIdentifier: "cookieReceivedSegue", sender: self)
                     } else {
                         print("Needs to sign agreement")
                         //TODO: add need to sign agreement page
-                        self.performSegue(withIdentifier: "cookieReceivedSegue", sender: self)
-                    }
+                        self.performSegue(withIdentifier: "safetyAgreementSegue", sender: self)
+                    }*/
                 })
             })
         }
@@ -137,7 +139,7 @@ class LoginVC: UIViewController, WKUIDelegate, WKNavigationDelegate, WKHTTPCooki
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "cookieReceivedSegue" {
+        if segue.identifier == "cookieReceivedSegue" || segue.identifier == "safetyAgreementSegue" {
             UserDefaults.standard.set(true, forKey: "LoggedIn")
             let weekInterval: TimeInterval = 60 * 60 * 24 * 7
             //TODO: Use server time
