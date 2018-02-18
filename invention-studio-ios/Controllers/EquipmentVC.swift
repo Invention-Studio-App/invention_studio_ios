@@ -8,7 +8,7 @@
 
 import UIKit
 
-class EquipmentVC: UIViewController, UITableViewDataSource, UITableViewDelegate, UIPickerViewDataSource, UIPickerViewDelegate, UITextViewDelegate {
+class EquipmentVC: UIViewController, UITableViewDataSource, UITableViewDelegate, UIPickerViewDataSource, UIPickerViewDelegate, UITextViewDelegate, UINavigationControllerDelegate {
 
     @IBOutlet weak var segmentContainer: UIView!
     @IBOutlet weak var segmentControl: UISegmentedControl!
@@ -41,6 +41,7 @@ class EquipmentVC: UIViewController, UITableViewDataSource, UITableViewDelegate,
     var name = "Nick Rupert"
     var pickerValues = ["Problem": ["Nozzle Not Extruding", "Bed Shifted"]]
     var tool:Tool!
+    var tools = [Tool]()
 
     private var _status: Tool.Status = Tool.Status.UNKNOWN
     var status: Tool.Status {
@@ -69,6 +70,7 @@ class EquipmentVC: UIViewController, UITableViewDataSource, UITableViewDelegate,
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.navigationController?.delegate = self
         /**
          ** General Setup
          **/
@@ -127,8 +129,8 @@ class EquipmentVC: UIViewController, UITableViewDataSource, UITableViewDelegate,
         informationTextView.backgroundColor = UIColor.clear
         informationTextView.textColor = UIColor(named: "IS_Text")
         informationTextView.font = UIFont.systemFont(ofSize: 16)
-        informationTextView.text = tool.toolDescription
-        //informationTextView.text = tool.toolDescription.html2String
+        //informationTextView.text = tool.toolDescription
+        informationTextView.text = tool.toolDescription.html2String
         let informationTextViewSize = informationTextView.sizeThatFits(CGSize(width: view.frame.width - 16, height: CGFloat.greatestFiniteMagnitude))
         informationTextView.frame = CGRect(x: 8, y: statusTitleLabel.frame.maxY + 8, width: view.frame.width - 16, height: informationTextViewSize.height)
         informationScrollView.addSubview(informationTextView)
@@ -153,6 +155,13 @@ class EquipmentVC: UIViewController, UITableViewDataSource, UITableViewDelegate,
             pickerSelections[picker] = pickerValues[picker]![0]
         }
     }
+    
+    func navigationController(_ navigationController: UINavigationController, willShow viewController: UIViewController, animated: Bool) {
+        self.tools = [Tool]()
+        (viewController as? EquipmentGroupTVC)?.tools = self.tools
+    }
+    
+    
 
     override func viewDidLayoutSubviews() {
         let line = CAShapeLayer()
@@ -349,7 +358,7 @@ class EquipmentVC: UIViewController, UITableViewDataSource, UITableViewDelegate,
 }
 
 // Extension add the ability to conver the string descriptions to attributed strings and html
-/*
+
 extension Data {
     var html2AttributedString: NSAttributedString? {
         do {
@@ -372,5 +381,5 @@ extension String {
         return html2AttributedString?.string ?? ""
     }
 }
- */
+
 

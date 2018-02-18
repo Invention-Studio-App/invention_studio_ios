@@ -47,7 +47,7 @@ class EquipmentGroupListTVC: UITableViewController {
         self.equipmentGroups = []
         SumsApi.EquipmentGroup.Tools(completion: { (tools) in
             for tool in tools {
-                if (!(self.equipmentGroups.contains(tool.locationName))) {
+                if (!(self.equipmentGroups.contains(tool.locationName)) && tool.locationName != "") {
                     self.equipmentGroups.append(tool.locationName)
                 }
             }
@@ -57,7 +57,7 @@ class EquipmentGroupListTVC: UITableViewController {
             DispatchQueue.main.async {
                 self.tableView.reloadData()
             }
-            })
+        })
         
     }
     

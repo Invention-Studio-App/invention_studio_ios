@@ -107,6 +107,7 @@ class EquipmentGroupTVC: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let eVC  = storyboard?.instantiateViewController(withIdentifier: "EquipmentVC") as! EquipmentVC
         eVC.tool = self.tools[indexPath.row]
+        eVC.tools = self.tools
         navigationController?.pushViewController(eVC, animated: true)
         self.tableView.deselectRow(at: indexPath, animated: true)
     }
@@ -165,7 +166,19 @@ class EquipmentGroupTVC: UITableViewController {
 
     @IBAction func refresh(_ sender: UIRefreshControl) {
         //Your code here
-
+        /*
+        SumsApi.EquipmentGroup.Tools(completion: { (tools) in
+            for tool in tools {
+                if (!(self.equipmentGroups.contains(tool.locationName))) {
+                    self.equipmentGroups.append(tool.locationName)
+                }
+            }
+            self.tools = tools
+            // Must be called from main thread, not UIKit
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        })*/
         sender.endRefreshing()
     }
 
