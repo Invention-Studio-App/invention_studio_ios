@@ -28,7 +28,9 @@ class LoginVC: UIViewController, WKUIDelegate, WKNavigationDelegate, WKHTTPCooki
         // Do any additional setup after loading the view, typically from a nib.
         
         //Preparing the request for the login page
-        let myURL = URL(string: "https://login.gatech.edu/cas/login?service=https://sums-dev.gatech.edu/EditResearcherProfile.aspx")
+        let redirectService = "https://sums.gatech.edu/EditResearcherProfile.aspx" //Production
+        //let redirectService = "https://sums-dev.gatech.edu/EditResearcherProfile.aspx" //Development
+        let myURL = URL(string: "https://login.gatech.edu/cas/login?service=" + redirectService)
         let myRequest = URLRequest(url: myURL!)
 
         //Setting up the cookie store
@@ -79,8 +81,7 @@ class LoginVC: UIViewController, WKUIDelegate, WKNavigationDelegate, WKHTTPCooki
                     let calendarDisplay = result as! String //Get the results
                     let calendarLink = "https://sums.gatech.edu/SUMS/rest/iCalendar/ReturnData?Key=" //Static calendar link to be stripped
                     let userKey = calendarDisplay.replacingOccurrences(of: calendarLink, with: "") //Strip the calendar link
-                    //UserDefaults.standard.set(userKey, forKey: "UserKey") //Save to user defaults
-                    UserDefaults.standard.set("ZLJJQOZYZ0JZDP3293HC", forKey:"UserKey")
+                    UserDefaults.standard.set(userKey, forKey: "UserKey") //Save to user defaults
                     jsEvalGroup.leave() //Mark action as completed in dispatch group
             });
 
@@ -107,15 +108,15 @@ class LoginVC: UIViewController, WKUIDelegate, WKNavigationDelegate, WKHTTPCooki
                 //When API call is complete
                 apiEvalGroup.notify(queue: .main, execute: {
                     //If the user is part of the Invention Studio tool group (i.e. they have signed the user agreement)
-                    self.performSegue(withIdentifier: "safetyAgreementSegue", sender: self)
-                    /*
+                    //self.performSegue(withIdentifier: "safetyAgreementSegue", sender: self)
+
                     if isInventionStudio {
                         self.performSegue(withIdentifier: "cookieReceivedSegue", sender: self)
                     } else {
                         print("Needs to sign agreement")
                         //TODO: add need to sign agreement page
                         self.performSegue(withIdentifier: "safetyAgreementSegue", sender: self)
-                    }*/
+                    }
                 })
             })
         }
