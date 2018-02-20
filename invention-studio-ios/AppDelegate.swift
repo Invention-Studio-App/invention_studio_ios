@@ -28,7 +28,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //TODO: Use server time
         let timeStamp = NSDate().timeIntervalSince1970
 
-        let shouldLogin = false //For debugging purposes - To force login, set to false. For normal operation, set to true
+        let shouldLogin = true //For debugging purposes - To force login, set to false. For normal operation, set to true
 
         //Check that the threshold for staying logged in has not passed
         //If the user has never logged in before, this will automatically fail since loginSession == 0

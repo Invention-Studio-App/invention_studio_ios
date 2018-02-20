@@ -33,10 +33,8 @@ class QueuesTVC: UITableViewController {
         SumsApi.EquipmentGroup.QueueGroups(completion: { (groups) in
             var gs = [String]()
             for group in groups {
-                if group.isGroup {
-                    if (!(gs.contains(group.name))) {
-                        gs.append(group.name)
-                    }
+                if (!(gs.contains(group.name))) {
+                    gs.append(group.name)
                 }
             }
             gs.sort()
@@ -98,12 +96,7 @@ class QueuesTVC: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        switch section {
-        case 0:
-            return UITableViewAutomaticDimension
-        default:
-            return 2
-        }
+        return 2
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

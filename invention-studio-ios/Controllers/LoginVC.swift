@@ -29,8 +29,6 @@ class LoginVC: UIViewController, WKUIDelegate, WKNavigationDelegate, WKHTTPCooki
         
         //Preparing the request for the login page
 #if DEBUG
-//For this to work, you need to add an additional "Scheme" to your project (Product -> Scheme -> New Scheme)
-//and be sure to add "DEBUG" to "Arguments Passed on launch"
         let redirectService = "https://sums-dev.gatech.edu/EditResearcherProfile.aspx" //Development
 #else
         let redirectService = "https://sums.gatech.edu/EditResearcherProfile.aspx" //Production

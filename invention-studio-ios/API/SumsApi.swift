@@ -13,8 +13,6 @@ import Foundation
 class SumsApi {
 
 #if DEBUG
-//For this to work, you need to add an additional "Scheme" to your project (Product -> Scheme -> New Scheme)
-//and be sure to add "DEBUG" to "Arguments Passed on launch"
     private static let siteURL = "https://sums-dev.gatech.edu/SUMSAPI/rest/API/" //Development
 #else
     private static let siteURL = "https://sums.gatech.edu/SUMSAPI/rest/API/" //Production
