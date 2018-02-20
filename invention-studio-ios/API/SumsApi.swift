@@ -12,8 +12,11 @@ import Foundation
 
 class SumsApi {
 
+#if DEBUG
+    private static let siteURL = "https://sums-dev.gatech.edu/SUMSAPI/rest/API/" //Development
+#else
     private static let siteURL = "https://sums.gatech.edu/SUMSAPI/rest/API/" //Production
-    //private static let siteURL = "https://sums-dev.gatech.edu/SUMSAPI/rest/API/" //Development
+#endif
 
     //User module
     class User {

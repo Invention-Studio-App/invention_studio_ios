@@ -28,8 +28,12 @@ class LoginVC: UIViewController, WKUIDelegate, WKNavigationDelegate, WKHTTPCooki
         // Do any additional setup after loading the view, typically from a nib.
         
         //Preparing the request for the login page
+#if DEBUG
+        let redirectService = "https://sums-dev.gatech.edu/EditResearcherProfile.aspx" //Development
+#else
         let redirectService = "https://sums.gatech.edu/EditResearcherProfile.aspx" //Production
-        //let redirectService = "https://sums-dev.gatech.edu/EditResearcherProfile.aspx" //Development
+#endif
+
         let myURL = URL(string: "https://login.gatech.edu/cas/login?service=" + redirectService)
         let myRequest = URLRequest(url: myURL!)
 
