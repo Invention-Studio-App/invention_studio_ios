@@ -45,11 +45,18 @@ class EquipmentGroupTVC: UITableViewController {
         headerTextView.bounces = false
         headerTextView.bouncesZoom = false
         headerTextView.backgroundColor = UIColor.clear
-        headerTextView.textColor = UIColor(named: "IS_Text")
-        headerTextView.font = UIFont.systemFont(ofSize: 16)
-        //TODO: Use dynamic text
-        //headerTextView.text = "Is this the real life? Is this just fantasy? Caught in a landslide, no escape from reality. Open your eyes, look up to the skies and see... I'm just a poor boy, I need no sympathy. Because I'm easy come, easy go. Little high, little low. Everywhere the wind blows doesn't really matter to me. To me..."
-        headerTextView.text = tools[0].locationName
+        //headerTextView.text = tools[0].locationName
+
+        //Set attributed text from HTML
+        let attributedString = try! NSMutableAttributedString(
+            data: tools[0].locationName.data(using: String.Encoding.unicode, allowLossyConversion: true)!,
+            options: [.documentType: NSAttributedString.DocumentType.html],
+            documentAttributes: nil)
+        let attributesDict = [NSAttributedStringKey.foregroundColor: UIColor(named: "IS_Text")!,
+                              NSAttributedStringKey.font: UIFont.systemFont(ofSize: 16)]
+        attributedString.addAttributes(attributesDict, range: NSMakeRange(0, attributedString.length))
+        headerTextView.attributedText = attributedString
+        
         let headerTextViewSize = headerTextView.sizeThatFits(CGSize(width: view.frame.width - 16, height: CGFloat.greatestFiniteMagnitude))
         headerTextView.frame = CGRect(x: 8, y: headerImageView.frame.maxY + 8, width: view.frame.width - 16, height: headerTextViewSize.height)
         headerView.addSubview(headerTextView)
