@@ -770,7 +770,7 @@
             <objects>
                 <viewController id="Zy1-F1-7B9" userLabel="Login VC" customClass="LoginVC" customModule="invention_studio_ios" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="X37-6P-Yvd">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="554"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" name="IS_Background"/>
                         <color key="tintColor" name="IS_AccentPrimary"/>
@@ -790,7 +790,7 @@
             <objects>
                 <viewController id="BCU-x0-vSW" customClass="AgreementVC" customModule="invention_studio_ios" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="1O1-dq-n4H">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" editable="NO" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vcM-eL-qAb">
@@ -856,7 +856,7 @@ Looks like you are not in our system.
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q4Z-wA-htS">
-                                <rect key="frame" x="16" y="607" width="343" height="30"/>
+                                <rect key="frame" x="16" y="543" width="343" height="30"/>
                                 <state key="normal" title="Agreement Signed"/>
                                 <connections>
                                     <action selector="agreementSigned:" destination="BCU-x0-vSW" eventType="touchUpInside" id="do8-Hl-OUs"/>
@@ -892,6 +892,7 @@ Looks like you are not in our system.
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" name="IS_AccentPrimary"/>
+                        <color key="barTintColor" name="IS_HeaderFooter"/>
                         <textAttributes key="titleTextAttributes">
                             <color key="textColor" name="IS_Title"/>
                         </textAttributes>
@@ -909,11 +910,11 @@ Looks like you are not in our system.
             <objects>
                 <viewController id="rO1-qZ-nzB" customClass="LandingVC" customModule="invention_studio_ios" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="v2w-jk-fT3">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="554"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" bouncesZoom="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NMN-9A-aiQ">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="554"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                             </scrollView>
                         </subviews>
                         <color key="backgroundColor" name="IS_Background"/>
@@ -978,7 +979,7 @@ Looks like you are not in our system.
         </namedColor>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="00m-aY-5cS"/>
+        <segue reference="TEf-nP-AS4"/>
         <segue reference="xX8-5t-its"/>
     </inferredMetricsTieBreakers>
 </document>
