@@ -1,5 +1,5 @@
 //
-//  ColorTheme.swift
+//  Theme.swift
 //  invention-studio-ios
 //
 //  Created by Nick's Creative Studio on 2/25/18.
@@ -8,6 +8,6 @@
 
 import UIKit
 
-class ColorTheme {
-    
+class Theme {
+
 }
