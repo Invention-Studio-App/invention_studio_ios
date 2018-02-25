@@ -17,8 +17,6 @@ class EquipmentVC: UIViewController, UITableViewDataSource, UITableViewDelegate,
     @IBOutlet weak var informationScrollView: UIScrollView!
     let statusIcon = UIView()
     let statusLabel = UILabel()
-    //    @IBOutlet weak var statusIcon: UIView!
-    //    @IBOutlet weak var statusLabel: UILabel!
 
     @IBOutlet weak var reportProblemTableView: UITableView!
 
@@ -38,7 +36,7 @@ class EquipmentVC: UIViewController, UITableViewDataSource, UITableViewDelegate,
     private var problemPicker: UIPickerView = UIPickerView()
     private var pickerSelections = ["Problem": ""]
 
-    var name = "Nick Rupert"
+    var name = ""
     var pickerValues = ["Problem": ["Nozzle Not Extruding", "Bed Shifted"]]
     var tool:Tool!
     var tools = [Tool]()
@@ -55,13 +53,13 @@ class EquipmentVC: UIViewController, UITableViewDataSource, UITableViewDelegate,
 
             switch(_status) {
             case .AVAILABLE:
-                statusIcon.backgroundColor = UIColor(named: "StatusColorAvailable")
+                statusIcon.backgroundColor = UIColor(named: "Status_Available")
             case .INUSE:
-                statusIcon.backgroundColor = UIColor(named: "StatusColorInUse")
+                statusIcon.backgroundColor = UIColor(named: "Status_InUse")
             case .DOWN:
-                statusIcon.backgroundColor = UIColor(named: "StatusColorDown")
+                statusIcon.backgroundColor = UIColor(named: "Status_Down")
             case .UNKNOWN:
-                statusIcon.backgroundColor = UIColor(named: "StatusColorUnknown")
+                statusIcon.backgroundColor = UIColor(named: "Status_Unknown")
             }
         }
     }
@@ -142,6 +140,8 @@ class EquipmentVC: UIViewController, UITableViewDataSource, UITableViewDelegate,
          ** Set Up "Report Problem" TableView
          **/
 
+        name = UserDefaults.standard.string(forKey: "UserName")!
+
         //Dismiss keyboard on tap
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         tap.cancelsTouchesInView = false
@@ -195,10 +195,15 @@ class EquipmentVC: UIViewController, UITableViewDataSource, UITableViewDelegate,
         return toolBrokenPrototypes.count
     }
 
+    func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        if let view = view as? UITableViewHeaderFooterView {
+            view.textLabel?.textColor = UIColor(named: "IS_AccentTertiary")
+        }
+    }
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return toolBrokenPrototypes[section].count
     }
-
 
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return toolBrokenHeaders[section]
@@ -229,7 +234,7 @@ class EquipmentVC: UIViewController, UITableViewDataSource, UITableViewDelegate,
                 cell.titleLabel?.text = name
             } else {
                 cell.titleLabel?.textColor = UIColor(named: "IS_Text")
-                cell.titleLabel?.text = "John Doe"
+                cell.titleLabel?.text = "Anonymous"
             }
             return cell
         case "pickerHeaderPrototype":

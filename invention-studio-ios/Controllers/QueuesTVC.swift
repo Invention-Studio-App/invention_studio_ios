@@ -77,6 +77,12 @@ class QueuesTVC: UITableViewController {
         return count
     }
 
+    override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+            if let view = view as? UITableViewHeaderFooterView {
+                view.textLabel?.textColor = UIColor(named: "IS_AccentTertiary")
+            }
+    }
+
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         switch section {
         case 0:

@@ -11,6 +11,8 @@ import UIKit
 class EquipmentGroupTVC: UITableViewController {
 
     private let headerView = UIView()
+    var locationId: Int = 0
+    var locationName = ""
     var tools = [Tool]()
 
     override func viewDidLoad() {
@@ -26,7 +28,7 @@ class EquipmentGroupTVC: UITableViewController {
         /**
          ** Set Up TableView Header
          **/
-        headerView.backgroundColor = UIColor(named: "IS_FocusBackground")
+        headerView.backgroundColor = UIColor(named: "IS_Background")
 
         //Draw header image
         let headerImageView = UIImageView()
@@ -45,11 +47,10 @@ class EquipmentGroupTVC: UITableViewController {
         headerTextView.bounces = false
         headerTextView.bouncesZoom = false
         headerTextView.backgroundColor = UIColor.clear
-        //headerTextView.text = tools[0].locationName
 
         //Set attributed text from HTML
         let attributedString = try! NSMutableAttributedString(
-            data: tools[0].locationName.data(using: String.Encoding.unicode, allowLossyConversion: true)!,
+            data: "Ultimaker 2+ 3D Printers\nThis is primary line of Ultimaker 2+ 3D Printers. The primary material for this printer is PLA plastic, a corn-based biodegradable polymer which is commonly used in prototyping and manufacturing.".data(using: String.Encoding.unicode, allowLossyConversion: true)!,
             options: [.documentType: NSAttributedString.DocumentType.html],
             documentAttributes: nil)
         let attributesDict = [NSAttributedStringKey.foregroundColor: UIColor(named: "IS_Text")!,
@@ -108,12 +109,13 @@ class EquipmentGroupTVC: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 44
+        return 0
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let eVC  = storyboard?.instantiateViewController(withIdentifier: "EquipmentVC") as! EquipmentVC
         eVC.tool = self.tools[indexPath.row]
+        eVC.title = eVC.tool.toolName
         eVC.tools = self.tools
         navigationController?.pushViewController(eVC, animated: true)
         self.tableView.deselectRow(at: indexPath, animated: true)
@@ -172,20 +174,24 @@ class EquipmentGroupTVC: UITableViewController {
     }
 
     @IBAction func refresh(_ sender: UIRefreshControl) {
-        //Your code here
-        /*
         SumsApi.EquipmentGroup.Tools(completion: { (tools) in
+            self.tools = []
             for tool in tools {
-                if (!(self.equipmentGroups.contains(tool.locationName))) {
-                    self.equipmentGroups.append(tool.locationName)
+                if (tool.locationId == self.locationId) {
+                    self.tools.append(tool)
                 }
             }
-            self.tools = tools
+            self.tools.sort(by: { (toolA, toolB) in
+                if (toolA.status().hashValue == toolB.status().hashValue) {
+                    return toolA.toolName <= toolB.toolName
+                }
+                return toolA.status().hashValue <= toolB.status().hashValue
+            })
             // Must be called from main thread, not UIKit
             DispatchQueue.main.async {
                 self.tableView.reloadData()
             }
-        })*/
+        })
         sender.endRefreshing()
     }
 

@@ -52,7 +52,7 @@ class FeedbackTVC: UITableViewController, UIPickerViewDataSource, UIPickerViewDe
     private var problemPicker: UIPickerView = UIPickerView()
     private var pickerSelections = ["Feedback": "", "Group": "", "Tool": "", "Problem": ""]
 
-    var name = "Nick Rupert"
+    var name = ""
     var pickerValues = ["Feedback": ["Tool Broken", "PI Feedback", "General Feedback"],
                         "Group": ["3D Printers", "Laser Cutters", "Waterjet"],
                         "Tool": ["Baymax", "Rick"],
@@ -60,6 +60,8 @@ class FeedbackTVC: UITableViewController, UIPickerViewDataSource, UIPickerViewDe
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        name = UserDefaults.standard.string(forKey: "UserName")!
 
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         tap.cancelsTouchesInView = false
@@ -101,6 +103,12 @@ class FeedbackTVC: UITableViewController, UIPickerViewDataSource, UIPickerViewDe
     override func numberOfSections(in tableView: UITableView) -> Int {
         return currentPrototypes.count
     }
+    
+    override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        if let view = view as? UITableViewHeaderFooterView {
+            view.textLabel?.textColor = UIColor(named: "IS_AccentTertiary")
+        }
+    }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return currentPrototypes[section].count
@@ -108,6 +116,10 @@ class FeedbackTVC: UITableViewController, UIPickerViewDataSource, UIPickerViewDe
 
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return currentHeaders[section]
+    }
+
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 66
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -123,7 +135,7 @@ class FeedbackTVC: UITableViewController, UIPickerViewDataSource, UIPickerViewDe
                 cell.titleLabel?.text = name
             } else {
                 cell.titleLabel?.textColor = UIColor(named: "IS_Text")
-                cell.titleLabel?.text = "John Doe"
+                cell.titleLabel?.text = "Anonymous"
             }
             return cell
         case "pickerHeaderPrototype":

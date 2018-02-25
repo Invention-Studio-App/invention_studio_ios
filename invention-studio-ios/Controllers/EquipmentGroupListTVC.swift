@@ -76,6 +76,9 @@ class EquipmentGroupListTVC: UITableViewController {
                 sentTools.append(tool)
             }
         }
+        mVC.title = sentTools[0].locationName
+        mVC.locationName = sentTools[0].locationName
+        mVC.locationId = sentTools[0].locationId
         mVC.tools = sentTools
         navigationController?.pushViewController(mVC, animated: true)
         self.tableView.deselectRow(at: indexPath, animated: true)
@@ -127,7 +130,8 @@ class EquipmentGroupListTVC: UITableViewController {
     */
 
     @IBAction func refresh(_ sender: UIRefreshControl) {
+        loadEquipmentGroups()
+        sender.endRefreshing()
     }
-    
 
 }

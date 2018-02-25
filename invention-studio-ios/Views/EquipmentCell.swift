@@ -26,13 +26,13 @@ class EquipmentCell: UITableViewCell {
 
             switch(_status) {
             case .AVAILABLE:
-                self.statusIcon.backgroundColor = UIColor(named: "StatusColorAvailable")
+                self.statusIcon.backgroundColor = UIColor(named: "Status_Available")
             case .INUSE:
-                self.statusIcon.backgroundColor = UIColor(named: "StatusColorInUse")
+                self.statusIcon.backgroundColor = UIColor(named: "Status_InUse")
             case .DOWN:
-                self.statusIcon.backgroundColor = UIColor(named: "StatusColorDown")
+                self.statusIcon.backgroundColor = UIColor(named: "Status_Down")
             case .UNKNOWN:
-                self.statusIcon.backgroundColor = UIColor(named: "StatusColorUnknown")
+                self.statusIcon.backgroundColor = UIColor(named: "Status_Unknown")
             }
         }
     }
