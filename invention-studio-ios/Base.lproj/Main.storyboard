@@ -790,10 +790,10 @@
             <objects>
                 <viewController id="BCU-x0-vSW" customClass="AgreementVC" customModule="invention_studio_ios" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="1O1-dq-n4H">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="554"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" editable="NO" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vcM-eL-qAb">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vcM-eL-qAb">
                                 <rect key="frame" x="16" y="20" width="343" height="516"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <attributedString key="attributedText">
@@ -856,7 +856,7 @@ Looks like you are not in our system.
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q4Z-wA-htS">
-                                <rect key="frame" x="16" y="607" width="343" height="30"/>
+                                <rect key="frame" x="124" y="494" width="127" height="30"/>
                                 <state key="normal" title="Agreement Signed"/>
                                 <connections>
                                     <action selector="agreementSigned:" destination="BCU-x0-vSW" eventType="touchUpInside" id="do8-Hl-OUs"/>
@@ -866,13 +866,12 @@ Looks like you are not in our system.
                         <color key="backgroundColor" name="IS_Background"/>
                         <color key="tintColor" name="IS_AccentPrimary"/>
                         <constraints>
-                            <constraint firstItem="vcM-eL-qAb" firstAttribute="top" secondItem="Iqj-j9-RZc" secondAttribute="top" id="1cZ-W3-vaU"/>
-                            <constraint firstItem="Iqj-j9-RZc" firstAttribute="trailing" secondItem="vcM-eL-qAb" secondAttribute="trailing" constant="16" id="5tV-aa-S3X"/>
-                            <constraint firstItem="Iqj-j9-RZc" firstAttribute="trailing" secondItem="q4Z-wA-htS" secondAttribute="trailing" constant="16" id="ETZ-3W-tjM"/>
-                            <constraint firstItem="vcM-eL-qAb" firstAttribute="leading" secondItem="Iqj-j9-RZc" secondAttribute="leading" constant="16" id="KnD-YD-dP3"/>
-                            <constraint firstItem="Iqj-j9-RZc" firstAttribute="bottom" secondItem="vcM-eL-qAb" secondAttribute="bottom" constant="20" id="WiG-e0-Alt"/>
-                            <constraint firstItem="q4Z-wA-htS" firstAttribute="leading" secondItem="Iqj-j9-RZc" secondAttribute="leading" constant="16" id="dA9-zT-5vx"/>
-                            <constraint firstItem="Iqj-j9-RZc" firstAttribute="bottom" secondItem="q4Z-wA-htS" secondAttribute="bottom" constant="30" id="wyz-pX-WiU"/>
+                            <constraint firstItem="q4Z-wA-htS" firstAttribute="centerX" secondItem="Iqj-j9-RZc" secondAttribute="centerX" id="K5e-QJ-oNC"/>
+                            <constraint firstItem="vcM-eL-qAb" firstAttribute="leading" secondItem="Iqj-j9-RZc" secondAttribute="leading" constant="16" id="QN4-iY-Ukw"/>
+                            <constraint firstItem="Iqj-j9-RZc" firstAttribute="trailing" secondItem="vcM-eL-qAb" secondAttribute="trailing" constant="16" id="Wru-hm-eQe"/>
+                            <constraint firstItem="vcM-eL-qAb" firstAttribute="top" secondItem="Iqj-j9-RZc" secondAttribute="top" constant="20" id="ZsQ-8N-d2z"/>
+                            <constraint firstItem="Iqj-j9-RZc" firstAttribute="bottom" secondItem="q4Z-wA-htS" secondAttribute="bottom" constant="30" id="hNd-H5-1Sv"/>
+                            <constraint firstItem="Iqj-j9-RZc" firstAttribute="bottom" secondItem="vcM-eL-qAb" secondAttribute="bottom" constant="18" id="wgh-2o-zWr"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Iqj-j9-RZc"/>
                     </view>
@@ -953,9 +952,6 @@ Looks like you are not in our system.
         <namedColor name="IS_AccentPrimary">
             <color red="0.96078431372549022" green="0.82352941176470584" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <namedColor name="IS_AccentPrimary">
-            <color red="0.94509803920000002" green="0.74117647060000003" blue="0.1058823529" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
         <namedColor name="IS_AccentTertiary">
             <color white="0.33300000429153442" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </namedColor>
@@ -968,8 +964,8 @@ Looks like you are not in our system.
         <namedColor name="IS_HeaderFooter">
             <color red="0.039215686274509803" green="0.058823529411764705" blue="0.070588235294117646" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <namedColor name="IS_HeaderFooter">
-            <color red="0.035294117647058823" green="0.035294117647058823" blue="0.035294117647058823" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <namedColor name="IS_Text">
+            <color white="0.66699999570000001" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </namedColor>
         <namedColor name="IS_Text">
             <color white="0.66699999570000001" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -980,6 +976,6 @@ Looks like you are not in our system.
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="00m-aY-5cS"/>
-        <segue reference="xX8-5t-its"/>
+        <segue reference="jlu-yE-rRx"/>
     </inferredMetricsTieBreakers>
 </document>
