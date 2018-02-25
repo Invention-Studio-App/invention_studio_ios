@@ -79,7 +79,7 @@ class QueuesTVC: UITableViewController {
 
     override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
             if let view = view as? UITableViewHeaderFooterView {
-                view.textLabel?.textColor = UIColor(named: "IS_AccentTertiary")
+                view.textLabel?.textColor = UIColor(named: "ISLight_AccentTertiary")
             }
     }
 
@@ -110,7 +110,7 @@ class QueuesTVC: UITableViewController {
         if indexPath.row == 0 {
             cell.textLabel?.text = self.groups[indexPath.section]
             cell.textLabel?.font = UIFont.boldSystemFont(ofSize: 20)
-            cell.textLabel?.textColor = UIColor(named: "IS_Title")
+            cell.textLabel?.textColor = UIColor(named: "ISLight_Title")
         } else {
             var u = [QueueUser]()
             for user in self.users {
@@ -132,7 +132,7 @@ class QueuesTVC: UITableViewController {
                     cell.textLabel?.font = UIFont.boldSystemFont(ofSize: 16)
                 }
             }
-            cell.textLabel?.textColor = UIColor(named: "IS_Title")
+            cell.textLabel?.textColor = UIColor(named: "ISLight_Title")
         }
 
         return cell

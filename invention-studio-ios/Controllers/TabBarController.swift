@@ -13,7 +13,7 @@ class TabBarController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.tabBar.unselectedItemTintColor = UIColor(named: "IS_AccentSecondary")
+        self.tabBar.unselectedItemTintColor = UIColor(named: "ISLight_AccentSecondary")
     }
 
     override func didReceiveMemoryWarning() {

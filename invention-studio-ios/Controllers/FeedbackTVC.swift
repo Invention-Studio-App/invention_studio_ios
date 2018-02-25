@@ -106,7 +106,7 @@ class FeedbackTVC: UITableViewController, UIPickerViewDataSource, UIPickerViewDe
     
     override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         if let view = view as? UITableViewHeaderFooterView {
-            view.textLabel?.textColor = UIColor(named: "IS_AccentTertiary")
+            view.textLabel?.textColor = UIColor(named: "ISLight_AccentTertiary")
         }
     }
 
@@ -131,10 +131,10 @@ class FeedbackTVC: UITableViewController, UIPickerViewDataSource, UIPickerViewDe
             cell.anonymousSwitch.addTarget(self, action: #selector(anonymousSwitchChanged), for: UIControlEvents.valueChanged)
 
             if cell.anonymousSwitch.isOn {
-                cell.titleLabel?.textColor = UIColor(named: "IS_Title")
+                cell.titleLabel?.textColor = UIColor(named: "ISLight_Title")
                 cell.titleLabel?.text = name
             } else {
-                cell.titleLabel?.textColor = UIColor(named: "IS_Text")
+                cell.titleLabel?.textColor = UIColor(named: "ISLight_Text")
                 cell.titleLabel?.text = "Anonymous"
             }
             return cell
@@ -144,9 +144,9 @@ class FeedbackTVC: UITableViewController, UIPickerViewDataSource, UIPickerViewDe
             cell.detailTextLabel?.text = pickerSelections[cellName]
 
             if indexPath == currentDropdownHeader {
-                cell.detailTextLabel?.textColor = UIColor(named: "IS_AccentPrimary")
+                cell.detailTextLabel?.textColor = UIColor(named: "ISLight_AccentPrimary")
             } else {
-                cell.detailTextLabel?.textColor = UIColor(named: "IS_Title")
+                cell.detailTextLabel?.textColor = UIColor(named: "ISLight_Title")
             }
             return cell
         case "pickerDropdownPrototype":
@@ -291,13 +291,13 @@ class FeedbackTVC: UITableViewController, UIPickerViewDataSource, UIPickerViewDe
 
     func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
         if pickerView == self.feedbackTypePicker {
-            return NSAttributedString(string:(pickerValues["Feedback"]?[row])!, attributes: [NSAttributedStringKey.foregroundColor : UIColor(named: "IS_Title")!])
+            return NSAttributedString(string:(pickerValues["Feedback"]?[row])!, attributes: [NSAttributedStringKey.foregroundColor : UIColor(named: "ISLight_Title")!])
         } else if pickerView == self.toolGroupPicker {
-            return NSAttributedString(string:(pickerValues["Group"]?[row])!, attributes: [NSAttributedStringKey.foregroundColor : UIColor(named: "IS_Title")!])
+            return NSAttributedString(string:(pickerValues["Group"]?[row])!, attributes: [NSAttributedStringKey.foregroundColor : UIColor(named: "ISLight_Title")!])
         } else if pickerView == self.toolPicker {
-            return NSAttributedString(string:(pickerValues["Tool"]?[row])!, attributes: [NSAttributedStringKey.foregroundColor : UIColor(named: "IS_Title")!])
+            return NSAttributedString(string:(pickerValues["Tool"]?[row])!, attributes: [NSAttributedStringKey.foregroundColor : UIColor(named: "ISLight_Title")!])
         } else if pickerView == self.problemPicker {
-            return NSAttributedString(string:(pickerValues["Problem"]?[row])!, attributes: [NSAttributedStringKey.foregroundColor : UIColor(named: "IS_Title")!])
+            return NSAttributedString(string:(pickerValues["Problem"]?[row])!, attributes: [NSAttributedStringKey.foregroundColor : UIColor(named: "ISLight_Title")!])
         } else {
             return nil
         }

@@ -40,7 +40,7 @@ class LandingVC: UIViewController {
         textView.bounces = false
         textView.bouncesZoom = false
         textView.backgroundColor = UIColor.clear
-        textView.textColor = UIColor(named: "IS_Text")
+        textView.textColor = UIColor(named: "ISLight_Text")
         textView.font = UIFont.systemFont(ofSize: 16)
         //TODO: Use dynamic text
         textView.text = "Is this the real life? Is this just fantasy? Caught in a landslide, no escape from reality. Open your eyes, look up to the skies and see... I'm just a poor boy, I need no sympathy. Because I'm easy come, easy go. Little high, little low. Everywhere the wind blows doesn't really matter to me. To me..."

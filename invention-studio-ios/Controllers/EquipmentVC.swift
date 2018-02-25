@@ -96,7 +96,7 @@ class EquipmentVC: UIViewController, UITableViewDataSource, UITableViewDelegate,
         //Set Up Status Label
         //"Status:" Label
         let statusTitleLabel = UILabel()
-        statusTitleLabel.textColor = UIColor(named: "IS_Title")
+        statusTitleLabel.textColor = UIColor(named: "ISLight_Title")
         statusTitleLabel.text = "Status:"
         let statusTitleLabelSize = statusTitleLabel.sizeThatFits(CGSize(width: CGFloat.greatestFiniteMagnitude, height: 21))
         statusTitleLabel.frame = CGRect(x: 16, y: informationImageView.frame.maxY + 16, width: statusTitleLabelSize.width, height: 21)
@@ -112,7 +112,7 @@ class EquipmentVC: UIViewController, UITableViewDataSource, UITableViewDelegate,
         informationScrollView.addSubview(statusIcon)
 
         //Status label
-        statusLabel.textColor = UIColor(named: "IS_Title")
+        statusLabel.textColor = UIColor(named: "ISLight_Title")
         statusLabel.frame.origin.x = statusIcon.frame.maxX + 8
         statusLabel.center.y = statusTitleLabel.center.y
         informationScrollView.addSubview(statusLabel)
@@ -125,7 +125,7 @@ class EquipmentVC: UIViewController, UITableViewDataSource, UITableViewDelegate,
         informationTextView.bounces = false
         informationTextView.bouncesZoom = false
         informationTextView.backgroundColor = UIColor.clear
-        informationTextView.textColor = UIColor(named: "IS_Text")
+        informationTextView.textColor = UIColor(named: "ISLight_Text")
         informationTextView.font = UIFont.systemFont(ofSize: 16)
         //informationTextView.text = tool.toolDescription
         informationTextView.text = tool.toolDescription.html2String
@@ -169,7 +169,7 @@ class EquipmentVC: UIViewController, UITableViewDataSource, UITableViewDelegate,
         linePath.move(to: CGPoint(x: segmentContainer.frame.minX, y: segmentContainer.frame.maxY))
         linePath.addLine(to: CGPoint(x: segmentContainer.frame.maxX, y: segmentContainer.frame.maxY))
         line.path = linePath.cgPath
-        line.strokeColor = UIColor(named: "IS_AccentSecondary")?.cgColor
+        line.strokeColor = UIColor(named: "ISLight_AccentSecondary")?.cgColor
         line.lineWidth = 0.5
         segmentContainer.layer.addSublayer(line)
     }
@@ -197,7 +197,7 @@ class EquipmentVC: UIViewController, UITableViewDataSource, UITableViewDelegate,
 
     func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         if let view = view as? UITableViewHeaderFooterView {
-            view.textLabel?.textColor = UIColor(named: "IS_AccentTertiary")
+            view.textLabel?.textColor = UIColor(named: "ISLight_AccentTertiary")
         }
     }
 
@@ -230,10 +230,10 @@ class EquipmentVC: UIViewController, UITableViewDataSource, UITableViewDelegate,
             let cell = tableView.dequeueReusableCell(withIdentifier: prototype, for: indexPath) as! FeedbackNameCell
             cell.anonymousSwitch.addTarget(self, action: #selector(anonymousSwitchChanged), for: UIControlEvents.valueChanged)
             if cell.anonymousSwitch.isOn {
-                cell.titleLabel?.textColor = UIColor(named: "IS_Title")
+                cell.titleLabel?.textColor = UIColor(named: "ISLight_Title")
                 cell.titleLabel?.text = name
             } else {
-                cell.titleLabel?.textColor = UIColor(named: "IS_Text")
+                cell.titleLabel?.textColor = UIColor(named: "ISLight_Text")
                 cell.titleLabel?.text = "Anonymous"
             }
             return cell
@@ -244,9 +244,9 @@ class EquipmentVC: UIViewController, UITableViewDataSource, UITableViewDelegate,
 
             if indexPath == currentDropdownHeader {
                 print("\nSUCCESS\n")
-                cell.detailTextLabel?.textColor = UIColor(named: "IS_AccentPrimary")
+                cell.detailTextLabel?.textColor = UIColor(named: "ISLight_AccentPrimary")
             } else {
-                cell.detailTextLabel?.textColor = UIColor(named: "IS_Title")
+                cell.detailTextLabel?.textColor = UIColor(named: "ISLight_Title")
             }
             return cell
         case "pickerDropdownPrototype":
@@ -294,7 +294,7 @@ class EquipmentVC: UIViewController, UITableViewDataSource, UITableViewDelegate,
 
     func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
         if pickerView == problemPicker {
-            return NSAttributedString(string:(pickerValues["Problem"]?[row])!, attributes: [NSAttributedStringKey.foregroundColor : UIColor(named: "IS_Title")!])
+            return NSAttributedString(string:(pickerValues["Problem"]?[row])!, attributes: [NSAttributedStringKey.foregroundColor : UIColor(named: "ISLight_Title")!])
         } else {
             return nil
         }

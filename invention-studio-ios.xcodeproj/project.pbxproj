@@ -12,7 +12,7 @@
 		4F46B06920164CD400D5B3E9 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F46B06820164CD400D5B3E9 /* LoginVC.swift */; };
 		4F4932422017B79B0093CCFA /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F4932412017B79B0093CCFA /* TabBarController.swift */; };
 		4F8FB693201547DB00DBCD35 /* LandingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F8FB692201547DB00DBCD35 /* LandingVC.swift */; };
-		4F8FB69520154C7F00DBCD35 /* DefaultColorTheme.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F8FB69420154C7F00DBCD35 /* DefaultColorTheme.xcassets */; };
+		4F8FB69520154C7F00DBCD35 /* LightColorTheme.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F8FB69420154C7F00DBCD35 /* LightColorTheme.xcassets */; };
 		4FC7717F2017D068008A13D9 /* EquipmentGroupListTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FC7717E2017D068008A13D9 /* EquipmentGroupListTVC.swift */; };
 		4FDBD2A1203A17F30034173E /* AgreementVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FDBD2A0203A17F30034173E /* AgreementVC.swift */; };
 		93B4A7E4809E293F4650C3DB /* Pods_invention_studio_iosUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 225D7FB4887E2F08CF0BAAC4 /* Pods_invention_studio_iosUITests.framework */; };
@@ -28,6 +28,7 @@
 		B2A3A82F201C1B1400F3AF7F /* QueuesTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2A3A82E201C1B1400F3AF7F /* QueuesTVC.swift */; };
 		B2A3A831201C1B2A00F3AF7F /* FeedbackTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2A3A830201C1B2A00F3AF7F /* FeedbackTVC.swift */; };
 		B2A3A833201C1C3500F3AF7F /* OtherTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2A3A832201C1C3500F3AF7F /* OtherTVC.swift */; };
+		B2BEA44E20436FA200132EF7 /* DarkColorTheme.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B2BEA44D20436FA200132EF7 /* DarkColorTheme.xcassets */; };
 		B2D384941FBA383C00D91650 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2D384931FBA383C00D91650 /* AppDelegate.swift */; };
 		B2D384991FBA383C00D91650 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B2D384971FBA383C00D91650 /* Main.storyboard */; };
 		B2D3849C1FBA383C00D91650 /* invention_studio_ios.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B2D3849A1FBA383C00D91650 /* invention_studio_ios.xcdatamodeld */; };
@@ -67,7 +68,7 @@
 		4F46B06820164CD400D5B3E9 /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		4F4932412017B79B0093CCFA /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		4F8FB692201547DB00DBCD35 /* LandingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingVC.swift; sourceTree = "<group>"; };
-		4F8FB69420154C7F00DBCD35 /* DefaultColorTheme.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = DefaultColorTheme.xcassets; sourceTree = "<group>"; };
+		4F8FB69420154C7F00DBCD35 /* LightColorTheme.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = LightColorTheme.xcassets; sourceTree = "<group>"; };
 		4FC7717E2017D068008A13D9 /* EquipmentGroupListTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EquipmentGroupListTVC.swift; sourceTree = "<group>"; };
 		4FDBD2A0203A17F30034173E /* AgreementVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgreementVC.swift; sourceTree = "<group>"; };
 		5CD21A0AFD35E1BE8BFF581B /* Pods_invention_studio_ios.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_invention_studio_ios.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -84,6 +85,7 @@
 		B2A3A82E201C1B1400F3AF7F /* QueuesTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueuesTVC.swift; sourceTree = "<group>"; };
 		B2A3A830201C1B2A00F3AF7F /* FeedbackTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackTVC.swift; sourceTree = "<group>"; };
 		B2A3A832201C1C3500F3AF7F /* OtherTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherTVC.swift; sourceTree = "<group>"; };
+		B2BEA44D20436FA200132EF7 /* DarkColorTheme.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = DarkColorTheme.xcassets; sourceTree = "<group>"; };
 		B2D384901FBA383C00D91650 /* invention-studio-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "invention-studio-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B2D384931FBA383C00D91650 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B2D384981FBA383C00D91650 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -235,7 +237,8 @@
 				B233FFC120216D1C0024A5C6 /* Controllers */,
 				B233FFC220216D2C0024A5C6 /* Views */,
 				B2D384931FBA383C00D91650 /* AppDelegate.swift */,
-				4F8FB69420154C7F00DBCD35 /* DefaultColorTheme.xcassets */,
+				4F8FB69420154C7F00DBCD35 /* LightColorTheme.xcassets */,
+				B2BEA44D20436FA200132EF7 /* DarkColorTheme.xcassets */,
 				B2D3849D1FBA383C00D91650 /* Assets.xcassets */,
 				B2D384971FBA383C00D91650 /* Main.storyboard */,
 				B2D3849F1FBA383C00D91650 /* LaunchScreen.storyboard */,
@@ -380,9 +383,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				B2D384A11FBA383C00D91650 /* LaunchScreen.storyboard in Resources */,
-				4F8FB69520154C7F00DBCD35 /* DefaultColorTheme.xcassets in Resources */,
+				4F8FB69520154C7F00DBCD35 /* LightColorTheme.xcassets in Resources */,
 				B2D3849E1FBA383C00D91650 /* Assets.xcassets in Resources */,
 				B2D384991FBA383C00D91650 /* Main.storyboard in Resources */,
+				B2BEA44E20436FA200132EF7 /* DarkColorTheme.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -18,10 +18,10 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" translucent="NO" id="njW-Lq-vKZ">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="tintColor" name="IS_AccentPrimary"/>
-                        <color key="barTintColor" name="IS_HeaderFooter"/>
+                        <color key="tintColor" name="ISLight_AccentPrimary"/>
+                        <color key="barTintColor" name="ISLight_HeaderFooter"/>
                         <textAttributes key="titleTextAttributes">
-                            <color key="textColor" name="IS_Title"/>
+                            <color key="textColor" name="ISLight_Title"/>
                         </textAttributes>
                     </navigationBar>
                     <connections>
@@ -39,10 +39,10 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="2J8-yO-jYm">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="554"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" name="IS_Background"/>
-                        <color key="tintColor" name="IS_AccentPrimary"/>
-                        <color key="separatorColor" name="IS_AccentTertiary"/>
-                        <color key="sectionIndexColor" name="IS_Text"/>
+                        <color key="backgroundColor" name="ISLight_Background"/>
+                        <color key="tintColor" name="ISLight_AccentPrimary"/>
+                        <color key="separatorColor" name="ISLight_AccentTertiary"/>
+                        <color key="sectionIndexColor" name="ISLight_Text"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="equipmentGroupPrototype" textLabel="WXv-cy-9yq" style="IBUITableViewCellStyleDefault" id="16p-jB-1JA">
                                 <rect key="frame" x="0.0" y="55.5" width="375" height="44"/>
@@ -55,13 +55,13 @@
                                             <rect key="frame" x="16" y="0.0" width="324" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" name="IS_Title"/>
+                                            <color key="textColor" name="ISLight_Title"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
-                                <color key="backgroundColor" name="IS_FocusBackground"/>
-                                <color key="tintColor" name="IS_AccentPrimary"/>
+                                <color key="backgroundColor" name="ISLight_FocusBackground"/>
+                                <color key="tintColor" name="ISLight_AccentPrimary"/>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -89,8 +89,8 @@
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" translucent="NO" id="Urx-LM-SOe">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="tintColor" name="IS_AccentPrimary"/>
-                        <color key="barTintColor" name="IS_HeaderFooter"/>
+                        <color key="tintColor" name="ISLight_AccentPrimary"/>
+                        <color key="barTintColor" name="ISLight_HeaderFooter"/>
                     </tabBar>
                     <connections>
                         <segue destination="clO-xB-r6j" kind="relationship" relationship="viewControllers" id="8h8-7N-LhF"/>
@@ -113,10 +113,10 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" translucent="NO" id="hUe-3o-ANm">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="tintColor" name="IS_AccentPrimary"/>
-                        <color key="barTintColor" name="IS_HeaderFooter"/>
+                        <color key="tintColor" name="ISLight_AccentPrimary"/>
+                        <color key="barTintColor" name="ISLight_HeaderFooter"/>
                         <textAttributes key="titleTextAttributes">
-                            <color key="textColor" name="IS_Title"/>
+                            <color key="textColor" name="ISLight_Title"/>
                         </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -135,9 +135,9 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="zwc-5M-lWX">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="554"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" name="IS_Background"/>
-                        <color key="separatorColor" name="IS_AccentTertiary"/>
-                        <color key="sectionIndexColor" name="IS_Text"/>
+                        <color key="backgroundColor" name="ISLight_Background"/>
+                        <color key="separatorColor" name="ISLight_AccentTertiary"/>
+                        <color key="sectionIndexColor" name="ISLight_Text"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="queuesPrototype" id="dhX-H1-Jys">
                                 <rect key="frame" x="0.0" y="55.5" width="375" height="44"/>
@@ -146,8 +146,8 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
-                                <color key="backgroundColor" name="IS_FocusBackground"/>
-                                <color key="tintColor" name="IS_AccentPrimary"/>
+                                <color key="backgroundColor" name="ISLight_FocusBackground"/>
+                                <color key="tintColor" name="ISLight_AccentPrimary"/>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -178,10 +178,10 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" translucent="NO" id="vpF-w4-v4D">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="tintColor" name="IS_AccentPrimary"/>
-                        <color key="barTintColor" name="IS_HeaderFooter"/>
+                        <color key="tintColor" name="ISLight_AccentPrimary"/>
+                        <color key="barTintColor" name="ISLight_HeaderFooter"/>
                         <textAttributes key="titleTextAttributes">
-                            <color key="textColor" name="IS_Title"/>
+                            <color key="textColor" name="ISLight_Title"/>
                         </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -200,9 +200,9 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="38h-lX-mQt">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="554"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" name="IS_Background"/>
-                        <color key="separatorColor" name="IS_AccentTertiary"/>
-                        <color key="sectionIndexColor" name="IS_Text"/>
+                        <color key="backgroundColor" name="ISLight_Background"/>
+                        <color key="separatorColor" name="ISLight_AccentTertiary"/>
+                        <color key="sectionIndexColor" name="ISLight_Text"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="namePrototype" id="CVA-C2-oFm" customClass="FeedbackNameCell" customModule="invention_studio_ios" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="55.5" width="375" height="44"/>
@@ -213,12 +213,12 @@
                                     <subviews>
                                         <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2Yz-cP-1n6">
                                             <rect key="frame" x="308" y="6" width="51" height="31"/>
-                                            <color key="onTintColor" name="IS_AccentPrimary"/>
+                                            <color key="onTintColor" name="ISLight_AccentPrimary"/>
                                         </switch>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="548-JP-bCL">
                                             <rect key="frame" x="15" y="12" width="42" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" name="IS_Title"/>
+                                            <color key="textColor" name="ISLight_Title"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
@@ -230,7 +230,7 @@
                                         <constraint firstItem="548-JP-bCL" firstAttribute="centerY" secondItem="oUJ-0P-EZc" secondAttribute="centerY" id="mrL-7k-RNx"/>
                                     </constraints>
                                 </tableViewCellContentView>
-                                <color key="backgroundColor" name="IS_FocusBackground"/>
+                                <color key="backgroundColor" name="ISLight_FocusBackground"/>
                                 <connections>
                                     <outlet property="anonymousSwitch" destination="2Yz-cP-1n6" id="ECa-l9-he8"/>
                                     <outlet property="titleLabel" destination="548-JP-bCL" id="mmL-rJ-caj"/>
@@ -247,7 +247,7 @@
                                             <rect key="frame" x="16" y="12" width="33.5" height="20.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" name="IS_Title"/>
+                                            <color key="textColor" name="ISLight_Title"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="uj2-ds-CeF">
@@ -259,7 +259,7 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
-                                <color key="backgroundColor" name="IS_FocusBackground"/>
+                                <color key="backgroundColor" name="ISLight_FocusBackground"/>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="pickerDropdownPrototype" rowHeight="216" id="k6Z-nI-lJp" customClass="FeedbackPickerDropdownCell" customModule="invention_studio_ios" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="143.5" width="375" height="216"/>
@@ -270,11 +270,11 @@
                                     <subviews>
                                         <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fKe-TN-aQT">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="216"/>
-                                            <color key="tintColor" name="IS_AccentPrimary"/>
+                                            <color key="tintColor" name="ISLight_AccentPrimary"/>
                                         </pickerView>
                                     </subviews>
                                 </tableViewCellContentView>
-                                <color key="backgroundColor" name="IS_FocusBackground"/>
+                                <color key="backgroundColor" name="ISLight_FocusBackground"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="fKe-TN-aQT" secondAttribute="trailing" id="HR9-OR-YLf"/>
                                     <constraint firstItem="fKe-TN-aQT" firstAttribute="leading" secondItem="k6Z-nI-lJp" secondAttribute="leading" id="Lal-Jo-aCq"/>
@@ -299,16 +299,16 @@
                                                     <integer key="value" value="11"/>
                                                 </userDefinedRuntimeAttribute>
                                                 <userDefinedRuntimeAttribute type="color" keyPath="downFontColor">
-                                                    <color key="value" name="IS_Text"/>
+                                                    <color key="value" name="ISLight_Text"/>
                                                 </userDefinedRuntimeAttribute>
                                                 <userDefinedRuntimeAttribute type="color" keyPath="upFontColor">
-                                                    <color key="value" name="IS_AccentPrimary"/>
+                                                    <color key="value" name="ISLight_AccentPrimary"/>
                                                 </userDefinedRuntimeAttribute>
                                             </userDefinedRuntimeAttributes>
                                         </view>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YwT-ay-H4x" customClass="TGPDiscreteSlider">
                                             <rect key="frame" x="16" y="33" width="343" height="44"/>
-                                            <color key="tintColor" name="IS_AccentPrimary"/>
+                                            <color key="tintColor" name="ISLight_AccentPrimary"/>
                                             <userDefinedRuntimeAttributes>
                                                 <userDefinedRuntimeAttribute type="size" keyPath="tickSize">
                                                     <size key="value" width="1" height="10"/>
@@ -330,7 +330,7 @@
                                         <constraint firstAttribute="bottom" secondItem="EvC-XC-1go" secondAttribute="bottom" constant="43.5" id="ypR-mQ-nhj"/>
                                     </constraints>
                                 </tableViewCellContentView>
-                                <color key="backgroundColor" name="IS_Background"/>
+                                <color key="backgroundColor" name="ISLight_Background"/>
                                 <connections>
                                     <outlet property="camelLabels" destination="EvC-XC-1go" id="Vxf-9e-XeU"/>
                                     <outlet property="slider" destination="YwT-ay-H4x" id="QPW-on-Gec"/>
@@ -345,8 +345,8 @@
                                     <subviews>
                                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="fze-P5-nBj">
                                             <rect key="frame" x="16" y="11" width="343" height="194"/>
-                                            <color key="tintColor" name="IS_AccentPrimary"/>
-                                            <color key="textColor" name="IS_Text"/>
+                                            <color key="tintColor" name="ISLight_AccentPrimary"/>
+                                            <color key="textColor" name="ISLight_Text"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                         </textView>
@@ -358,7 +358,7 @@
                                         <constraint firstAttribute="trailing" secondItem="fze-P5-nBj" secondAttribute="trailing" constant="16" id="w90-61-d2i"/>
                                     </constraints>
                                 </tableViewCellContentView>
-                                <color key="backgroundColor" name="IS_FocusBackground"/>
+                                <color key="backgroundColor" name="ISLight_FocusBackground"/>
                                 <connections>
                                     <outlet property="commentBox" destination="fze-P5-nBj" id="iUh-Zc-iD4"/>
                                 </connections>
@@ -382,9 +382,9 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="Dv4-ww-0Ul">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" name="IS_Background"/>
-                        <color key="separatorColor" name="IS_AccentTertiary"/>
-                        <color key="sectionIndexColor" name="IS_Text"/>
+                        <color key="backgroundColor" name="ISLight_Background"/>
+                        <color key="separatorColor" name="ISLight_AccentTertiary"/>
+                        <color key="sectionIndexColor" name="ISLight_Text"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="equipmentPrototype" id="OGs-yV-gqa" customClass="EquipmentCell" customModule="invention_studio_ios" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="55.5" width="375" height="44"/>
@@ -396,13 +396,13 @@
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tkk-dI-CYb">
                                             <rect key="frame" x="16" y="12" width="33.5" height="20.5"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" name="IS_Title"/>
+                                            <color key="textColor" name="ISLight_Title"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Status" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IMz-LU-x7J">
                                             <rect key="frame" x="262.5" y="12" width="49.5" height="20.5"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" name="IS_Title"/>
+                                            <color key="textColor" name="ISLight_Title"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wj3-gb-ym3">
@@ -430,7 +430,7 @@
                                         <constraint firstItem="Wj3-gb-ym3" firstAttribute="centerY" secondItem="CTG-bl-MAz" secondAttribute="centerY" id="oYt-N8-Ko1"/>
                                     </constraints>
                                 </tableViewCellContentView>
-                                <color key="backgroundColor" name="IS_FocusBackground"/>
+                                <color key="backgroundColor" name="ISLight_FocusBackground"/>
                                 <connections>
                                     <outlet property="statusIcon" destination="Wj3-gb-ym3" id="4rv-wO-jns"/>
                                     <outlet property="statusLabel" destination="IMz-LU-x7J" id="gN5-ec-rXa"/>
@@ -472,13 +472,13 @@
                                             <segment title="Information"/>
                                             <segment title="Report Problem"/>
                                         </segments>
-                                        <color key="tintColor" name="IS_AccentPrimary"/>
+                                        <color key="tintColor" name="ISLight_AccentPrimary"/>
                                         <connections>
                                             <action selector="segmentChanged:" destination="LQ8-s6-WLF" eventType="valueChanged" id="glQ-sO-fEO"/>
                                         </connections>
                                     </segmentedControl>
                                 </subviews>
-                                <color key="backgroundColor" name="IS_HeaderFooter"/>
+                                <color key="backgroundColor" name="ISLight_HeaderFooter"/>
                                 <constraints>
                                     <constraint firstItem="hFI-j8-bwK" firstAttribute="centerX" secondItem="hIP-nz-nTe" secondAttribute="centerX" id="Hhf-r8-nhO"/>
                                     <constraint firstAttribute="height" constant="44" id="KMK-Ao-hLc"/>
@@ -487,9 +487,9 @@
                             </view>
                             <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="fli-fl-UOe">
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
-                                <color key="backgroundColor" name="IS_Background"/>
-                                <color key="separatorColor" name="IS_AccentTertiary"/>
-                                <color key="sectionIndexColor" name="IS_Text"/>
+                                <color key="backgroundColor" name="ISLight_Background"/>
+                                <color key="separatorColor" name="ISLight_AccentTertiary"/>
+                                <color key="sectionIndexColor" name="ISLight_Text"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="namePrototype" id="hRq-mw-iXd" customClass="FeedbackNameCell" customModule="invention_studio_ios" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="55.5" width="375" height="44"/>
@@ -500,12 +500,12 @@
                                             <subviews>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ET4-z4-yXg">
                                                     <rect key="frame" x="308" y="6" width="51" height="31"/>
-                                                    <color key="onTintColor" name="IS_AccentPrimary"/>
+                                                    <color key="onTintColor" name="ISLight_AccentPrimary"/>
                                                 </switch>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gWZ-TL-aXx">
                                                     <rect key="frame" x="15" y="12" width="42" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" name="IS_Title"/>
+                                                    <color key="textColor" name="ISLight_Title"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -517,7 +517,7 @@
                                                 <constraint firstItem="ET4-z4-yXg" firstAttribute="centerY" secondItem="of1-ME-0V2" secondAttribute="centerY" id="yst-LG-SfD"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" name="IS_FocusBackground"/>
+                                        <color key="backgroundColor" name="ISLight_FocusBackground"/>
                                         <connections>
                                             <outlet property="anonymousSwitch" destination="ET4-z4-yXg" id="qA8-uM-xGD"/>
                                             <outlet property="titleLabel" destination="gWZ-TL-aXx" id="Gvx-SL-BYE"/>
@@ -534,7 +534,7 @@
                                                     <rect key="frame" x="15" y="12" width="33.5" height="20.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" name="IS_Title"/>
+                                                    <color key="textColor" name="ISLight_Title"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="E1F-GX-hHJ">
@@ -545,9 +545,9 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
-                                            <color key="backgroundColor" name="IS_FocusBackground"/>
+                                            <color key="backgroundColor" name="ISLight_FocusBackground"/>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" name="IS_FocusBackground"/>
+                                        <color key="backgroundColor" name="ISLight_FocusBackground"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="pickerDropdownPrototype" rowHeight="216" id="UOm-O5-S2x" customClass="FeedbackPickerDropdownCell" customModule="invention_studio_ios" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="143.5" width="375" height="216"/>
@@ -558,11 +558,11 @@
                                             <subviews>
                                                 <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PQ8-KO-6fN">
                                                     <rect key="frame" x="0.0" y="0.0" width="375" height="216"/>
-                                                    <color key="tintColor" name="IS_AccentPrimary"/>
+                                                    <color key="tintColor" name="ISLight_AccentPrimary"/>
                                                 </pickerView>
                                             </subviews>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" name="IS_FocusBackground"/>
+                                        <color key="backgroundColor" name="ISLight_FocusBackground"/>
                                         <constraints>
                                             <constraint firstItem="PQ8-KO-6fN" firstAttribute="top" secondItem="UOm-O5-S2x" secondAttribute="top" id="BsB-C0-l5B"/>
                                             <constraint firstAttribute="bottom" secondItem="PQ8-KO-6fN" secondAttribute="bottom" id="DV0-90-Uuf"/>
@@ -582,13 +582,13 @@
                                             <subviews>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Sxk-Ks-Fr1">
                                                     <rect key="frame" x="16" y="11" width="343" height="194"/>
-                                                    <color key="tintColor" name="IS_AccentPrimary"/>
-                                                    <color key="textColor" name="IS_Text"/>
+                                                    <color key="tintColor" name="ISLight_AccentPrimary"/>
+                                                    <color key="textColor" name="ISLight_Text"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                 </textView>
                                             </subviews>
-                                            <color key="backgroundColor" name="IS_FocusBackground"/>
+                                            <color key="backgroundColor" name="ISLight_FocusBackground"/>
                                             <constraints>
                                                 <constraint firstItem="Sxk-Ks-Fr1" firstAttribute="leading" secondItem="lX2-Zz-ea1" secondAttribute="leading" constant="16" id="2Il-PL-XKK"/>
                                                 <constraint firstAttribute="trailing" secondItem="Sxk-Ks-Fr1" secondAttribute="trailing" constant="16" id="39f-pD-j6C"/>
@@ -611,7 +611,7 @@
                                 <subviews>
                                     <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" bouncesZoom="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NcK-sV-8ry">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
-                                        <color key="backgroundColor" name="IS_Background"/>
+                                        <color key="backgroundColor" name="ISLight_Background"/>
                                     </scrollView>
                                 </subviews>
                                 <constraints>
@@ -663,12 +663,12 @@
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VTi-qe-5rT">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="554"/>
                                 <string key="text">Attribution: Home Icon created by Viktor Vorobyev from Noun Project. 3D printer icon created by Peter van Driel from Noun Project. Queue Icon created by Deepak M from Noun Project.  Feedback Icon Created by dilakuscan from Noun Project. Other Icon created by Ilaria Bernareggi from Noun Project.</string>
-                                <color key="textColor" name="IS_Text"/>
+                                <color key="textColor" name="ISLight_Text"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                         </subviews>
-                        <color key="backgroundColor" name="IS_Background"/>
+                        <color key="backgroundColor" name="ISLight_Background"/>
                         <constraints>
                             <constraint firstItem="BON-PX-0sc" firstAttribute="bottom" secondItem="VTi-qe-5rT" secondAttribute="bottom" id="1Zy-r1-ING"/>
                             <constraint firstItem="BON-PX-0sc" firstAttribute="trailing" secondItem="VTi-qe-5rT" secondAttribute="trailing" id="Sds-HZ-JbO"/>
@@ -691,10 +691,10 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" translucent="NO" id="qyI-ea-cQr">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="tintColor" name="IS_AccentPrimary"/>
-                        <color key="barTintColor" name="IS_HeaderFooter"/>
+                        <color key="tintColor" name="ISLight_AccentPrimary"/>
+                        <color key="barTintColor" name="ISLight_HeaderFooter"/>
                         <textAttributes key="titleTextAttributes">
-                            <color key="textColor" name="IS_Title"/>
+                            <color key="textColor" name="ISLight_Title"/>
                         </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -713,9 +713,9 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="Vqp-fl-rHu">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="554"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" name="IS_Background"/>
-                        <color key="separatorColor" name="IS_AccentTertiary"/>
-                        <color key="sectionIndexColor" name="IS_Text"/>
+                        <color key="backgroundColor" name="ISLight_Background"/>
+                        <color key="separatorColor" name="ISLight_AccentTertiary"/>
+                        <color key="sectionIndexColor" name="ISLight_Text"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="otherPrototype" id="MhE-wH-qjm">
                                 <rect key="frame" x="0.0" y="55.5" width="375" height="44"/>
@@ -724,7 +724,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="341" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
-                                <color key="backgroundColor" name="IS_FocusBackground"/>
+                                <color key="backgroundColor" name="ISLight_FocusBackground"/>
                                 <connections>
                                     <segue destination="Uib-l1-hO6" kind="show" id="gEN-hy-5M8"/>
                                 </connections>
@@ -750,10 +750,10 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" translucent="NO" id="vCR-eJ-UZj">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="tintColor" name="IS_AccentPrimary"/>
-                        <color key="barTintColor" name="IS_HeaderFooter"/>
+                        <color key="tintColor" name="ISLight_AccentPrimary"/>
+                        <color key="barTintColor" name="ISLight_HeaderFooter"/>
                         <textAttributes key="titleTextAttributes">
-                            <color key="textColor" name="IS_Title"/>
+                            <color key="textColor" name="ISLight_Title"/>
                         </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -772,8 +772,8 @@
                     <view key="view" contentMode="scaleToFill" id="X37-6P-Yvd">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="554"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" name="IS_Background"/>
-                        <color key="tintColor" name="IS_AccentPrimary"/>
+                        <color key="backgroundColor" name="ISLight_Background"/>
+                        <color key="tintColor" name="ISLight_AccentPrimary"/>
                         <viewLayoutGuide key="safeArea" id="9PO-ZW-XRL"/>
                     </view>
                     <connections>
@@ -793,52 +793,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="554"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vcM-eL-qAb">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vcM-eL-qAb">
                                 <rect key="frame" x="16" y="20" width="343" height="516"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <attributedString key="attributedText">
-                                    <fragment>
-                                        <string key="content">Hmm…
+                                <string key="text">Hmm…
 Looks like you are not in our system.
 
 
 1. Find one of the kiosks in the Invention Studio.
 
-</string>
-                                        <attributes>
-                                            <color key="NSColor" name="IS_Text"/>
-                                            <font key="NSFont" size="14" name="Helvetica"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                        </attributes>
-                                    </fragment>
-                                    <fragment content="Not sure where?">
-                                        <attributes>
-                                            <color key="NSColor" name="IS_Text"/>
-                                            <font key="NSFont" size="14" name="Helvetica-Bold"/>
-                                            <font key="NSOriginalFont" size="14" name="Helvetica-Bold"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                        </attributes>
-                                    </fragment>
-                                    <fragment>
-                                        <string key="content"> Kiosks are available in MRDC rooms 1001, 1002, 1003.
+Not sure where? Kiosks are available in MRDC rooms 1001, 1002, 1003.
 
-</string>
-                                        <attributes>
-                                            <color key="NSColor" name="IS_Text"/>
-                                            <font key="NSFont" size="14" name="Helvetica"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                        </attributes>
-                                    </fragment>
-                                    <fragment content="For more info">
-                                        <attributes>
-                                            <color key="NSColor" name="IS_Text"/>
-                                            <font key="NSFont" size="14" name="Helvetica-Bold"/>
-                                            <font key="NSOriginalFont" size="14" name="Helvetica-Bold"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                        </attributes>
-                                    </fragment>
-                                    <fragment>
-                                        <string key="content"> ask any Prototyping Instructor (PI), who are in the studio wearing GREEN arm bands.
+For more info ask any Prototyping Instructor (PI), who are in the studio wearing GREEN arm bands.
 
 
 2. Tap your Buzzcard and sign the safety agreement by tapping "Take Test."
@@ -846,25 +812,21 @@ Looks like you are not in our system.
 
 3. Click the "Agreement Signed" button below. 
 </string>
-                                        <attributes>
-                                            <color key="NSColor" name="IS_Text"/>
-                                            <font key="NSFont" size="14" name="Helvetica"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                        </attributes>
-                                    </fragment>
-                                </attributedString>
+                                <color key="textColor" name="ISLight_Text"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q4Z-wA-htS">
-                                <rect key="frame" x="124" y="494" width="127" height="30"/>
+                                <rect key="frame" x="106.5" y="488" width="162" height="36"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="Agreement Signed"/>
                                 <connections>
                                     <action selector="agreementSigned:" destination="BCU-x0-vSW" eventType="touchUpInside" id="do8-Hl-OUs"/>
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" name="IS_Background"/>
-                        <color key="tintColor" name="IS_AccentPrimary"/>
+                        <color key="backgroundColor" name="ISLight_Background"/>
+                        <color key="tintColor" name="ISLight_AccentPrimary"/>
                         <constraints>
                             <constraint firstItem="q4Z-wA-htS" firstAttribute="centerX" secondItem="Iqj-j9-RZc" secondAttribute="centerX" id="K5e-QJ-oNC"/>
                             <constraint firstItem="vcM-eL-qAb" firstAttribute="leading" secondItem="Iqj-j9-RZc" secondAttribute="leading" constant="16" id="QN4-iY-Ukw"/>
@@ -890,10 +852,10 @@ Looks like you are not in our system.
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" translucent="NO" id="sJV-US-3U5">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="tintColor" name="IS_AccentPrimary"/>
-                        <color key="barTintColor" name="IS_HeaderFooter"/>
+                        <color key="tintColor" name="ISLight_AccentPrimary"/>
+                        <color key="barTintColor" name="ISLight_HeaderFooter"/>
                         <textAttributes key="titleTextAttributes">
-                            <color key="textColor" name="IS_Title"/>
+                            <color key="textColor" name="ISLight_Title"/>
                         </textAttributes>
                     </navigationBar>
                     <connections>
@@ -916,8 +878,8 @@ Looks like you are not in our system.
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="554"/>
                             </scrollView>
                         </subviews>
-                        <color key="backgroundColor" name="IS_Background"/>
-                        <color key="tintColor" name="IS_AccentPrimary"/>
+                        <color key="backgroundColor" name="ISLight_Background"/>
+                        <color key="tintColor" name="ISLight_AccentPrimary"/>
                         <constraints>
                             <constraint firstItem="Y3v-Cg-k9T" firstAttribute="bottom" secondItem="NMN-9A-aiQ" secondAttribute="bottom" id="E9q-t6-PjS"/>
                             <constraint firstItem="Y3v-Cg-k9T" firstAttribute="trailing" secondItem="NMN-9A-aiQ" secondAttribute="trailing" id="a0Z-Ln-Z2Q"/>
@@ -949,29 +911,29 @@ Looks like you are not in our system.
         <image name="Home Icon" width="35" height="30"/>
         <image name="Other Icon" width="35" height="30"/>
         <image name="Queue Icon" width="35" height="30"/>
-        <namedColor name="IS_AccentPrimary">
-            <color red="0.96078431372549022" green="0.82352941176470584" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <namedColor name="ISLight_AccentPrimary">
+            <color red="0.80000000000000004" green="0.6588235294117647" blue="0.14901960784313725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <namedColor name="IS_AccentTertiary">
-            <color white="0.33300000429153442" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        <namedColor name="ISLight_AccentTertiary">
+            <color red="0.20000000000000001" green="0.22352941176470589" blue="0.24705882352941178" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <namedColor name="IS_Background">
-            <color red="0.035294117647058823" green="0.12156862745098039" blue="0.15686274509803921" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        <namedColor name="ISLight_Background">
+            <color red="0.89411764705882357" green="0.90980392156862744" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
-        <namedColor name="IS_FocusBackground">
-            <color red="0.1019607843" green="0.1019607843" blue="0.1019607843" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <namedColor name="ISLight_FocusBackground">
+            <color red="0.84313725490196079" green="0.8666666666666667" blue="0.8784313725490196" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <namedColor name="IS_HeaderFooter">
-            <color red="0.039215686274509803" green="0.058823529411764705" blue="0.070588235294117646" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <namedColor name="ISLight_HeaderFooter">
+            <color red="0.15686274509803921" green="0.22352941176470589" blue="0.25490196078431371" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <namedColor name="IS_Text">
-            <color white="0.66699999570000001" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        <namedColor name="ISLight_Text">
+            <color red="0.027450980392156862" green="0.035294117647058823" blue="0.039215686274509803" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
-        <namedColor name="IS_Text">
-            <color white="0.66699999570000001" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        <namedColor name="ISLight_Text">
+            <color red="0.027450980392156862" green="0.035294117647058823" blue="0.039215686274509803" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
-        <namedColor name="IS_Title">
-            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <namedColor name="ISLight_Title">
+            <color red="0.0078431372549019607" green="0.015686274509803921" blue="0.019607843137254902" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
     <inferredMetricsTieBreakers>
