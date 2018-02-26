@@ -12,6 +12,7 @@ class EquipmentVC: ISViewController, UITableViewDataSource, UITableViewDelegate,
 
     @IBOutlet weak var segmentContainer: UIView!
     @IBOutlet weak var segmentControl: UISegmentedControl!
+    var segmentContainerBorderLine = CAShapeLayer()
 
     @IBOutlet weak var informationView: UIView!
     @IBOutlet weak var informationScrollView: UIScrollView!
@@ -66,8 +67,8 @@ class EquipmentVC: ISViewController, UITableViewDataSource, UITableViewDelegate,
     }
     var segmentViews = Array<UIView>()
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
 
         self.navigationController?.delegate = self
         /**
@@ -78,6 +79,9 @@ class EquipmentVC: ISViewController, UITableViewDataSource, UITableViewDelegate,
         /**
          ** Set Up Segment Controller
          **/
+        segmentContainer.backgroundColor = Theme.headerFooter
+        segmentContainerBorderLine.strokeColor = Theme.accentSecondary.cgColor
+
         segmentViews.append(informationView)
         segmentViews.append(reportProblemTableView)
 
@@ -154,6 +158,7 @@ class EquipmentVC: ISViewController, UITableViewDataSource, UITableViewDelegate,
         for picker in pickerSelections.keys {
             pickerSelections[picker] = pickerValues[picker]![0]
         }
+        reportProblemTableView.reloadData()
     }
     
     func navigationController(_ navigationController: UINavigationController, willShow viewController: UIViewController, animated: Bool) {
@@ -162,18 +167,12 @@ class EquipmentVC: ISViewController, UITableViewDataSource, UITableViewDelegate,
     }
 
     override func viewDidLayoutSubviews() {
-        //Set colors
-        segmentContainer.backgroundColor = Theme.headerFooter
-
-        //Draw line on segmented control container
-        let line = CAShapeLayer()
         let linePath = UIBezierPath()
         linePath.move(to: CGPoint(x: segmentContainer.frame.minX, y: segmentContainer.frame.maxY))
         linePath.addLine(to: CGPoint(x: segmentContainer.frame.maxX, y: segmentContainer.frame.maxY))
-        line.path = linePath.cgPath
-        line.strokeColor = Theme.accentSecondary.cgColor
-        line.lineWidth = 0.5
-        segmentContainer.layer.addSublayer(line)
+        segmentContainerBorderLine.path = linePath.cgPath
+        segmentContainerBorderLine.lineWidth = 0.5
+        segmentContainer.layer.addSublayer(segmentContainerBorderLine)
     }
 
     override func didReceiveMemoryWarning() {

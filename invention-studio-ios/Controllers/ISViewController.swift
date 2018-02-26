@@ -10,10 +10,12 @@ import UIKit
 
 class ISViewController: UIViewController {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
 
         view.backgroundColor = Theme.background
         view.tintColor = Theme.accentPrimary
+        
+        self.view.setNeedsDisplay()
     }
 }

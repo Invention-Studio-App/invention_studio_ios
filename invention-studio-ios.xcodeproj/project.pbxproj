@@ -15,6 +15,7 @@
 		4FC7717F2017D068008A13D9 /* EquipmentGroupListTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FC7717E2017D068008A13D9 /* EquipmentGroupListTVC.swift */; };
 		4FDBD2A1203A17F30034173E /* AgreementVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FDBD2A0203A17F30034173E /* AgreementVC.swift */; };
 		93B4A7E4809E293F4650C3DB /* Pods_invention_studio_iosUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 225D7FB4887E2F08CF0BAAC4 /* Pods_invention_studio_iosUITests.framework */; };
+		B2323A6120449B34008D3F35 /* ColorThemeTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2323A6020449B34008D3F35 /* ColorThemeTVC.swift */; };
 		B233FFC420216DFD0024A5C6 /* FeedbackNameCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B233FFC320216DFD0024A5C6 /* FeedbackNameCell.swift */; };
 		B233FFC620216E5C0024A5C6 /* FeedbackPickerHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B233FFC520216E5C0024A5C6 /* FeedbackPickerHeaderCell.swift */; };
 		B233FFC820216E720024A5C6 /* FeedbackPickerDropdownCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B233FFC720216E720024A5C6 /* FeedbackPickerDropdownCell.swift */; };
@@ -73,6 +74,7 @@
 		4FDBD2A0203A17F30034173E /* AgreementVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgreementVC.swift; sourceTree = "<group>"; };
 		5CD21A0AFD35E1BE8BFF581B /* Pods_invention_studio_ios.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_invention_studio_ios.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		62DCFEF488633AA8D11B1636 /* Pods-invention-studio-ios.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-invention-studio-ios.debug.xcconfig"; path = "Pods/Target Support Files/Pods-invention-studio-ios/Pods-invention-studio-ios.debug.xcconfig"; sourceTree = "<group>"; };
+		B2323A6020449B34008D3F35 /* ColorThemeTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorThemeTVC.swift; sourceTree = "<group>"; };
 		B233FFC320216DFD0024A5C6 /* FeedbackNameCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackNameCell.swift; sourceTree = "<group>"; };
 		B233FFC520216E5C0024A5C6 /* FeedbackPickerHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackPickerHeaderCell.swift; sourceTree = "<group>"; };
 		B233FFC720216E720024A5C6 /* FeedbackPickerDropdownCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackPickerDropdownCell.swift; sourceTree = "<group>"; };
@@ -174,6 +176,7 @@
 				B2A3A82E201C1B1400F3AF7F /* QueuesTVC.swift */,
 				B2A3A830201C1B2A00F3AF7F /* FeedbackTVC.swift */,
 				B2A3A832201C1C3500F3AF7F /* OtherTVC.swift */,
+				B2323A6020449B34008D3F35 /* ColorThemeTVC.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -588,6 +591,7 @@
 				B2BEA45020437F4800132EF7 /* Theme.swift in Sources */,
 				B254C5B32036335900D6A2B4 /* QueueUser.swift in Sources */,
 				4F8FB693201547DB00DBCD35 /* LandingVC.swift in Sources */,
+				B2323A6120449B34008D3F35 /* ColorThemeTVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

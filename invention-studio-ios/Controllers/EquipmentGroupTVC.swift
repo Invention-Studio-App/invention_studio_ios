@@ -15,8 +15,8 @@ class EquipmentGroupTVC: ISTableViewController {
     var locationName = ""
     var tools = [Tool]()
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         
         tools.sort(by: { (toolA, toolB) in
             if (toolA.status().hashValue == toolB.status().hashValue) {

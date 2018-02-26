@@ -8,51 +8,70 @@
 
 import UIKit
 
-enum Theme: String {
+enum Theme: Int {
 
-    case light = "ISLight"
-    case dark = "ISDark"
+    case light = 0
+    case dark = 1
 
-    private static var currentTheme: Theme {
-        let storedTheme = UserDefaults.standard.string(forKey: "Theme") ?? ""
+    static let displayNames = ["Light", "Dark"]
+    static let names = ["ISLight", "ISDark"]
+
+    static var currentTheme: Theme {
+        let storedTheme = UserDefaults.standard.integer(forKey: "Theme")
         return Theme(rawValue: storedTheme) ?? .light
         //Default to light if no theme is stored
     }
 
     static var accentPrimary: UIColor {
-        return UIColor(named: currentTheme.rawValue + "_AccentPrimary")!
+        return UIColor(named: Theme.nameFor(theme: currentTheme) + "_AccentPrimary")!
     }
 
     static var accentSecondary: UIColor {
-        return UIColor(named: currentTheme.rawValue + "_AccentSecondary")!
+        return UIColor(named: Theme.nameFor(theme: currentTheme) + "_AccentSecondary")!
     }
 
     static var accentTertiary: UIColor {
-        return UIColor(named: currentTheme.rawValue + "_AccentTertiary")!
+        return UIColor(named: Theme.nameFor(theme: currentTheme) + "_AccentTertiary")!
     }
 
     static var background: UIColor {
-        return UIColor(named: currentTheme.rawValue + "_Background")!
+        return UIColor(named: Theme.nameFor(theme: currentTheme) + "_Background")!
     }
 
     static var focusBackground: UIColor {
-        return UIColor(named: currentTheme.rawValue + "_FocusBackground")!
+        return UIColor(named: Theme.nameFor(theme: currentTheme) + "_FocusBackground")!
     }
 
     static var headerFooter: UIColor {
-        return UIColor(named: currentTheme.rawValue + "_HeaderFooter")!
+        return UIColor(named: Theme.nameFor(theme: currentTheme) + "_HeaderFooter")!
     }
 
     static var headerTitle: UIColor {
-        return UIColor(named: currentTheme.rawValue + "_HeaderTitle")!
+        return UIColor(named: Theme.nameFor(theme: currentTheme) + "_HeaderTitle")!
     }
 
     static var text: UIColor {
-        return UIColor(named: currentTheme.rawValue + "_Text")!
+        return UIColor(named: Theme.nameFor(theme: currentTheme) + "_Text")!
     }
 
     static var title: UIColor {
-        return UIColor(named: currentTheme.rawValue + "_Title")!
+        return UIColor(named: Theme.nameFor(theme: currentTheme) + "_Title")!
+    }
+
+    static func themeFor(displayName: String) -> Theme {
+        return Theme(rawValue: Theme.displayNames.index(of: displayName) ?? 0)!
+    }
+
+    static func displayNameFor(theme: Theme) -> String {
+        return Theme.displayNames[theme.rawValue]
+    }
+
+    static func nameFor(theme: Theme) -> String {
+        return Theme.names[theme.rawValue]
+    }
+
+    static func set(theme: Theme) {
+        UserDefaults.standard.set(theme.rawValue, forKey: "Theme")
     }
 
     static func apply() {
@@ -71,7 +90,11 @@ enum Theme: String {
         UITabBar.appearance().unselectedItemTintColor = Theme.accentSecondary
         UITabBar.appearance().tintColor = Theme.accentPrimary
 
+        /*
+         * UITableView
+         */
         UITableView.appearance().separatorColor = Theme.accentTertiary
+
         /*
          * UITableViewCell
          */
