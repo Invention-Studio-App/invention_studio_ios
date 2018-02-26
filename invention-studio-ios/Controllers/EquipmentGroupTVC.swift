@@ -50,7 +50,7 @@ class EquipmentGroupTVC: ISTableViewController {
 
         //Set attributed text from HTML
         let attributedString = try! NSMutableAttributedString(
-            data: "Ultimaker 2+ 3D Printers\nThis is primary line of Ultimaker 2+ 3D Printers. The primary material for this printer is PLA plastic, a corn-based biodegradable polymer which is commonly used in prototyping and manufacturing.".data(using: String.Encoding.unicode, allowLossyConversion: true)!,
+            data: "Ultimaker 2+ 3D Printers<br/>This is primary line of Ultimaker 2+ 3D Printers. The primary material for this printer is PLA plastic, a corn-based biodegradable polymer which is commonly used in prototyping and manufacturing.".data(using: String.Encoding.unicode, allowLossyConversion: true)!,
             options: [.documentType: NSAttributedString.DocumentType.html],
             documentAttributes: nil)
         let attributesDict = [NSAttributedStringKey.foregroundColor: Theme.text,

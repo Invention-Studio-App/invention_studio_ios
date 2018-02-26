@@ -34,6 +34,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //If the user has never logged in before, this will automatically fail since loginSession == 0
         if timeStamp < loginSession && shouldLogin {
             initialViewController = storyboard.instantiateViewController(withIdentifier: "TabBarController")
+            UserDefaults.standard.set(true, forKey: "LoggedIn")
         } else {
             initialViewController = storyboard.instantiateViewController(withIdentifier: "LandingViewController")
             UserDefaults.standard.set(false, forKey: "LoggedIn")
