@@ -15,10 +15,14 @@ class FeedbackRatingCell: UITableViewCell {
     @IBOutlet weak var slider: TGPDiscreteSlider!
 
     override func layoutSubviews() {
-        slider.minimumValue = 0
-        slider.value = 0
+        camelLabels.upFontColor = Theme.accentPrimary
+        camelLabels.downFontColor = Theme.title
         camelLabels.names = ["N/A", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10"]
         camelLabels.value = 0
+
+        slider.tintColor = Theme.accentPrimary
+        slider.minimumValue = 0
+        slider.value = 0
         slider.ticksListener = camelLabels
     }
 
