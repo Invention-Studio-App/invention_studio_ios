@@ -9,7 +9,7 @@
 import UIKit
 import TGPControls
 
-class FeedbackTVC: UITableViewController, UIPickerViewDataSource, UIPickerViewDelegate {
+class FeedbackTVC: ISTableViewController, UIPickerViewDataSource, UIPickerViewDelegate {
 
     private let toolBrokenHeaders = ["Your Name", "Feedback", "Tool", "Problem", "Comments"]
     private let toolBrokenPrototypes = [["namePrototype"],
@@ -106,7 +106,7 @@ class FeedbackTVC: UITableViewController, UIPickerViewDataSource, UIPickerViewDe
     
     override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         if let view = view as? UITableViewHeaderFooterView {
-            view.textLabel?.textColor = UIColor(named: "ISLight_AccentTertiary")
+            view.textLabel?.textColor = Theme.accentTertiary
         }
     }
 
@@ -131,10 +131,10 @@ class FeedbackTVC: UITableViewController, UIPickerViewDataSource, UIPickerViewDe
             cell.anonymousSwitch.addTarget(self, action: #selector(anonymousSwitchChanged), for: UIControlEvents.valueChanged)
 
             if cell.anonymousSwitch.isOn {
-                cell.titleLabel?.textColor = UIColor(named: "ISLight_Title")
+                cell.titleLabel?.textColor = Theme.title
                 cell.titleLabel?.text = name
             } else {
-                cell.titleLabel?.textColor = UIColor(named: "ISLight_Text")
+                cell.titleLabel?.textColor = Theme.text
                 cell.titleLabel?.text = "Anonymous"
             }
             return cell
@@ -144,9 +144,9 @@ class FeedbackTVC: UITableViewController, UIPickerViewDataSource, UIPickerViewDe
             cell.detailTextLabel?.text = pickerSelections[cellName]
 
             if indexPath == currentDropdownHeader {
-                cell.detailTextLabel?.textColor = UIColor(named: "ISLight_AccentPrimary")
+                cell.detailTextLabel?.textColor = Theme.accentPrimary
             } else {
-                cell.detailTextLabel?.textColor = UIColor(named: "ISLight_Title")
+                cell.detailTextLabel?.textColor = Theme.title
             }
             return cell
         case "pickerDropdownPrototype":
@@ -290,14 +290,15 @@ class FeedbackTVC: UITableViewController, UIPickerViewDataSource, UIPickerViewDe
     }
 
     func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
+        let attributes = [NSAttributedStringKey.foregroundColor : Theme.title]
         if pickerView == self.feedbackTypePicker {
-            return NSAttributedString(string:(pickerValues["Feedback"]?[row])!, attributes: [NSAttributedStringKey.foregroundColor : UIColor(named: "ISLight_Title")!])
+            return NSAttributedString(string:(pickerValues["Feedback"]?[row])!, attributes: attributes)
         } else if pickerView == self.toolGroupPicker {
-            return NSAttributedString(string:(pickerValues["Group"]?[row])!, attributes: [NSAttributedStringKey.foregroundColor : UIColor(named: "ISLight_Title")!])
+            return NSAttributedString(string:(pickerValues["Group"]?[row])!, attributes: attributes)
         } else if pickerView == self.toolPicker {
-            return NSAttributedString(string:(pickerValues["Tool"]?[row])!, attributes: [NSAttributedStringKey.foregroundColor : UIColor(named: "ISLight_Title")!])
+            return NSAttributedString(string:(pickerValues["Tool"]?[row])!, attributes: attributes)
         } else if pickerView == self.problemPicker {
-            return NSAttributedString(string:(pickerValues["Problem"]?[row])!, attributes: [NSAttributedStringKey.foregroundColor : UIColor(named: "ISLight_Title")!])
+            return NSAttributedString(string:(pickerValues["Problem"]?[row])!, attributes: attributes)
         } else {
             return nil
         }

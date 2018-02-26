@@ -8,19 +8,20 @@
 
 import UIKit
 
-class EquipmentVC: UIViewController, UITableViewDataSource, UITableViewDelegate, UIPickerViewDataSource, UIPickerViewDelegate, UITextViewDelegate, UINavigationControllerDelegate {
+class EquipmentVC: ISViewController, UITableViewDataSource, UITableViewDelegate, UIPickerViewDataSource, UIPickerViewDelegate, UITextViewDelegate, UINavigationControllerDelegate {
 
     @IBOutlet weak var segmentContainer: UIView!
     @IBOutlet weak var segmentControl: UISegmentedControl!
 
     @IBOutlet weak var informationView: UIView!
     @IBOutlet weak var informationScrollView: UIScrollView!
-    let statusIcon = UIView()
-    let statusLabel = UILabel()
+    private let statusTitleLabel = UILabel()
+    private let statusIcon = UIView()
+    private let statusLabel = UILabel()
 
     @IBOutlet weak var reportProblemTableView: UITableView!
 
-    private let toolBrokenHeaders = ["Your Name", "Tool", "Problem", "Comments"]
+    private let toolBrokenHeaders = ["Your Name", "Problem", "Comments"]
     private let toolBrokenPrototypes = [["namePrototype"],
                                         ["pickerHeaderPrototype", "pickerDropdownPrototype"],
                                         ["commentsPrototype"]]
@@ -95,8 +96,6 @@ class EquipmentVC: UIViewController, UITableViewDataSource, UITableViewDelegate,
 
         //Set Up Status Label
         //"Status:" Label
-        let statusTitleLabel = UILabel()
-        statusTitleLabel.textColor = UIColor(named: "ISLight_Title")
         statusTitleLabel.text = "Status:"
         let statusTitleLabelSize = statusTitleLabel.sizeThatFits(CGSize(width: CGFloat.greatestFiniteMagnitude, height: 21))
         statusTitleLabel.frame = CGRect(x: 16, y: informationImageView.frame.maxY + 16, width: statusTitleLabelSize.width, height: 21)
@@ -112,7 +111,6 @@ class EquipmentVC: UIViewController, UITableViewDataSource, UITableViewDelegate,
         informationScrollView.addSubview(statusIcon)
 
         //Status label
-        statusLabel.textColor = UIColor(named: "ISLight_Title")
         statusLabel.frame.origin.x = statusIcon.frame.maxX + 8
         statusLabel.center.y = statusTitleLabel.center.y
         informationScrollView.addSubview(statusLabel)
@@ -125,7 +123,6 @@ class EquipmentVC: UIViewController, UITableViewDataSource, UITableViewDelegate,
         informationTextView.bounces = false
         informationTextView.bouncesZoom = false
         informationTextView.backgroundColor = UIColor.clear
-        informationTextView.textColor = UIColor(named: "ISLight_Text")
         informationTextView.font = UIFont.systemFont(ofSize: 16)
         //informationTextView.text = tool.toolDescription
         informationTextView.text = tool.toolDescription.html2String
@@ -139,6 +136,9 @@ class EquipmentVC: UIViewController, UITableViewDataSource, UITableViewDelegate,
         /**
          ** Set Up "Report Problem" TableView
          **/
+
+        reportProblemTableView.backgroundColor = Theme.background
+        reportProblemTableView.tintColor = Theme.accentPrimary
 
         name = UserDefaults.standard.string(forKey: "UserName")!
 
@@ -160,16 +160,18 @@ class EquipmentVC: UIViewController, UITableViewDataSource, UITableViewDelegate,
         self.tools = [Tool]()
         (viewController as? EquipmentGroupTVC)?.tools = self.tools
     }
-    
-    
 
     override func viewDidLayoutSubviews() {
+        //Set colors
+        segmentContainer.backgroundColor = Theme.headerFooter
+
+        //Draw line on segmented control container
         let line = CAShapeLayer()
         let linePath = UIBezierPath()
         linePath.move(to: CGPoint(x: segmentContainer.frame.minX, y: segmentContainer.frame.maxY))
         linePath.addLine(to: CGPoint(x: segmentContainer.frame.maxX, y: segmentContainer.frame.maxY))
         line.path = linePath.cgPath
-        line.strokeColor = UIColor(named: "ISLight_AccentSecondary")?.cgColor
+        line.strokeColor = Theme.accentSecondary.cgColor
         line.lineWidth = 0.5
         segmentContainer.layer.addSublayer(line)
     }
@@ -197,7 +199,7 @@ class EquipmentVC: UIViewController, UITableViewDataSource, UITableViewDelegate,
 
     func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         if let view = view as? UITableViewHeaderFooterView {
-            view.textLabel?.textColor = UIColor(named: "ISLight_AccentTertiary")
+            view.textLabel?.textColor = Theme.accentTertiary
         }
     }
 
@@ -230,10 +232,8 @@ class EquipmentVC: UIViewController, UITableViewDataSource, UITableViewDelegate,
             let cell = tableView.dequeueReusableCell(withIdentifier: prototype, for: indexPath) as! FeedbackNameCell
             cell.anonymousSwitch.addTarget(self, action: #selector(anonymousSwitchChanged), for: UIControlEvents.valueChanged)
             if cell.anonymousSwitch.isOn {
-                cell.titleLabel?.textColor = UIColor(named: "ISLight_Title")
                 cell.titleLabel?.text = name
             } else {
-                cell.titleLabel?.textColor = UIColor(named: "ISLight_Text")
                 cell.titleLabel?.text = "Anonymous"
             }
             return cell
@@ -244,9 +244,9 @@ class EquipmentVC: UIViewController, UITableViewDataSource, UITableViewDelegate,
 
             if indexPath == currentDropdownHeader {
                 print("\nSUCCESS\n")
-                cell.detailTextLabel?.textColor = UIColor(named: "ISLight_AccentPrimary")
+                cell.detailTextLabel?.textColor = Theme.accentPrimary
             } else {
-                cell.detailTextLabel?.textColor = UIColor(named: "ISLight_Title")
+                cell.detailTextLabel?.textColor = Theme.title
             }
             return cell
         case "pickerDropdownPrototype":
@@ -294,7 +294,7 @@ class EquipmentVC: UIViewController, UITableViewDataSource, UITableViewDelegate,
 
     func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
         if pickerView == problemPicker {
-            return NSAttributedString(string:(pickerValues["Problem"]?[row])!, attributes: [NSAttributedStringKey.foregroundColor : UIColor(named: "ISLight_Title")!])
+            return NSAttributedString(string:(pickerValues["Problem"]?[row])!, attributes: [NSAttributedStringKey.foregroundColor : Theme.title])
         } else {
             return nil
         }

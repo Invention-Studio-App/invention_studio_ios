@@ -9,7 +9,7 @@
 import UIKit
 import WebKit
 
-class LoginVC: UIViewController, WKUIDelegate, WKNavigationDelegate, WKHTTPCookieStoreObserver {
+class LoginVC: ISViewController, WKUIDelegate, WKNavigationDelegate, WKHTTPCookieStoreObserver {
     
 
     // VARIABLE DECLARATIONS

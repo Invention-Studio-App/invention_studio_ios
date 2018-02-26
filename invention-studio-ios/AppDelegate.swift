@@ -17,8 +17,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
 
-//        UserDefaults.standard.set(nil, forKey: "Username") //For debugging purposes
-//        UserDefaults.standard.set(nil, forKey: "UserKey") //For debugging purposes
+        //Apply color theme globally
+        Theme.apply()
 
         self.window = UIWindow(frame: UIScreen.main.bounds)
         let storyboard = UIStoryboard(name: "Main", bundle: nil)

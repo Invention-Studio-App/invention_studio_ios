@@ -8,7 +8,7 @@
 
 import UIKit
 
-class EquipmentGroupListTVC: UITableViewController {
+class EquipmentGroupListTVC: ISTableViewController {
     var equipmentGroups = [String]()
     var tools = [Tool]()
     

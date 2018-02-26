@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AgreementVC: UIViewController {
+class AgreementVC: ISViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class OtherTVC: UITableViewController {
+class OtherTVC: ISTableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,7 +39,6 @@ class OtherTVC: UITableViewController {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "otherPrototype", for: indexPath)
-        cell.textLabel?.textColor = UIColor(named: "ISLight_Title")
         cell.textLabel?.text = "Credits"
 
         return cell

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class EquipmentGroupTVC: UITableViewController {
+class EquipmentGroupTVC: ISTableViewController {
 
     private let headerView = UIView()
     var locationId: Int = 0
@@ -28,7 +28,7 @@ class EquipmentGroupTVC: UITableViewController {
         /**
          ** Set Up TableView Header
          **/
-        headerView.backgroundColor = UIColor(named: "ISLight_Background")
+        headerView.backgroundColor = Theme.background
 
         //Draw header image
         let headerImageView = UIImageView()
@@ -53,7 +53,7 @@ class EquipmentGroupTVC: UITableViewController {
             data: "Ultimaker 2+ 3D Printers\nThis is primary line of Ultimaker 2+ 3D Printers. The primary material for this printer is PLA plastic, a corn-based biodegradable polymer which is commonly used in prototyping and manufacturing.".data(using: String.Encoding.unicode, allowLossyConversion: true)!,
             options: [.documentType: NSAttributedString.DocumentType.html],
             documentAttributes: nil)
-        let attributesDict = [NSAttributedStringKey.foregroundColor: UIColor(named: "ISLight_Text")!,
+        let attributesDict = [NSAttributedStringKey.foregroundColor: Theme.text,
                               NSAttributedStringKey.font: UIFont.systemFont(ofSize: 16)]
         attributedString.addAttributes(attributesDict, range: NSMakeRange(0, attributedString.length))
         headerTextView.attributedText = attributedString
