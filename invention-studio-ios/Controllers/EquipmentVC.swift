@@ -23,13 +23,15 @@ class EquipmentVC: ISViewController, UITableViewDataSource, UITableViewDelegate,
 
     @IBOutlet weak var reportProblemTableView: UITableView!
 
-    private let toolBrokenHeaders = ["Your Name", "Problem", "Comments"]
+    private let toolBrokenHeaders = ["Your Name", "Problem", "Comments", ""]
     private let toolBrokenPrototypes = [["namePrototype"],
                                         ["pickerHeaderPrototype", "pickerDropdownPrototype"],
-                                        ["commentsPrototype"]]
+                                        ["commentsPrototype"],
+                                        ["submitPrototype"]]
     private let toolBrokenCells = [["Your Name"],
                                    ["Problem", "ProblemDropdown"],
-                                   ["Comments"]]
+                                   ["Comments"],
+                                   ["Submit"]]
 
     private var currentDropdownHeader: IndexPath? = nil
     private var currentDropdown: IndexPath? = nil
@@ -213,6 +215,13 @@ class EquipmentVC: ISViewController, UITableViewDataSource, UITableViewDelegate,
         return toolBrokenPrototypes[section].count
     }
 
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        if toolBrokenHeaders[section] == "" {
+            return UITableViewAutomaticDimension
+        }
+        return 66
+    }
+
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return toolBrokenHeaders[section]
     }
@@ -244,12 +253,11 @@ class EquipmentVC: ISViewController, UITableViewDataSource, UITableViewDelegate,
             }
             return cell
         case "pickerHeaderPrototype":
-            let cell = tableView.dequeueReusableCell(withIdentifier: prototype, for: indexPath) as! FeedbackPickerHeaderCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: prototype, for: indexPath)
             cell.textLabel?.text = cellName
             cell.detailTextLabel?.text = pickerSelections[cellName]
 
             if indexPath == currentDropdownHeader {
-                print("\nSUCCESS\n")
                 cell.detailTextLabel?.textColor = Theme.accentPrimary
             } else {
                 cell.detailTextLabel?.textColor = Theme.title
@@ -270,6 +278,10 @@ class EquipmentVC: ISViewController, UITableViewDataSource, UITableViewDelegate,
         case "commentsPrototype":
             let cell = tableView.dequeueReusableCell(withIdentifier: prototype, for: indexPath) as! FeedbackCommentsCell
             cell.commentBox.delegate = self
+            return cell
+        case "submitPrototype":
+            let cell = tableView.dequeueReusableCell(withIdentifier: prototype, for: indexPath)
+            cell.backgroundColor = Theme.accentPrimary
             return cell
         default:
             return UITableViewCell()
@@ -329,6 +341,10 @@ class EquipmentVC: ISViewController, UITableViewDataSource, UITableViewDelegate,
                 tableView.reloadSections([oldDropdownSection!], with: UITableViewRowAnimation.automatic)
             }
             tableView.reloadSections([indexPath.section], with: UITableViewRowAnimation.automatic)
+        } else if prototype == "submitPrototype" {
+            let alert = UIAlertController(title: "Error", message: "Sorry! This part hasn't been fully implemented yet. If you are a beta tester and would like to submit feedback, please do so using the TestFlight app", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+            self.present(alert, animated: true, completion: nil)
         }
     }
 

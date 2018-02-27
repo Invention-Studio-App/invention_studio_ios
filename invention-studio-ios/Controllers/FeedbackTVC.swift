@@ -11,33 +11,39 @@ import TGPControls
 
 class FeedbackTVC: ISTableViewController, UIPickerViewDataSource, UIPickerViewDelegate {
 
-    private let toolBrokenHeaders = ["Your Name", "Feedback", "Tool", "Problem", "Comments"]
+    private let toolBrokenHeaders = ["Your Name", "Feedback", "Tool", "Problem", "Comments", ""]
     private let toolBrokenPrototypes = [["namePrototype"],
                               ["pickerHeaderPrototype", "pickerDropdownPrototype"],
                               ["pickerHeaderPrototype", "pickerDropdownPrototype", "pickerHeaderPrototype", "pickerDropdownPrototype"],
                               ["pickerHeaderPrototype", "pickerDropdownPrototype"],
-                              ["commentsPrototype"]]
+                              ["commentsPrototype"],
+                              ["submitPrototype"]]
     private let toolBrokenCells = [["Your Name"],
                               ["Feedback", "FeedbackDropdown"],
                               ["Group", "ToolGroupDropdown", "Tool", "ToolDropdown"],
                               ["Problem", "ProblemDropdown"],
-                              ["Comments"]]
-    private let piFeedbackHeaders = ["Your Name", "Feedback", "Rating", "Comments"]
+                              ["Comments"],
+                              ["Submit"]]
+    private let piFeedbackHeaders = ["Your Name", "Feedback", "Rating", "Comments", ""]
     private let piFeedbackPrototypes = [["namePrototype"],
                            ["pickerHeaderPrototype", "pickerDropdownPrototype"],
                            ["ratingPrototype"],
-                           ["commentsPrototype"]]
+                           ["commentsPrototype"],
+                           ["submitPrototype"]]
     private let piFeedbackCells = [["Your Name"],
                            ["Feedback", "FeedbackDropdown"],
                            ["Rating"],
-                           ["Comments"]]
-    private let generalFeedbackHeaders = ["YourName", "Feedback", "Comments"]
+                           ["Comments"],
+                           ["Submit"]]
+    private let generalFeedbackHeaders = ["YourName", "Feedback", "Comments", ""]
     private let generalFeedbackPrototypes = [["namePrototype"],
                                 ["pickerHeaderPrototype", "pickerDropdownPrototype"],
-                                ["commentsPrototype"]]
+                                ["commentsPrototype"],
+                                ["submitPrototype"]]
     private let generalFeedbackCells = [["Your Name"],
                                  ["Feedback", "FeedbackDropdown"],
-                                 ["Comments"]]
+                                 ["Comments"],
+                                 ["Submit"]]
 
     private var currentHeaders = [String]()
     private var currentPrototypes = [[String]]()
@@ -53,9 +59,10 @@ class FeedbackTVC: ISTableViewController, UIPickerViewDataSource, UIPickerViewDe
     private var pickerSelections = ["Feedback": "", "Group": "", "Tool": "", "Problem": ""]
 
     var name = ""
+    var tools: [Tool]!
     var pickerValues = ["Feedback": ["Tool Broken", "PI Feedback", "General Feedback"],
-                        "Group": ["3D Printers", "Laser Cutters", "Waterjet"],
-                        "Tool": ["Baymax", "Rick"],
+                        "Group": [],
+                        "Tool": [],
                         "Problem": ["Nozzle Not Extruding", "Bed Shifted"]]
 
     override func viewDidLoad() {
@@ -67,11 +74,33 @@ class FeedbackTVC: ISTableViewController, UIPickerViewDataSource, UIPickerViewDe
         tap.cancelsTouchesInView = false
         view.addGestureRecognizer(tap)
 
-        for picker in pickerSelections.keys {
-            pickerSelections[picker] = pickerValues[picker]![0]
-        }
+        let apiEvalGroup = DispatchGroup()
 
-        setFeedbackType()
+        apiEvalGroup.enter()
+        SumsApi.EquipmentGroup.Tools(completion: { (tools) in
+            self.tools = tools
+            var equipmentGroups = Set<String>()
+            for tool in tools {
+                if tool.locationId != 0 {
+                    equipmentGroups.insert(Location(fromTool: tool).locationName)
+                }
+            }
+            self.pickerValues["Group"] = equipmentGroups.sorted()
+
+            apiEvalGroup.leave()
+        })
+
+        apiEvalGroup.notify(queue: .main, execute: {
+            self.toolGroupPicker.reloadAllComponents()
+            self.setToolNames()
+
+            for picker in self.pickerSelections.keys {
+                self.pickerSelections[picker] = self.pickerValues[picker]![0]
+            }
+
+            self.setFeedbackType()
+            self.tableView.reloadData()
+        })
     }
 
     override func didReceiveMemoryWarning() {
@@ -98,6 +127,23 @@ class FeedbackTVC: ISTableViewController, UIPickerViewDataSource, UIPickerViewDe
         }
     }
 
+    func setToolNames() {
+        var groupTools = [String]()
+        for t in self.tools {
+            if self.pickerSelections["Group"] != "" {
+                if t.locationName == self.pickerSelections["Group"] {
+                    groupTools.append(t.toolName)
+                }
+            } else if t.locationName == self.pickerValues["Group"]![0] {
+                groupTools.append(t.toolName)
+            }
+        }
+        self.pickerValues["Tool"] = groupTools.sorted()
+        self.pickerSelections["Tool"] = self.pickerValues["Tool"]![0]
+
+        self.toolPicker.reloadComponent(0)
+    }
+
     // MARK: - Table View Data Source/Delegate
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -119,6 +165,9 @@ class FeedbackTVC: ISTableViewController, UIPickerViewDataSource, UIPickerViewDe
     }
 
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        if currentHeaders[section] == "" {
+            return UITableViewAutomaticDimension
+        }
         return 66
     }
 
@@ -139,7 +188,7 @@ class FeedbackTVC: ISTableViewController, UIPickerViewDataSource, UIPickerViewDe
             }
             return cell
         case "pickerHeaderPrototype":
-            let cell = tableView.dequeueReusableCell(withIdentifier: prototype, for: indexPath) as! FeedbackPickerHeaderCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: prototype, for: indexPath)
             cell.textLabel?.text = cellName
             cell.detailTextLabel?.text = pickerSelections[cellName]
 
@@ -182,6 +231,10 @@ class FeedbackTVC: ISTableViewController, UIPickerViewDataSource, UIPickerViewDe
         case "commentsPrototype":
             let cell = tableView.dequeueReusableCell(withIdentifier: prototype, for: indexPath) as! FeedbackCommentsCell
             return cell
+        case "submitPrototype":
+            let cell = tableView.dequeueReusableCell(withIdentifier: prototype, for: indexPath)
+            cell.backgroundColor = Theme.accentPrimary
+            return cell
         default:
             return UITableViewCell()
         }
@@ -217,43 +270,12 @@ class FeedbackTVC: ISTableViewController, UIPickerViewDataSource, UIPickerViewDe
                 tableView.reloadSections([oldDropdownSection!], with: UITableViewRowAnimation.automatic)
             }
             tableView.reloadSections([indexPath.section], with: UITableViewRowAnimation.automatic)
+        } else if prototype == "submitPrototype" {
+            let alert = UIAlertController(title: "Error", message: "Sorry! This part hasn't been fully implemented yet. If you are a beta tester and would like to submit feedback, please do so using the TestFlight app", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+            self.present(alert, animated: true, completion: nil)
         }
     }
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
 
     //MARK: - Picker View Delegate
 
@@ -311,6 +333,7 @@ class FeedbackTVC: ISTableViewController, UIPickerViewDataSource, UIPickerViewDe
             setFeedbackType()
         } else if pickerView == self.toolGroupPicker {
             self.pickerSelections["Group"] = title
+            setToolNames()
         } else if pickerView == self.toolPicker {
             self.pickerSelections["Tool"] = title
         } else if pickerView == self.problemPicker {
@@ -328,15 +351,5 @@ class FeedbackTVC: ISTableViewController, UIPickerViewDataSource, UIPickerViewDe
     @objc func dismissKeyboard() {
         view.endEditing(true)
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

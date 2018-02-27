@@ -118,7 +118,6 @@ class LoginVC: ISViewController, WKUIDelegate, WKNavigationDelegate, WKHTTPCooki
                     if isInventionStudio {
                         self.performSegue(withIdentifier: "cookieReceivedSegue", sender: self)
                     } else {
-                        print("Needs to sign agreement")
                         //TODO: add need to sign agreement page
                         self.performSegue(withIdentifier: "safetyAgreementSegue", sender: self)
                     }

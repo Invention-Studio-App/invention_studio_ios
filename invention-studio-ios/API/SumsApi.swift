@@ -150,7 +150,6 @@ fileprivate extension JSONDecoder.DateDecodingStrategy {
                 return date
             }
             //If that fails, return minimum date
-            print(dateStr)
             return Date(timeIntervalSince1970: 0)
         })
     }

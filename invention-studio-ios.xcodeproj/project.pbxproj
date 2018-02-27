@@ -18,7 +18,6 @@
 		B2323A6120449B34008D3F35 /* ColorThemeTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2323A6020449B34008D3F35 /* ColorThemeTVC.swift */; };
 		B2323A632044E635008D3F35 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2323A622044E635008D3F35 /* Location.swift */; };
 		B233FFC420216DFD0024A5C6 /* FeedbackNameCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B233FFC320216DFD0024A5C6 /* FeedbackNameCell.swift */; };
-		B233FFC620216E5C0024A5C6 /* FeedbackPickerHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B233FFC520216E5C0024A5C6 /* FeedbackPickerHeaderCell.swift */; };
 		B233FFC820216E720024A5C6 /* FeedbackPickerDropdownCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B233FFC720216E720024A5C6 /* FeedbackPickerDropdownCell.swift */; };
 		B233FFCA20216E9E0024A5C6 /* FeedbackRatingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B233FFC920216E9E0024A5C6 /* FeedbackRatingCell.swift */; };
 		B233FFCC20216EAB0024A5C6 /* FeedbackCommentsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B233FFCB20216EAB0024A5C6 /* FeedbackCommentsCell.swift */; };
@@ -78,7 +77,6 @@
 		B2323A6020449B34008D3F35 /* ColorThemeTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorThemeTVC.swift; sourceTree = "<group>"; };
 		B2323A622044E635008D3F35 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		B233FFC320216DFD0024A5C6 /* FeedbackNameCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackNameCell.swift; sourceTree = "<group>"; };
-		B233FFC520216E5C0024A5C6 /* FeedbackPickerHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackPickerHeaderCell.swift; sourceTree = "<group>"; };
 		B233FFC720216E720024A5C6 /* FeedbackPickerDropdownCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackPickerDropdownCell.swift; sourceTree = "<group>"; };
 		B233FFC920216E9E0024A5C6 /* FeedbackRatingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackRatingCell.swift; sourceTree = "<group>"; };
 		B233FFCB20216EAB0024A5C6 /* FeedbackCommentsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackCommentsCell.swift; sourceTree = "<group>"; };
@@ -188,7 +186,6 @@
 			children = (
 				B2D5D7BD201BC40F00CFCCB1 /* EquipmentCell.swift */,
 				B233FFC320216DFD0024A5C6 /* FeedbackNameCell.swift */,
-				B233FFC520216E5C0024A5C6 /* FeedbackPickerHeaderCell.swift */,
 				B233FFC720216E720024A5C6 /* FeedbackPickerDropdownCell.swift */,
 				B233FFC920216E9E0024A5C6 /* FeedbackRatingCell.swift */,
 				B233FFCB20216EAB0024A5C6 /* FeedbackCommentsCell.swift */,
@@ -580,7 +577,6 @@
 				B2E253B9202E399C00C322AA /* SumsApi.swift in Sources */,
 				B233FFC420216DFD0024A5C6 /* FeedbackNameCell.swift in Sources */,
 				B233FFC820216E720024A5C6 /* FeedbackPickerDropdownCell.swift in Sources */,
-				B233FFC620216E5C0024A5C6 /* FeedbackPickerHeaderCell.swift in Sources */,
 				B26CA616204394AB0050FC2C /* ISViewController.swift in Sources */,
 				B2323A632044E635008D3F35 /* Location.swift in Sources */,
 				B254C5B5203633F800D6A2B4 /* UserInfo.swift in Sources */,
