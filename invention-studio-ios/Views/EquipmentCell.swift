@@ -36,26 +36,5 @@ class EquipmentCell: UITableViewCell {
             }
         }
     }
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        let statusColor = statusIcon.backgroundColor
-        super.setSelected(selected, animated: animated)
-        if selected {
-            statusIcon.backgroundColor = statusColor
-        }
-    }
-
-    override func setHighlighted(_ highlighted: Bool, animated: Bool) {
-        let statusColor = statusIcon.backgroundColor
-        super.setHighlighted(highlighted, animated: animated)
-        if highlighted {
-            statusIcon.backgroundColor = statusColor
-        }
-    }
 
 }
