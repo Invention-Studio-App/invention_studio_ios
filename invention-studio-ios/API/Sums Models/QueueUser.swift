@@ -15,6 +15,7 @@ class QueueUser: Codable {
     var memberUserName: String
     var queueName: String
     var hasBeenNotified: Bool
+    var isGroup: Bool
     var memberMinutesRemaining: Int
     var memberQueueLocation: Int
 
