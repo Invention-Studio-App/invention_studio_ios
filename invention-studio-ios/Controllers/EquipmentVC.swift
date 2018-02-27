@@ -16,6 +16,7 @@ class EquipmentVC: ISViewController, UITableViewDataSource, UITableViewDelegate,
 
     @IBOutlet weak var informationView: UIView!
     @IBOutlet weak var informationScrollView: UIScrollView!
+    private let refreshControl = UIRefreshControl()
     private let statusTitleLabel = UILabel()
     private let statusIcon = UIView()
     private let statusLabel = UILabel()
@@ -40,8 +41,10 @@ class EquipmentVC: ISViewController, UITableViewDataSource, UITableViewDelegate,
 
     var name = ""
     var pickerValues = ["Problem": ["Nozzle Not Extruding", "Bed Shifted"]]
-    var tool:Tool!
+    var location: Location!
     var tools = [Tool]()
+    var groupTools = [Tool]()
+    var tool: Tool!
 
     private var _status: Tool.Status = Tool.Status.UNKNOWN
     var status: Tool.Status {
@@ -89,6 +92,10 @@ class EquipmentVC: ISViewController, UITableViewDataSource, UITableViewDelegate,
          ** Set Up Information View
          **/
 
+        //Set Up Refresh Control
+        refreshControl.addTarget(self, action: #selector(refresh(_:)), for: UIControlEvents.valueChanged)
+        self.informationScrollView.addSubview(refreshControl)
+
         //Set Up Image
         let informationImageView = UIImageView()
         informationImageView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.width / 16.0 * 9.0)
@@ -104,7 +111,6 @@ class EquipmentVC: ISViewController, UITableViewDataSource, UITableViewDelegate,
         let statusTitleLabelSize = statusTitleLabel.sizeThatFits(CGSize(width: CGFloat.greatestFiniteMagnitude, height: 21))
         statusTitleLabel.frame = CGRect(x: 16, y: informationImageView.frame.maxY + 16, width: statusTitleLabelSize.width, height: 21)
         informationScrollView.addSubview(statusTitleLabel)
-        print(statusTitleLabel.frame.origin.y)
 
         //Status icon
         let statusIconSize: CGFloat = 16.0
@@ -128,8 +134,14 @@ class EquipmentVC: ISViewController, UITableViewDataSource, UITableViewDelegate,
         informationTextView.bouncesZoom = false
         informationTextView.backgroundColor = UIColor.clear
         informationTextView.font = UIFont.systemFont(ofSize: 16)
-        //informationTextView.text = tool.toolDescription
-        informationTextView.text = tool.toolDescription.html2String
+        let attributedString = try! NSMutableAttributedString(
+            data: tool.toolDescription.data(using: String.Encoding.unicode, allowLossyConversion: true)!,
+            options: [.documentType: NSAttributedString.DocumentType.html],
+            documentAttributes: nil)
+        let attributesDict = [NSAttributedStringKey.foregroundColor: Theme.text,
+                              NSAttributedStringKey.font: UIFont.systemFont(ofSize: 16)]
+        attributedString.addAttributes(attributesDict, range: NSMakeRange(0, attributedString.length))
+        informationTextView.attributedText = attributedString
         let informationTextViewSize = informationTextView.sizeThatFits(CGSize(width: view.frame.width - 16, height: CGFloat.greatestFiniteMagnitude))
         informationTextView.frame = CGRect(x: 8, y: statusTitleLabel.frame.maxY + 8, width: view.frame.width - 16, height: informationTextViewSize.height)
         informationScrollView.addSubview(informationTextView)
@@ -159,11 +171,6 @@ class EquipmentVC: ISViewController, UITableViewDataSource, UITableViewDelegate,
             pickerSelections[picker] = pickerValues[picker]![0]
         }
         reportProblemTableView.reloadData()
-    }
-    
-    func navigationController(_ navigationController: UINavigationController, willShow viewController: UIViewController, animated: Bool) {
-        self.tools = [Tool]()
-        (viewController as? EquipmentGroupTVC)?.tools = self.tools
     }
 
     override func viewDidLayoutSubviews() {
@@ -325,6 +332,14 @@ class EquipmentVC: ISViewController, UITableViewDataSource, UITableViewDelegate,
         }
     }
 
+    // MARK: - Navigation
+
+    func navigationController(_ navigationController: UINavigationController, willShow viewController: UIViewController, animated: Bool) {
+        let destVC = viewController as? EquipmentGroupTVC
+        destVC?.tools = self.tools
+        destVC?.groupTools = self.groupTools
+    }
+
     // MARK: - Supporting Functions
 
     @objc func anonymousSwitchChanged() {
@@ -346,44 +361,26 @@ class EquipmentVC: ISViewController, UITableViewDataSource, UITableViewDelegate,
             reportProblemTableView.contentOffset = CGPoint(x: 0, y:keyboardSize.height)
         }
     }
-    
-    
 
-    /*
-     // MARK: - Navigation
-
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
-     }
-     */
-
-}
-
-// Extension add the ability to conver the string descriptions to attributed strings and html
-
-extension Data {
-    var html2AttributedString: NSAttributedString? {
-        do {
-            return try NSAttributedString(data: self, options: [.documentType: NSAttributedString.DocumentType.html, .characterEncoding: String.Encoding.utf8.rawValue], documentAttributes: nil)
-        } catch {
-            print("error:", error)
-            return  nil
-        }
+    @objc func refresh(_ sender: UIRefreshControl) {
+        SumsApi.EquipmentGroup.Tools(completion: { (tools) in
+            self.tools = tools
+            self.groupTools = []
+            for tool in tools {
+                if (tool.locationId == self.location.locationId) {
+                    self.groupTools.append(tool)
+                }
+            }
+            self.tools.sort(by: { (toolA, toolB) in
+                if (toolA.status().hashValue == toolB.status().hashValue) {
+                    return toolA.toolName <= toolB.toolName
+                }
+                return toolA.status().hashValue <= toolB.status().hashValue
+            })
+        })
+        sender.endRefreshing()
     }
-    var html2String: String {
-        return html2AttributedString?.string ?? ""
-    }
-}
 
-extension String {
-    var html2AttributedString: NSAttributedString? {
-        return Data(utf8).html2AttributedString
-    }
-    var html2String: String {
-        return html2AttributedString?.string ?? ""
-    }
 }
 
 

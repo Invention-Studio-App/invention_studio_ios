@@ -26,6 +26,7 @@ class Tool: Codable {
     var equipmentGroupDescription: String
     var equipmentGroupName: String
     var locationAddress: String
+    var locationDescription: String
     var locationManager: String
     var locationName: String
     var locationUrl: String

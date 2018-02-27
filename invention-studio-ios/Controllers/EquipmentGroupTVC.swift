@@ -8,17 +8,17 @@
 
 import UIKit
 
-class EquipmentGroupTVC: ISTableViewController {
+class EquipmentGroupTVC: ISTableViewController, UINavigationControllerDelegate {
 
     private let headerView = UIView()
-    var locationId: Int = 0
-    var locationName = ""
+    var location: Location!
     var tools = [Tool]()
+    var groupTools = [Tool]()
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        tools.sort(by: { (toolA, toolB) in
+        groupTools.sort(by: { (toolA, toolB) in
             if (toolA.status().hashValue == toolB.status().hashValue) {
                 return toolA.toolName <= toolB.toolName
             }
@@ -50,7 +50,7 @@ class EquipmentGroupTVC: ISTableViewController {
 
         //Set attributed text from HTML
         let attributedString = try! NSMutableAttributedString(
-            data: "Ultimaker 2+ 3D Printers<br/>This is primary line of Ultimaker 2+ 3D Printers. The primary material for this printer is PLA plastic, a corn-based biodegradable polymer which is commonly used in prototyping and manufacturing.".data(using: String.Encoding.unicode, allowLossyConversion: true)!,
+            data: location.locationDescription.data(using: String.Encoding.unicode, allowLossyConversion: true)!,
             options: [.documentType: NSAttributedString.DocumentType.html],
             documentAttributes: nil)
         let attributesDict = [NSAttributedStringKey.foregroundColor: Theme.text,
@@ -70,20 +70,6 @@ class EquipmentGroupTVC: ISTableViewController {
         tableView.tableHeaderView = headerView
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
-    private func updateHeaderView() {
-        var headerRect = CGRect(x: 0, y: 0, width: tableView.bounds.width, height: headerView.frame.height)
-        if tableView.contentOffset.y < -headerView.frame.height {
-            headerRect.origin.y = tableView.contentOffset.y
-            headerRect.size.height = -tableView.contentOffset.y
-        }
-        headerView.frame = headerRect
-    }
-
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -92,7 +78,7 @@ class EquipmentGroupTVC: ISTableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return tools.count
+        return groupTools.count
     }
 
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -102,8 +88,8 @@ class EquipmentGroupTVC: ISTableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "equipmentPrototype", for: indexPath) as! EquipmentCell
 
-        cell.titleLabel?.text = tools[indexPath.row].toolName
-        cell.status = tools[indexPath.row].status()
+        cell.titleLabel?.text = groupTools[indexPath.row].toolName
+        cell.status = groupTools[indexPath.row].status()
         
         return cell
     }
@@ -114,74 +100,27 @@ class EquipmentGroupTVC: ISTableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let eVC  = storyboard?.instantiateViewController(withIdentifier: "EquipmentVC") as! EquipmentVC
-        eVC.tool = self.tools[indexPath.row]
-        eVC.title = eVC.tool.toolName
+        eVC.location = self.location
         eVC.tools = self.tools
+        eVC.groupTools = self.groupTools
+        eVC.tool = self.groupTools[indexPath.row]
+        eVC.title = eVC.tool.toolName
         navigationController?.pushViewController(eVC, animated: true)
         self.tableView.deselectRow(at: indexPath, animated: true)
     }
 
-
-    /*
-     // Override to support conditional editing of the table view.
-     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-     // Return false if you do not want the specified item to be editable.
-     return true
-     }
-     */
-
-    /*
-     // Override to support editing the table view.
-     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-     if editingStyle == .delete {
-     // Delete the row from the data source
-     tableView.deleteRows(at: [indexPath], with: .fade)
-     } else if editingStyle == .insert {
-     // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-     }
-     }
-     */
-
-    /*
-     // Override to support rearranging the table view.
-     override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-     }
-     */
-
-    /*
-     // Override to support conditional rearranging of the table view.
-     override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-     // Return false if you do not want the item to be re-orderable.
-     return true
-     }
-     */
-
-    /*
-     // MARK: - Navigation
-
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
-     }
-     */
-
     // MARK: - Scroll view delegate
-
-    override func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        //updateHeaderView()
-    }
 
     @IBAction func refresh(_ sender: UIRefreshControl) {
         SumsApi.EquipmentGroup.Tools(completion: { (tools) in
-            self.tools = []
+            self.tools = tools
+            self.groupTools = []
             for tool in tools {
-                if (tool.locationId == self.locationId) {
-                    self.tools.append(tool)
+                if (tool.locationId == self.location.locationId) {
+                    self.groupTools.append(tool)
                 }
             }
-            self.tools.sort(by: { (toolA, toolB) in
+            self.groupTools.sort(by: { (toolA, toolB) in
                 if (toolA.status().hashValue == toolB.status().hashValue) {
                     return toolA.toolName <= toolB.toolName
                 }
@@ -193,6 +132,13 @@ class EquipmentGroupTVC: ISTableViewController {
             }
         })
         sender.endRefreshing()
+    }
+
+    // MARK: - Navigation
+
+    func navigationController(_ navigationController: UINavigationController, willShow viewController: UIViewController, animated: Bool) {
+        let destVC = viewController as? EquipmentGroupListTVC
+        destVC?.tools = self.tools
     }
 
 }

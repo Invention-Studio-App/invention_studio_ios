@@ -16,6 +16,7 @@
 		4FDBD2A1203A17F30034173E /* AgreementVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FDBD2A0203A17F30034173E /* AgreementVC.swift */; };
 		93B4A7E4809E293F4650C3DB /* Pods_invention_studio_iosUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 225D7FB4887E2F08CF0BAAC4 /* Pods_invention_studio_iosUITests.framework */; };
 		B2323A6120449B34008D3F35 /* ColorThemeTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2323A6020449B34008D3F35 /* ColorThemeTVC.swift */; };
+		B2323A632044E635008D3F35 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2323A622044E635008D3F35 /* Location.swift */; };
 		B233FFC420216DFD0024A5C6 /* FeedbackNameCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B233FFC320216DFD0024A5C6 /* FeedbackNameCell.swift */; };
 		B233FFC620216E5C0024A5C6 /* FeedbackPickerHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B233FFC520216E5C0024A5C6 /* FeedbackPickerHeaderCell.swift */; };
 		B233FFC820216E720024A5C6 /* FeedbackPickerDropdownCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B233FFC720216E720024A5C6 /* FeedbackPickerDropdownCell.swift */; };
@@ -75,6 +76,7 @@
 		5CD21A0AFD35E1BE8BFF581B /* Pods_invention_studio_ios.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_invention_studio_ios.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		62DCFEF488633AA8D11B1636 /* Pods-invention-studio-ios.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-invention-studio-ios.debug.xcconfig"; path = "Pods/Target Support Files/Pods-invention-studio-ios/Pods-invention-studio-ios.debug.xcconfig"; sourceTree = "<group>"; };
 		B2323A6020449B34008D3F35 /* ColorThemeTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorThemeTVC.swift; sourceTree = "<group>"; };
+		B2323A622044E635008D3F35 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		B233FFC320216DFD0024A5C6 /* FeedbackNameCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackNameCell.swift; sourceTree = "<group>"; };
 		B233FFC520216E5C0024A5C6 /* FeedbackPickerHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackPickerHeaderCell.swift; sourceTree = "<group>"; };
 		B233FFC720216E720024A5C6 /* FeedbackPickerDropdownCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackPickerDropdownCell.swift; sourceTree = "<group>"; };
@@ -210,6 +212,7 @@
 				B254C5B0203632F000D6A2B4 /* QueueGroup.swift */,
 				B254C5B22036335900D6A2B4 /* QueueUser.swift */,
 				B254C5B4203633F800D6A2B4 /* UserInfo.swift */,
+				B2323A622044E635008D3F35 /* Location.swift */,
 			);
 			path = "Sums Models";
 			sourceTree = "<group>";
@@ -579,6 +582,7 @@
 				B233FFC820216E720024A5C6 /* FeedbackPickerDropdownCell.swift in Sources */,
 				B233FFC620216E5C0024A5C6 /* FeedbackPickerHeaderCell.swift in Sources */,
 				B26CA616204394AB0050FC2C /* ISViewController.swift in Sources */,
+				B2323A632044E635008D3F35 /* Location.swift in Sources */,
 				B254C5B5203633F800D6A2B4 /* UserInfo.swift in Sources */,
 				B2A3A82D201C0EB600F3AF7F /* Tool.swift in Sources */,
 				4F46B06920164CD400D5B3E9 /* LoginVC.swift in Sources */,
