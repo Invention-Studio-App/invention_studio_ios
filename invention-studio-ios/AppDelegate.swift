@@ -1,4 +1,3 @@
-
 //
 //  AppDelegate.swift
 //  invention-studio-ios

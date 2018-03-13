@@ -17,6 +17,11 @@ class LandingVC: ISViewController {
 
         if UserDefaults.standard.bool(forKey: "LoggedIn") {
             self.navigationItem.rightBarButtonItem = nil
+
+            //Make sure new tab bar gets proper colors
+            self.tabBarController?.tabBar.barTintColor = Theme.headerFooter
+            self.tabBarController?.tabBar.unselectedItemTintColor = Theme.accentSecondary
+            self.tabBarController?.tabBar.tintColor = Theme.accentPrimary
         }
 
         /**
