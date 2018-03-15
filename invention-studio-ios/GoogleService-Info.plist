@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>AD_UNIT_ID_FOR_BANNER_TEST</key>
+	<string>ca-app-pub-3940256099942544/2934735716</string>
+	<key>AD_UNIT_ID_FOR_INTERSTITIAL_TEST</key>
+	<string>ca-app-pub-3940256099942544/4411468910</string>
+	<key>CLIENT_ID</key>
+	<string>523914394054-nkl375p1s8u930av63bb4re5mrnc2koo.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.523914394054-nkl375p1s8u930av63bb4re5mrnc2koo</string>
+	<key>API_KEY</key>
+	<string>AIzaSyCkXzo8a3hmmF-JSXQVB5EaLGmZu2eLChk</string>
+	<key>GCM_SENDER_ID</key>
+	<string>523914394054</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.gatech-invention-studio.invention-studio-ios</string>
+	<key>PROJECT_ID</key>
+	<string>invention-studio</string>
+	<key>STORAGE_BUCKET</key>
+	<string>invention-studio.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<true></true>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<false></false>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:523914394054:ios:0b08e085b69549b7</string>
+	<key>DATABASE_URL</key>
+	<string>https://invention-studio.firebaseio.com</string>
+</dict>
+</plist>

@@ -26,6 +26,7 @@
 		B254C5B5203633F800D6A2B4 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B254C5B4203633F800D6A2B4 /* UserInfo.swift */; };
 		B26CA616204394AB0050FC2C /* ISViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26CA615204394AB0050FC2C /* ISViewController.swift */; };
 		B26CA6182043952C0050FC2C /* ISTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26CA6172043952C0050FC2C /* ISTableViewController.swift */; };
+		B289B76D205B2AEF008428C3 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B289B76C205B2AEF008428C3 /* GoogleService-Info.plist */; };
 		B2A3A82D201C0EB600F3AF7F /* Tool.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2A3A82C201C0EB600F3AF7F /* Tool.swift */; };
 		B2A3A82F201C1B1400F3AF7F /* QueuesTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2A3A82E201C1B1400F3AF7F /* QueuesTVC.swift */; };
 		B2A3A831201C1B2A00F3AF7F /* FeedbackTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2A3A830201C1B2A00F3AF7F /* FeedbackTVC.swift */; };
@@ -85,6 +86,7 @@
 		B254C5B4203633F800D6A2B4 /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
 		B26CA615204394AB0050FC2C /* ISViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ISViewController.swift; sourceTree = "<group>"; };
 		B26CA6172043952C0050FC2C /* ISTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ISTableViewController.swift; sourceTree = "<group>"; };
+		B289B76C205B2AEF008428C3 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B2A3A82C201C0EB600F3AF7F /* Tool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tool.swift; sourceTree = "<group>"; };
 		B2A3A82E201C1B1400F3AF7F /* QueuesTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueuesTVC.swift; sourceTree = "<group>"; };
 		B2A3A830201C1B2A00F3AF7F /* FeedbackTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackTVC.swift; sourceTree = "<group>"; };
@@ -249,6 +251,7 @@
 				B2D384971FBA383C00D91650 /* Main.storyboard */,
 				B2D3849F1FBA383C00D91650 /* LaunchScreen.storyboard */,
 				B2D384A21FBA383C00D91650 /* Info.plist */,
+				B289B76C205B2AEF008428C3 /* GoogleService-Info.plist */,
 				B2D3849A1FBA383C00D91650 /* invention_studio_ios.xcdatamodeld */,
 			);
 			path = "invention-studio-ios";
@@ -390,6 +393,7 @@
 			files = (
 				B2D384A11FBA383C00D91650 /* LaunchScreen.storyboard in Resources */,
 				4F8FB69520154C7F00DBCD35 /* Colors.xcassets in Resources */,
+				B289B76D205B2AEF008428C3 /* GoogleService-Info.plist in Resources */,
 				B2D3849E1FBA383C00D91650 /* Assets.xcassets in Resources */,
 				B2D384991FBA383C00D91650 /* Main.storyboard in Resources */,
 			);
@@ -533,11 +537,17 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-invention-studio-ios/Pods-invention-studio-ios-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
 				"${BUILT_PRODUCTS_DIR}/TGPControls/TGPControls.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TGPControls.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
