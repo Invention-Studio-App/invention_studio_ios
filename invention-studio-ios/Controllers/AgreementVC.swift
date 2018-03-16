@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseMessaging
 
 class AgreementVC: ISViewController {
 
@@ -25,16 +26,15 @@ class AgreementVC: ISViewController {
     @IBAction func agreementSigned(_ sender: Any) {
         self.performSegue(withIdentifier: "agreementSignedSegue", sender: self)
     }
-    
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "agreementSignedSegue" {
+            let weekInterval: TimeInterval = 60 * 60 * 24 * 7
+            //TODO: Use server time
+            UserDefaults.standard.set(NSDate().addingTimeInterval(weekInterval).timeIntervalSince1970, forKey:"LoginSession")
+            let username = UserDefaults.standard.string(forKey: "Name")!
+            Messaging.messaging().subscribe(toTopic: username)
+        }
     }
-    */
 
 }

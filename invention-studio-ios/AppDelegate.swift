@@ -21,7 +21,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
 
-        //Apply color theme globally
+
+        /*
+         * Setup Firebase Notifications
+         */
+        UNUserNotificationCenter.current().delegate = self
+        UNUserNotificationCenter.current().requestAuthorization(
+            options: [.alert, .badge, .sound],
+            completionHandler: {_, _ in })
+
+        application.registerForRemoteNotifications()
+        FirebaseApp.configure()
+
+        /*
+         * Apply color theme globally
+         */
         Theme.apply()
 
         /*
@@ -42,23 +56,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         if timeStamp < loginSession && shouldLogin {
             initialViewController = storyboard.instantiateViewController(withIdentifier: "TabBarController")
             UserDefaults.standard.set(true, forKey: "LoggedIn")
+            let username = UserDefaults.standard.string(forKey: "Username")
+            Messaging.messaging().subscribe(toTopic: username!)
         } else {
-            initialViewController = storyboard.instantiateViewController(withIdentifier: "LandingViewController")
+            if let username = UserDefaults.standard.string(forKey: "Username") {
+                Messaging.messaging().unsubscribe(fromTopic: username)
+            }
             UserDefaults.standard.set(false, forKey: "LoggedIn")
+            UserDefaults.standard.set(0, forKey: "DepartmentId")
+            UserDefaults.standard.set(nil, forKey: "Name")
+            UserDefaults.standard.set(nil, forKey: "Username")
+            UserDefaults.standard.set(nil, forKey: "UserKey")
+            UserDefaults.standard.set(0, forKey:"LoginSession")
+
+            initialViewController = storyboard.instantiateViewController(withIdentifier: "LandingViewController")
         }
         self.window?.rootViewController = initialViewController
         self.window?.makeKeyAndVisible()
-
-        /*
-         * Setup Firebase Notifications
-         */
-        UNUserNotificationCenter.current().delegate = self
-        UNUserNotificationCenter.current().requestAuthorization(
-            options: [.alert, .badge, .sound],
-            completionHandler: {_, _ in })
-
-        application.registerForRemoteNotifications()
-        FirebaseApp.configure()
 
         return true
     }
@@ -73,26 +87,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         self.saveContext()
     }
 
-    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
-        let dict = userInfo["aps"] as! NSDictionary
-        let alert: NSDictionary = dict["alert"]! as! NSDictionary
-        let messageTitle = alert["title"]
-        let message = alert["body"]
+    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+        Messaging.messaging().apnsToken = deviceToken
+    }
 
-        if (application.applicationState == .active) {
-            AudioServicesPlayAlertSound(1307)
-            let tabBarController = self.window?.rootViewController as? UITabBarController
-            let alert = UIAlertController(title: messageTitle as? String, message: message as? String, preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler: nil))
-            alert.addAction(UIAlertAction(title: "View", style: .default, handler: { (alert: UIAlertAction!) in
-                tabBarController?.selectedIndex = 2
-            }))
-            tabBarController?.present(alert, animated: true, completion: nil)
-        } else {
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        completionHandler([.alert, .sound])
+
+    }
+
+    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
             let tabBarController = self.window?.rootViewController as? UITabBarController
             tabBarController?.selectedIndex = 2
-        }
     }
+
+    
     
     // MARK: - Core Data stack
 

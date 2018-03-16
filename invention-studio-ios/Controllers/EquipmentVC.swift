@@ -158,7 +158,7 @@ class EquipmentVC: ISViewController, UITableViewDataSource, UITableViewDelegate,
         reportProblemTableView.backgroundColor = Theme.background
         reportProblemTableView.tintColor = Theme.accentPrimary
 
-        name = UserDefaults.standard.string(forKey: "UserName")!
+        name = UserDefaults.standard.string(forKey: "Name")!
 
         //Dismiss keyboard on tap
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))

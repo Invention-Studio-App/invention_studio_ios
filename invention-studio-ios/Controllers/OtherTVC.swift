@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import WebKit
+import FirebaseMessaging
 
 class OtherTVC: ISTableViewController {
 
@@ -32,11 +34,13 @@ class OtherTVC: ISTableViewController {
     }
 
     private func logout() {
+        Messaging.messaging().unsubscribe(fromTopic: UserDefaults.standard.string(forKey: "Username")!)
         UserDefaults.standard.set(false, forKey: "LoggedIn")
         UserDefaults.standard.set(0, forKey: "DepartmentId")
-        UserDefaults.standard.set(nil, forKey: "UserName")
+        UserDefaults.standard.set(nil, forKey: "Name")
+        UserDefaults.standard.set(nil, forKey: "Username")
         UserDefaults.standard.set(nil, forKey: "UserKey")
-        UserDefaults.standard.set(0, forKey:"LoginSession")
+        UserDefaults.standard.set(0, forKey: "LoginSession")
 
         performSegue(withIdentifier: "logoutSegue", sender: self)
     }

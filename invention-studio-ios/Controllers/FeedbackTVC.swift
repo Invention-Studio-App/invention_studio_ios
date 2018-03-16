@@ -68,7 +68,7 @@ class FeedbackTVC: ISTableViewController, UIPickerViewDataSource, UIPickerViewDe
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        name = UserDefaults.standard.string(forKey: "UserName")!
+        name = UserDefaults.standard.string(forKey: "Name")!
 
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         tap.cancelsTouchesInView = false
