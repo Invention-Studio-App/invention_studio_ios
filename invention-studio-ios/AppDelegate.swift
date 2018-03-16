@@ -9,7 +9,10 @@
 import UIKit
 import CoreData
 import Firebase
+import FirebaseMessaging
+import FirebaseInstanceID
 import UserNotifications
+import AVFoundation
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
@@ -49,24 +52,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         /*
          * Setup Firebase Notifications
          */
+        UNUserNotificationCenter.current().delegate = self
+        UNUserNotificationCenter.current().requestAuthorization(
+            options: [.alert, .badge, .sound],
+            completionHandler: {_, _ in })
+
+        application.registerForRemoteNotifications()
         FirebaseApp.configure()
 
         return true
     }
 
-    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
-        UNUserNotificationCenter.current().delegate = self
-
-        let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
-        UNUserNotificationCenter.current().requestAuthorization(
-            options: authOptions,
-            completionHandler: {_, _ in })
-    }
-
-    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
-        let dict = userInfo["aps"] as! NSDictionary
-        let message = dict["alert"]
-        print(message!)
+    func applicationDidEnterBackground(_ application: UIApplication) {
+        application.applicationIconBadgeNumber = 0
     }
 
     func applicationWillTerminate(_ application: UIApplication) {
@@ -75,6 +73,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         self.saveContext()
     }
 
+    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+        let dict = userInfo["aps"] as! NSDictionary
+        let alert: NSDictionary = dict["alert"]! as! NSDictionary
+        let messageTitle = alert["title"]
+        let message = alert["body"]
+
+        if (application.applicationState == .active) {
+            AudioServicesPlayAlertSound(1307)
+            let tabBarController = self.window?.rootViewController as? UITabBarController
+            let alert = UIAlertController(title: messageTitle as? String, message: message as? String, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler: nil))
+            alert.addAction(UIAlertAction(title: "View", style: .default, handler: { (alert: UIAlertAction!) in
+                tabBarController?.selectedIndex = 2
+            }))
+            tabBarController?.present(alert, animated: true, completion: nil)
+        } else {
+            let tabBarController = self.window?.rootViewController as? UITabBarController
+            tabBarController?.selectedIndex = 2
+        }
+    }
+    
     // MARK: - Core Data stack
 
     lazy var persistentContainer: NSPersistentContainer = {

@@ -84,6 +84,7 @@
 		B254C5B0203632F000D6A2B4 /* QueueGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueueGroup.swift; sourceTree = "<group>"; };
 		B254C5B22036335900D6A2B4 /* QueueUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueueUser.swift; sourceTree = "<group>"; };
 		B254C5B4203633F800D6A2B4 /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
+		B25E8B3D205B3BA0009D184E /* invention-studio-ios.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "invention-studio-ios.entitlements"; sourceTree = "<group>"; };
 		B26CA615204394AB0050FC2C /* ISViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ISViewController.swift; sourceTree = "<group>"; };
 		B26CA6172043952C0050FC2C /* ISTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ISTableViewController.swift; sourceTree = "<group>"; };
 		B289B76C205B2AEF008428C3 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -241,6 +242,7 @@
 		B2D384921FBA383C00D91650 /* invention-studio-ios */ = {
 			isa = PBXGroup;
 			children = (
+				B25E8B3D205B3BA0009D184E /* invention-studio-ios.entitlements */,
 				B2A3A82A201C0D4C00F3AF7F /* API */,
 				B233FFC120216D1C0024A5C6 /* Controllers */,
 				B233FFC220216D2C0024A5C6 /* Views */,
@@ -353,6 +355,11 @@
 					B2D3848F1FBA383C00D91650 = {
 						CreatedOnToolsVersion = 9.1;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 					B2D384A61FBA383C00D91650 = {
 						CreatedOnToolsVersion = 9.1;
@@ -771,6 +778,7 @@
 			baseConfigurationReference = 62DCFEF488633AA8D11B1636 /* Pods-invention-studio-ios.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "invention-studio-ios/invention-studio-ios.entitlements";
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
@@ -791,6 +799,7 @@
 			baseConfigurationReference = 10AAAC0D0CFAF4F81F6A74A9 /* Pods-invention-studio-ios.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "invention-studio-ios/invention-studio-ios.entitlements";
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
