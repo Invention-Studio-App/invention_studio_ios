@@ -243,8 +243,32 @@
                                     <outlet property="pickerView" destination="fKe-TN-aQT" id="5Yd-VR-bEK"/>
                                 </connections>
                             </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="piNamePrototype" id="u4z-qT-m0o" customClass="FeedbackPINameCell" customModule="invention_studio_ios" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="359.5" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="u4z-qT-m0o" id="P8N-zg-nYa">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NyL-8F-nuN">
+                                            <rect key="frame" x="16" y="13.5" width="343" height="17"/>
+                                            <nil key="textColor"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <textInputTraits key="textInputTraits"/>
+                                        </textField>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="NyL-8F-nuN" firstAttribute="leading" secondItem="P8N-zg-nYa" secondAttribute="leading" constant="16" id="6nA-v1-BC8"/>
+                                        <constraint firstItem="NyL-8F-nuN" firstAttribute="centerY" secondItem="P8N-zg-nYa" secondAttribute="centerY" id="iJ6-mP-ywb"/>
+                                        <constraint firstAttribute="trailing" secondItem="NyL-8F-nuN" secondAttribute="trailing" constant="16" id="p49-EJ-kho"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="textField" destination="NyL-8F-nuN" id="lR1-3J-sXD"/>
+                                </connections>
+                            </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="ratingPrototype" rowHeight="77" id="wTW-Y9-0Pg" customClass="FeedbackRatingCell" customModule="invention_studio_ios" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="359.5" width="375" height="77"/>
+                                <rect key="frame" x="0.0" y="403.5" width="375" height="77"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="wTW-Y9-0Pg" id="pgI-SU-2LH">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="76.5"/>
@@ -289,7 +313,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="commentsPrototype" rowHeight="216" id="xm2-WQ-e9h" customClass="FeedbackCommentsCell" customModule="invention_studio_ios" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="436.5" width="375" height="216"/>
+                                <rect key="frame" x="0.0" y="480.5" width="375" height="216"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="xm2-WQ-e9h" id="faq-Zl-qtH">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="215.5"/>
@@ -313,7 +337,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="submitPrototype" textLabel="bhG-LL-xq8" style="IBUITableViewCellStyleDefault" id="iGB-Hb-svO">
-                                <rect key="frame" x="0.0" y="652.5" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="696.5" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="iGB-Hb-svO" id="kxU-bh-eWf">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>

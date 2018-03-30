@@ -24,14 +24,16 @@ class FeedbackTVC: ISTableViewController, UIPickerViewDataSource, UIPickerViewDe
                               ["Problem", "ProblemDropdown"],
                               ["Comments"],
                               ["Submit"]]
-    private let piFeedbackHeaders = ["Your Name", "Feedback", "Rating", "Comments", ""]
+    private let piFeedbackHeaders = ["Your Name", "Feedback", "PI Name", "Rating", "Comments", ""]
     private let piFeedbackPrototypes = [["namePrototype"],
                            ["pickerHeaderPrototype", "pickerDropdownPrototype"],
+                           ["piNamePrototype"],
                            ["ratingPrototype"],
                            ["commentsPrototype"],
                            ["submitPrototype"]]
     private let piFeedbackCells = [["Your Name"],
                            ["Feedback", "FeedbackDropdown"],
+                           ["PI Name"],
                            ["Rating"],
                            ["Comments"],
                            ["Submit"]]
@@ -224,6 +226,9 @@ class FeedbackTVC: ISTableViewController, UIPickerViewDataSource, UIPickerViewDe
             default:
                 break
             }
+            return cell
+        case "piNamePrototype":
+            let cell = tableView.dequeueReusableCell(withIdentifier: prototype, for: indexPath) as! FeedbackPINameCell
             return cell
         case "ratingPrototype":
             let cell = tableView.dequeueReusableCell(withIdentifier: prototype, for: indexPath) as! FeedbackRatingCell
