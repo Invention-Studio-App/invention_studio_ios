@@ -103,7 +103,7 @@ class LoginVC: ISViewController, WKUIDelegate, WKNavigationDelegate, WKHTTPCooki
                         if u.isInventionStudio() {
                             isInventionStudio = true
                             UserDefaults.standard.set(u.equipmentGroupId, forKey: "DepartmentId")
-                            UserDefaults.standard.set(u.userName, forKey: "UserName")
+                            UserDefaults.standard.set(u.userName, forKey: "Name")
                             break
                         }
                     }
