@@ -19,23 +19,23 @@ class Tool: Codable {
         case UNKNOWN = "Unknown"
     }
 
-    var equipmentGroupId: Int
-    var locationId: Int
-    var toolId: Int
-    var currentUserUserName: String
-    var equipmentGroupDescription: String
-    var equipmentGroupName: String
-    var locationAddress: String
-    var locationDescription: String
-    var locationManager: String
-    var locationName: String
-    var locationUrl: String
-    var toolCurrentUser: String
-    var toolDescription: String
-    var toolName: String
-    var locationPhone: String
-    var toolInUseSince: Date
-    var toolIsOperational: Bool
+    var equipmentGroupId: Int = 0
+    var locationId: Int = 0
+    var toolId: Int = 0
+    var currentUserUserName: String = ""
+    var equipmentGroupDescription: String = ""
+    var equipmentGroupName: String = ""
+    var locationAddress: String = ""
+    var locationDescription: String = ""
+    var locationManager: String = ""
+    var locationName: String = ""
+    var locationUrl: String = ""
+    var toolCurrentUser: String = ""
+    var toolDescription: String = ""
+    var toolName: String = ""
+    var locationPhone: String = ""
+    var toolInUseSince: Date = Date()
+    var toolIsOperational: Bool = false
 
     //Automatically calculates machine's status based on given data
     func status() -> Status {

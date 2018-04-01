@@ -10,13 +10,13 @@ import Foundation
 
 class QueueUser: Codable {
 
-    var queueGroupId: Int
-    var memberName: String
-    var memberUserName: String
-    var queueName: String
-    var hasBeenNotified: Bool
-    var isGroup: Bool
-    var memberMinutesRemaining: Int
-    var memberQueueLocation: Int
+    var queueGroupId: Int = 0
+    var memberName: String = ""
+    var memberUserName: String = ""
+    var queueName: String = ""
+    var hasBeenNotified: Bool = false
+    var isGroup: Bool = false
+    var memberMinutesRemaining: Int = 0
+    var memberQueueLocation: Int = 0
 
 }

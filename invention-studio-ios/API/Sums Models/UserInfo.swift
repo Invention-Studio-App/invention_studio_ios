@@ -10,12 +10,12 @@ import Foundation
 
 class UserInfo: Codable {
 
-    var equipmentGroupId: Int
-    var templateId: Int
-    var equipmentGroupName: String
-    var templateName: String
-    var userName: String
-    var userUserName: String
+    var equipmentGroupId: Int = 0
+    var templateId: Int = 0
+    var equipmentGroupName: String = ""
+    var templateName: String = ""
+    var userName: String = ""
+    var userUserName: String = ""
 
     func isInventionStudio() -> Bool {
         if equipmentGroupName == "Invention Studio at Georgia Tech" || equipmentGroupName == "Georgia Tech Invention Studio" {

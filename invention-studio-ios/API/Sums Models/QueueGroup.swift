@@ -10,8 +10,8 @@ import Foundation
 
 class QueueGroup: Codable {
 
-    var name: String
-    var id: Int
-    var isGroup: Bool
+    var name: String = ""
+    var id: Int = 0
+    var isGroup: Bool = false
 
 }

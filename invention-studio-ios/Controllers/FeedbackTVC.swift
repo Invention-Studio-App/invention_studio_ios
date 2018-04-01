@@ -271,7 +271,152 @@ class FeedbackTVC: ISTableViewController, UIPickerViewDataSource, UIPickerViewDe
             }
             tableView.reloadSections([indexPath.section], with: UITableViewRowAnimation.automatic)
         } else if prototype == "submitPrototype" {
-            let alert = UIAlertController(title: "Error", message: "Sorry! This part hasn't been fully implemented yet. If you are a beta tester and would like to submit feedback, please do so using the TestFlight app", preferredStyle: .alert)
+            let feedbackType = self.pickerValues["Feedback"]![feedbackTypePicker.selectedRow(inComponent: 0)]
+            if feedbackType == "Tool Broken" {
+                let username = UserDefaults.standard.string(forKey: "Username")!
+                let password = UserDefaults.standard.string(forKey: "UserKey")!
+                let loginString = String(format: "%@:%@", username, password)
+                let loginData = loginString.data(using: String.Encoding.utf8)!
+                let base64LoginString = loginData.base64EncodedString()
+                
+                // create the request
+                let url = URL(string: "https://is-apps.me.gatech.edu/api/v1-0/feedback/tool_broken")!
+                var request = URLRequest(url: url)
+                request.httpMethod = "POST"
+                request.setValue("Basic \(base64LoginString)", forHTTPHeaderField: "Authorization")
+                let apiKey = "88c0a47e-6396-4463-87f5-c726c1da9874"
+                request.setValue(apiKey, forHTTPHeaderField: "x-api-key")
+                
+                var postString = ""
+                let locName = self.pickerValues["Group"]![toolGroupPicker.selectedRow(inComponent: 0)]
+                let id = UserDefaults.standard.string(forKey: "DepartmentId")
+
+                let json: [String: Any] = ["equipment_group_id": id,
+                                           "username": username,
+                                           "problem": self.pickerValues["Problem"]![problemPicker.selectedRow(inComponent: 0)],
+                                           "tool_group_name": locName,
+                                           "tool_name": self.pickerValues["Tool"]![toolPicker.selectedRow(inComponent: 0)],
+                                           "comments": "No comment"]
+                print(json)
+                let jsonData = try? JSONSerialization.data(withJSONObject: json)
+                
+                request.httpBody = jsonData
+                
+                let task = URLSession.shared.dataTask(with: request) { data, response, error in
+                    guard let data = data, error == nil else {                                                 // check for fundamental networking error
+                        print("error=\(error)")
+                        return
+                    }
+                    
+                    if let httpStatus = response as? HTTPURLResponse, httpStatus.statusCode != 200 {           // check for http errors
+                        print("statusCode should be 200, but is \(httpStatus.statusCode)")
+                        print("response = \(response)")
+                    }
+                    self.alert(err: ((response as? HTTPURLResponse)?.statusCode)!)
+                    let responseString = String(data: data, encoding: .utf8)
+                    print("responseString = \(responseString)")
+                }
+                task.resume()
+            } else if feedbackType == "PI Feedback" {
+                let username = UserDefaults.standard.string(forKey: "Username")!
+                let password = UserDefaults.standard.string(forKey: "UserKey")!
+                let loginString = String(format: "%@:%@", username, password)
+                let loginData = loginString.data(using: String.Encoding.utf8)!
+                let base64LoginString = loginData.base64EncodedString()
+                
+                // create the request
+                let url = URL(string: "https://is-apps.me.gatech.edu/api/v1-0/feedback/staff")!
+                var request = URLRequest(url: url)
+                request.httpMethod = "POST"
+                request.setValue("Basic \(base64LoginString)", forHTTPHeaderField: "Authorization")
+                let apiKey = "88c0a47e-6396-4463-87f5-c726c1da9874"
+                request.setValue(apiKey, forHTTPHeaderField: "x-api-key")
+                
+                let id = UserDefaults.standard.string(forKey: "DepartmentId")
+                
+                let json: [String: Any] = ["equipment_group_id": id,
+                                           "username": username,
+                                           "staff_name": "",
+                                           "rating": 4,
+                                           "comments": "No comment"]
+                print(json)
+                let jsonData = try? JSONSerialization.data(withJSONObject: json)
+                
+                request.httpBody = jsonData
+
+                
+                let task = URLSession.shared.dataTask(with: request) { data, response, error in
+                    guard let data = data, error == nil else {                                                 // check for fundamental networking error
+                        print("error=\(error)")
+                        return
+                    }
+                    
+                    if let httpStatus = response as? HTTPURLResponse, httpStatus.statusCode != 200 {           // check for http errors
+                        print("statusCode should be 200, but is \(httpStatus.statusCode)")
+                        print("response = \(response)")
+                    }
+                    self.alert(err: ((response as? HTTPURLResponse)?.statusCode)!)
+                    let responseString = String(data: data, encoding: .utf8)
+                    print("responseString = \(responseString)")
+                }
+                task.resume()
+            } else if feedbackType == "General Feedback" {
+                let username = UserDefaults.standard.string(forKey: "Username")!
+                let password = UserDefaults.standard.string(forKey: "UserKey")!
+                let loginString = String(format: "%@:%@", username, password)
+                let loginData = loginString.data(using: String.Encoding.utf8)!
+                let base64LoginString = loginData.base64EncodedString()
+                
+                // create the request
+                let url = URL(string: "https://is-apps.me.gatech.edu/api/v1-0/feedback/general")!
+                var request = URLRequest(url: url)
+                request.httpMethod = "POST"
+                request.setValue("Basic \(base64LoginString)", forHTTPHeaderField: "Authorization")
+                let apiKey = "88c0a47e-6396-4463-87f5-c726c1da9874"
+                request.setValue(apiKey, forHTTPHeaderField: "x-api-key")
+                
+                let id = UserDefaults.standard.string(forKey: "DepartmentId")
+                
+                let json: [String: Any] = ["equipment_group_id": id,
+                                           "username": username,
+                                           "comments": "No comment"]
+                print(json)
+                let jsonData = try? JSONSerialization.data(withJSONObject: json)
+                
+                request.httpBody = jsonData
+                
+                
+                let task = URLSession.shared.dataTask(with: request) { data, response, error in
+                    guard let data = data, error == nil else {                                                 // check for fundamental networking error
+                        print("error=\(error)")
+                        return
+                    }
+                    
+                    
+                    if let httpStatus = response as? HTTPURLResponse, httpStatus.statusCode != 200 {           // check for http errors
+                        print("statusCode should be 200, but is \(httpStatus.statusCode)")
+                        print("response = \(response)")
+                    }
+                    self.alert(err: ((response as? HTTPURLResponse)?.statusCode)!)
+                    let responseString = String(data: data, encoding: .utf8)
+                    print("responseString = \(responseString)")
+                }
+                task.resume()
+            }
+        }
+    }
+    
+    func alert(err:Int) {
+        if err == 200 {
+            let alert = UIAlertController(title: "Success", message: "Thank you for submitting feedback!", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        } else if err == 400 {
+            let alert = UIAlertController(title: "Error", message: "Error submitting feedback.", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        } else if err == 500 {
+            let alert = UIAlertController(title: "Error", message: "Internal server error.", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
             self.present(alert, animated: true, completion: nil)
         }
