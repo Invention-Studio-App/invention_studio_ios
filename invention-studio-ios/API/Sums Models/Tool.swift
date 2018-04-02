@@ -6,7 +6,6 @@
 //  Copyright © 2018 Invention Studio at Georgia Tech. All rights reserved.
 //
 
-import Foundation
 import UIKit
 
 class Tool: Codable {

@@ -343,6 +343,7 @@ class FeedbackTVC: ISTableViewController, UIPickerViewDataSource, UIPickerViewDe
             }
         }
     }
+<<<<<<< HEAD
 
     func alert(title: String, message: String) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
@@ -362,6 +363,27 @@ class FeedbackTVC: ISTableViewController, UIPickerViewDataSource, UIPickerViewDe
             self.tableView.setContentOffset(CGPoint.zero, animated: true)
         }))
         self.present(alert, animated: true, completion: nil)
+=======
+    
+    func alert(err:Int) {
+        let alert = UIAlertController(title: "Success", message: "Thank you for submitting feedback!", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+
+        if err == 200 {
+            let alert = UIAlertController(title: "Success", message: "Thank you for submitting feedback!", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        } else if err == 400 {
+            let alert = UIAlertController(title: "Error", message: "Error submitting feedback.", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        } else if err == 500 {
+            let alert = UIAlertController(title: "Error", message: "Internal server error.", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        }
+>>>>>>> Fixed feedback popup
     }
 
     //MARK: - Picker View Delegate

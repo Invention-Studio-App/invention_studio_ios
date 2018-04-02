@@ -6,8 +6,6 @@
 //  Copyright © 2018 Invention Studio at Georgia Tech. All rights reserved.
 //
 
-import Foundation
-
 class UserInfo: Codable {
 
     var equipmentGroupId: Int = 0
