@@ -27,6 +27,8 @@
 		B26CA616204394AB0050FC2C /* ISViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26CA615204394AB0050FC2C /* ISViewController.swift */; };
 		B26CA6182043952C0050FC2C /* ISTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26CA6172043952C0050FC2C /* ISTableViewController.swift */; };
 		B289B76D205B2AEF008428C3 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B289B76C205B2AEF008428C3 /* GoogleService-Info.plist */; };
+		B297348C2072A26800040E9D /* MusicHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B297348B2072A26800040E9D /* MusicHelper.swift */; };
+		B297348E2072A2CE00040E9D /* tomorrowland.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B297348D2072A2CE00040E9D /* tomorrowland.mp3 */; };
 		B2A3A82D201C0EB600F3AF7F /* Tool.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2A3A82C201C0EB600F3AF7F /* Tool.swift */; };
 		B2A3A82F201C1B1400F3AF7F /* QueuesTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2A3A82E201C1B1400F3AF7F /* QueuesTVC.swift */; };
 		B2A3A831201C1B2A00F3AF7F /* FeedbackTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2A3A830201C1B2A00F3AF7F /* FeedbackTVC.swift */; };
@@ -89,6 +91,8 @@
 		B26CA615204394AB0050FC2C /* ISViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ISViewController.swift; sourceTree = "<group>"; };
 		B26CA6172043952C0050FC2C /* ISTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ISTableViewController.swift; sourceTree = "<group>"; };
 		B289B76C205B2AEF008428C3 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		B297348B2072A26800040E9D /* MusicHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicHelper.swift; sourceTree = "<group>"; };
+		B297348D2072A2CE00040E9D /* tomorrowland.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = tomorrowland.mp3; sourceTree = "<group>"; };
 		B2A3A82C201C0EB600F3AF7F /* Tool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tool.swift; sourceTree = "<group>"; };
 		B2A3A82E201C1B1400F3AF7F /* QueuesTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueuesTVC.swift; sourceTree = "<group>"; };
 		B2A3A830201C1B2A00F3AF7F /* FeedbackTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackTVC.swift; sourceTree = "<group>"; };
@@ -199,6 +203,14 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		B297348A2072A25300040E9D /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				B297348B2072A26800040E9D /* MusicHelper.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		B2A3A82A201C0D4C00F3AF7F /* API */ = {
 			isa = PBXGroup;
 			children = (
@@ -247,6 +259,7 @@
 			children = (
 				B25E8B3D205B3BA0009D184E /* invention-studio-ios.entitlements */,
 				B2A3A82A201C0D4C00F3AF7F /* API */,
+				B297348A2072A25300040E9D /* Helpers */,
 				B233FFC120216D1C0024A5C6 /* Controllers */,
 				B233FFC220216D2C0024A5C6 /* Views */,
 				B2BEA44F20437F4800132EF7 /* Theme.swift */,
@@ -258,6 +271,7 @@
 				B2D384A21FBA383C00D91650 /* Info.plist */,
 				B289B76C205B2AEF008428C3 /* GoogleService-Info.plist */,
 				B2D3849A1FBA383C00D91650 /* invention_studio_ios.xcdatamodeld */,
+				B297348D2072A2CE00040E9D /* tomorrowland.mp3 */,
 			);
 			path = "invention-studio-ios";
 			sourceTree = "<group>";
@@ -352,7 +366,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0910;
-				LastUpgradeCheck = 0910;
+				LastUpgradeCheck = 0930;
 				ORGANIZATIONNAME = "Invention Studio at Georgia Tech";
 				TargetAttributes = {
 					B2D3848F1FBA383C00D91650 = {
@@ -403,6 +417,7 @@
 			files = (
 				B2D384A11FBA383C00D91650 /* LaunchScreen.storyboard in Resources */,
 				4F8FB69520154C7F00DBCD35 /* Colors.xcassets in Resources */,
+				B297348E2072A2CE00040E9D /* tomorrowland.mp3 in Resources */,
 				B289B76D205B2AEF008428C3 /* GoogleService-Info.plist in Resources */,
 				B2D3849E1FBA383C00D91650 /* Assets.xcassets in Resources */,
 				B2D384991FBA383C00D91650 /* Main.storyboard in Resources */,
@@ -599,6 +614,7 @@
 				B233FFC420216DFD0024A5C6 /* FeedbackNameCell.swift in Sources */,
 				B233FFC820216E720024A5C6 /* FeedbackPickerDropdownCell.swift in Sources */,
 				B26CA616204394AB0050FC2C /* ISViewController.swift in Sources */,
+				B297348C2072A26800040E9D /* MusicHelper.swift in Sources */,
 				B2323A632044E635008D3F35 /* Location.swift in Sources */,
 				B254C5B5203633F800D6A2B4 /* UserInfo.swift in Sources */,
 				B2A3A82D201C0EB600F3AF7F /* Tool.swift in Sources */,
@@ -681,6 +697,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -688,6 +705,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -739,6 +757,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -746,6 +765,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -772,6 +792,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -783,7 +804,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "invention-studio-ios/invention-studio-ios.entitlements";
-				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9HY9UV72FZ;
@@ -804,7 +825,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "invention-studio-ios/invention-studio-ios.entitlements";
-				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9HY9UV72FZ;

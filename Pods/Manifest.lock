@@ -12,7 +12,7 @@ PODS:
     - nanopb (~> 0.3)
   - FirebaseCore (4.0.18):
     - GoogleToolboxForMac/NSData+zlib (~> 2.1)
-  - FirebaseInstanceID (2.0.10):
+  - FirebaseInstanceID (2.0.0):
     - FirebaseCore (~> 4.0)
   - FirebaseMessaging (2.1.1):
     - FirebaseAnalytics (~> 4.1)
@@ -36,19 +36,20 @@ PODS:
 DEPENDENCIES:
   - Firebase/Core
   - Firebase/Messaging
+  - FirebaseInstanceID (= 2.0.0)
   - TGPControls
 
 SPEC CHECKSUMS:
   Firebase: cc13dfab1038c8b45d7903e01fc690451d6d0b24
   FirebaseAnalytics: 3dfae28d4a5e06f86c4fae830efc2ad3fadb19bc
   FirebaseCore: b981f47e5254cbcfdeb483355300d743f6fcab2c
-  FirebaseInstanceID: 8d20d890d65c917f9f7d9950b6e10a760ad34321
+  FirebaseInstanceID: 9fbf536668f4d3f0880e7438456dabd1376e294b
   FirebaseMessaging: db0e01c52ef7e1f42846431273558107d084ede4
   GoogleToolboxForMac: 2501e2ad72a52eb3dfe7bd9aee7dad11b858bd20
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
   Protobuf: 8a9838fba8dae3389230e1b7f8c104aa32389c03
   TGPControls: d7ab5a338746c100b2ae57f6b6cedee7151f116a
 
-PODFILE CHECKSUM: 9ec318eacab24ac4b4563026ba13284accd375c4
+PODFILE CHECKSUM: 7c05dda46a9a6903145f020cf51465b51672e54e
 
 COCOAPODS: 1.4.0

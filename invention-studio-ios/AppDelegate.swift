@@ -74,6 +74,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         self.window?.rootViewController = initialViewController
         self.window?.makeKeyAndVisible()
 
+        MusicHelper.sharedHelper.playBackgroundMusic()
+
         return true
     }
 

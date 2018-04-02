@@ -9,6 +9,7 @@ target 'invention-studio-ios' do
   pod 'TGPControls'
   pod 'Firebase/Core'
   pod 'Firebase/Messaging'
+  pod 'FirebaseInstanceID', "2.0.0"  
 
   target 'invention-studio-iosTests' do
     inherit! :search_paths
