@@ -114,9 +114,10 @@ class LoginVC: ISViewController, WKUIDelegate, WKNavigationDelegate, WKHTTPCooki
                 apiEvalGroup.notify(queue: .main, execute: {
                     //If the user is part of the Invention Studio tool group (i.e. they have signed the user agreement)
                     //self.performSegue(withIdentifier: "safetyAgreementSegue", sender: self)
-
+                    
                     if isInventionStudio {
                         self.performSegue(withIdentifier: "cookieReceivedSegue", sender: self)
+                        
                     } else {
                         //TODO: add need to sign agreement page
                         self.performSegue(withIdentifier: "safetyAgreementSegue", sender: self)

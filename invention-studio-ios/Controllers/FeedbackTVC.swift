@@ -294,14 +294,14 @@ class FeedbackTVC: ISTableViewController, UIPickerViewDataSource, UIPickerViewDe
                 
                 var postString = ""
                 let locName = self.pickerValues["Group"]![toolGroupPicker.selectedRow(inComponent: 0)]
-                let id = UserDefaults.standard.string(forKey: "DepartmentId")
+                let id = Int(UserDefaults.standard.string(forKey: "DepartmentId")!)
 
                 let json: [String: Any] = ["equipment_group_id": id,
                                            "username": username,
                                            "problem": self.pickerValues["Problem"]![problemPicker.selectedRow(inComponent: 0)],
                                            "tool_group_name": locName,
                                            "tool_name": self.pickerValues["Tool"]![toolPicker.selectedRow(inComponent: 0)],
-                                           "comments": "No comment"]
+                                           "comments": "IOS tool 2"]
                 print(json)
                 let jsonData = try? JSONSerialization.data(withJSONObject: json)
                 
@@ -337,14 +337,15 @@ class FeedbackTVC: ISTableViewController, UIPickerViewDataSource, UIPickerViewDe
                 let apiKey = "88c0a47e-6396-4463-87f5-c726c1da9874"
                 request.setValue(apiKey, forHTTPHeaderField: "x-api-key")
                 
-                let id = UserDefaults.standard.string(forKey: "DepartmentId")
+                let id = Int(UserDefaults.standard.string(forKey: "DepartmentId")!)
                 
                 let json: [String: Any] = ["equipment_group_id": id,
                                            "username": username,
-                                           "staff_name": "",
+                                           "staff_name": "Aman",
                                            "rating": 4,
-                                           "comments": "No comment"]
+                                           "comments": "IOS PI 2"]
                 print(json)
+                
                 let jsonData = try? JSONSerialization.data(withJSONObject: json)
                 
                 request.httpBody = jsonData
@@ -380,11 +381,11 @@ class FeedbackTVC: ISTableViewController, UIPickerViewDataSource, UIPickerViewDe
                 let apiKey = "88c0a47e-6396-4463-87f5-c726c1da9874"
                 request.setValue(apiKey, forHTTPHeaderField: "x-api-key")
                 
-                let id = UserDefaults.standard.string(forKey: "DepartmentId")
+                let id = Int(UserDefaults.standard.string(forKey: "DepartmentId")!)
                 
                 let json: [String: Any] = ["equipment_group_id": id,
                                            "username": username,
-                                           "comments": "No comment"]
+                                           "comments": "IOS general 2"]
                 print(json)
                 let jsonData = try? JSONSerialization.data(withJSONObject: json)
                 
