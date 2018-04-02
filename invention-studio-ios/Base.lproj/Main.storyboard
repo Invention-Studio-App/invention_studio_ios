@@ -57,7 +57,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="Hig-7h-Ccf">
             <objects>
-                <tabBarController storyboardIdentifier="TabBarController" id="FCz-Is-acD" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="TabBarController" id="FCz-Is-acD" customClass="ISTabBarController" customModule="invention_studio_ios" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" translucent="NO" id="Urx-LM-SOe">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -974,7 +974,7 @@ For more info ask any Prototyping Instructor (PI), who are in the studio wearing
         </namedColor>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="OSp-hx-eiC"/>
+        <segue reference="DiI-4E-pZb"/>
         <segue reference="xX8-5t-its"/>
     </inferredMetricsTieBreakers>
 </document>

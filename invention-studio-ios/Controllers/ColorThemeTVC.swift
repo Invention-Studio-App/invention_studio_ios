@@ -41,6 +41,8 @@ class ColorThemeTVC: ISTableViewController {
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        super.tableView(tableView, didSelectRowAt: indexPath)
+
         let cell = tableView.cellForRow(at: indexPath)
         selectedIndexPath = indexPath
         let selectedTheme = cell?.textLabel?.text

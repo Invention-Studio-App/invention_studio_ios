@@ -103,6 +103,8 @@ class QueuesTVC: ISTableViewController {
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.row == 0 {
+            super.tableView(tableView, didSelectRowAt: indexPath)
+
             let oldSelectedSection: Int? = selectedSection
             if indexPath.section == selectedSection {
                 selectedSection = nil

@@ -264,6 +264,8 @@ class FeedbackTVC: ISTableViewController, UIPickerViewDataSource, UIPickerViewDe
         let prototype = currentPrototypes[indexPath.section][indexPath.row]
         let oldDropdownSection : Int? = currentDropdown?.section
         if prototype == "pickerHeaderPrototype" {
+            super.tableView(tableView, didSelectRowAt: indexPath)
+
             if indexPath == currentDropdownHeader {
                 currentDropdownHeader = nil
                 currentDropdown = nil
@@ -276,6 +278,8 @@ class FeedbackTVC: ISTableViewController, UIPickerViewDataSource, UIPickerViewDe
             }
             tableView.reloadSections([indexPath.section], with: UITableViewRowAnimation.automatic)
         } else if prototype == "submitPrototype" {
+            super.tableView(tableView, didSelectRowAt: indexPath)
+
             let feedbackType = self.pickerValues["Feedback"]![feedbackTypePicker.selectedRow(inComponent: 0)]
             if feedbackType == "Tool Broken" {
                 let username = UserDefaults.standard.string(forKey: "Username")!

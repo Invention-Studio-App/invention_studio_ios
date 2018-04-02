@@ -29,6 +29,9 @@
 		B289B76D205B2AEF008428C3 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B289B76C205B2AEF008428C3 /* GoogleService-Info.plist */; };
 		B297348C2072A26800040E9D /* MusicHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B297348B2072A26800040E9D /* MusicHelper.swift */; };
 		B297348E2072A2CE00040E9D /* tomorrowland.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B297348D2072A2CE00040E9D /* tomorrowland.mp3 */; };
+		B29734902072A60700040E9D /* SoundHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B297348F2072A60700040E9D /* SoundHelper.swift */; };
+		B29734922072A69400040E9D /* pop.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B29734912072A69300040E9D /* pop.mp3 */; };
+		B29734942072A70800040E9D /* ISTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B29734932072A70800040E9D /* ISTabBarController.swift */; };
 		B2A3A82D201C0EB600F3AF7F /* Tool.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2A3A82C201C0EB600F3AF7F /* Tool.swift */; };
 		B2A3A82F201C1B1400F3AF7F /* QueuesTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2A3A82E201C1B1400F3AF7F /* QueuesTVC.swift */; };
 		B2A3A831201C1B2A00F3AF7F /* FeedbackTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2A3A830201C1B2A00F3AF7F /* FeedbackTVC.swift */; };
@@ -93,6 +96,9 @@
 		B289B76C205B2AEF008428C3 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B297348B2072A26800040E9D /* MusicHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicHelper.swift; sourceTree = "<group>"; };
 		B297348D2072A2CE00040E9D /* tomorrowland.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = tomorrowland.mp3; sourceTree = "<group>"; };
+		B297348F2072A60700040E9D /* SoundHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundHelper.swift; sourceTree = "<group>"; };
+		B29734912072A69300040E9D /* pop.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = pop.mp3; sourceTree = "<group>"; };
+		B29734932072A70800040E9D /* ISTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ISTabBarController.swift; sourceTree = "<group>"; };
 		B2A3A82C201C0EB600F3AF7F /* Tool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tool.swift; sourceTree = "<group>"; };
 		B2A3A82E201C1B1400F3AF7F /* QueuesTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueuesTVC.swift; sourceTree = "<group>"; };
 		B2A3A830201C1B2A00F3AF7F /* FeedbackTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackTVC.swift; sourceTree = "<group>"; };
@@ -174,6 +180,7 @@
 		B233FFC120216D1C0024A5C6 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				B29734932072A70800040E9D /* ISTabBarController.swift */,
 				B26CA615204394AB0050FC2C /* ISViewController.swift */,
 				B26CA6172043952C0050FC2C /* ISTableViewController.swift */,
 				4F8FB692201547DB00DBCD35 /* LandingVC.swift */,
@@ -207,6 +214,7 @@
 			isa = PBXGroup;
 			children = (
 				B297348B2072A26800040E9D /* MusicHelper.swift */,
+				B297348F2072A60700040E9D /* SoundHelper.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -272,6 +280,7 @@
 				B289B76C205B2AEF008428C3 /* GoogleService-Info.plist */,
 				B2D3849A1FBA383C00D91650 /* invention_studio_ios.xcdatamodeld */,
 				B297348D2072A2CE00040E9D /* tomorrowland.mp3 */,
+				B29734912072A69300040E9D /* pop.mp3 */,
 			);
 			path = "invention-studio-ios";
 			sourceTree = "<group>";
@@ -420,6 +429,7 @@
 				B297348E2072A2CE00040E9D /* tomorrowland.mp3 in Resources */,
 				B289B76D205B2AEF008428C3 /* GoogleService-Info.plist in Resources */,
 				B2D3849E1FBA383C00D91650 /* Assets.xcassets in Resources */,
+				B29734922072A69400040E9D /* pop.mp3 in Resources */,
 				B2D384991FBA383C00D91650 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -612,6 +622,7 @@
 				B233FFCA20216E9E0024A5C6 /* FeedbackRatingCell.swift in Sources */,
 				B2E253B9202E399C00C322AA /* SumsApi.swift in Sources */,
 				B233FFC420216DFD0024A5C6 /* FeedbackNameCell.swift in Sources */,
+				B29734902072A60700040E9D /* SoundHelper.swift in Sources */,
 				B233FFC820216E720024A5C6 /* FeedbackPickerDropdownCell.swift in Sources */,
 				B26CA616204394AB0050FC2C /* ISViewController.swift in Sources */,
 				B297348C2072A26800040E9D /* MusicHelper.swift in Sources */,
@@ -629,6 +640,7 @@
 				B254C5B32036335900D6A2B4 /* QueueUser.swift in Sources */,
 				4F8FB693201547DB00DBCD35 /* LandingVC.swift in Sources */,
 				B2323A6120449B34008D3F35 /* ColorThemeTVC.swift in Sources */,
+				B29734942072A70800040E9D /* ISTabBarController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
