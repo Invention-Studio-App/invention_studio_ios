@@ -32,7 +32,7 @@ class AgreementVC: ISViewController {
             let weekInterval: TimeInterval = 60 * 60 * 24 * 7
             //TODO: Use server time
             UserDefaults.standard.set(NSDate().addingTimeInterval(weekInterval).timeIntervalSince1970, forKey:"LoginSession")
-            let username = UserDefaults.standard.string(forKey: "Name")!
+            let username = UserDefaults.standard.string(forKey: "Username")!
             Messaging.messaging().subscribe(toTopic: username)
         }
     }

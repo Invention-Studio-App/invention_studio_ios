@@ -8,6 +8,7 @@
 
 import UIKit
 import WebKit
+import FirebaseMessaging
 
 class LoginVC: ISViewController, WKUIDelegate, WKNavigationDelegate, WKHTTPCookieStoreObserver {
     
@@ -149,6 +150,12 @@ class LoginVC: ISViewController, WKUIDelegate, WKNavigationDelegate, WKHTTPCooki
             let weekInterval: TimeInterval = 60 * 60 * 24 * 7
             //TODO: Use server time
             UserDefaults.standard.set(NSDate().addingTimeInterval(weekInterval).timeIntervalSince1970, forKey:"LoginSession")
+
+            if segue.identifier == "cookieReceivedSegue" {
+                if let username = UserDefaults.standard.string(forKey: "Username") {
+                    Messaging.messaging().subscribe(toTopic: username)
+                }
+            }
         }
     }
 }

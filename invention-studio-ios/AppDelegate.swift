@@ -56,8 +56,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         if timeStamp < loginSession && shouldLogin {
             initialViewController = storyboard.instantiateViewController(withIdentifier: "TabBarController")
             UserDefaults.standard.set(true, forKey: "LoggedIn")
-            let username = UserDefaults.standard.string(forKey: "Username")
-            Messaging.messaging().subscribe(toTopic: username!)
         } else {
             if let username = UserDefaults.standard.string(forKey: "Username") {
                 Messaging.messaging().unsubscribe(fromTopic: username)
@@ -89,6 +87,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
 
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
         Messaging.messaging().apnsToken = deviceToken
+
+        if let username = UserDefaults.standard.string(forKey: "Username") {
+            Messaging.messaging().subscribe(toTopic: username)
+        }
     }
 
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
