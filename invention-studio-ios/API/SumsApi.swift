@@ -24,11 +24,28 @@ class SumsApi {
         //Info request
         //Returns a flattened array of user info and their associated equipment groups
         static func Info(completion: @escaping ([UserInfo]) -> ()) {
-            SumsApi.submitRequest(module: "user_info", parameters: nil, completion: { data in
-                //Automatically decode response into a JSON array
-                let responseArray = try! JSONDecoder().decode([UserInfo].self, from: data)
-                //"Return" the data to the caller's completion handler
-                completion(responseArray)
+            let username = UserDefaults.standard.string(forKey: "Username")!
+            let userKey = UserDefaults.standard.string(forKey: "UserKey")!
+
+            var url = SumsApi.siteURL + "user_info"
+            url += "?username=\(username)"
+
+            APIHelper.sendRequest(url: url,
+                                  method: .POST,
+                                  body: nil,
+                                  authHeader: userKey,
+                                  xApiKeyHeader: nil,
+                                  completion: { data, response in
+                                    //Check for unexpected status codes
+                                    if response.statusCode != 200 {
+                                        print("statusCode should be 200, but is \(response.statusCode)")
+                                        print("response: \(response)")
+                                        return
+                                    }
+                                    //Automatically decode response into a JSON array
+                                    let responseArray = try! JSONDecoder().decode([UserInfo].self, from: data)
+                                    //"Return" the data to the caller's completion handler
+                                    completion(responseArray)
             })
         }
 
@@ -40,93 +57,98 @@ class SumsApi {
         //Tools request
         //Returns a flattened array of tools and their associated locations
         static func Tools(completion: @escaping ([Tool]) -> ()) {
+            let username = UserDefaults.standard.string(forKey: "Username")!
+            let userKey = UserDefaults.standard.string(forKey: "UserKey")!
             let departmentId = UserDefaults.standard.integer(forKey: "DepartmentId")
-            let parameters = ["DepartmentId": "\(departmentId)"]
-            SumsApi.submitRequest(module: "equipmentGroup_tools", parameters: parameters, completion: { data in
-                //Automatically decode response into a JSON array
-                let decoder = JSONDecoder()
-                //Use the custom date decoder defined below to decode two possible date formats
-                decoder.dateDecodingStrategy = .customDateDecoder()
-                let responseArray = try! decoder.decode([Tool].self, from: data)
-                //"Return" the data to the caller's completion handler
-                completion(responseArray)
+
+            var url = SumsApi.siteURL + "equipmentGroup_tools"
+            url += "?username=\(username)"
+            url += "&DepartmentId=\(departmentId)"
+
+            APIHelper.sendRequest(url: url,
+                                  method: .POST,
+                                  body: nil,
+                                  authHeader: userKey,
+                                  xApiKeyHeader: nil,
+                                  completion: { data, response in
+                                    //Check for unexpected status codes
+                                    if response.statusCode != 200 {
+                                        print("statusCode should be 200, but is \(response.statusCode)")
+                                        print("response: \(response)")
+                                        return
+                                    }
+                                    //Automatically decode response into a JSON array
+                                    let decoder = JSONDecoder()
+                                    //Use the custom date decoder defined below to decode two possible date formats
+                                    decoder.dateDecodingStrategy = .customDateDecoder()
+                                    let responseArray = try! decoder.decode([Tool].self, from: data)
+                                    //"Return" the data to the caller's completion handler
+                                    completion(responseArray)
             })
         }
 
         //QueueGroups request
         //Returns an array of available queue groups and tools
         static func QueueGroups(completion: @escaping ([QueueGroup]) -> ()) {
+            let username = UserDefaults.standard.string(forKey: "Username")!
+            let userKey = UserDefaults.standard.string(forKey: "UserKey")!
             let departmentId = UserDefaults.standard.integer(forKey: "DepartmentId")
-            let parameters = ["DepartmentId": "\(departmentId)"]
-            SumsApi.submitRequest(module: "equipmentGroup_queueGroups", parameters: parameters, completion: { data in
-                //Automatically decode response into a JSON array
-                let responseArray = try! JSONDecoder().decode([QueueGroup].self, from: data)
-                //"Return" the data to the caller's completion handler
-                completion(responseArray)
+
+            var url = SumsApi.siteURL + "equipmentGroup_queueGroups"
+            url += "?username=\(username)"
+            url += "&DepartmentId=\(departmentId)"
+
+            APIHelper.sendRequest(url: url,
+                                  method: .POST,
+                                  body: nil,
+                                  authHeader: userKey,
+                                  xApiKeyHeader: nil,
+                                  completion: { data, response in
+                                    //Check for unexpected status codes
+                                    if response.statusCode != 200 {
+                                        print("statusCode should be 200, but is \(response.statusCode)")
+                                        print("response: \(response)")
+                                        return
+                                    }
+                                    //Automatically decode response into a JSON array
+                                    let responseArray = try! JSONDecoder().decode([QueueGroup].self, from: data)
+                                    //"Return" the data to the caller's completion handler
+                                    completion(responseArray)
             })
         }
 
         //QueueUsers request
         //Returns a flattened array of currently queued users and their associated queue group
         static func QueueUsers(completion: @escaping ([QueueUser]) -> ()) {
+            let username = UserDefaults.standard.string(forKey: "Username")!
+            let userKey = UserDefaults.standard.string(forKey: "UserKey")!
             let departmentId = UserDefaults.standard.integer(forKey: "DepartmentId")
-            let parameters = ["DepartmentId": "\(departmentId)"]
-            SumsApi.submitRequest(module: "equipmentGroup_queueUsers", parameters: parameters, completion: { data in
-                //Automatically decode response into a JSON array
-                let decoder = JSONDecoder()
-                //Use the custom date decoder defined below to decode two possible date formats
-                decoder.dateDecodingStrategy = .customDateDecoder()
-                let responseArray = try! decoder.decode([QueueUser].self, from: data)
-                //"Return" the data to the caller's completion handler
-                completion(responseArray)
+
+            var url = SumsApi.siteURL + "equipmentGroup_queueUsers"
+            url += "?username=\(username)"
+            url += "&DepartmentId=\(departmentId)"
+
+            APIHelper.sendRequest(url: url,
+                                  method: .POST,
+                                  body: nil,
+                                  authHeader: userKey,
+                                  xApiKeyHeader: nil,
+                                  completion: { data, response in
+                                    //Check for unexpected status codes
+                                    if response.statusCode != 200 {
+                                        print("statusCode should be 200, but is \(response.statusCode)")
+                                        print("response: \(response)")
+                                        return
+                                    }
+                                    //Automatically decode response into a JSON array
+                                    let decoder = JSONDecoder()
+                                    //Use the custom date decoder defined below to decode two possible date formats
+                                    decoder.dateDecodingStrategy = .customDateDecoder()
+                                    let responseArray = try! decoder.decode([QueueUser].self, from: data)
+                                    //"Return" the data to the caller's completion handler
+                                    completion(responseArray)
             })
         }
-    }
-
-    //Generic API request - handles all of the "nasty" code to minimize each individual method above
-    fileprivate static func submitRequest(module: String,
-                                          parameters: Dictionary<String, String>?,
-                                          completion: @escaping (Data) -> ()) {
-        //Retrieve user key and username, which will be required every time
-        let userKey = UserDefaults.standard.string(forKey: "UserKey")!
-        let username = UserDefaults.standard.string(forKey: "Username")!
-
-        //Build the URL, siteurl + the request module
-        let baseURL = siteURL + module
-        //Add the username parameter
-        var requestURL = baseURL + "?username=" + username
-        //Add other parameters if provided
-        if let unwrappedParameters = parameters {
-            for parameter in unwrappedParameters {
-                requestURL = requestURL + "&" + parameter.key + "=" + parameter.value
-            }
-        }
-        //Create a URL request from the url string
-        var request = URLRequest(url: URL(string: requestURL)!)
-
-        //Set request type and headers
-        request.httpMethod = "POST"
-        request.setValue("application/JSON", forHTTPHeaderField: "Content-Type")
-        request.setValue(userKey, forHTTPHeaderField: "Authorization")
-
-        //Make the request using completion handler
-        URLSession.shared.dataTask(with: request) { data, response, error in
-            //Check for errors
-            guard let data = data, error == nil else {
-                print("error: \(error!)")
-                return
-            }
-
-            //Check for unexpected status codes
-            if let httpStatus = response as? HTTPURLResponse, httpStatus.statusCode != 200 {
-                print("statusCode should be 200, but is \(httpStatus.statusCode)")
-                print("response: \(response!)")
-            }
-
-            //"Return" the data to the caller's completion handler
-            completion(data)
-
-            }.resume()
     }
 }
 

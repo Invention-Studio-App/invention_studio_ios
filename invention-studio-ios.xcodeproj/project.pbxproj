@@ -26,6 +26,12 @@
 		B254C5B5203633F800D6A2B4 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B254C5B4203633F800D6A2B4 /* UserInfo.swift */; };
 		B26CA616204394AB0050FC2C /* ISViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26CA615204394AB0050FC2C /* ISViewController.swift */; };
 		B26CA6182043952C0050FC2C /* ISTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26CA6172043952C0050FC2C /* ISTableViewController.swift */; };
+		B27C1EF62072E42100383E4C /* InventionStudioAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = B27C1EF52072E42100383E4C /* InventionStudioAPI.swift */; };
+		B27C1EF92072E47000383E4C /* GeneralFeedbackForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = B27C1EF82072E47000383E4C /* GeneralFeedbackForm.swift */; };
+		B27C1EFB2072E4BD00383E4C /* StaffFeedbackForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = B27C1EFA2072E4BD00383E4C /* StaffFeedbackForm.swift */; };
+		B27C1EFD2072E4F200383E4C /* ToolBrokenFeedbackForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = B27C1EFC2072E4F200383E4C /* ToolBrokenFeedbackForm.swift */; };
+		B27C1EFF2072E53300383E4C /* LoginForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = B27C1EFE2072E53300383E4C /* LoginForm.swift */; };
+		B27C1F012072EFB900383E4C /* APIHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B27C1F002072EFB900383E4C /* APIHelper.swift */; };
 		B289B76D205B2AEF008428C3 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B289B76C205B2AEF008428C3 /* GoogleService-Info.plist */; };
 		B2A3A82D201C0EB600F3AF7F /* Tool.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2A3A82C201C0EB600F3AF7F /* Tool.swift */; };
 		B2A3A82F201C1B1400F3AF7F /* QueuesTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2A3A82E201C1B1400F3AF7F /* QueuesTVC.swift */; };
@@ -88,6 +94,12 @@
 		B25E8B3D205B3BA0009D184E /* invention-studio-ios.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "invention-studio-ios.entitlements"; sourceTree = "<group>"; };
 		B26CA615204394AB0050FC2C /* ISViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ISViewController.swift; sourceTree = "<group>"; };
 		B26CA6172043952C0050FC2C /* ISTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ISTableViewController.swift; sourceTree = "<group>"; };
+		B27C1EF52072E42100383E4C /* InventionStudioAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InventionStudioAPI.swift; sourceTree = "<group>"; };
+		B27C1EF82072E47000383E4C /* GeneralFeedbackForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralFeedbackForm.swift; sourceTree = "<group>"; };
+		B27C1EFA2072E4BD00383E4C /* StaffFeedbackForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaffFeedbackForm.swift; sourceTree = "<group>"; };
+		B27C1EFC2072E4F200383E4C /* ToolBrokenFeedbackForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolBrokenFeedbackForm.swift; sourceTree = "<group>"; };
+		B27C1EFE2072E53300383E4C /* LoginForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginForm.swift; sourceTree = "<group>"; };
+		B27C1F002072EFB900383E4C /* APIHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIHelper.swift; sourceTree = "<group>"; };
 		B289B76C205B2AEF008428C3 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B2A3A82C201C0EB600F3AF7F /* Tool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tool.swift; sourceTree = "<group>"; };
 		B2A3A82E201C1B1400F3AF7F /* QueuesTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueuesTVC.swift; sourceTree = "<group>"; };
@@ -199,11 +211,25 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		B27C1EF72072E42A00383E4C /* Invention Studio Models */ = {
+			isa = PBXGroup;
+			children = (
+				B27C1EF82072E47000383E4C /* GeneralFeedbackForm.swift */,
+				B27C1EFA2072E4BD00383E4C /* StaffFeedbackForm.swift */,
+				B27C1EFC2072E4F200383E4C /* ToolBrokenFeedbackForm.swift */,
+				B27C1EFE2072E53300383E4C /* LoginForm.swift */,
+			);
+			path = "Invention Studio Models";
+			sourceTree = "<group>";
+		};
 		B2A3A82A201C0D4C00F3AF7F /* API */ = {
 			isa = PBXGroup;
 			children = (
+				B27C1F002072EFB900383E4C /* APIHelper.swift */,
 				B2E253B8202E399C00C322AA /* SumsApi.swift */,
+				B27C1EF52072E42100383E4C /* InventionStudioAPI.swift */,
 				B2A3A82B201C0D8600F3AF7F /* Sums Models */,
+				B27C1EF72072E42A00383E4C /* Invention Studio Models */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -593,11 +619,14 @@
 				B26CA6182043952C0050FC2C /* ISTableViewController.swift in Sources */,
 				B2D3849C1FBA383C00D91650 /* invention_studio_ios.xcdatamodeld in Sources */,
 				B2A3A82F201C1B1400F3AF7F /* QueuesTVC.swift in Sources */,
+				B27C1EF62072E42100383E4C /* InventionStudioAPI.swift in Sources */,
+				B27C1EFD2072E4F200383E4C /* ToolBrokenFeedbackForm.swift in Sources */,
 				4FDBD2A1203A17F30034173E /* AgreementVC.swift in Sources */,
 				B233FFCA20216E9E0024A5C6 /* FeedbackRatingCell.swift in Sources */,
 				B2E253B9202E399C00C322AA /* SumsApi.swift in Sources */,
 				B233FFC420216DFD0024A5C6 /* FeedbackNameCell.swift in Sources */,
 				B233FFC820216E720024A5C6 /* FeedbackPickerDropdownCell.swift in Sources */,
+				B27C1EFB2072E4BD00383E4C /* StaffFeedbackForm.swift in Sources */,
 				B26CA616204394AB0050FC2C /* ISViewController.swift in Sources */,
 				B2323A632044E635008D3F35 /* Location.swift in Sources */,
 				B254C5B5203633F800D6A2B4 /* UserInfo.swift in Sources */,
@@ -605,11 +634,14 @@
 				4F46B06920164CD400D5B3E9 /* LoginVC.swift in Sources */,
 				B2A3A831201C1B2A00F3AF7F /* FeedbackTVC.swift in Sources */,
 				B254C5B1203632F000D6A2B4 /* QueueGroup.swift in Sources */,
+				B27C1F012072EFB900383E4C /* APIHelper.swift in Sources */,
 				4FC7717F2017D068008A13D9 /* EquipmentGroupListTVC.swift in Sources */,
+				B27C1EFF2072E53300383E4C /* LoginForm.swift in Sources */,
 				B2D5D7C0201BDFD500CFCCB1 /* EquipmentVC.swift in Sources */,
 				B2D5D7BE201BC40F00CFCCB1 /* EquipmentCell.swift in Sources */,
 				B233FFCC20216EAB0024A5C6 /* FeedbackCommentsCell.swift in Sources */,
 				B2BEA45020437F4800132EF7 /* Theme.swift in Sources */,
+				B27C1EF92072E47000383E4C /* GeneralFeedbackForm.swift in Sources */,
 				B254C5B32036335900D6A2B4 /* QueueUser.swift in Sources */,
 				4F8FB693201547DB00DBCD35 /* LandingVC.swift in Sources */,
 				B2323A6120449B34008D3F35 /* ColorThemeTVC.swift in Sources */,
