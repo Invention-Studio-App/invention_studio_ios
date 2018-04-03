@@ -35,9 +35,9 @@ class InventionStudioApi {
                                         return
                                     }
                                     //Automatically decode response into a JSON array
-                                    let response = try! JSONDecoder().decode(String.self, from: data)
+                                    let body = String(data: data, encoding: .utf8)!
                                     //"Return" the data to the caller's completion handler
-                                    completion(response)
+                                    completion(body)
             })
         }
     }
@@ -63,9 +63,9 @@ class InventionStudioApi {
                                         return
                                     }
                                     //Automatically decode response into a JSON array
-                                    let response = try! JSONDecoder().decode(String.self, from: data)
+                                    let body = String(data: data, encoding: .utf8)!
                                     //"Return" the data to the caller's completion handler
-                                    completion(response)
+                                    completion(body)
             })
         }
 
@@ -87,9 +87,9 @@ class InventionStudioApi {
                                         return
                                     }
                                     //Automatically decode response into a JSON array
-                                    let response = try! JSONDecoder().decode(Int.self, from: data)
+                                    let body = Int(String(data: data, encoding: .utf8)!)!
                                     //"Return" the data to the caller's completion handler
-                                    completion(response)
+                                    completion(body)
             })
         }
     }
@@ -112,15 +112,24 @@ class InventionStudioApi {
                                   xApiKeyHeader: InventionStudioApi.apiKey,
                                   completion: { data, response in
                                     //Check for unexpected status codes
+                                    var message = ""
                                     if response.statusCode != 200 {
                                         print("statusCode should be 200, but is \(response.statusCode)")
                                         print("response: \(response)")
-                                        return
+                                        if response.statusCode == 400 {
+                                            message = "Error:Error submitting feedback"
+                                        } else if response.statusCode == 500 {
+                                            message = "Error:Internal Server Error"
+                                        } else {
+                                            message = "Error:An unknown error occurred"
+                                        }
+                                    } else {
+                                        //Automatically decode response into a JSON array
+                                        let body = String(data: data, encoding: .utf8)!
+                                        message = "Success:\(body)"
                                     }
-                                    //Automatically decode response into a JSON array
-                                    let response = try! JSONDecoder().decode(String.self, from: data)
                                     //"Return" the data to the caller's completion handler
-                                    completion(response)
+                                    completion(message)
             })
         }
 
@@ -140,15 +149,24 @@ class InventionStudioApi {
                                   xApiKeyHeader: InventionStudioApi.apiKey,
                                   completion: { data, response in
                                     //Check for unexpected status codes
+                                    var message = ""
                                     if response.statusCode != 200 {
                                         print("statusCode should be 200, but is \(response.statusCode)")
                                         print("response: \(response)")
-                                        return
+                                        if response.statusCode == 400 {
+                                            message = "Error:Error submitting feedback"
+                                        } else if response.statusCode == 500 {
+                                            message = "Error:Internal Server Error"
+                                        } else {
+                                            message = "Error:An unknown error occurred"
+                                        }
+                                    } else {
+                                        //Automatically decode response into a JSON array
+                                        let body = String(data: data, encoding: .utf8)!
+                                        message = "Success:\(body)"
                                     }
-                                    //Automatically decode response into a JSON array
-                                    let response = try! JSONDecoder().decode(String.self, from: data)
                                     //"Return" the data to the caller's completion handler
-                                    completion(response)
+                                    completion(message)
             })
         }
 
@@ -168,15 +186,24 @@ class InventionStudioApi {
                                   xApiKeyHeader: InventionStudioApi.apiKey,
                                   completion: { data, response in
                                     //Check for unexpected status codes
+                                    var message = ""
                                     if response.statusCode != 200 {
                                         print("statusCode should be 200, but is \(response.statusCode)")
                                         print("response: \(response)")
-                                        return
+                                        if response.statusCode == 400 {
+                                            message = "Error:Error submitting feedback"
+                                        } else if response.statusCode == 500 {
+                                            message = "Error:Internal Server Error"
+                                        } else {
+                                            message = "Error:An unknown error occurred"
+                                        }
+                                    } else {
+                                        //Automatically decode response into a JSON array
+                                        let body = String(data: data, encoding: .utf8)!
+                                        message = "Success:\(body)"
                                     }
-                                    //Automatically decode response into a JSON array
-                                    let response = try! JSONDecoder().decode(String.self, from: data)
                                     //"Return" the data to the caller's completion handler
-                                    completion(response)
+                                    completion(message)
             })
         }
     }

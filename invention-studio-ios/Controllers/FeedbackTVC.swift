@@ -60,6 +60,11 @@ class FeedbackTVC: ISTableViewController, UIPickerViewDataSource, UIPickerViewDe
     private var problemPicker: UIPickerView = UIPickerView()
     private var pickerSelections = ["Feedback": "", "Group": "", "Tool": "", "Problem": ""]
 
+    private var anonymousSwitch: UISwitch? = nil
+    private var piNameField: UITextField? = nil
+    private var ratingSlider: TGPDiscreteSlider? = nil
+    private var commentBox: UITextView? = nil
+
     var name = ""
     var tools: [Tool]!
     var pickerValues = ["Feedback": ["Tool Broken", "PI Feedback", "General Feedback"],
@@ -179,8 +184,8 @@ class FeedbackTVC: ISTableViewController, UIPickerViewDataSource, UIPickerViewDe
         switch prototype {
         case "namePrototype":
             let cell = tableView.dequeueReusableCell(withIdentifier: prototype, for: indexPath) as! FeedbackNameCell
+            self.anonymousSwitch = cell.anonymousSwitch
             cell.anonymousSwitch.addTarget(self, action: #selector(anonymousSwitchChanged), for: UIControlEvents.valueChanged)
-
             if cell.anonymousSwitch.isOn {
                 cell.titleLabel?.textColor = Theme.title
                 cell.titleLabel?.text = name
@@ -229,12 +234,15 @@ class FeedbackTVC: ISTableViewController, UIPickerViewDataSource, UIPickerViewDe
             return cell
         case "piNamePrototype":
             let cell = tableView.dequeueReusableCell(withIdentifier: prototype, for: indexPath) as! FeedbackPINameCell
+            self.piNameField = cell.textField
             return cell
         case "ratingPrototype":
             let cell = tableView.dequeueReusableCell(withIdentifier: prototype, for: indexPath) as! FeedbackRatingCell
+            self.ratingSlider = cell.slider
             return cell
         case "commentsPrototype":
             let cell = tableView.dequeueReusableCell(withIdentifier: prototype, for: indexPath) as! FeedbackCommentsCell
+            self.commentBox = cell.commentBox
             return cell
         case "submitPrototype":
             let cell = tableView.dequeueReusableCell(withIdentifier: prototype, for: indexPath)
@@ -276,156 +284,84 @@ class FeedbackTVC: ISTableViewController, UIPickerViewDataSource, UIPickerViewDe
             }
             tableView.reloadSections([indexPath.section], with: UITableViewRowAnimation.automatic)
         } else if prototype == "submitPrototype" {
-            let feedbackType = self.pickerValues["Feedback"]![feedbackTypePicker.selectedRow(inComponent: 0)]
-            if feedbackType == "Tool Broken" {
-                let username = UserDefaults.standard.string(forKey: "Username")!
-                let password = UserDefaults.standard.string(forKey: "UserKey")!
-                let loginString = String(format: "%@:%@", username, password)
-                let loginData = loginString.data(using: String.Encoding.utf8)!
-                let base64LoginString = loginData.base64EncodedString()
-                
-                // create the request
-                let url = URL(string: "https://is-apps.me.gatech.edu/api/v1-0/feedback/tool_broken")!
-                var request = URLRequest(url: url)
-                request.httpMethod = "POST"
-                request.setValue("Basic \(base64LoginString)", forHTTPHeaderField: "Authorization")
-                let apiKey = "88c0a47e-6396-4463-87f5-c726c1da9874"
-                request.setValue(apiKey, forHTTPHeaderField: "x-api-key")
-                
-                var postString = ""
-                let locName = self.pickerValues["Group"]![toolGroupPicker.selectedRow(inComponent: 0)]
-                let id = Int(UserDefaults.standard.string(forKey: "DepartmentId")!)
+            var username = ""
+            if self.anonymousSwitch!.isOn {
+                username = "anonymous"
+            } else {
+                username = UserDefaults.standard.string(forKey: "Username")!
+            }
 
-                let json: [String: Any] = ["equipment_group_id": id,
-                                           "username": username,
-                                           "problem": self.pickerValues["Problem"]![problemPicker.selectedRow(inComponent: 0)],
-                                           "tool_group_name": locName,
-                                           "tool_name": self.pickerValues["Tool"]![toolPicker.selectedRow(inComponent: 0)],
-                                           "comments": "IOS tool 2"]
-                print(json)
-                let jsonData = try? JSONSerialization.data(withJSONObject: json)
-                
-                request.httpBody = jsonData
-                
-                let task = URLSession.shared.dataTask(with: request) { data, response, error in
-                    guard let data = data, error == nil else {                                                 // check for fundamental networking error
-                        print("error=\(error)")
-                        return
-                    }
-                    
-                    if let httpStatus = response as? HTTPURLResponse, httpStatus.statusCode != 200 {           // check for http errors
-                        print("statusCode should be 200, but is \(httpStatus.statusCode)")
-                        print("response = \(response)")
-                    }
-                    self.alert(err: ((response as? HTTPURLResponse)?.statusCode)!)
-                    let responseString = String(data: data, encoding: .utf8)
-                    print("responseString = \(responseString)")
-                }
-                task.resume()
-            } else if feedbackType == "PI Feedback" {
-                let username = UserDefaults.standard.string(forKey: "Username")!
-                let password = UserDefaults.standard.string(forKey: "UserKey")!
-                let loginString = String(format: "%@:%@", username, password)
-                let loginData = loginString.data(using: String.Encoding.utf8)!
-                let base64LoginString = loginData.base64EncodedString()
-                
-                // create the request
-                let url = URL(string: "https://is-apps.me.gatech.edu/api/v1-0/feedback/staff")!
-                var request = URLRequest(url: url)
-                request.httpMethod = "POST"
-                request.setValue("Basic \(base64LoginString)", forHTTPHeaderField: "Authorization")
-                let apiKey = "88c0a47e-6396-4463-87f5-c726c1da9874"
-                request.setValue(apiKey, forHTTPHeaderField: "x-api-key")
-                
-                let id = Int(UserDefaults.standard.string(forKey: "DepartmentId")!)
-                
-                let json: [String: Any] = ["equipment_group_id": id,
-                                           "username": username,
-                                           "staff_name": "Aman",
-                                           "rating": 4,
-                                           "comments": "IOS PI 2"]
-                print(json)
-                
-                let jsonData = try? JSONSerialization.data(withJSONObject: json)
-                
-                request.httpBody = jsonData
+            switch self.pickerSelections["Feedback"]! {
+            case "Tool Broken":
+                let form = ToolBrokenFeedbackForm()
+                form.equipment_group_id = UserDefaults.standard.integer(forKey: "DepartmentId")
+                form.username = username
+                form.problem = self.pickerSelections["Problem"]!
+                form.tool_group_name = self.pickerSelections["Group"]!
+                form.tool_name = self.pickerSelections["Tool"]!
+                form.comments = self.commentBox!.text
 
-                
-                let task = URLSession.shared.dataTask(with: request) { data, response, error in
-                    guard let data = data, error == nil else {                                                 // check for fundamental networking error
-                        print("error=\(error)")
-                        return
-                    }
-                    
-                    if let httpStatus = response as? HTTPURLResponse, httpStatus.statusCode != 200 {           // check for http errors
-                        print("statusCode should be 200, but is \(httpStatus.statusCode)")
-                        print("response = \(response)")
-                    }
-                    self.alert(err: ((response as? HTTPURLResponse)?.statusCode)!)
-                    let responseString = String(data: data, encoding: .utf8)
-                    print("responseString = \(responseString)")
+                InventionStudioApi.Feedback.tool_broken(form: form, completion: { message in
+                    let parts = message.components(separatedBy: ":")
+                    self.alert(title: parts[0], message: parts[1])
+                })
+
+                break;
+            case "PI Feedback":
+                let form = StaffFeedbackForm()
+                form.equipment_group_id = UserDefaults.standard.integer(forKey: "DepartmentId")
+                form.username = username
+                form.staff_name = self.piNameField!.text!
+                let rating = Int(self.ratingSlider!.value)
+                if rating == 0 {
+                    form.rating = -1
+                } else {
+                    form.rating = rating
                 }
-                task.resume()
-            } else if feedbackType == "General Feedback" {
-                let username = UserDefaults.standard.string(forKey: "Username")!
-                let password = UserDefaults.standard.string(forKey: "UserKey")!
-                let loginString = String(format: "%@:%@", username, password)
-                let loginData = loginString.data(using: String.Encoding.utf8)!
-                let base64LoginString = loginData.base64EncodedString()
-                
-                // create the request
-                let url = URL(string: "https://is-apps.me.gatech.edu/api/v1-0/feedback/general")!
-                var request = URLRequest(url: url)
-                request.httpMethod = "POST"
-                request.setValue("Basic \(base64LoginString)", forHTTPHeaderField: "Authorization")
-                let apiKey = "88c0a47e-6396-4463-87f5-c726c1da9874"
-                request.setValue(apiKey, forHTTPHeaderField: "x-api-key")
-                
-                let id = Int(UserDefaults.standard.string(forKey: "DepartmentId")!)
-                
-                let json: [String: Any] = ["equipment_group_id": id,
-                                           "username": username,
-                                           "comments": "IOS general 2"]
-                print(json)
-                let jsonData = try? JSONSerialization.data(withJSONObject: json)
-                
-                request.httpBody = jsonData
-                
-                
-                let task = URLSession.shared.dataTask(with: request) { data, response, error in
-                    guard let data = data, error == nil else {                                                 // check for fundamental networking error
-                        print("error=\(error)")
-                        return
-                    }
-                    
-                    
-                    if let httpStatus = response as? HTTPURLResponse, httpStatus.statusCode != 200 {           // check for http errors
-                        print("statusCode should be 200, but is \(httpStatus.statusCode)")
-                        print("response = \(response)")
-                    }
-                    self.alert(err: ((response as? HTTPURLResponse)?.statusCode)!)
-                    let responseString = String(data: data, encoding: .utf8)
-                    print("responseString = \(responseString)")
-                }
-                task.resume()
+                form.comments = self.commentBox!.text
+
+                InventionStudioApi.Feedback.staff(form: form, completion: { message in
+                    let parts = message.components(separatedBy: ":")
+                    self.alert(title: parts[0], message: parts[1])
+                })
+
+                break;
+            case "General Feedback":
+                let form = GeneralFeedbackForm()
+                form.equipment_group_id = UserDefaults.standard.integer(forKey: "DepartmentId")
+                form.username = username
+                form.comments = self.commentBox!.text
+
+                InventionStudioApi.Feedback.general(form: form, completion: { message in
+                    let parts = message.components(separatedBy: ":")
+                    self.alert(title: parts[0], message: parts[1])
+                })
+
+                break;
+            default:
+                return
             }
         }
     }
-    
-    func alert(err:Int) {
-        if err == 200 {
-            let alert = UIAlertController(title: "Success", message: "Thank you for submitting feedback!", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
-            self.present(alert, animated: true, completion: nil)
-        } else if err == 400 {
-            let alert = UIAlertController(title: "Error", message: "Error submitting feedback.", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
-            self.present(alert, animated: true, completion: nil)
-        } else if err == 500 {
-            let alert = UIAlertController(title: "Error", message: "Internal server error.", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
-            self.present(alert, animated: true, completion: nil)
-        }
+
+    func alert(title: String, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: { action in
+            if let anonymousSwitch = self.anonymousSwitch {
+                anonymousSwitch.setOn(true, animated: false)
+            }
+            if let piNameFiled = self.piNameField {
+                piNameFiled.text = nil
+            }
+            if let ratingSlider = self.ratingSlider {
+                ratingSlider.value = 0
+            }
+            if let commentBox = self.commentBox {
+                commentBox.text = nil
+            }
+            self.tableView.setContentOffset(CGPoint.zero, animated: true)
+        }))
+        self.present(alert, animated: true, completion: nil)
     }
 
     //MARK: - Picker View Delegate
