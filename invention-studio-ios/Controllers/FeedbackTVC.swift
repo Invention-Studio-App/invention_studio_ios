@@ -286,9 +286,9 @@ class FeedbackTVC: ISTableViewController, UIPickerViewDataSource, UIPickerViewDe
         } else if prototype == "submitPrototype" {
             var username = ""
             if self.anonymousSwitch!.isOn {
-                username = "anonymous"
-            } else {
                 username = UserDefaults.standard.string(forKey: "Username")!
+            } else {
+                username = "anonymous"
             }
 
             switch self.pickerSelections["Feedback"]! {
