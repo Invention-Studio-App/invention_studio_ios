@@ -72,6 +72,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         self.window?.rootViewController = initialViewController
         self.window?.makeKeyAndVisible()
 
+        InventionStudioApi.Server.app_status(completion: { response in
+            if response != nil {
+                let alert = UIAlertController(title: response!.title, message: response!.message, preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+                self.window?.rootViewController?.present(alert, animated: true, completion: nil)
+            }
+        })
+
         return true
     }
 

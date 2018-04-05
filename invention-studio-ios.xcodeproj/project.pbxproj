@@ -50,6 +50,7 @@
 		B2D5D7C0201BDFD500CFCCB1 /* EquipmentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2D5D7BF201BDFD500CFCCB1 /* EquipmentVC.swift */; };
 		B2E253B9202E399C00C322AA /* SumsApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2E253B8202E399C00C322AA /* SumsApi.swift */; };
 		B2E5FFEE206EA70500C4503F /* FeedbackPINameCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2E5FFED206EA70500C4503F /* FeedbackPINameCell.swift */; };
+		B2F96A092076CBF200E1B3EB /* StatusMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2F96A082076CBF200E1B3EB /* StatusMessage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -124,6 +125,7 @@
 		B2D5D7BF201BDFD500CFCCB1 /* EquipmentVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EquipmentVC.swift; sourceTree = "<group>"; };
 		B2E253B8202E399C00C322AA /* SumsApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SumsApi.swift; sourceTree = "<group>"; };
 		B2E5FFED206EA70500C4503F /* FeedbackPINameCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackPINameCell.swift; sourceTree = "<group>"; };
+		B2F96A082076CBF200E1B3EB /* StatusMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusMessage.swift; sourceTree = "<group>"; };
 		B494CC3C1F74175E510D18E1 /* Pods-invention-studio-iosTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-invention-studio-iosTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-invention-studio-iosTests/Pods-invention-studio-iosTests.debug.xcconfig"; sourceTree = "<group>"; };
 		DF0ACA6C6D3B11CF43E6BEE2 /* Pods_invention_studio_iosTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_invention_studio_iosTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -218,6 +220,7 @@
 				B27C1EFA2072E4BD00383E4C /* StaffFeedbackForm.swift */,
 				B27C1EFC2072E4F200383E4C /* ToolBrokenFeedbackForm.swift */,
 				B27C1EFE2072E53300383E4C /* LoginForm.swift */,
+				B2F96A082076CBF200E1B3EB /* StatusMessage.swift */,
 			);
 			path = "Invention Studio Models";
 			sourceTree = "<group>";
@@ -625,6 +628,7 @@
 				B233FFCA20216E9E0024A5C6 /* FeedbackRatingCell.swift in Sources */,
 				B2E253B9202E399C00C322AA /* SumsApi.swift in Sources */,
 				B233FFC420216DFD0024A5C6 /* FeedbackNameCell.swift in Sources */,
+				B2F96A092076CBF200E1B3EB /* StatusMessage.swift in Sources */,
 				B233FFC820216E720024A5C6 /* FeedbackPickerDropdownCell.swift in Sources */,
 				B27C1EFB2072E4BD00383E4C /* StaffFeedbackForm.swift in Sources */,
 				B26CA616204394AB0050FC2C /* ISViewController.swift in Sources */,

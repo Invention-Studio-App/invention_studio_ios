@@ -56,7 +56,7 @@ class InventionStudioApi {
 
         //app_status request
         //Status message to be processed on app startup. Useful for conveying important information about app updates.
-        static func app_status(completion: @escaping (String) -> ()) {
+        static func app_status(completion: @escaping (StatusMessage?) -> ()) {
             let url = InventionStudioApi.siteURL + "server/app_status"
 
             APIHelper.sendRequest(url: url,
@@ -71,10 +71,15 @@ class InventionStudioApi {
                                         print("response: \(response)")
                                         return
                                     }
-                                    //Automatically decode response into a JSON array
-                                    let body = String(data: data, encoding: .utf8)!
+                                    var responseBody: StatusMessage?
+                                    if response.statusCode == 200 {
+                                        //Automatically decode response into a JSON array
+                                        responseBody = try? JSONDecoder().decode(StatusMessage.self, from: data)
+                                    } else {
+                                        responseBody = nil
+                                    }
                                     //"Return" the data to the caller's completion handler
-                                    completion(body)
+                                    completion(responseBody)
             })
         }
 
