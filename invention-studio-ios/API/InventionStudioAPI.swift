@@ -29,15 +29,24 @@ class InventionStudioApi {
                                   xApiKeyHeader: InventionStudioApi.apiKey,
                                   completion: { data, response in
                                     //Check for unexpected status codes
+                                    var message = ""
                                     if response.statusCode != 200 {
                                         print("statusCode should be 200, but is \(response.statusCode)")
                                         print("response: \(response)")
-                                        return
+                                        if response.statusCode == 400 {
+                                            message = "Login Error:There was an error logging in. Please try again later."
+                                        } else if response.statusCode == 500 {
+                                            message = "Login Error:Internal Server Error. Please try again later."
+                                        } else {
+                                            message = "Error:An unknown error occurred"
+                                        }
+                                    } else {
+                                        //Automatically decode response into a JSON array
+                                        let body = String(data: data, encoding: .utf8)!
+                                        message = "Success:\(body)"
                                     }
-                                    //Automatically decode response into a JSON array
-                                    let body = String(data: data, encoding: .utf8)!
                                     //"Return" the data to the caller's completion handler
-                                    completion(body)
+                                    completion(message)
             })
         }
     }
@@ -117,11 +126,11 @@ class InventionStudioApi {
                                         print("statusCode should be 200, but is \(response.statusCode)")
                                         print("response: \(response)")
                                         if response.statusCode == 400 {
-                                            message = "Error:Error submitting feedback"
+                                            message = "Error:There was an error submitting  your feedback. Please try again later."
                                         } else if response.statusCode == 500 {
-                                            message = "Error:Internal Server Error"
+                                            message = "Error:Internal Server Error. Please try again later."
                                         } else {
-                                            message = "Error:An unknown error occurred"
+                                            message = "Error:An unknown error occurred. Please try again later."
                                         }
                                     } else {
                                         //Automatically decode response into a JSON array
@@ -154,11 +163,11 @@ class InventionStudioApi {
                                         print("statusCode should be 200, but is \(response.statusCode)")
                                         print("response: \(response)")
                                         if response.statusCode == 400 {
-                                            message = "Error:Error submitting feedback"
+                                            message = "Error:There was an error submitting your feedback. Please try again later."
                                         } else if response.statusCode == 500 {
-                                            message = "Error:Internal Server Error"
+                                            message = "Error:Internal Server Error. Please try again later."
                                         } else {
-                                            message = "Error:An unknown error occurred"
+                                            message = "Error:An unknown error occurred. Please try again later."
                                         }
                                     } else {
                                         //Automatically decode response into a JSON array
@@ -191,11 +200,11 @@ class InventionStudioApi {
                                         print("statusCode should be 200, but is \(response.statusCode)")
                                         print("response: \(response)")
                                         if response.statusCode == 400 {
-                                            message = "Error:Error submitting feedback"
+                                            message = "Error:There was an error submitting your feedback. Please try again later."
                                         } else if response.statusCode == 500 {
-                                            message = "Error:Internal Server Error"
+                                            message = "Error:Internal Server Error. Please try again later."
                                         } else {
-                                            message = "Error:An unknown error occurred"
+                                            message = "Error:An unknown error occurred. Please try again later."
                                         }
                                     } else {
                                         //Automatically decode response into a JSON array

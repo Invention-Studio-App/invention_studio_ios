@@ -7,10 +7,13 @@
 //
 
 import UIKit
+import FirebaseMessaging
 
 class LandingVC: ISViewController {
 
     @IBOutlet weak var scrollView: UIScrollView!
+
+    var errorMessage: String?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,9 +59,40 @@ class LandingVC: ISViewController {
         scrollView.contentSize = CGSize(width: view.frame.width, height: textView.frame.maxY + 8)
     }
 
+    override func viewDidAppear(_ animated: Bool) {
+        if self.errorMessage != nil {
+            let parts = self.errorMessage!.components(separatedBy: ":")
+            let alert = UIAlertController(title: parts[0], message: parts[1], preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        }
+
+        super.viewDidAppear(animated)
+    }
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
 
+    @IBAction func cancelLogin(segue:UIStoryboardSegue, sender:AnyObject) {
+        if let origin = segue.source as? LoginVC {
+            self.errorMessage = origin.errorMessage
+        } else if let origin = segue.source as? AgreementVC {
+            self.errorMessage = origin.errorMessage
+        }
+
+        if let username = UserDefaults.standard.string(forKey: "Username") {
+            Messaging.messaging().unsubscribe(fromTopic: username)
+        }
+        UserDefaults.standard.set(false, forKey: "LoggedIn")
+        UserDefaults.standard.set(0, forKey: "DepartmentId")
+        UserDefaults.standard.set(nil, forKey: "Name")
+        UserDefaults.standard.set(nil, forKey: "Username")
+        UserDefaults.standard.set(nil, forKey: "UserKey")
+        UserDefaults.standard.set(0, forKey:"LoginSession")
+
+
+    }
+    
 }
 

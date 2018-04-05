@@ -344,7 +344,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="SUBMIT" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="bhG-LL-xq8">
-                                            <rect key="frame" x="16" y="0.0" width="343" height="43.5"/>
+                                            <rect key="frame" x="15" y="0.0" width="345" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
@@ -842,16 +842,24 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="9PO-ZW-XRL"/>
                     </view>
+                    <navigationItem key="navigationItem" title="Login" id="bmv-Nw-1SU">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="QtM-ag-i2m">
+                            <connections>
+                                <segue destination="IVa-eb-ZhE" kind="unwind" identifier="cancelLoginSegue" unwindAction="cancelLoginWithSegue:sender:" id="37N-7c-WXk"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <segue destination="FCz-Is-acD" kind="presentation" identifier="cookieReceivedSegue" id="xX8-5t-its"/>
-                        <segue destination="BCU-x0-vSW" kind="show" identifier="safetyAgreementSegue" id="YrC-c8-MsK"/>
+                        <segue destination="ADZ-MB-ksF" kind="show" identifier="safetyAgreementSegue" id="YrC-c8-MsK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FMt-JZ-Jsv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="IVa-eb-ZhE" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2038" y="725"/>
+            <point key="canvasLocation" x="2976.8000000000002" y="724.58770614692662"/>
         </scene>
-        <!--AgreementVC-->
+        <!--User Agreement-->
         <scene sceneID="wFd-X8-N2c">
             <objects>
                 <viewController id="BCU-x0-vSW" customClass="AgreementVC" customModule="invention_studio_ios" customModuleProvider="target" sceneMemberID="viewController">
@@ -900,13 +908,21 @@ For more info ask any Prototyping Instructor (PI), who are in the studio wearing
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Iqj-j9-RZc"/>
                     </view>
+                    <navigationItem key="navigationItem" title="User Agreement" id="iqN-dn-7Eo">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="1DI-r3-8Vl">
+                            <connections>
+                                <segue destination="Oqk-iP-J61" kind="unwind" identifier="cancelAgreementSegue" unwindAction="cancelLoginWithSegue:sender:" id="QSH-CN-h4p"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <segue destination="FCz-Is-acD" kind="presentation" identifier="agreementSignedSegue" id="jlu-yE-rRx"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tOB-Za-K23" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="Oqk-iP-J61" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2998" y="725"/>
+            <point key="canvasLocation" x="4876" y="724.58770614692662"/>
         </scene>
         <!--Home-->
         <scene sceneID="q9w-or-bAd">
@@ -950,7 +966,7 @@ For more info ask any Prototyping Instructor (PI), who are in the studio wearing
                         <barButtonItem key="rightBarButtonItem" title="Login" id="Zwq-kV-68f">
                             <connections>
                                 <action selector="logIn:" destination="rO1-qZ-nzB" id="1Wp-ve-BYz"/>
-                                <segue destination="Zy1-F1-7B9" kind="show" id="t9r-Ln-o8m"/>
+                                <segue destination="oKD-Rw-grH" kind="showDetail" id="t9r-Ln-o8m"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -961,6 +977,42 @@ For more info ask any Prototyping Instructor (PI), who are in the studio wearing
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zU3-X7-3dg" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1097" y="725"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="akh-mC-Dmf">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="oKD-Rw-grH" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" translucent="NO" id="Udb-lJ-R9w">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Zy1-F1-7B9" kind="relationship" relationship="rootViewController" id="nrV-KK-Wel"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="an6-lu-W8w" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2037.5999999999999" y="724.58770614692662"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="ljd-qc-H7F">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ADZ-MB-ksF" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" translucent="NO" id="9AI-UP-mXK">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BCU-x0-vSW" kind="relationship" relationship="rootViewController" id="rqa-5D-BXW"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="y0x-7D-YKQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3936.8000000000002" y="724.58770614692662"/>
         </scene>
     </scenes>
     <resources>
@@ -975,6 +1027,6 @@ For more info ask any Prototyping Instructor (PI), who are in the studio wearing
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="DiI-4E-pZb"/>
-        <segue reference="xX8-5t-its"/>
+        <segue reference="jlu-yE-rRx"/>
     </inferredMetricsTieBreakers>
 </document>
