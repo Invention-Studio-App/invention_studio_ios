@@ -81,7 +81,16 @@ class SumsApi {
                                     let decoder = JSONDecoder()
                                     //Use the custom date decoder defined below to decode two possible date formats
                                     decoder.dateDecodingStrategy = .customDateDecoder()
-                                    let responseArray = try! decoder.decode([Tool].self, from: data)
+                                    var responseArray = try! decoder.decode([Tool].self, from: data)
+
+                                    //Sort the array
+                                    responseArray.sort(by: { (toolA, toolB) in
+                                        if (toolA.status().hashValue == toolB.status().hashValue) {
+                                            return toolA.toolName <= toolB.toolName
+                                        }
+                                        return toolA.status().hashValue <= toolB.status().hashValue
+                                    })
+
                                     //"Return" the data to the caller's completion handler
                                     completion(responseArray)
             })
