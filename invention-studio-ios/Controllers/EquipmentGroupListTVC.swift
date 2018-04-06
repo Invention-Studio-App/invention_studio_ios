@@ -12,11 +12,12 @@ class EquipmentGroupListTVC: ISTableViewController {
     var equipmentGroups = [Location]()
     var tools = [Tool]()
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         loadEquipmentGroups()
-        
+        print("reloading groups")
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -42,7 +43,30 @@ class EquipmentGroupListTVC: ISTableViewController {
         return self.equipmentGroups.count
     }
     
-    //Loads the equipment groups from the API
+    //Loads the equipment groups from the API with a refresher to stop
+    private func loadEquipmentGroups(_ sender: UIRefreshControl) {
+        self.equipmentGroups = []
+        SumsApi.EquipmentGroup.Tools(completion: { (tools) in
+            var equipmentGroups = Set<Location>()
+            for tool in tools {
+                if tool.locationId != 0 {
+                    equipmentGroups.insert(Location(fromTool: tool))
+                }
+            }
+            self.tools = tools
+            self.equipmentGroups = equipmentGroups.sorted(by: { (groupA, groupB) in
+                return groupA.locationName <= groupB.locationName
+            })
+            // Must be called from main thread, not UIKit
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+                sender.endRefreshing()
+            }
+        })
+        
+    }
+    
+    //Loads the equipment groups from the API without a refresher to stop
     private func loadEquipmentGroups() {
         self.equipmentGroups = []
         SumsApi.EquipmentGroup.Tools(completion: { (tools) in
@@ -89,8 +113,7 @@ class EquipmentGroupListTVC: ISTableViewController {
     }
 
     @IBAction func refresh(_ sender: UIRefreshControl) {
-        loadEquipmentGroups()
-        sender.endRefreshing()
+        loadEquipmentGroups(sender)
     }
 
 }

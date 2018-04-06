@@ -51,6 +51,30 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
 
         let shouldLogin = true //For debugging purposes - To force login, set to false. For normal operation, set to true
 
+        print("GETTING SERVER TIME")
+        //Getting server time
+        // create the request
+        let url = URL(string: "https://is-apps.me.gatech.edu/api/v1-0/server/timestamp")!
+        var request = URLRequest(url: url)
+        request.httpMethod = "GET"
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            guard let data = data, error == nil else {                                                 // check for fundamental networking error
+                print("error=\(error)")
+                return
+            }
+            
+            if let httpStatus = response as? HTTPURLResponse, httpStatus.statusCode != 200 {           // check for http errors
+                print("statusCode should be 200, but is \(httpStatus.statusCode)")
+                print("response = \(response)")
+            } else {
+                let responseString = Int(String(data: data, encoding: .utf8)!)
+                print("time = \(responseString)")
+            }
+        }
+        task.resume()
+        print("AFTER")
+        
+        
         //Check that the threshold for staying logged in has not passed
         //If the user has never logged in before, this will automatically fail since loginSession == 0
         if timeStamp < loginSession && shouldLogin {
