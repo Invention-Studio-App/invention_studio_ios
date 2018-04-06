@@ -24,6 +24,8 @@ class LoginVC: ISViewController, WKUIDelegate, WKNavigationDelegate, WKHTTPCooki
     let storage = WKWebsiteDataStore.default()
     var cookieStore:WKHTTPCookieStore!
 
+    var errorMessage: String?
+
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -113,11 +115,34 @@ class LoginVC: ISViewController, WKUIDelegate, WKNavigationDelegate, WKHTTPCooki
 
                 //When API call is complete
                 apiEvalGroup.notify(queue: .main, execute: {
-                    //If the user is part of the Invention Studio tool group (i.e. they have signed the user agreement)
-                    //self.performSegue(withIdentifier: "safetyAgreementSegue", sender: self)
-                    
-                    if isInventionStudio {
-                        self.performSegue(withIdentifier: "cookieReceivedSegue", sender: self)
+
+                    if isInventionStudio {let form = LoginForm()
+                        if let username = UserDefaults.standard.string(forKey: "Username") {                            form.user_username = username
+                        }
+                        if let name = UserDefaults.standard.string(forKey: "Name") {
+                            form.user_name = name
+                        }
+                        if let apiKey = UserDefaults.standard.string(forKey: "UserKey") {
+                            form.api_key = apiKey
+                        }
+
+                        let loginEvalGroup = DispatchGroup()
+                        var responseMessage = ""
+                        loginEvalGroup.enter()
+                        InventionStudioApi.User.login(form: form, completion: { message in
+                            responseMessage = message
+                            loginEvalGroup.leave()
+                        })
+
+                        loginEvalGroup.notify(queue: .main, execute: {
+                            let parts = responseMessage.components(separatedBy: ":")
+                            if parts[0] == "Login Error" {
+                                self.errorMessage = responseMessage
+                                self.performSegue(withIdentifier: "cancelLoginSegue", sender: self)
+                            } else {
+                                self.performSegue(withIdentifier: "cookieReceivedSegue", sender: self)
+                            }
+                        })
                         
                     } else {
                         //TODO: add need to sign agreement page
@@ -146,16 +171,14 @@ class LoginVC: ISViewController, WKUIDelegate, WKNavigationDelegate, WKHTTPCooki
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "cookieReceivedSegue" || segue.identifier == "safetyAgreementSegue" {
+        if segue.identifier == "cookieReceivedSegue" {
             UserDefaults.standard.set(true, forKey: "LoggedIn")
             let weekInterval: TimeInterval = 60 * 60 * 24 * 7
             //TODO: Use server time
             UserDefaults.standard.set(NSDate().addingTimeInterval(weekInterval).timeIntervalSince1970, forKey:"LoginSession")
 
-            if segue.identifier == "cookieReceivedSegue" {
-                if let username = UserDefaults.standard.string(forKey: "Username") {
-                    Messaging.messaging().subscribe(toTopic: username)
-                }
+            if let username = UserDefaults.standard.string(forKey: "Username") {
+                Messaging.messaging().subscribe(toTopic: username)
             }
         }
     }

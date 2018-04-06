@@ -41,6 +41,9 @@ class EquipmentVC: ISViewController, UITableViewDataSource, UITableViewDelegate,
     private var problemPicker: UIPickerView = UIPickerView()
     private var pickerSelections = ["Problem": ""]
 
+    private var anonymousSwitch: UISwitch? = nil
+    private var commentBox: UITextView? = nil
+
     var name = ""
     var pickerValues = ["Problem": ["Nozzle Not Extruding", "Bed Shifted"]]
     var location: Location!
@@ -245,6 +248,7 @@ class EquipmentVC: ISViewController, UITableViewDataSource, UITableViewDelegate,
         switch prototype {
         case "namePrototype":
             let cell = tableView.dequeueReusableCell(withIdentifier: prototype, for: indexPath) as! FeedbackNameCell
+            self.anonymousSwitch = cell.anonymousSwitch
             cell.anonymousSwitch.addTarget(self, action: #selector(anonymousSwitchChanged), for: UIControlEvents.valueChanged)
             if cell.anonymousSwitch.isOn {
                 cell.titleLabel?.text = name
@@ -277,6 +281,7 @@ class EquipmentVC: ISViewController, UITableViewDataSource, UITableViewDelegate,
             return cell
         case "commentsPrototype":
             let cell = tableView.dequeueReusableCell(withIdentifier: prototype, for: indexPath) as! FeedbackCommentsCell
+            self.commentBox = cell.commentBox
             cell.commentBox.delegate = self
             return cell
         case "submitPrototype":
@@ -342,10 +347,40 @@ class EquipmentVC: ISViewController, UITableViewDataSource, UITableViewDelegate,
             }
             tableView.reloadSections([indexPath.section], with: UITableViewRowAnimation.automatic)
         } else if prototype == "submitPrototype" {
-            let alert = UIAlertController(title: "Error", message: "Sorry! This part hasn't been fully implemented yet. If you are a beta tester and would like to submit feedback, please do so using the TestFlight app", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
-            self.present(alert, animated: true, completion: nil)
+            let form = ToolBrokenFeedbackForm()
+            form.equipment_group_id = self.tool.equipmentGroupId
+
+            if self.anonymousSwitch!.isOn {
+                form.username = UserDefaults.standard.string(forKey: "Username")!
+            } else {
+                form.username = "anonymous"
+            }
+
+            form.problem = self.pickerSelections["Problem"]!
+            form.tool_group_name = self.tool.locationName
+            form.tool_name = self.tool.toolName
+            form.comments = self.commentBox!.text
+
+
+            InventionStudioApi.Feedback.tool_broken(form: form, completion: { message in
+                let parts = message.components(separatedBy: ":")
+                self.alert(title: parts[0], message: parts[1])
+            })
         }
+    }
+
+    func alert(title: String, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: { action in
+            if let anonymousSwitch = self.anonymousSwitch {
+                anonymousSwitch.setOn(true, animated: false)
+            }
+            if let commentBox = self.commentBox {
+                commentBox.text = nil
+            }
+            self.reportProblemTableView.setContentOffset(CGPoint.zero, animated: true)
+        }))
+        self.present(alert, animated: true, completion: nil)
     }
 
     // MARK: - Navigation
