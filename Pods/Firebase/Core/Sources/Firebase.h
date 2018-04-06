@@ -25,14 +25,6 @@
     #import <FirebaseDynamicLinks/FirebaseDynamicLinks.h>
   #endif
 
-  #if __has_include(<FirebaseFirestore/FirebaseFirestore.h>)
-    #import <FirebaseFirestore/FirebaseFirestore.h>
-  #endif
-
-  #if __has_include(<FirebaseFunctions/FirebaseFunctions.h>)
-    #import <FirebaseFunctions/FirebaseFunctions.h>
-  #endif
-
   #if __has_include(<FirebaseInstanceID/FirebaseInstanceID.h>)
     #import <FirebaseInstanceID/FirebaseInstanceID.h>
   #endif
@@ -59,14 +51,6 @@
 
   #if __has_include(<GoogleMobileAds/GoogleMobileAds.h>)
     #import <GoogleMobileAds/GoogleMobileAds.h>
-  #endif
-
-  #if __has_include(<Fabric/Fabric.h>)
-    #import <Fabric/Fabric.h>
-  #endif
-
-  #if __has_include(<Crashlytics/Crashlytics.h>)
-    #import <Crashlytics/Crashlytics.h>
   #endif
 
 #endif  // defined(__has_include)

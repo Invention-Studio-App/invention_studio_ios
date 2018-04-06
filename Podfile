@@ -7,8 +7,10 @@ target 'invention-studio-ios' do
 
   # Pods for invention-studio-ios
   pod 'TGPControls'
-  pod 'Firebase/Core'
-  pod 'Firebase/Messaging'
+  pod 'Firebase/Core', '4.0.4'
+  pod 'Firebase/Database', '4.0.4'
+  pod 'Firebase/Messaging', '4.0.4'
+  pod 'FirebaseInstanceID', '2.0.0'
 
   target 'invention-studio-iosTests' do
     inherit! :search_paths

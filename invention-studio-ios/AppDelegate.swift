@@ -82,10 +82,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         if timeStamp < loginSession && shouldLogin {
             initialViewController = storyboard.instantiateViewController(withIdentifier: "TabBarController")
             UserDefaults.standard.set(true, forKey: "LoggedIn")
-
-            //Unsubscribe from old topics with just the username
-            let username = UserDefaults.standard.string(forKey: "Username")!
-            Messaging.messaging().unsubscribe(fromTopic: username)
         } else {
             if let username = UserDefaults.standard.string(forKey: "Username") {
                 Messaging.messaging().unsubscribe(fromTopic: "\(username)_ios")
@@ -133,7 +129,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
 
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
         completionHandler([.alert, .sound])
-
     }
 
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
