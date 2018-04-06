@@ -34,7 +34,8 @@ class OtherTVC: ISTableViewController {
     }
 
     private func logout() {
-        Messaging.messaging().unsubscribe(fromTopic: UserDefaults.standard.string(forKey: "Username")!)
+        let username = UserDefaults.standard.string(forKey: "Username")!
+        Messaging.messaging().unsubscribe(fromTopic: "\(username)_ios")
         UserDefaults.standard.set(false, forKey: "LoggedIn")
         UserDefaults.standard.set(0, forKey: "DepartmentId")
         UserDefaults.standard.set(nil, forKey: "Name")

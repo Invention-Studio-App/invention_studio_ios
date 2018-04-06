@@ -58,17 +58,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
-            guard let data = data, error == nil else {                                                 // check for fundamental networking error
-                print("error=\(error)")
+            guard let data = data, error == nil else {
+                // check for fundamental networking error
+                print("error=\(String(describing: error))")
                 return
             }
             
-            if let httpStatus = response as? HTTPURLResponse, httpStatus.statusCode != 200 {           // check for http errors
+            if let httpStatus = response as? HTTPURLResponse, httpStatus.statusCode != 200 {
+                // check for http errors
                 print("statusCode should be 200, but is \(httpStatus.statusCode)")
-                print("response = \(response)")
+                print("response = \(String(describing: response))")
             } else {
                 let responseString = Int(String(data: data, encoding: .utf8)!)
-                print("time = \(responseString)")
+                print("time = \(String(describing: responseString))")
             }
         }
         task.resume()
@@ -80,9 +82,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         if timeStamp < loginSession && shouldLogin {
             initialViewController = storyboard.instantiateViewController(withIdentifier: "TabBarController")
             UserDefaults.standard.set(true, forKey: "LoggedIn")
+
+            //Unsubscribe from old topics with just the username
+            let username = UserDefaults.standard.string(forKey: "Username")!
+            Messaging.messaging().unsubscribe(fromTopic: username)
         } else {
             if let username = UserDefaults.standard.string(forKey: "Username") {
-                Messaging.messaging().unsubscribe(fromTopic: username)
+                Messaging.messaging().unsubscribe(fromTopic: "\(username)_ios")
             }
             UserDefaults.standard.set(false, forKey: "LoggedIn")
             UserDefaults.standard.set(0, forKey: "DepartmentId")
@@ -121,7 +127,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         Messaging.messaging().apnsToken = deviceToken
 
         if let username = UserDefaults.standard.string(forKey: "Username") {
-            Messaging.messaging().subscribe(toTopic: username)
+            Messaging.messaging().subscribe(toTopic: "\(username)_ios")
         }
     }
 
