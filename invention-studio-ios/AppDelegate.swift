@@ -58,17 +58,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
-            guard let data = data, error == nil else {                                                 // check for fundamental networking error
-                print("error=\(error)")
+            guard let data = data, error == nil else {
+                // check for fundamental networking error
+                print("error=\(String(describing: error))")
                 return
             }
             
-            if let httpStatus = response as? HTTPURLResponse, httpStatus.statusCode != 200 {           // check for http errors
+            if let httpStatus = response as? HTTPURLResponse, httpStatus.statusCode != 200 {
+                // check for http errors
                 print("statusCode should be 200, but is \(httpStatus.statusCode)")
-                print("response = \(response)")
+                print("response = \(String(describing: response))")
             } else {
                 let responseString = Int(String(data: data, encoding: .utf8)!)
-                print("time = \(responseString)")
+                print("time = \(String(describing: responseString))")
             }
         }
         task.resume()
@@ -82,7 +84,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
             UserDefaults.standard.set(true, forKey: "LoggedIn")
         } else {
             if let username = UserDefaults.standard.string(forKey: "Username") {
-                Messaging.messaging().unsubscribe(fromTopic: username)
+                Messaging.messaging().unsubscribe(fromTopic: "\(username)_ios")
             }
             UserDefaults.standard.set(false, forKey: "LoggedIn")
             UserDefaults.standard.set(0, forKey: "DepartmentId")
@@ -121,13 +123,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         Messaging.messaging().apnsToken = deviceToken
 
         if let username = UserDefaults.standard.string(forKey: "Username") {
-            Messaging.messaging().subscribe(toTopic: username)
+            Messaging.messaging().subscribe(toTopic: "\(username)_ios")
         }
     }
 
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
         completionHandler([.alert, .sound])
-
     }
 
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {

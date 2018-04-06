@@ -28,7 +28,7 @@ class AgreementVC: ISViewController {
     @IBAction func agreementSigned(_ sender: Any) {
         let form = LoginForm()
         if let username = UserDefaults.standard.string(forKey: "Username") {
-            Messaging.messaging().subscribe(toTopic: username)
+            Messaging.messaging().subscribe(toTopic: "\(username)_ios")
 
             form.user_username = username
         }

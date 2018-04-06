@@ -82,7 +82,7 @@ class LandingVC: ISViewController {
         }
 
         if let username = UserDefaults.standard.string(forKey: "Username") {
-            Messaging.messaging().unsubscribe(fromTopic: username)
+            Messaging.messaging().unsubscribe(fromTopic: "\(username)_ios")
         }
         UserDefaults.standard.set(false, forKey: "LoggedIn")
         UserDefaults.standard.set(0, forKey: "DepartmentId")

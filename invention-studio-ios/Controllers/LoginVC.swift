@@ -178,7 +178,7 @@ class LoginVC: ISViewController, WKUIDelegate, WKNavigationDelegate, WKHTTPCooki
             UserDefaults.standard.set(NSDate().addingTimeInterval(weekInterval).timeIntervalSince1970, forKey:"LoginSession")
 
             if let username = UserDefaults.standard.string(forKey: "Username") {
-                Messaging.messaging().subscribe(toTopic: username)
+                Messaging.messaging().subscribe(toTopic: "\(username)_ios")
             }
         }
     }
