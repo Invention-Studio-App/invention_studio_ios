@@ -18,14 +18,16 @@ class EquipmentGroupTVC: ISTableViewController, UINavigationControllerDelegate {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+        /* DELETE
         groupTools.sort(by: { (toolA, toolB) in
             if (toolA.status().hashValue == toolB.status().hashValue) {
                 return toolA.toolName <= toolB.toolName
             }
             return toolA.status().hashValue <= toolB.status().hashValue
         })
-
+        */
+        
+        
         /**
          ** Set Up TableView Header
          **/
@@ -79,7 +81,7 @@ class EquipmentGroupTVC: ISTableViewController, UINavigationControllerDelegate {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return groupTools.count
+        return self.groupTools.count
     }
 
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -89,8 +91,8 @@ class EquipmentGroupTVC: ISTableViewController, UINavigationControllerDelegate {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "equipmentPrototype", for: indexPath) as! EquipmentCell
 
-        cell.titleLabel?.text = groupTools[indexPath.row].toolName
-        cell.status = groupTools[indexPath.row].status()
+        cell.titleLabel?.text = self.groupTools[indexPath.row].toolName
+        cell.status = self.groupTools[indexPath.row].status()
         
         return cell
     }
@@ -110,8 +112,9 @@ class EquipmentGroupTVC: ISTableViewController, UINavigationControllerDelegate {
         eVC.backProp = {tools in
             print("in backprop 2")
             self.tools = tools
-            self.groupTools = self.getGroupTools(tools: tools)
             self.backProp?(tools)
+            self.groupTools = self.getGroupTools(tools: tools)
+            print(self.groupTools)
             //TODO: fix imporoper sorting
             // Must be called from main thread, not UIKit
             DispatchQueue.main.async {
@@ -131,12 +134,14 @@ class EquipmentGroupTVC: ISTableViewController, UINavigationControllerDelegate {
                 tempGroupTools.append(tool)
             }
         }
+        /* DELETE
         tempGroupTools.sort(by: { (toolA, toolB) in
             if (toolA.status().hashValue == toolB.status().hashValue) {
                 return toolA.toolName <= toolB.toolName
             }
             return toolA.status().hashValue <= toolB.status().hashValue
-        })
+        })*/
+        print(tempGroupTools)
         return tempGroupTools
     }
 

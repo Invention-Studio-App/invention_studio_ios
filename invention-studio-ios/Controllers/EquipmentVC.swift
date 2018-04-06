@@ -424,12 +424,15 @@ class EquipmentVC: ISViewController, UITableViewDataSource, UITableViewDelegate,
                     self.groupTools.append(tool)
                 }
             }
+            
+            /* DELETE
             self.tools.sort(by: { (toolA, toolB) in
                 if (toolA.status().hashValue == toolB.status().hashValue) {
                     return toolA.toolName <= toolB.toolName
                 }
                 return toolA.status().hashValue <= toolB.status().hashValue
             })
+            */
         })
         //TODO: update the status and text based on
         self.backProp?(tools)
