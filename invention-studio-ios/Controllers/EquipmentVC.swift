@@ -48,9 +48,9 @@ class EquipmentVC: ISViewController, UITableViewDataSource, UITableViewDelegate,
     var pickerValues = ["Problem": ["Nozzle Not Extruding", "Bed Shifted"]]
     var location: Location!
     var tools = [Tool]()
-    var groupTools = [Tool]()
     var tool: Tool!
     var backProp:(([Tool]) -> ())?
+    var informationTextView = UITextView()
 
     private var _status: Tool.Status = Tool.Status.UNKNOWN
     var status: Tool.Status {
@@ -132,7 +132,6 @@ class EquipmentVC: ISViewController, UITableViewDataSource, UITableViewDelegate,
         informationScrollView.addSubview(statusLabel)
 
         //Set Up TextView
-        let informationTextView = UITextView()
         informationTextView.isEditable = false
         informationTextView.isSelectable = false
         informationTextView.isScrollEnabled = false
@@ -384,13 +383,7 @@ class EquipmentVC: ISViewController, UITableViewDataSource, UITableViewDelegate,
         self.present(alert, animated: true, completion: nil)
     }
 
-    // MARK: - Navigation
 
-    func navigationController(_ navigationController: UINavigationController, willShow viewController: UIViewController, animated: Bool) {
-        let destVC = viewController as? EquipmentGroupTVC
-        destVC?.tools = self.tools
-        destVC?.groupTools = self.groupTools
-    }
 
     // MARK: - Supporting Functions
 
@@ -418,25 +411,31 @@ class EquipmentVC: ISViewController, UITableViewDataSource, UITableViewDelegate,
         sender.attributedTitle = NSAttributedString(string: "Fetching tool info...")
         SumsApi.EquipmentGroup.Tools(completion: { (tools) in
             self.tools = tools
-            self.groupTools = []
+            self.backProp?(tools)
+            var fTool = true
             for tool in tools {
-                if (tool.locationId == self.location.locationId) {
-                    self.groupTools.append(tool)
+                if (fTool && tool.toolId == self.tool.toolId) {
+                    fTool = false
+                    DispatchQueue.main.async {
+                        self.status = tool.status()
+                        self.tool = tool
+                        let attributedString = try! NSMutableAttributedString(
+                            data: tool.toolDescription.data(using: String.Encoding.unicode, allowLossyConversion: true)!,
+                            options: [.documentType: NSAttributedString.DocumentType.html],
+                            documentAttributes: nil)
+                        let attributesDict = [NSAttributedStringKey.foregroundColor: Theme.text,
+                                              NSAttributedStringKey.font: UIFont.systemFont(ofSize: 16)]
+                        attributedString.addAttributes(attributesDict, range: NSMakeRange(0, attributedString.length))
+                        self.informationTextView.attributedText = attributedString
+                        
+                        //Set ScrollView content size
+                        self.informationScrollView.contentSize = CGSize(width: self.view.frame.width, height: self.informationTextView.frame.maxY + 8)
+                        sender.endRefreshing()
+                    }
                 }
             }
             
-            /* DELETE
-            self.tools.sort(by: { (toolA, toolB) in
-                if (toolA.status().hashValue == toolB.status().hashValue) {
-                    return toolA.toolName <= toolB.toolName
-                }
-                return toolA.status().hashValue <= toolB.status().hashValue
-            })
-            */
         })
-        //TODO: update the status and text based on
-        self.backProp?(tools)
-        sender.endRefreshing()
     }
 
 }

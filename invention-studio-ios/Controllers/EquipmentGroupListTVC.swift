@@ -17,7 +17,6 @@ class EquipmentGroupListTVC: ISTableViewController {
         super.viewDidLoad()
 
         loadEquipmentGroups()
-        print("reloading groups")
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -77,7 +76,6 @@ class EquipmentGroupListTVC: ISTableViewController {
                 equipmentGroups.insert(Location(fromTool: tool))
             }
         }
-        print("Getting equipment groups")
         return equipmentGroups.sorted(by: { (groupA, groupB) in
             return groupA.locationName <= groupB.locationName
         })
@@ -95,11 +93,6 @@ class EquipmentGroupListTVC: ISTableViewController {
         let mVC = storyboard?.instantiateViewController(withIdentifier: "EquipmentGroupTVC") as! EquipmentGroupTVC
         var sentTools = [Tool]()
         for tool in tools {
-            print(tools)
-            print(tools.count)
-            print(self.equipmentGroups)
-            print(self.equipmentGroups.count)
-            print(indexPath.row)
             if tool.locationId == self.equipmentGroups[indexPath.row].locationId && tool.locationId != 0 {
                 //Exclude tools with no location
                 sentTools.append(tool)
@@ -112,7 +105,6 @@ class EquipmentGroupListTVC: ISTableViewController {
         
         // defining the method EquipmentGroupTVC can use to update tools if refreshed
         mVC.backProp = {tools in
-            print("in backprop")
             self.tools = tools
             self.equipmentGroups = self.getEquipmentGroups(tools: tools)
             

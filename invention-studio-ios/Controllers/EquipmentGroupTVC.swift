@@ -15,17 +15,10 @@ class EquipmentGroupTVC: ISTableViewController, UINavigationControllerDelegate {
     var tools = [Tool]()
     var groupTools = [Tool]()
     var backProp:(([Tool]) -> ())?
+    let headerTextView = UITextView()
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        /* DELETE
-        groupTools.sort(by: { (toolA, toolB) in
-            if (toolA.status().hashValue == toolB.status().hashValue) {
-                return toolA.toolName <= toolB.toolName
-            }
-            return toolA.status().hashValue <= toolB.status().hashValue
-        })
-        */
         
         
         /**
@@ -43,7 +36,7 @@ class EquipmentGroupTVC: ISTableViewController, UINavigationControllerDelegate {
         headerView.addSubview(headerImageView)
 
         //Draw header TextView
-        let headerTextView = UITextView()
+        
         headerTextView.isEditable = false
         headerTextView.isSelectable = false
         headerTextView.isScrollEnabled = false
@@ -105,20 +98,34 @@ class EquipmentGroupTVC: ISTableViewController, UINavigationControllerDelegate {
         let eVC  = storyboard?.instantiateViewController(withIdentifier: "EquipmentVC") as! EquipmentVC
         eVC.location = self.location
         eVC.tools = self.tools
-        eVC.groupTools = self.groupTools
         eVC.tool = self.groupTools[indexPath.row]
         eVC.title = eVC.tool.toolName
         
         eVC.backProp = {tools in
-            print("in backprop 2")
             self.tools = tools
             self.backProp?(tools)
             self.groupTools = self.getGroupTools(tools: tools)
-            print(self.groupTools)
-            //TODO: fix imporoper sorting
             // Must be called from main thread, not UIKit
             DispatchQueue.main.async {
                 self.tableView.reloadData()
+                
+                // Updating the location and location description
+                var fLocation = true
+                for tool in tools {
+                    if (fLocation && tool.locationId == self.location.locationId) {
+                        fLocation = false
+                        //Set attributed text from HTML
+                        self.location = Location(fromTool: tool)
+                        let attributedString = try! NSMutableAttributedString(
+                            data: self.location.locationDescription.data(using: String.Encoding.unicode, allowLossyConversion: true)!,
+                            options: [.documentType: NSAttributedString.DocumentType.html],
+                            documentAttributes: nil)
+                        let attributesDict = [NSAttributedStringKey.foregroundColor: Theme.text,
+                                              NSAttributedStringKey.font: UIFont.systemFont(ofSize: 16)]
+                        attributedString.addAttributes(attributesDict, range: NSMakeRange(0, attributedString.length))
+                        self.headerTextView.attributedText = attributedString
+                    }
+                }
             }
         }
         
@@ -134,14 +141,6 @@ class EquipmentGroupTVC: ISTableViewController, UINavigationControllerDelegate {
                 tempGroupTools.append(tool)
             }
         }
-        /* DELETE
-        tempGroupTools.sort(by: { (toolA, toolB) in
-            if (toolA.status().hashValue == toolB.status().hashValue) {
-                return toolA.toolName <= toolB.toolName
-            }
-            return toolA.status().hashValue <= toolB.status().hashValue
-        })*/
-        print(tempGroupTools)
         return tempGroupTools
     }
 
@@ -149,16 +148,31 @@ class EquipmentGroupTVC: ISTableViewController, UINavigationControllerDelegate {
 
     @IBAction func refresh(_ sender: UIRefreshControl) {
         sender.attributedTitle = NSAttributedString(string: "Fetching tools...")
-        print("in refresh")
         SumsApi.EquipmentGroup.Tools(completion: { (tools) in
             self.tools = tools
             self.backProp?(tools)
-            print("Out of backprop")
             self.groupTools = self.getGroupTools(tools: tools)
             
             // Must be called from main thread, not UIKit
             DispatchQueue.main.async {
                 self.tableView.reloadData()
+                var fLocation = true
+                for tool in tools {
+                    if (fLocation && tool.locationId == self.location.locationId) {
+                        fLocation = false
+                        //Set attributed text from HTML
+                        self.location = Location(fromTool: tool)
+                        let attributedString = try! NSMutableAttributedString(
+                            data: self.location.locationDescription.data(using: String.Encoding.unicode, allowLossyConversion: true)!,
+                            options: [.documentType: NSAttributedString.DocumentType.html],
+                            documentAttributes: nil)
+                        let attributesDict = [NSAttributedStringKey.foregroundColor: Theme.text,
+                                              NSAttributedStringKey.font: UIFont.systemFont(ofSize: 16)]
+                        attributedString.addAttributes(attributesDict, range: NSMakeRange(0, attributedString.length))
+                        self.headerTextView.attributedText = attributedString
+                    }
+                }
+                
                 sender.endRefreshing()
             }
         })
