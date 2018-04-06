@@ -45,18 +45,9 @@ class EquipmentGroupListTVC: ISTableViewController {
     
     //Loads the equipment groups from the API with a refresher to stop
     private func loadEquipmentGroups(_ sender: UIRefreshControl) {
-        self.equipmentGroups = []
         SumsApi.EquipmentGroup.Tools(completion: { (tools) in
-            var equipmentGroups = Set<Location>()
-            for tool in tools {
-                if tool.locationId != 0 {
-                    equipmentGroups.insert(Location(fromTool: tool))
-                }
-            }
             self.tools = tools
-            self.equipmentGroups = equipmentGroups.sorted(by: { (groupA, groupB) in
-                return groupA.locationName <= groupB.locationName
-            })
+            self.equipmentGroups = self.getEquipmentGroups(tools: tools)
             // Must be called from main thread, not UIKit
             DispatchQueue.main.async {
                 self.tableView.reloadData()
@@ -68,22 +59,27 @@ class EquipmentGroupListTVC: ISTableViewController {
     
     //Loads the equipment groups from the API without a refresher to stop
     private func loadEquipmentGroups() {
-        self.equipmentGroups = []
         SumsApi.EquipmentGroup.Tools(completion: { (tools) in
-            var equipmentGroups = Set<Location>()
-            for tool in tools {
-                if tool.locationId != 0 {
-                    equipmentGroups.insert(Location(fromTool: tool))
-                }
-            }
             self.tools = tools
-            self.equipmentGroups = equipmentGroups.sorted(by: { (groupA, groupB) in
-                return groupA.locationName <= groupB.locationName
-            })
+            self.equipmentGroups = self.getEquipmentGroups(tools: tools)
             // Must be called from main thread, not UIKit
             DispatchQueue.main.async {
                 self.tableView.reloadData()
             }
+        })
+    }
+    
+    // Gets the equipment groups out of a list of tools
+    func getEquipmentGroups(tools:[Tool]) -> [Location] {
+        var equipmentGroups = Set<Location>()
+        for tool in tools {
+            if tool.locationId != 0 {
+                equipmentGroups.insert(Location(fromTool: tool))
+            }
+        }
+        print("Getting equipment groups")
+        return equipmentGroups.sorted(by: { (groupA, groupB) in
+            return groupA.locationName <= groupB.locationName
         })
         
     }
@@ -99,6 +95,11 @@ class EquipmentGroupListTVC: ISTableViewController {
         let mVC = storyboard?.instantiateViewController(withIdentifier: "EquipmentGroupTVC") as! EquipmentGroupTVC
         var sentTools = [Tool]()
         for tool in tools {
+            print(tools)
+            print(tools.count)
+            print(self.equipmentGroups)
+            print(self.equipmentGroups.count)
+            print(indexPath.row)
             if tool.locationId == self.equipmentGroups[indexPath.row].locationId && tool.locationId != 0 {
                 //Exclude tools with no location
                 sentTools.append(tool)
@@ -108,11 +109,26 @@ class EquipmentGroupListTVC: ISTableViewController {
         mVC.groupTools = sentTools
         mVC.location = equipmentGroups[indexPath.row]
         mVC.title = sentTools[0].locationName
+        
+        // defining the method EquipmentGroupTVC can use to update tools if refreshed
+        mVC.backProp = {tools in
+            print("in backprop")
+            self.tools = tools
+            self.equipmentGroups = self.getEquipmentGroups(tools: tools)
+            
+            // Must be called from main thread, not UIKit
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        }
+        
+        // Pushing the new view controller up
         navigationController?.pushViewController(mVC, animated: true)
         self.tableView.deselectRow(at: indexPath, animated: true)
     }
 
     @IBAction func refresh(_ sender: UIRefreshControl) {
+        sender.attributedTitle = NSAttributedString(string: "Fetching groups...")
         loadEquipmentGroups(sender)
     }
 

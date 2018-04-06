@@ -14,6 +14,7 @@ class EquipmentGroupTVC: ISTableViewController, UINavigationControllerDelegate {
     var location: Location!
     var tools = [Tool]()
     var groupTools = [Tool]()
+    var backProp:(([Tool]) -> ())?
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -105,40 +106,59 @@ class EquipmentGroupTVC: ISTableViewController, UINavigationControllerDelegate {
         eVC.groupTools = self.groupTools
         eVC.tool = self.groupTools[indexPath.row]
         eVC.title = eVC.tool.toolName
+        
+        eVC.backProp = {tools in
+            print("in backprop 2")
+            self.tools = tools
+            self.groupTools = self.getGroupTools(tools: tools)
+            self.backProp?(tools)
+            //TODO: fix imporoper sorting
+            // Must be called from main thread, not UIKit
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        }
+        
+        
         navigationController?.pushViewController(eVC, animated: true)
         self.tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+    func getGroupTools(tools:[Tool]) -> [Tool] {
+        var tempGroupTools:[Tool] = []
+        for tool in tools {
+            if (tool.locationId == self.location.locationId) {
+                tempGroupTools.append(tool)
+            }
+        }
+        tempGroupTools.sort(by: { (toolA, toolB) in
+            if (toolA.status().hashValue == toolB.status().hashValue) {
+                return toolA.toolName <= toolB.toolName
+            }
+            return toolA.status().hashValue <= toolB.status().hashValue
+        })
+        return tempGroupTools
     }
 
     // MARK: - Scroll view delegate
 
     @IBAction func refresh(_ sender: UIRefreshControl) {
+        sender.attributedTitle = NSAttributedString(string: "Fetching tools...")
+        print("in refresh")
         SumsApi.EquipmentGroup.Tools(completion: { (tools) in
             self.tools = tools
-            self.groupTools = []
-            for tool in tools {
-                if (tool.locationId == self.location.locationId) {
-                    self.groupTools.append(tool)
-                }
-            }
-            self.groupTools.sort(by: { (toolA, toolB) in
-                if (toolA.status().hashValue == toolB.status().hashValue) {
-                    return toolA.toolName <= toolB.toolName
-                }
-                return toolA.status().hashValue <= toolB.status().hashValue
-            })
+            self.backProp?(tools)
+            print("Out of backprop")
+            self.groupTools = self.getGroupTools(tools: tools)
+            
             // Must be called from main thread, not UIKit
             DispatchQueue.main.async {
                 self.tableView.reloadData()
+                sender.endRefreshing()
             }
         })
-        sender.endRefreshing()
     }
 
     // MARK: - Navigation
-
-    func navigationController(_ navigationController: UINavigationController, willShow viewController: UIViewController, animated: Bool) {
-        let destVC = viewController as? EquipmentGroupListTVC
-        destVC?.tools = self.tools
-    }
 
 }

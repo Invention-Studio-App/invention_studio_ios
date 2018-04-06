@@ -50,6 +50,7 @@ class EquipmentVC: ISViewController, UITableViewDataSource, UITableViewDelegate,
     var tools = [Tool]()
     var groupTools = [Tool]()
     var tool: Tool!
+    var backProp:(([Tool]) -> ())?
 
     private var _status: Tool.Status = Tool.Status.UNKNOWN
     var status: Tool.Status {
@@ -414,6 +415,7 @@ class EquipmentVC: ISViewController, UITableViewDataSource, UITableViewDelegate,
     }
 
     @objc func refresh(_ sender: UIRefreshControl) {
+        sender.attributedTitle = NSAttributedString(string: "Fetching tool info...")
         SumsApi.EquipmentGroup.Tools(completion: { (tools) in
             self.tools = tools
             self.groupTools = []
@@ -429,6 +431,8 @@ class EquipmentVC: ISViewController, UITableViewDataSource, UITableViewDelegate,
                 return toolA.status().hashValue <= toolB.status().hashValue
             })
         })
+        //TODO: update the status and text based on
+        self.backProp?(tools)
         sender.endRefreshing()
     }
 
