@@ -14,11 +14,13 @@ class QueuesTVC: ISTableViewController {
     var selectedSection: Int? = nil
     var groups = [QueueGroup]()
     var queueUsers = Dictionary<Int, [QueueUser]>()
+    var refreshing = false
+    let refreshingGroup = DispatchGroup()
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.refreshQueues(self)
+        self.refreshQueues(nil)
     }
     
     // MARK: - Table view data source
@@ -116,48 +118,73 @@ class QueuesTVC: ISTableViewController {
         }
     }
 
-    @IBAction func refreshQueues(_ sender: Any) {
-        let apiEvalGroup = DispatchGroup()
-
-        apiEvalGroup.enter()
-        SumsApi.EquipmentGroup.QueueGroups(completion: { (groups) in
-            for g in groups {
-                self.queueUsers[g.id] = [QueueUser]()
+    // Refreshing the queue data
+    @IBAction func refreshQueues(_ sender: Any?) {
+        if !refreshing {
+            refreshing = true
+            if (sender != nil) {
+                (sender as! UIRefreshControl).attributedTitle = NSAttributedString(string: "Fetching queues...")
             }
-            self.groups = groups.sorted(by: { (groupA, groupB) in
-                groupA.name <= groupB.name
+            
+            // Cancelling the refresh after 5 seconds
+            let failTask = DispatchWorkItem {
+                if sender != nil && (sender as! UIRefreshControl).isRefreshing {
+                    let attributes = [NSAttributedStringKey.foregroundColor: UIColor.red]
+                    let attributedTitle = NSAttributedString(string: "Error: Failed Refresh", attributes: attributes)
+                    (sender as! UIRefreshControl).attributedTitle = attributedTitle
+                    (sender as! UIRefreshControl).endRefreshing()
+                    self.refreshing = false
+                }
+            }
+            DispatchQueue.main.asyncAfter(deadline: .now() + 5, execute: failTask)
+            
+            let apiEvalGroup = DispatchGroup()
+
+            apiEvalGroup.enter()
+            // Updating the list of groups
+            SumsApi.EquipmentGroup.QueueGroups(completion: { (groups) in
+                for g in groups {
+                    self.queueUsers[g.id] = [QueueUser]()
+                }
+                self.groups = groups.sorted(by: { (groupA, groupB) in
+                    groupA.name <= groupB.name
+                })
+                
+                apiEvalGroup.leave()
             })
             
-            apiEvalGroup.leave()
-        })
-
-        apiEvalGroup.notify(queue: .main, execute: {
-
-            SumsApi.EquipmentGroup.QueueUsers(completion: { (users) in
-                for u in users {
-                    if u.queueName != "" {
-                        self.queueUsers[u.queueGroupId]!.append(u)
+            apiEvalGroup.notify(queue: .main, execute: {
+                // Updating the list of users
+                SumsApi.EquipmentGroup.QueueUsers(completion: { (users) in
+                    for u in users {
+                        if u.queueName != "" {
+                            self.queueUsers[u.queueGroupId]!.append(u)
+                        }
                     }
-                }
-                for q in self.queueUsers {
-                    self.queueUsers[q.key] = self.queueUsers[q.key]?.sorted(by: {(userA, userB) in
-                        userA.memberQueueLocation < userB.memberQueueLocation
-                    })
-                }
+                    
+                    for q in self.queueUsers {
+                        self.queueUsers[q.key] = self.queueUsers[q.key]?.sorted(by: {(userA, userB) in
+                            userA.memberQueueLocation < userB.memberQueueLocation
+                        })
+                    }
 
 
-                DispatchQueue.main.async {
-                    self.tableView.reloadData()
-                }
+                    DispatchQueue.main.async {
+                        self.tableView.reloadData()
+                        if sender != nil {
+                            let attributes = [NSAttributedStringKey.foregroundColor: UIColor.green]
+                            let attributedTitle = NSAttributedString(string: "Success", attributes: attributes)
+                            (sender as! UIRefreshControl).attributedTitle = attributedTitle
+                            (sender as! UIRefreshControl).endRefreshing()
+                        }
+                        failTask.cancel()
+                        self.refreshing = false
+                        print("Success")
+                    }
+                })
+                
             })
-            
-        })
-    }
-
-    @IBAction func refresh(_ sender: UIRefreshControl) {
-        //Your code here
-
-        sender.endRefreshing()
+        }
     }
 
 }
