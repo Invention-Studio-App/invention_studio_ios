@@ -26,6 +26,9 @@
 		B254C5B5203633F800D6A2B4 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B254C5B4203633F800D6A2B4 /* UserInfo.swift */; };
 		B26CA616204394AB0050FC2C /* ISViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26CA615204394AB0050FC2C /* ISViewController.swift */; };
 		B26CA6182043952C0050FC2C /* ISTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26CA6172043952C0050FC2C /* ISTableViewController.swift */; };
+		B277AF22207D5B81002D6780 /* SoundHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B277AF20207D5B81002D6780 /* SoundHelper.swift */; };
+		B277AF23207D5B81002D6780 /* MusicHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B277AF21207D5B81002D6780 /* MusicHelper.swift */; };
+		B277AF25207D5C4E002D6780 /* tomorrowland.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B277AF24207D5C4E002D6780 /* tomorrowland.mp3 */; };
 		B27C1EF62072E42100383E4C /* InventionStudioAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = B27C1EF52072E42100383E4C /* InventionStudioAPI.swift */; };
 		B27C1EF92072E47000383E4C /* GeneralFeedbackForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = B27C1EF82072E47000383E4C /* GeneralFeedbackForm.swift */; };
 		B27C1EFB2072E4BD00383E4C /* StaffFeedbackForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = B27C1EFA2072E4BD00383E4C /* StaffFeedbackForm.swift */; };
@@ -95,6 +98,9 @@
 		B25E8B3D205B3BA0009D184E /* invention-studio-ios.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "invention-studio-ios.entitlements"; sourceTree = "<group>"; };
 		B26CA615204394AB0050FC2C /* ISViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ISViewController.swift; sourceTree = "<group>"; };
 		B26CA6172043952C0050FC2C /* ISTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ISTableViewController.swift; sourceTree = "<group>"; };
+		B277AF20207D5B81002D6780 /* SoundHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoundHelper.swift; sourceTree = "<group>"; };
+		B277AF21207D5B81002D6780 /* MusicHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicHelper.swift; sourceTree = "<group>"; };
+		B277AF24207D5C4E002D6780 /* tomorrowland.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = tomorrowland.mp3; sourceTree = "<group>"; };
 		B27C1EF52072E42100383E4C /* InventionStudioAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InventionStudioAPI.swift; sourceTree = "<group>"; };
 		B27C1EF82072E47000383E4C /* GeneralFeedbackForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralFeedbackForm.swift; sourceTree = "<group>"; };
 		B27C1EFA2072E4BD00383E4C /* StaffFeedbackForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaffFeedbackForm.swift; sourceTree = "<group>"; };
@@ -213,6 +219,15 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		B277AF1F207D5B81002D6780 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				B277AF20207D5B81002D6780 /* SoundHelper.swift */,
+				B277AF21207D5B81002D6780 /* MusicHelper.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		B27C1EF72072E42A00383E4C /* Invention Studio Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -276,12 +291,14 @@
 			children = (
 				B25E8B3D205B3BA0009D184E /* invention-studio-ios.entitlements */,
 				B2A3A82A201C0D4C00F3AF7F /* API */,
+				B277AF1F207D5B81002D6780 /* Helpers */,
 				B233FFC120216D1C0024A5C6 /* Controllers */,
 				B233FFC220216D2C0024A5C6 /* Views */,
 				B2BEA44F20437F4800132EF7 /* Theme.swift */,
 				B2D384931FBA383C00D91650 /* AppDelegate.swift */,
 				4F8FB69420154C7F00DBCD35 /* Colors.xcassets */,
 				B2D3849D1FBA383C00D91650 /* Assets.xcassets */,
+				B277AF24207D5C4E002D6780 /* tomorrowland.mp3 */,
 				B2D384971FBA383C00D91650 /* Main.storyboard */,
 				B2D3849F1FBA383C00D91650 /* LaunchScreen.storyboard */,
 				B2D384A21FBA383C00D91650 /* Info.plist */,
@@ -432,6 +449,7 @@
 			files = (
 				B2D384A11FBA383C00D91650 /* LaunchScreen.storyboard in Resources */,
 				4F8FB69520154C7F00DBCD35 /* Colors.xcassets in Resources */,
+				B277AF25207D5C4E002D6780 /* tomorrowland.mp3 in Resources */,
 				B289B76D205B2AEF008428C3 /* GoogleService-Info.plist in Resources */,
 				B2D3849E1FBA383C00D91650 /* Assets.xcassets in Resources */,
 				B2D384991FBA383C00D91650 /* Main.storyboard in Resources */,
@@ -616,6 +634,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B2E5FFEE206EA70500C4503F /* FeedbackPINameCell.swift in Sources */,
+				B277AF22207D5B81002D6780 /* SoundHelper.swift in Sources */,
 				B2A3A833201C1C3500F3AF7F /* OtherTVC.swift in Sources */,
 				B2D5D7BC201AEB3E00CFCCB1 /* EquipmentGroupTVC.swift in Sources */,
 				B2D384941FBA383C00D91650 /* AppDelegate.swift in Sources */,
@@ -635,6 +654,7 @@
 				B2323A632044E635008D3F35 /* Location.swift in Sources */,
 				B254C5B5203633F800D6A2B4 /* UserInfo.swift in Sources */,
 				B2A3A82D201C0EB600F3AF7F /* Tool.swift in Sources */,
+				B277AF23207D5B81002D6780 /* MusicHelper.swift in Sources */,
 				4F46B06920164CD400D5B3E9 /* LoginVC.swift in Sources */,
 				B2A3A831201C1B2A00F3AF7F /* FeedbackTVC.swift in Sources */,
 				B254C5B1203632F000D6A2B4 /* QueueGroup.swift in Sources */,
