@@ -19,4 +19,8 @@ class ISTableViewController: UITableViewController {
         self.view.setNeedsDisplay()
         self.tableView.reloadData()
     }
+
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        SoundHelper.sharedHelper.playSound()
+    }
 }

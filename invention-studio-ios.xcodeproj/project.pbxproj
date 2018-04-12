@@ -51,6 +51,8 @@
 		B2D5D7BC201AEB3E00CFCCB1 /* EquipmentGroupTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2D5D7BB201AEB3E00CFCCB1 /* EquipmentGroupTVC.swift */; };
 		B2D5D7BE201BC40F00CFCCB1 /* EquipmentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2D5D7BD201BC40F00CFCCB1 /* EquipmentCell.swift */; };
 		B2D5D7C0201BDFD500CFCCB1 /* EquipmentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2D5D7BF201BDFD500CFCCB1 /* EquipmentVC.swift */; };
+		B2D66F03207FE2BB00984949 /* ISTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2D66F02207FE2BB00984949 /* ISTabBarController.swift */; };
+		B2D66F05207FE2DB00984949 /* pop.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B2D66F04207FE2DA00984949 /* pop.mp3 */; };
 		B2E253B9202E399C00C322AA /* SumsApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2E253B8202E399C00C322AA /* SumsApi.swift */; };
 		B2E5FFEE206EA70500C4503F /* FeedbackPINameCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2E5FFED206EA70500C4503F /* FeedbackPINameCell.swift */; };
 		B2F96A092076CBF200E1B3EB /* StatusMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2F96A082076CBF200E1B3EB /* StatusMessage.swift */; };
@@ -129,6 +131,8 @@
 		B2D5D7BB201AEB3E00CFCCB1 /* EquipmentGroupTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EquipmentGroupTVC.swift; sourceTree = "<group>"; };
 		B2D5D7BD201BC40F00CFCCB1 /* EquipmentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EquipmentCell.swift; sourceTree = "<group>"; };
 		B2D5D7BF201BDFD500CFCCB1 /* EquipmentVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EquipmentVC.swift; sourceTree = "<group>"; };
+		B2D66F02207FE2BB00984949 /* ISTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ISTabBarController.swift; sourceTree = "<group>"; };
+		B2D66F04207FE2DA00984949 /* pop.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = pop.mp3; sourceTree = "<group>"; };
 		B2E253B8202E399C00C322AA /* SumsApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SumsApi.swift; sourceTree = "<group>"; };
 		B2E5FFED206EA70500C4503F /* FeedbackPINameCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackPINameCell.swift; sourceTree = "<group>"; };
 		B2F96A082076CBF200E1B3EB /* StatusMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusMessage.swift; sourceTree = "<group>"; };
@@ -190,6 +194,7 @@
 		B233FFC120216D1C0024A5C6 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				B2D66F02207FE2BB00984949 /* ISTabBarController.swift */,
 				B26CA615204394AB0050FC2C /* ISViewController.swift */,
 				B26CA6172043952C0050FC2C /* ISTableViewController.swift */,
 				4F8FB692201547DB00DBCD35 /* LandingVC.swift */,
@@ -299,6 +304,7 @@
 				4F8FB69420154C7F00DBCD35 /* Colors.xcassets */,
 				B2D3849D1FBA383C00D91650 /* Assets.xcassets */,
 				B277AF24207D5C4E002D6780 /* tomorrowland.mp3 */,
+				B2D66F04207FE2DA00984949 /* pop.mp3 */,
 				B2D384971FBA383C00D91650 /* Main.storyboard */,
 				B2D3849F1FBA383C00D91650 /* LaunchScreen.storyboard */,
 				B2D384A21FBA383C00D91650 /* Info.plist */,
@@ -452,6 +458,7 @@
 				B277AF25207D5C4E002D6780 /* tomorrowland.mp3 in Resources */,
 				B289B76D205B2AEF008428C3 /* GoogleService-Info.plist in Resources */,
 				B2D3849E1FBA383C00D91650 /* Assets.xcassets in Resources */,
+				B2D66F05207FE2DB00984949 /* pop.mp3 in Resources */,
 				B2D384991FBA383C00D91650 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -647,6 +654,7 @@
 				B233FFCA20216E9E0024A5C6 /* FeedbackRatingCell.swift in Sources */,
 				B2E253B9202E399C00C322AA /* SumsApi.swift in Sources */,
 				B233FFC420216DFD0024A5C6 /* FeedbackNameCell.swift in Sources */,
+				B2D66F03207FE2BB00984949 /* ISTabBarController.swift in Sources */,
 				B2F96A092076CBF200E1B3EB /* StatusMessage.swift in Sources */,
 				B233FFC820216E720024A5C6 /* FeedbackPickerDropdownCell.swift in Sources */,
 				B27C1EFB2072E4BD00383E4C /* StaffFeedbackForm.swift in Sources */,

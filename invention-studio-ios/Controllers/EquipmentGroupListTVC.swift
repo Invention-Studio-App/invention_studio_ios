@@ -90,6 +90,7 @@ class EquipmentGroupListTVC: ISTableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+
         let mVC = storyboard?.instantiateViewController(withIdentifier: "EquipmentGroupTVC") as! EquipmentGroupTVC
         var sentTools = [Tool]()
         for tool in tools {
