@@ -95,6 +95,8 @@ class EquipmentGroupTVC: ISTableViewController, UINavigationControllerDelegate {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        super.tableView(tableView, didSelectRowAt: indexPath)
+        
         let eVC  = storyboard?.instantiateViewController(withIdentifier: "EquipmentVC") as! EquipmentVC
         eVC.location = self.location
         eVC.tools = self.tools

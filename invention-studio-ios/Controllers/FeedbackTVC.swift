@@ -269,6 +269,8 @@ class FeedbackTVC: ISTableViewController, UIPickerViewDataSource, UIPickerViewDe
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        super.tableView(tableView, didSelectRowAt: indexPath)
+        
         let prototype = currentPrototypes[indexPath.section][indexPath.row]
         let oldDropdownSection : Int? = currentDropdown?.section
         if prototype == "pickerHeaderPrototype" {

@@ -332,6 +332,8 @@ class EquipmentVC: ISViewController, UITableViewDataSource, UITableViewDelegate,
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        SoundHelper.sharedHelper.playSound()
+
         let prototype = toolBrokenPrototypes[indexPath.section][indexPath.row]
         let oldDropdownSection : Int? = currentDropdown?.section
         if prototype == "pickerHeaderPrototype" {

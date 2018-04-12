@@ -28,6 +28,8 @@ class OtherTVC: ISTableViewController {
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        super.tableView(tableView, didSelectRowAt: indexPath)
+        
         if (tableView.cellForRow(at: indexPath)?.reuseIdentifier == "logoutCell") {
             logout()
         }
