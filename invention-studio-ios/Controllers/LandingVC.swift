@@ -67,6 +67,9 @@ class LandingVC: ISViewController {
 
                 //Set ScrollView content size
                 self.scrollView.contentSize = CGSize(width: self.view.frame.width, height: textView.frame.maxY + 8)
+
+                //Set up navigation bar
+                self.navigationItem.title = info.equipmentGroupShortName
             }
         })
     }

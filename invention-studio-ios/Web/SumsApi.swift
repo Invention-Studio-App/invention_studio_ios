@@ -79,7 +79,7 @@ class SumsApi {
                                     //Use the custom date decoder defined below to decode two possible date formats
                                     decoder.dateDecodingStrategy = .customDateDecoder()
                                     let responseInfo = try! decoder.decode(EquipmentGroupInfo.self, from: data)
-
+                                    responseInfo.equipmentGroupShortName = responseInfo.equipmentGroupShortName.replacingOccurrences(of: "_", with: " ")
 
                                     //"Return" the data to the caller's completion handler
                                     completion(responseInfo)
