@@ -13,39 +13,39 @@ class FeedbackTVC: ISTableViewController, UIPickerViewDataSource, UIPickerViewDe
 
     private let toolBrokenHeaders = ["Your Name", "Feedback", "Tool", "Problem", "Comments", ""]
     private let toolBrokenPrototypes = [["namePrototype"],
-                              ["pickerHeaderPrototype", "pickerDropdownPrototype"],
-                              ["pickerHeaderPrototype", "pickerDropdownPrototype", "pickerHeaderPrototype", "pickerDropdownPrototype"],
-                              ["pickerHeaderPrototype", "pickerDropdownPrototype"],
-                              ["commentsPrototype"],
-                              ["submitPrototype"]]
+                                        ["pickerHeaderPrototype", "pickerDropdownPrototype"],
+                                        ["pickerHeaderPrototype", "pickerDropdownPrototype", "pickerHeaderPrototype", "pickerDropdownPrototype"],
+                                        ["pickerHeaderPrototype", "pickerDropdownPrototype"],
+                                        ["commentsPrototype"],
+                                        ["submitPrototype"]]
     private let toolBrokenCells = [["Your Name"],
-                              ["Feedback", "FeedbackDropdown"],
-                              ["Group", "ToolGroupDropdown", "Tool", "ToolDropdown"],
-                              ["Problem", "ProblemDropdown"],
-                              ["Comments"],
-                              ["Submit"]]
+                                   ["Feedback", "FeedbackDropdown"],
+                                   ["Group", "ToolGroupDropdown", "Tool", "ToolDropdown"],
+                                   ["Problem", "ProblemDropdown"],
+                                   ["Comments"],
+                                   ["Submit"]]
     private let piFeedbackHeaders = ["Your Name", "Feedback", "PI Name", "Rating", "Comments", ""]
     private let piFeedbackPrototypes = [["namePrototype"],
-                           ["pickerHeaderPrototype", "pickerDropdownPrototype"],
-                           ["piNamePrototype"],
-                           ["ratingPrototype"],
-                           ["commentsPrototype"],
-                           ["submitPrototype"]]
+                                        ["pickerHeaderPrototype", "pickerDropdownPrototype"],
+                                        ["piNamePrototype"],
+                                        ["ratingPrototype"],
+                                        ["commentsPrototype"],
+                                        ["submitPrototype"]]
     private let piFeedbackCells = [["Your Name"],
-                           ["Feedback", "FeedbackDropdown"],
-                           ["PI Name"],
-                           ["Rating"],
-                           ["Comments"],
-                           ["Submit"]]
+                                   ["Feedback", "FeedbackDropdown"],
+                                   ["PI Name"],
+                                   ["Rating"],
+                                   ["Comments"],
+                                   ["Submit"]]
     private let generalFeedbackHeaders = ["YourName", "Feedback", "Comments", ""]
     private let generalFeedbackPrototypes = [["namePrototype"],
-                                ["pickerHeaderPrototype", "pickerDropdownPrototype"],
-                                ["commentsPrototype"],
-                                ["submitPrototype"]]
+                                             ["pickerHeaderPrototype", "pickerDropdownPrototype"],
+                                             ["commentsPrototype"],
+                                             ["submitPrototype"]]
     private let generalFeedbackCells = [["Your Name"],
-                                 ["Feedback", "FeedbackDropdown"],
-                                 ["Comments"],
-                                 ["Submit"]]
+                                        ["Feedback", "FeedbackDropdown"],
+                                        ["Comments"],
+                                        ["Submit"]]
 
     private var currentHeaders = [String]()
     private var currentPrototypes = [[String]]()
@@ -71,6 +71,7 @@ class FeedbackTVC: ISTableViewController, UIPickerViewDataSource, UIPickerViewDe
                         "Group": [],
                         "Tool": [],
                         "Problem": ["Nozzle Not Extruding", "Bed Shifted"]]
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -156,7 +157,7 @@ class FeedbackTVC: ISTableViewController, UIPickerViewDataSource, UIPickerViewDe
     override func numberOfSections(in tableView: UITableView) -> Int {
         return currentPrototypes.count
     }
-    
+
     override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         if let view = view as? UITableViewHeaderFooterView {
             view.textLabel?.textColor = Theme.accentTertiary
@@ -343,7 +344,6 @@ class FeedbackTVC: ISTableViewController, UIPickerViewDataSource, UIPickerViewDe
             }
         }
     }
-<<<<<<< HEAD
 
     func alert(title: String, message: String) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
@@ -363,27 +363,6 @@ class FeedbackTVC: ISTableViewController, UIPickerViewDataSource, UIPickerViewDe
             self.tableView.setContentOffset(CGPoint.zero, animated: true)
         }))
         self.present(alert, animated: true, completion: nil)
-=======
-    
-    func alert(err:Int) {
-        let alert = UIAlertController(title: "Success", message: "Thank you for submitting feedback!", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
-        self.present(alert, animated: true, completion: nil)
-
-        if err == 200 {
-            let alert = UIAlertController(title: "Success", message: "Thank you for submitting feedback!", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
-            self.present(alert, animated: true, completion: nil)
-        } else if err == 400 {
-            let alert = UIAlertController(title: "Error", message: "Error submitting feedback.", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
-            self.present(alert, animated: true, completion: nil)
-        } else if err == 500 {
-            let alert = UIAlertController(title: "Error", message: "Internal server error.", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
-            self.present(alert, animated: true, completion: nil)
-        }
->>>>>>> Fixed feedback popup
     }
 
     //MARK: - Picker View Delegate

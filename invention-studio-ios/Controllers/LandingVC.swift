@@ -49,14 +49,26 @@ class LandingVC: ISViewController {
         textView.bouncesZoom = false
         textView.backgroundColor = UIColor.clear
         textView.font = UIFont.systemFont(ofSize: 16)
-        //TODO: Use dynamic text
-        textView.text = "Is this the real life? Is this just fantasy? Caught in a landslide, no escape from reality. Open your eyes, look up to the skies and see... I'm just a poor boy, I need no sympathy. Because I'm easy come, easy go. Little high, little low. Everywhere the wind blows doesn't really matter to me. To me..."
-        let textViewSize = textView.sizeThatFits(CGSize(width: view.frame.width - 16, height: CGFloat.greatestFiniteMagnitude))
-        textView.frame = CGRect(x: 8, y: imageView.frame.maxY + 8, width: view.frame.width - 16, height: textViewSize.height)
-        scrollView.addSubview(textView)
 
-        //Set ScrollView content size
-        scrollView.contentSize = CGSize(width: view.frame.width, height: textView.frame.maxY + 8)
+        SumsApi.EquipmentGroup.Info(completion: { info in
+            DispatchQueue.main.async {
+                let attributedString = try! NSMutableAttributedString(
+                    data: info.equipmentGroupDescriptionHtml.data(using: String.Encoding.unicode, allowLossyConversion: true)!,
+                    options: [.documentType: NSAttributedString.DocumentType.html],
+                    documentAttributes: nil)
+                let attributesDict = [NSAttributedStringKey.foregroundColor: Theme.text,
+                                      NSAttributedStringKey.font: UIFont.systemFont(ofSize: 16)]
+                attributedString.addAttributes(attributesDict, range: NSMakeRange(0, attributedString.length))
+                textView.attributedText = attributedString
+
+                let textViewSize = textView.sizeThatFits(CGSize(width: self.view.frame.width - 16, height: CGFloat.greatestFiniteMagnitude))
+                textView.frame = CGRect(x: 8, y: imageView.frame.maxY + 8, width: self.view.frame.width - 16, height: textViewSize.height)
+                self.scrollView.addSubview(textView)
+
+                //Set ScrollView content size
+                self.scrollView.contentSize = CGSize(width: self.view.frame.width, height: textView.frame.maxY + 8)
+            }
+        })
     }
 
     override func viewDidAppear(_ animated: Bool) {
