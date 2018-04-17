@@ -30,7 +30,7 @@ class EquipmentGroupTVC: ISTableViewController, UINavigationControllerDelegate {
         let headerImageView = UIImageView()
         headerImageView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.width / 16.0 * 9.0)
         //TODO: Use dynamic photo
-        headerImageView.image = UIImage(named: "PlaceholderStudioImage")
+        headerImageView.image = InventionStudioImages.imageForTool(locationName: self.location.locationName, toolName: "header")
         headerImageView.contentMode = UIViewContentMode.scaleAspectFill
         headerImageView.clipsToBounds = true
         headerView.addSubview(headerImageView)

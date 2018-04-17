@@ -24,6 +24,7 @@
 		B254C5B1203632F000D6A2B4 /* QueueGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = B254C5B0203632F000D6A2B4 /* QueueGroup.swift */; };
 		B254C5B32036335900D6A2B4 /* QueueUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = B254C5B22036335900D6A2B4 /* QueueUser.swift */; };
 		B254C5B5203633F800D6A2B4 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B254C5B4203633F800D6A2B4 /* UserInfo.swift */; };
+		B2640C16208690FE00AFAD59 /* InventionStudioImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2640C15208690FE00AFAD59 /* InventionStudioImages.swift */; };
 		B26CA616204394AB0050FC2C /* ISViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26CA615204394AB0050FC2C /* ISViewController.swift */; };
 		B26CA6182043952C0050FC2C /* ISTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26CA6172043952C0050FC2C /* ISTableViewController.swift */; };
 		B27C1EF62072E42100383E4C /* InventionStudioAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = B27C1EF52072E42100383E4C /* InventionStudioAPI.swift */; };
@@ -94,6 +95,7 @@
 		B254C5B22036335900D6A2B4 /* QueueUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueueUser.swift; sourceTree = "<group>"; };
 		B254C5B4203633F800D6A2B4 /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
 		B25E8B3D205B3BA0009D184E /* invention-studio-ios.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "invention-studio-ios.entitlements"; sourceTree = "<group>"; };
+		B2640C15208690FE00AFAD59 /* InventionStudioImages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InventionStudioImages.swift; sourceTree = "<group>"; };
 		B26CA615204394AB0050FC2C /* ISViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ISViewController.swift; sourceTree = "<group>"; };
 		B26CA6172043952C0050FC2C /* ISTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ISTableViewController.swift; sourceTree = "<group>"; };
 		B27C1EF52072E42100383E4C /* InventionStudioAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InventionStudioAPI.swift; sourceTree = "<group>"; };
@@ -227,16 +229,17 @@
 			path = "Invention Studio Models";
 			sourceTree = "<group>";
 		};
-		B2A3A82A201C0D4C00F3AF7F /* API */ = {
+		B2A3A82A201C0D4C00F3AF7F /* Web */ = {
 			isa = PBXGroup;
 			children = (
 				B27C1F002072EFB900383E4C /* APIHelper.swift */,
 				B2E253B8202E399C00C322AA /* SumsApi.swift */,
 				B27C1EF52072E42100383E4C /* InventionStudioAPI.swift */,
+				B2640C15208690FE00AFAD59 /* InventionStudioImages.swift */,
 				B2A3A82B201C0D8600F3AF7F /* Sums Models */,
 				B27C1EF72072E42A00383E4C /* Invention Studio Models */,
 			);
-			path = API;
+			path = Web;
 			sourceTree = "<group>";
 		};
 		B2A3A82B201C0D8600F3AF7F /* Sums Models */ = {
@@ -278,7 +281,7 @@
 			isa = PBXGroup;
 			children = (
 				B25E8B3D205B3BA0009D184E /* invention-studio-ios.entitlements */,
-				B2A3A82A201C0D4C00F3AF7F /* API */,
+				B2A3A82A201C0D4C00F3AF7F /* Web */,
 				B233FFC120216D1C0024A5C6 /* Controllers */,
 				B233FFC220216D2C0024A5C6 /* Views */,
 				B2BEA44F20437F4800132EF7 /* Theme.swift */,
@@ -640,6 +643,7 @@
 				B254C5B5203633F800D6A2B4 /* UserInfo.swift in Sources */,
 				B2A3A82D201C0EB600F3AF7F /* Tool.swift in Sources */,
 				4F46B06920164CD400D5B3E9 /* LoginVC.swift in Sources */,
+				B2640C16208690FE00AFAD59 /* InventionStudioImages.swift in Sources */,
 				B2A3A831201C1B2A00F3AF7F /* FeedbackTVC.swift in Sources */,
 				B254C5B1203632F000D6A2B4 /* QueueGroup.swift in Sources */,
 				B27C1F012072EFB900383E4C /* APIHelper.swift in Sources */,

@@ -106,7 +106,7 @@ class EquipmentVC: ISViewController, UITableViewDataSource, UITableViewDelegate,
         let informationImageView = UIImageView()
         informationImageView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.width / 16.0 * 9.0)
         //TODO: Use dynamic photo
-        informationImageView.image = UIImage(named: "Ultimaker-2-Plus")
+        informationImageView.image = InventionStudioImages.imageForTool(locationName: self.tool.locationName, toolName: self.tool.toolName)
         informationImageView.contentMode = UIViewContentMode.scaleAspectFill
         informationImageView.clipsToBounds = true
         informationScrollView.addSubview(informationImageView)

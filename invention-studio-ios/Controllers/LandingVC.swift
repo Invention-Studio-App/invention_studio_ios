@@ -35,7 +35,7 @@ class LandingVC: ISViewController {
         let imageView = UIImageView()
         imageView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.width / 16.0 * 9.0)
         //TODO: Use dynamic photo
-        imageView.image = UIImage(named: "PlaceholderStudioImage")
+        imageView.image = InventionStudioImages.imageForResource(group: "headers", name: "invention_studio")
         imageView.contentMode = UIViewContentMode.scaleAspectFill
         imageView.clipsToBounds = true
         scrollView.addSubview(imageView)
