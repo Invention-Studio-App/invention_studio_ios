@@ -38,6 +38,7 @@
 		B2A3A831201C1B2A00F3AF7F /* FeedbackTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2A3A830201C1B2A00F3AF7F /* FeedbackTVC.swift */; };
 		B2A3A833201C1C3500F3AF7F /* OtherTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2A3A832201C1C3500F3AF7F /* OtherTVC.swift */; };
 		B2BEA45020437F4800132EF7 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BEA44F20437F4800132EF7 /* Theme.swift */; };
+		B2C480C7208688B600CDB8CE /* EquipmentGroupInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2C480C6208688B600CDB8CE /* EquipmentGroupInfo.swift */; };
 		B2D384941FBA383C00D91650 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2D384931FBA383C00D91650 /* AppDelegate.swift */; };
 		B2D384991FBA383C00D91650 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B2D384971FBA383C00D91650 /* Main.storyboard */; };
 		B2D3849C1FBA383C00D91650 /* invention_studio_ios.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B2D3849A1FBA383C00D91650 /* invention_studio_ios.xcdatamodeld */; };
@@ -107,6 +108,7 @@
 		B2A3A830201C1B2A00F3AF7F /* FeedbackTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackTVC.swift; sourceTree = "<group>"; };
 		B2A3A832201C1C3500F3AF7F /* OtherTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherTVC.swift; sourceTree = "<group>"; };
 		B2BEA44F20437F4800132EF7 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
+		B2C480C6208688B600CDB8CE /* EquipmentGroupInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EquipmentGroupInfo.swift; sourceTree = "<group>"; };
 		B2D384901FBA383C00D91650 /* invention-studio-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "invention-studio-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B2D384931FBA383C00D91650 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B2D384981FBA383C00D91650 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -245,6 +247,7 @@
 				B254C5B22036335900D6A2B4 /* QueueUser.swift */,
 				B254C5B4203633F800D6A2B4 /* UserInfo.swift */,
 				B2323A622044E635008D3F35 /* Location.swift */,
+				B2C480C6208688B600CDB8CE /* EquipmentGroupInfo.swift */,
 			);
 			path = "Sums Models";
 			sourceTree = "<group>";
@@ -630,6 +633,7 @@
 				B233FFC420216DFD0024A5C6 /* FeedbackNameCell.swift in Sources */,
 				B2F96A092076CBF200E1B3EB /* StatusMessage.swift in Sources */,
 				B233FFC820216E720024A5C6 /* FeedbackPickerDropdownCell.swift in Sources */,
+				B2C480C7208688B600CDB8CE /* EquipmentGroupInfo.swift in Sources */,
 				B27C1EFB2072E4BD00383E4C /* StaffFeedbackForm.swift in Sources */,
 				B26CA616204394AB0050FC2C /* ISViewController.swift in Sources */,
 				B2323A632044E635008D3F35 /* Location.swift in Sources */,

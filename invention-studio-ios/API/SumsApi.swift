@@ -54,6 +54,38 @@ class SumsApi {
     //EquipmentGroup module
     class EquipmentGroup {
 
+        //*Unauthenticated* Equipment Group Info request
+        //Returns a JSON entry of info for the equipment group
+        static func Info(completion: @escaping (EquipmentGroupInfo) -> ()) {
+            let equipmentGroupId = 8
+
+            var url = SumsApi.siteURL + "equipmentGroup_info"
+            url += "?equipmentGroupId=\(equipmentGroupId)"
+
+            APIHelper.sendRequest(url: url,
+                                  method: .POST,
+                                  body: nil,
+                                  authHeader: nil,
+                                  xApiKeyHeader: nil,
+                                  completion: { data, response in
+                                    //Check for unexpected status codes
+                                    if response.statusCode != 200 {
+                                        print("statusCode should be 200, but is \(response.statusCode)")
+                                        print("response: \(response)")
+                                        return
+                                    }
+                                    //Automatically decode response into a JSON array
+                                    let decoder = JSONDecoder()
+                                    //Use the custom date decoder defined below to decode two possible date formats
+                                    decoder.dateDecodingStrategy = .customDateDecoder()
+                                    let responseInfo = try! decoder.decode(EquipmentGroupInfo.self, from: data)
+
+
+                                    //"Return" the data to the caller's completion handler
+                                    completion(responseInfo)
+            })
+        }
+
         //Tools request
         //Returns a flattened array of tools and their associated locations
         static func Tools(completion: @escaping ([Tool]) -> ()) {
