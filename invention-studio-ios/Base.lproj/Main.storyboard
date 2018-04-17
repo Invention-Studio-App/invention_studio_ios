@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="equipmentGroupPrototype" textLabel="WXv-cy-9yq" style="IBUITableViewCellStyleDefault" id="16p-jB-1JA">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="gray" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="equipmentGroupPrototype" textLabel="WXv-cy-9yq" style="IBUITableViewCellStyleDefault" id="16p-jB-1JA">
                                 <rect key="frame" x="0.0" y="55.5" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="16p-jB-1JA" id="JOG-Kn-tqR">
@@ -373,7 +373,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="equipmentPrototype" id="OGs-yV-gqa" customClass="EquipmentCell" customModule="invention_studio_ios" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="gray" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="equipmentPrototype" id="OGs-yV-gqa" customClass="EquipmentCell" customModule="invention_studio_ios" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="55.5" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="OGs-yV-gqa" id="CTG-bl-MAz">
@@ -734,7 +734,7 @@
                         <sections>
                             <tableViewSection id="fRI-MD-o2B">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="otherPrototype" textLabel="SmZ-qx-mdh" style="IBUITableViewCellStyleDefault" id="MhE-wH-qjm">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="gray" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="otherPrototype" textLabel="SmZ-qx-mdh" style="IBUITableViewCellStyleDefault" id="MhE-wH-qjm">
                                         <rect key="frame" x="0.0" y="35" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="MhE-wH-qjm" id="e2p-QY-9Uo">
@@ -1025,7 +1025,7 @@ For more info ask any Prototyping Instructor (PI), who are in the studio wearing
         </namedColor>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="DiI-4E-pZb"/>
-        <segue reference="jlu-yE-rRx"/>
+        <segue reference="OSp-hx-eiC"/>
+        <segue reference="xX8-5t-its"/>
     </inferredMetricsTieBreakers>
 </document>
