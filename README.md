@@ -14,11 +14,8 @@ purposes. See deployment for notes on how to deploy the project on a live system
 a Mac running XCode version 9.3
 
 
-Clone invention_studio_ios repository
-
-in the invention_studio_ios directory, 
-
-use the pod install and pod update commands to ensure all the supporting pods are installed
+Clone invention_studio_ios repository 
+In the invention_studio_ios directory, use the pod install and pod update commands to ensure all the supporting pods are installed.
 
 Open the invention-studio-ios workspace (not the project)
 
