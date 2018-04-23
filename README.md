@@ -44,7 +44,9 @@ No known bugs
 ## Authors
 
 Nick Rupert - nickrupert7
+
 Noah Sutter - nustter3
+
 See also the list of contributors who participated in this project.
 
 ## License
