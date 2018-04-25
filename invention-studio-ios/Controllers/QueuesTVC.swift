@@ -168,6 +168,7 @@ class QueuesTVC: ISTableViewController {
                     if error != nil {
                         let parts = error!.components(separatedBy: ":")
                         self.alert(title: parts[0], message: parts[1], sender: sender)
+                        self.refreshing = false
                         return
                     }
                     
@@ -191,7 +192,6 @@ class QueuesTVC: ISTableViewController {
                             (sender as! UIRefreshControl).endRefreshing()
                         }
                         self.refreshing = false
-                        print("Success")
                     }
                 })
                 
