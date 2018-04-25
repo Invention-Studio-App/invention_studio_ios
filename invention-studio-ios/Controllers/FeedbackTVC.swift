@@ -97,6 +97,9 @@ class FeedbackTVC: ISTableViewController, UIPickerViewDataSource, UIPickerViewDe
     @IBAction func refresh(_ sender: Any?) {
         if !refreshing {
             refreshing = true
+            if (sender != nil) {
+                (sender as! UIRefreshControl).attributedTitle = NSAttributedString(string: "Fetching info for feedback...")
+            }
             let apiEvalGroup = DispatchGroup()
             
             apiEvalGroup.enter()
