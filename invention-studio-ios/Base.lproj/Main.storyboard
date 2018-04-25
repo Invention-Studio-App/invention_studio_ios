@@ -360,6 +360,12 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Feedback" id="kf8-4G-XEi"/>
+                    <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="xpO-m7-cXj">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <connections>
+                            <action selector="refresh:" destination="N2K-SL-XV0" eventType="valueChanged" id="8UE-mf-5JN"/>
+                        </connections>
+                    </refreshControl>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YLF-tc-N0f" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

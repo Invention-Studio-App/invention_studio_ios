@@ -71,6 +71,8 @@ class FeedbackTVC: ISTableViewController, UIPickerViewDataSource, UIPickerViewDe
                         "Group": [],
                         "Tool": [],
                         "Problem": ["Other"]]
+    // used to ensure only one refresh at a time
+    var refreshing = false
 
 
     override func viewDidLoad() {
@@ -82,42 +84,7 @@ class FeedbackTVC: ISTableViewController, UIPickerViewDataSource, UIPickerViewDe
         tap.cancelsTouchesInView = false
         view.addGestureRecognizer(tap)
 
-        let apiEvalGroup = DispatchGroup()
-
-        apiEvalGroup.enter()
-        SumsApi.EquipmentGroup.Tools(completion: { tools, error in
-            if error != nil {
-                let parts = error!.components(separatedBy: ":")
-                self.alert(title: parts[0], message: parts[1])
-                return
-            }
-
-            self.tools = tools!
-            var equipmentGroups = Set<String>()
-            for tool in tools! {
-                if tool.locationId != 0 {
-                    equipmentGroups.insert(Location(fromTool: tool).locationName)
-                }
-            }
-            self.pickerValues["Group"] = equipmentGroups.sorted()
-
-            apiEvalGroup.leave()
-        })
-
-        apiEvalGroup.notify(queue: .main, execute: {
-            self.toolGroupPicker.reloadAllComponents()
-            self.setToolNames()
-
-            for picker in self.pickerSelections.keys {
-                self.pickerSelections[picker] = self.pickerValues[picker]![0]
-                if picker == "Group" {
-                    self.setProblems()
-                }
-            }
-
-            self.setFeedbackType()
-            self.tableView.reloadData()
-        })
+        refresh(nil)
     }
 
     override func didReceiveMemoryWarning() {
@@ -125,6 +92,66 @@ class FeedbackTVC: ISTableViewController, UIPickerViewDataSource, UIPickerViewDe
         // Dispose of any resources that can be recreated.
     }
 
+    
+    
+    @IBAction func refresh(_ sender: Any?) {
+        if !refreshing {
+            refreshing = true
+            let apiEvalGroup = DispatchGroup()
+            
+            apiEvalGroup.enter()
+            SumsApi.EquipmentGroup.Tools(completion: { tools, error in
+                if error != nil {
+                    let parts = error!.components(separatedBy: ":")
+                    self.alert(title: parts[0], message: parts[1], sender: sender)
+                    //apiEvalGroup.leave()
+                    self.refreshing = false
+                    return
+                }
+                
+                self.tools = tools!
+                var equipmentGroups = Set<String>()
+                for tool in tools! {
+                    if tool.locationId != 0 {
+                        equipmentGroups.insert(Location(fromTool: tool).locationName)
+                    }
+                }
+                self.pickerValues["Group"] = equipmentGroups.sorted()
+                self.pickerSelections["Group"] = self.pickerValues["Group"]?[0]
+                apiEvalGroup.leave()
+            })
+            
+            apiEvalGroup.notify(queue: .main, execute: {
+                
+                self.toolGroupPicker.reloadAllComponents()
+                self.setToolNames()
+                
+                
+                for picker in self.pickerSelections.keys {
+                    self.pickerSelections[picker] = self.pickerValues[picker]![0]
+                    if picker == "Group" {
+                        self.setProblems()
+                    }
+                }
+                
+                
+                self.setFeedbackType()
+                self.tableView.reloadData()
+                if sender != nil {
+                    let attributedTitle = NSAttributedString(string: "Last Refresh: Success")
+                    (sender as! UIRefreshControl).attributedTitle = attributedTitle
+                    (sender as! UIRefreshControl).endRefreshing()
+                }
+                self.refreshing = false
+            })
+        }
+    }
+    
+    
+    
+    
+    
+    
     func setFeedbackType() {
         switch pickerSelections["Feedback"]! {
         case "Tool Broken":
@@ -343,7 +370,7 @@ class FeedbackTVC: ISTableViewController, UIPickerViewDataSource, UIPickerViewDe
 
                 InventionStudioApi.Feedback.tool_broken(form: form, completion: { message in
                     let parts = message.components(separatedBy: ":")
-                    self.alert(title: parts[0], message: parts[1])
+                    self.alert(title: parts[0], message: parts[1], sender: nil)
                 })
 
                 break;
@@ -362,7 +389,7 @@ class FeedbackTVC: ISTableViewController, UIPickerViewDataSource, UIPickerViewDe
 
                 InventionStudioApi.Feedback.staff(form: form, completion: { message in
                     let parts = message.components(separatedBy: ":")
-                    self.alert(title: parts[0], message: parts[1])
+                    self.alert(title: parts[0], message: parts[1], sender: nil)
                 })
 
                 break;
@@ -374,7 +401,7 @@ class FeedbackTVC: ISTableViewController, UIPickerViewDataSource, UIPickerViewDe
 
                 InventionStudioApi.Feedback.general(form: form, completion: { message in
                     let parts = message.components(separatedBy: ":")
-                    self.alert(title: parts[0], message: parts[1])
+                    self.alert(title: parts[0], message: parts[1], sender: nil)
                 })
 
                 break;
@@ -384,7 +411,7 @@ class FeedbackTVC: ISTableViewController, UIPickerViewDataSource, UIPickerViewDe
         }
     }
 
-    func alert(title: String, message: String) {
+    func alert(title: String, message: String, sender: Any?) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: { action in
             if let anonymousSwitch = self.anonymousSwitch {
@@ -401,7 +428,14 @@ class FeedbackTVC: ISTableViewController, UIPickerViewDataSource, UIPickerViewDe
             }
             self.tableView.setContentOffset(CGPoint.zero, animated: true)
         }))
-        self.present(alert, animated: true, completion: nil)
+        self.present(alert, animated: true, completion: {
+            if sender != nil {
+                let attributedTitle = NSAttributedString(string: "Last Refresh: Failed")
+                (sender as! UIRefreshControl).attributedTitle = attributedTitle
+                (sender as! UIRefreshControl).endRefreshing()
+            }
+        })
+        
     }
 
     //MARK: - Picker View Delegate
