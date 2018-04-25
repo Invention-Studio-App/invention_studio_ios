@@ -14,7 +14,7 @@ class QueuesTVC: ISTableViewController {
     let items = ["3D Printers", "Laser Cutters", "Waterjet"]
     var selectedSection: Int? = nil
     var groups = [QueueGroup]()
-    var queueUsers = Dictionary<Int, [QueueUser]>()
+    var queueUsers = Dictionary<String, [QueueUser]>()
     var refreshing = false
     let refreshingGroup = DispatchGroup()
 
@@ -37,7 +37,7 @@ class QueuesTVC: ISTableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         var count = 1
         let queueGroup = self.groups[section]
-        let queueUsers = self.queueUsers[queueGroup.id]
+        let queueUsers = self.queueUsers[String(queueGroup.id) + String(queueGroup.isGroup)]
         if queueUsers == nil || queueUsers!.count == 0 {
             count += 1
         } else {
@@ -88,7 +88,7 @@ class QueuesTVC: ISTableViewController {
         } else { // this is a user or a no user message
             cell.textLabel?.font = UIFont.systemFont(ofSize: 16)
 
-            let queueUsers = self.queueUsers[queueGroup.id]!
+            let queueUsers = self.queueUsers[String(queueGroup.id) + String(queueGroup.isGroup)]!
             // No users in the queue
             if queueUsers.count == 0 {
                 cell.textLabel?.text = "No users in queue"
@@ -155,7 +155,7 @@ class QueuesTVC: ISTableViewController {
             // Updating the list of groups
             SumsApi.EquipmentGroup.QueueGroups(completion: { (groups) in
                 for g in groups {
-                    self.queueUsers[g.id] = [QueueUser]()
+                    self.queueUsers[String(g.id) + String(g.isGroup)] = [QueueUser]()
                 }
                 self.groups = groups.sorted(by: { (groupA, groupB) in
                     groupA.name <= groupB.name
@@ -169,9 +169,7 @@ class QueuesTVC: ISTableViewController {
                 SumsApi.EquipmentGroup.QueueUsers(completion: { (users) in
                     for u in users {
                         print(u.memberName)
-                        if u.queueName != "" {
-                            self.queueUsers[u.queueGroupId]!.append(u)
-                        }
+                        self.queueUsers[String(u.queueGroupId) + String(u.isGroup)]!.append(u)
                     }
                     
                     for q in self.queueUsers {
