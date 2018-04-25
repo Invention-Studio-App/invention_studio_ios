@@ -68,11 +68,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
                 Messaging.messaging().unsubscribe(fromTopic: "\(username)_ios")
             }
             UserDefaults.standard.set(false, forKey: "LoggedIn")
-//            UserDefaults.standard.set(0, forKey: "DepartmentId")
-//            UserDefaults.standard.set(nil, forKey: "Name")
-//            UserDefaults.standard.set(nil, forKey: "Username")
-//            UserDefaults.standard.set(nil, forKey: "UserKey")
-//            UserDefaults.standard.set(0, forKey:"LoginSession")
 
             initialViewController = storyboard.instantiateViewController(withIdentifier: "LandingViewController")
         }
