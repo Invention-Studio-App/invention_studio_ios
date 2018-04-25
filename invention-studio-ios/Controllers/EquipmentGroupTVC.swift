@@ -16,6 +16,8 @@ class EquipmentGroupTVC: ISTableViewController, UINavigationControllerDelegate {
     var groupTools = [Tool]()
     var backProp:(([Tool]) -> ())?
     let headerTextView = UITextView()
+    // used to ensure refresh is only running once
+    var refreshing = false
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -147,41 +149,60 @@ class EquipmentGroupTVC: ISTableViewController, UINavigationControllerDelegate {
     // MARK: - Scroll view delegate
 
     @IBAction func refresh(_ sender: UIRefreshControl) {
-        sender.attributedTitle = NSAttributedString(string: "Fetching tools...")
-        SumsApi.EquipmentGroup.Tools(completion: { tools, error in
-            if error != nil {
-                let parts = error!.components(separatedBy: ":")
-                self.alert(title: parts[0], message: parts[1], sender: sender)
-                return
-            }
-            
-            self.tools = tools!
-            self.backProp?(tools!)
-            self.groupTools = self.getGroupTools(tools: tools!)
-            
-            // Must be called from main thread, not UIKit
-            DispatchQueue.main.async {
-                self.tableView.reloadData()
-                var fLocation = true
-                for tool in tools! {
-                    if (fLocation && tool.locationId == self.location.locationId) {
-                        fLocation = false
-                        //Set attributed text from HTML
-                        self.location = Location(fromTool: tool)
-                        let attributedString = try! NSMutableAttributedString(
-                            data: self.location.locationDescription.data(using: String.Encoding.unicode, allowLossyConversion: true)!,
-                            options: [.documentType: NSAttributedString.DocumentType.html],
-                            documentAttributes: nil)
-                        let attributesDict = [NSAttributedStringKey.foregroundColor: Theme.text,
-                                              NSAttributedStringKey.font: UIFont.systemFont(ofSize: 16)]
-                        attributedString.addAttributes(attributesDict, range: NSMakeRange(0, attributedString.length))
-                        self.headerTextView.attributedText = attributedString
-                    }
+        if (!refreshing) {
+            refreshing = true
+            sender.attributedTitle = NSAttributedString(string: "Fetching tools...")
+            SumsApi.EquipmentGroup.Tools(completion: { tools, error in
+                if error != nil {
+                    // sending error alert
+                    let parts = error!.components(separatedBy: ":")
+                    self.alert(title: parts[0], message: parts[1], sender: sender)
+                    
+                    // updating refresh title
+                    let attributedTitle = NSAttributedString(string: "Error: Failed Refresh")
+                    sender.attributedTitle = attributedTitle
+                    
+                    // ending refreshing
+                    sender.endRefreshing()
+                    self.refreshing = false
+                    return
                 }
                 
-                sender.endRefreshing()
-            }
-        })
+                self.tools = tools!
+                // updating tools in EquipmentGroupListTVC
+                self.backProp?(tools!)
+                self.groupTools = self.getGroupTools(tools: tools!)
+                
+                // Must be called from main thread, not UIKit
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+                    var fLocation = true
+                    for tool in tools! {
+                        if (fLocation && tool.locationId == self.location.locationId) {
+                            fLocation = false
+                            //Set attributed text from HTML
+                            self.location = Location(fromTool: tool)
+                            let attributedString = try! NSMutableAttributedString(
+                                data: self.location.locationDescription.data(using: String.Encoding.unicode, allowLossyConversion: true)!,
+                                options: [.documentType: NSAttributedString.DocumentType.html],
+                                documentAttributes: nil)
+                            let attributesDict = [NSAttributedStringKey.foregroundColor: Theme.text,
+                                                  NSAttributedStringKey.font: UIFont.systemFont(ofSize: 16)]
+                            attributedString.addAttributes(attributesDict, range: NSMakeRange(0, attributedString.length))
+                            self.headerTextView.attributedText = attributedString
+                        }
+                    }
+                    
+                    // updating refresh title
+                    let attributedTitle = NSAttributedString(string: "Success")
+                    sender.attributedTitle = attributedTitle
+                    
+                    // ending refreshing
+                    sender.endRefreshing()
+                    self.refreshing = false
+                }
+            })
+        }
     }
 
     func alert(title: String, message: String, sender: Any?) {

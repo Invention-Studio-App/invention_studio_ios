@@ -49,6 +49,9 @@ class EquipmentVC: ISViewController, UITableViewDataSource, UITableViewDelegate,
     var tool: Tool!
     var backProp:(([Tool]) -> ())?
     var informationTextView = UITextView()
+    
+    // used to ensure refresh is only running once
+    var refreshing = false
 
     private var _status: Tool.Status = Tool.Status.UNKNOWN
     var status: Tool.Status {
@@ -433,41 +436,62 @@ class EquipmentVC: ISViewController, UITableViewDataSource, UITableViewDelegate,
         }
     }
 
+    // Used to update the tools
     @objc func refresh(_ sender: UIRefreshControl) {
-        sender.attributedTitle = NSAttributedString(string: "Fetching tool info...")
-        SumsApi.EquipmentGroup.Tools(completion: { tools, error in
-            if error != nil {
-                let parts = error!.components(separatedBy: ":")
-                self.alert(title: parts[0], message: parts[1], sender: sender)
-                return
-            }
+        if (!refreshing) {
+            refreshing = true
+            sender.attributedTitle = NSAttributedString(string: "Fetching tool info...")
+            SumsApi.EquipmentGroup.Tools(completion: { tools, error in
+                if error != nil {
+                    // sending error alert
+                    let parts = error!.components(separatedBy: ":")
+                    self.alert(title: parts[0], message: parts[1], sender: sender)
+                    
+                    // updating refresh title
+                    let attributedTitle = NSAttributedString(string: "Error: Failed Refresh")
+                    sender.attributedTitle = attributedTitle
+                    
+                    // ending refreshing
+                    sender.endRefreshing()
+                    self.refreshing = false
+                    return
+                }
             
-            self.tools = tools!
-            self.backProp?(tools!)
-            var fTool = true
-            for tool in tools! {
-                if (fTool && tool.toolId == self.tool.toolId) {
-                    fTool = false
-                    DispatchQueue.main.async {
-                        self.status = tool.status()
-                        self.tool = tool
-                        let attributedString = try! NSMutableAttributedString(
-                            data: tool.toolDescription.data(using: String.Encoding.unicode, allowLossyConversion: true)!,
-                            options: [.documentType: NSAttributedString.DocumentType.html],
-                            documentAttributes: nil)
-                        let attributesDict = [NSAttributedStringKey.foregroundColor: Theme.text,
-                                              NSAttributedStringKey.font: UIFont.systemFont(ofSize: 16)]
-                        attributedString.addAttributes(attributesDict, range: NSMakeRange(0, attributedString.length))
-                        self.informationTextView.attributedText = attributedString
-                        
-                        //Set ScrollView content size
-                        self.informationScrollView.contentSize = CGSize(width: self.view.frame.width, height: self.informationTextView.frame.maxY + 8)
-                        sender.endRefreshing()
+                self.tools = tools!
+                // updates the tools in EquipmentGroupTVC
+                self.backProp?(tools!)
+                var fTool = true
+                for tool in tools! {
+                    if (fTool && tool.toolId == self.tool.toolId) {
+                        fTool = false
+                        DispatchQueue.main.async {
+                            self.status = tool.status()
+                            self.tool = tool
+                            let attributedString = try! NSMutableAttributedString(
+                                data: tool.toolDescription.data(using: String.Encoding.unicode, allowLossyConversion: true)!,
+                                options: [.documentType: NSAttributedString.DocumentType.html],
+                                documentAttributes: nil)
+                            let attributesDict = [NSAttributedStringKey.foregroundColor: Theme.text,
+                                                  NSAttributedStringKey.font: UIFont.systemFont(ofSize: 16)]
+                            attributedString.addAttributes(attributesDict, range: NSMakeRange(0, attributedString.length))
+                            self.informationTextView.attributedText = attributedString
+                            
+                            //Set ScrollView content size
+                            self.informationScrollView.contentSize = CGSize(width: self.view.frame.width, height: self.informationTextView.frame.maxY + 8)
+                            
+                            // updating refresh title
+                            let attributedTitle = NSAttributedString(string: "Success")
+                            sender.attributedTitle = attributedTitle
+                            
+                            // ending refreshing
+                            sender.endRefreshing()
+                            self.refreshing = false
+                        }
                     }
                 }
-            }
             
-        })
+            })
+        }
     }
 
 }

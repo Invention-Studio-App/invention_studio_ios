@@ -138,6 +138,7 @@ class QueuesTVC: ISTableViewController {
                 (sender as! UIRefreshControl).attributedTitle = NSAttributedString(string: "Fetching queues...")
             }
             
+            /*
             // Cancelling the refresh after 5 seconds
             let failTask = DispatchWorkItem {
                 if sender != nil && (sender as! UIRefreshControl).isRefreshing {
@@ -148,6 +149,8 @@ class QueuesTVC: ISTableViewController {
                 }
             }
             DispatchQueue.main.asyncAfter(deadline: .now() + 5, execute: failTask)
+            */
+            
             
             // dispatch group made to ensure queue groups is loaded before the users
             let apiEvalGroup = DispatchGroup()
@@ -157,7 +160,13 @@ class QueuesTVC: ISTableViewController {
                 if error != nil {
                     let parts = error!.components(separatedBy: ":")
                     self.alert(title: parts[0], message: parts[1], sender: sender)
-                    
+                    if sender != nil {
+                        let attributedTitle = NSAttributedString(string: "Error: Failed Refresh")
+                        (sender as! UIRefreshControl).attributedTitle = attributedTitle
+                        (sender as! UIRefreshControl).endRefreshing()
+                        self.refreshing = false
+                    }
+                    apiEvalGroup.leave()
                     return
                 }
 
@@ -177,6 +186,12 @@ class QueuesTVC: ISTableViewController {
                     if error != nil {
                         let parts = error!.components(separatedBy: ":")
                         self.alert(title: parts[0], message: parts[1], sender: sender)
+                        if sender != nil {
+                            let attributedTitle = NSAttributedString(string: "Error: Failed Refresh")
+                            (sender as! UIRefreshControl).attributedTitle = attributedTitle
+                            (sender as! UIRefreshControl).endRefreshing()
+                            self.refreshing = false
+                        }
                         return
                     }
                     
@@ -199,7 +214,7 @@ class QueuesTVC: ISTableViewController {
                             (sender as! UIRefreshControl).attributedTitle = attributedTitle
                             (sender as! UIRefreshControl).endRefreshing()
                         }
-                        failTask.cancel()
+                        //failTask.cancel()
                         self.refreshing = false
                         print("Success")
                     }

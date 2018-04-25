@@ -11,12 +11,14 @@ import UIKit
 class EquipmentGroupListTVC: ISTableViewController {
     var equipmentGroups = [Location]()
     var tools = [Tool]()
+    // used to ensure refresh is only running once
+    var refreshing = false
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        loadEquipmentGroups()
+        loadEquipmentGroups(nil)
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -44,21 +46,7 @@ class EquipmentGroupListTVC: ISTableViewController {
     
     //Loads the equipment groups from the API with a refresher to stop
     private func loadEquipmentGroups(_ sender: UIRefreshControl) {
-        SumsApi.EquipmentGroup.Tools(completion: { tools, error in
-            if error != nil {
-                let parts = error!.components(separatedBy: ":")
-                self.alert(title: parts[0], message: parts[1], sender: sender)
-                return
-            }
-
-            self.tools = tools!
-            self.equipmentGroups = self.getEquipmentGroups(tools: tools!)
-            // Must be called from main thread, not UIKit
-            DispatchQueue.main.async {
-                self.tableView.reloadData()
-                sender.endRefreshing()
-            }
-        })
+        
         
     }
     
@@ -131,9 +119,47 @@ class EquipmentGroupListTVC: ISTableViewController {
         self.tableView.deselectRow(at: indexPath, animated: true)
     }
 
-    @IBAction func refresh(_ sender: UIRefreshControl) {
-        sender.attributedTitle = NSAttributedString(string: "Fetching groups...")
-        loadEquipmentGroups(sender)
+    @IBAction func refresh(_ sender: Any?) {
+        if !refreshing {
+            refreshing = true
+            if (sender != nil) {
+                (sender as! UIRefreshControl).attributedTitle = NSAttributedString(string: "Fetching groups...")
+            }
+            SumsApi.EquipmentGroup.Tools(completion: { tools, error in
+                if error != nil {
+                    // sending error alert
+                    let parts = error!.components(separatedBy: ":")
+                    self.alert(title: parts[0], message: parts[1], sender: sender)
+                    
+                    if (sender != nil) {
+                        // updating refresh title
+                        let attributedTitle = NSAttributedString(string: "Error: Failed Refresh")
+                        (sender as! UIRefreshControl).attributedTitle = attributedTitle
+                        
+                        // ending refreshing
+                        (sender as! UIRefreshControl).endRefreshing()
+                    }
+                    self.refreshing = false
+                    return
+                }
+                
+                self.tools = tools!
+                self.equipmentGroups = self.getEquipmentGroups(tools: tools!)
+                // Must be called from main thread, not UIKit
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+                    if (sender != nil) {
+                        // updating refresh title
+                        let attributedTitle = NSAttributedString(string: "Success")
+                        (sender as! UIRefreshControl).attributedTitle = attributedTitle
+                        
+                        // ending refreshing
+                        (sender as! UIRefreshControl).endRefreshing()
+                    }
+                    self.refreshing = false
+                }
+            })
+        }
     }
 
     func alert(title: String, message: String, sender: Any?) {
