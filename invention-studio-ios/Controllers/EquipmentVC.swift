@@ -404,9 +404,10 @@ class EquipmentVC: ISViewController, UITableViewDataSource, UITableViewDelegate,
         DispatchQueue.main.async {
             self.present(alert, animated: true, completion: {
                 if sender != nil {
-                    let attributedTitle = NSAttributedString(string: "Error: Failed Refresh")
+                    let attributedTitle = NSAttributedString(string: "Last Refresh: Failed")
                     (sender as! UIRefreshControl).attributedTitle = attributedTitle
                     (sender as! UIRefreshControl).endRefreshing()
+                    self.refreshing = false
                 }
             })
         }
@@ -446,14 +447,6 @@ class EquipmentVC: ISViewController, UITableViewDataSource, UITableViewDelegate,
                     // sending error alert
                     let parts = error!.components(separatedBy: ":")
                     self.alert(title: parts[0], message: parts[1], sender: sender)
-                    
-                    // updating refresh title
-                    let attributedTitle = NSAttributedString(string: "Error: Failed Refresh")
-                    sender.attributedTitle = attributedTitle
-                    
-                    // ending refreshing
-                    sender.endRefreshing()
-                    self.refreshing = false
                     return
                 }
             
@@ -480,7 +473,7 @@ class EquipmentVC: ISViewController, UITableViewDataSource, UITableViewDelegate,
                             self.informationScrollView.contentSize = CGSize(width: self.view.frame.width, height: self.informationTextView.frame.maxY + 8)
                             
                             // updating refresh title
-                            let attributedTitle = NSAttributedString(string: "Success")
+                            let attributedTitle = NSAttributedString(string: "Last Refresh: Success")
                             sender.attributedTitle = attributedTitle
                             
                             // ending refreshing

@@ -157,14 +157,6 @@ class EquipmentGroupTVC: ISTableViewController, UINavigationControllerDelegate {
                     // sending error alert
                     let parts = error!.components(separatedBy: ":")
                     self.alert(title: parts[0], message: parts[1], sender: sender)
-                    
-                    // updating refresh title
-                    let attributedTitle = NSAttributedString(string: "Error: Failed Refresh")
-                    sender.attributedTitle = attributedTitle
-                    
-                    // ending refreshing
-                    sender.endRefreshing()
-                    self.refreshing = false
                     return
                 }
                 
@@ -194,7 +186,7 @@ class EquipmentGroupTVC: ISTableViewController, UINavigationControllerDelegate {
                     }
                     
                     // updating refresh title
-                    let attributedTitle = NSAttributedString(string: "Success")
+                    let attributedTitle = NSAttributedString(string: "Last Refresh: Success")
                     sender.attributedTitle = attributedTitle
                     
                     // ending refreshing
@@ -211,9 +203,10 @@ class EquipmentGroupTVC: ISTableViewController, UINavigationControllerDelegate {
         DispatchQueue.main.async {
             self.present(alert, animated: true, completion: {
                 if sender != nil {
-                    let attributedTitle = NSAttributedString(string: "Error: Failed Refresh")
+                    let attributedTitle = NSAttributedString(string: "Last Refresh: Failed")
                     (sender as! UIRefreshControl).attributedTitle = attributedTitle
                     (sender as! UIRefreshControl).endRefreshing()
+                    self.refreshing = false
                 }
             })
         }

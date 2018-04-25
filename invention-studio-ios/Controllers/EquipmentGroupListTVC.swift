@@ -18,7 +18,7 @@ class EquipmentGroupListTVC: ISTableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        loadEquipmentGroups(nil)
+        refresh(nil)
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -44,29 +44,6 @@ class EquipmentGroupListTVC: ISTableViewController {
         return self.equipmentGroups.count
     }
     
-    //Loads the equipment groups from the API with a refresher to stop
-    private func loadEquipmentGroups(_ sender: UIRefreshControl) {
-        
-        
-    }
-    
-    //Loads the equipment groups from the API without a refresher to stop
-    private func loadEquipmentGroups() {
-        SumsApi.EquipmentGroup.Tools(completion: { tools, error in
-            if error != nil {
-                let parts = error!.components(separatedBy: ":")
-                self.alert(title: parts[0], message: parts[1], sender: nil)
-                return
-            }
-            
-            self.tools = tools!
-            self.equipmentGroups = self.getEquipmentGroups(tools: tools!)
-            // Must be called from main thread, not UIKit
-            DispatchQueue.main.async {
-                self.tableView.reloadData()
-            }
-        })
-    }
     
     // Gets the equipment groups out of a list of tools
     func getEquipmentGroups(tools:[Tool]) -> [Location] {
@@ -130,15 +107,6 @@ class EquipmentGroupListTVC: ISTableViewController {
                     // sending error alert
                     let parts = error!.components(separatedBy: ":")
                     self.alert(title: parts[0], message: parts[1], sender: sender)
-                    
-                    if (sender != nil) {
-                        // updating refresh title
-                        let attributedTitle = NSAttributedString(string: "Error: Failed Refresh")
-                        (sender as! UIRefreshControl).attributedTitle = attributedTitle
-                        
-                        // ending refreshing
-                        (sender as! UIRefreshControl).endRefreshing()
-                    }
                     self.refreshing = false
                     return
                 }
@@ -150,7 +118,7 @@ class EquipmentGroupListTVC: ISTableViewController {
                     self.tableView.reloadData()
                     if (sender != nil) {
                         // updating refresh title
-                        let attributedTitle = NSAttributedString(string: "Success")
+                        let attributedTitle = NSAttributedString(string: "Last Refresh: Success")
                         (sender as! UIRefreshControl).attributedTitle = attributedTitle
                         
                         // ending refreshing
@@ -168,7 +136,7 @@ class EquipmentGroupListTVC: ISTableViewController {
         DispatchQueue.main.async {
             self.present(alert, animated: true, completion: {
                 if sender != nil {
-                    let attributedTitle = NSAttributedString(string: "Error: Failed Refresh")
+                    let attributedTitle = NSAttributedString(string: "Last Refresh: Failed")
                     (sender as! UIRefreshControl).attributedTitle = attributedTitle
                     (sender as! UIRefreshControl).endRefreshing()
                 }
