@@ -172,7 +172,6 @@ class QueuesTVC: ISTableViewController {
                     }
                     
                     for u in users! {
-                        print(u.memberName)
                         self.queueUsers[String(u.queueGroupId) + String(u.isGroup)]!.append(u)
                     }
                     
