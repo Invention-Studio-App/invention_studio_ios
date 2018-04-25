@@ -70,7 +70,7 @@ class FeedbackTVC: ISTableViewController, UIPickerViewDataSource, UIPickerViewDe
     var pickerValues = ["Feedback": ["Tool Broken", "PI Feedback", "General Feedback"],
                         "Group": [],
                         "Tool": [],
-                        "Problem": ["Nozzle Not Extruding", "Bed Shifted"]]
+                        "Problem": ["Other"]]
 
 
     override func viewDidLoad() {
@@ -104,6 +104,9 @@ class FeedbackTVC: ISTableViewController, UIPickerViewDataSource, UIPickerViewDe
 
             for picker in self.pickerSelections.keys {
                 self.pickerSelections[picker] = self.pickerValues[picker]![0]
+                if picker == "Group" {
+                    self.setProblems()
+                }
             }
 
             self.setFeedbackType()
@@ -150,6 +153,32 @@ class FeedbackTVC: ISTableViewController, UIPickerViewDataSource, UIPickerViewDe
         self.pickerSelections["Tool"] = self.pickerValues["Tool"]![0]
 
         self.toolPicker.reloadComponent(0)
+    }
+
+    func setProblems() {
+        let group = self.pickerSelections["Group"]
+        var problems: Array<String>
+        switch group {
+        case "3D Printers":
+            problems = ["Bed Shifted", "Nozzle not extruding", "Print warping/peeling", "Out of filament", "Other"]
+            break;
+        case "Laser Cutters":
+            problems = ["Computer not connecting to laser", "Laser moving but not cutting", "Laser beeping repeatedly", "Other"]
+            break;
+        case "Specialty 3D Printers":
+            problems = ["Bed Shifted", "Nozzle not extruding", "Print warping/peeling", "Printer stopped", "Out of filament/resin", "Other"]
+            break;
+        case "Waterjets":
+            problems = ["Waterjet moving but not cutting", "Nozzle broken", "Out of garnet", "Other"]
+            break;
+        default:
+            problems = ["Other"]
+            break;
+        }
+        self.pickerValues["Problem"] = problems
+        self.pickerSelections["Problem"] = problems[0]
+        self.problemPicker.reloadAllComponents()
+        self.problemPicker.selectRow(0, inComponent: 0, animated: false)
     }
 
     // MARK: - Table View Data Source/Delegate
@@ -228,7 +257,11 @@ class FeedbackTVC: ISTableViewController, UIPickerViewDataSource, UIPickerViewDe
                 problemPicker = cell.pickerView
                 problemPicker.dataSource = self
                 problemPicker.delegate = self
-                cell.pickerView.selectRow(pickerValues["Problem"]!.index(of: pickerSelections["Problem"]!)!, inComponent: 0, animated: false)
+//                if (pickerValues["Problem"]!.contains(pickerSelections["Problem"]!)) {
+//                    cell.pickerView.selectRow(pickerValues["Problem"]!.index(of: pickerSelections["Problem"]!)!, inComponent: 0, animated: false)
+//                } else {
+//                    cell.pickerView.selectRow(0, inComponent: 0, animated: false)
+//                }
             default:
                 break
             }
@@ -422,6 +455,7 @@ class FeedbackTVC: ISTableViewController, UIPickerViewDataSource, UIPickerViewDe
         } else if pickerView == self.toolGroupPicker {
             self.pickerSelections["Group"] = title
             setToolNames()
+            setProblems()
         } else if pickerView == self.toolPicker {
             self.pickerSelections["Tool"] = title
         } else if pickerView == self.problemPicker {
