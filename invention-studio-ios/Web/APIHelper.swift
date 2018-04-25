@@ -26,7 +26,7 @@ class APIHelper {
                              body: Data?,
                              authHeader: String?,
                              xApiKeyHeader: String?,
-                             completion: @escaping (Data, HTTPURLResponse) -> ()) {
+                             completion: @escaping (Data?, HTTPURLResponse?, Error?) -> ()) {
 
         //Construct request
         var request = URLRequest(url: URL(string: url)!)
@@ -51,11 +51,12 @@ class APIHelper {
             //Check for errors
             guard let data = data, error == nil else {
                 print("Error: \(error!)")
+                completion(nil, response as! HTTPURLResponse?, error)
                 return
             }
 
             //"Return" the data to the caller's completion handler
-            completion(data, response as! HTTPURLResponse)
+            completion(data, response as! HTTPURLResponse, nil)
 
         }.resume()
     }

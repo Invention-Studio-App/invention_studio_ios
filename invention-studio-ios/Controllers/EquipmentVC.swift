@@ -382,12 +382,12 @@ class EquipmentVC: ISViewController, UITableViewDataSource, UITableViewDelegate,
 
             InventionStudioApi.Feedback.tool_broken(form: form, completion: { message in
                 let parts = message.components(separatedBy: ":")
-                self.alert(title: parts[0], message: parts[1])
+                self.alert(title: parts[0], message: parts[1], sender: nil)
             })
         }
     }
 
-    func alert(title: String, message: String) {
+    func alert(title: String, message: String, sender: Any?) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: { action in
             if let anonymousSwitch = self.anonymousSwitch {
@@ -398,7 +398,15 @@ class EquipmentVC: ISViewController, UITableViewDataSource, UITableViewDelegate,
             }
             self.reportProblemTableView.setContentOffset(CGPoint.zero, animated: true)
         }))
-        self.present(alert, animated: true, completion: nil)
+        DispatchQueue.main.async {
+            self.present(alert, animated: true, completion: {
+                if sender != nil {
+                    let attributedTitle = NSAttributedString(string: "Error: Failed Refresh")
+                    (sender as! UIRefreshControl).attributedTitle = attributedTitle
+                    (sender as! UIRefreshControl).endRefreshing()
+                }
+            })
+        }
     }
 
 
@@ -427,11 +435,17 @@ class EquipmentVC: ISViewController, UITableViewDataSource, UITableViewDelegate,
 
     @objc func refresh(_ sender: UIRefreshControl) {
         sender.attributedTitle = NSAttributedString(string: "Fetching tool info...")
-        SumsApi.EquipmentGroup.Tools(completion: { (tools) in
-            self.tools = tools
-            self.backProp?(tools)
+        SumsApi.EquipmentGroup.Tools(completion: { tools, error in
+            if error != nil {
+                let parts = error!.components(separatedBy: ":")
+                self.alert(title: parts[0], message: parts[1], sender: sender)
+                return
+            }
+            
+            self.tools = tools!
+            self.backProp?(tools!)
             var fTool = true
-            for tool in tools {
+            for tool in tools! {
                 if (fTool && tool.toolId == self.tool.toolId) {
                     fTool = false
                     DispatchQueue.main.async {

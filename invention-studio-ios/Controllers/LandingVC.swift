@@ -50,10 +50,16 @@ class LandingVC: ISViewController {
         textView.backgroundColor = UIColor.clear
         textView.font = UIFont.systemFont(ofSize: 16)
 
-        SumsApi.EquipmentGroup.Info(completion: { info in
+        SumsApi.EquipmentGroup.Info(completion: { info, error in
+            if error != nil {
+                let parts = error!.components(separatedBy: ":")
+                self.alert(title: parts[0], message: parts[1])
+                return
+            }
+
             DispatchQueue.main.async {
                 let attributedString = try! NSMutableAttributedString(
-                    data: info.equipmentGroupDescriptionHtml.data(using: String.Encoding.unicode, allowLossyConversion: true)!,
+                    data: info!.equipmentGroupDescriptionHtml.data(using: String.Encoding.unicode, allowLossyConversion: true)!,
                     options: [.documentType: NSAttributedString.DocumentType.html],
                     documentAttributes: nil)
                 let attributesDict = [NSAttributedStringKey.foregroundColor: Theme.text,
@@ -69,7 +75,7 @@ class LandingVC: ISViewController {
                 self.scrollView.contentSize = CGSize(width: self.view.frame.width, height: textView.frame.maxY + 8)
 
                 //Set up navigation bar
-                self.navigationItem.title = info.equipmentGroupShortName
+                self.navigationItem.title = info!.equipmentGroupShortName
             }
         })
     }
@@ -106,8 +112,14 @@ class LandingVC: ISViewController {
         UserDefaults.standard.set(nil, forKey: "UserKey")
         UserDefaults.standard.set(0, forKey:"LoginSession")
 
-
     }
-    
+
+    func alert(title: String, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+        DispatchQueue.main.async {
+            self.present(alert, animated: true, completion: nil)
+        }
+    }
 }
 

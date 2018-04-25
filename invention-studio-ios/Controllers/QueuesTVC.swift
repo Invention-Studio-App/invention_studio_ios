@@ -153,11 +153,18 @@ class QueuesTVC: ISTableViewController {
             let apiEvalGroup = DispatchGroup()
             apiEvalGroup.enter()
             // Updating the list of groups
-            SumsApi.EquipmentGroup.QueueGroups(completion: { (groups) in
-                for g in groups {
+            SumsApi.EquipmentGroup.QueueGroups(completion: { groups, error in
+                if error != nil {
+                    let parts = error!.components(separatedBy: ":")
+                    self.alert(title: parts[0], message: parts[1], sender: sender)
+                    
+                    return
+                }
+
+                for g in groups! {
                     self.queueUsers[String(g.id) + String(g.isGroup)] = [QueueUser]()
                 }
-                self.groups = groups.sorted(by: { (groupA, groupB) in
+                self.groups = groups!.sorted(by: { (groupA, groupB) in
                     groupA.name <= groupB.name
                 })
                 
@@ -166,8 +173,14 @@ class QueuesTVC: ISTableViewController {
             
             apiEvalGroup.notify(queue: .main, execute: {
                 // Updating the list of users
-                SumsApi.EquipmentGroup.QueueUsers(completion: { (users) in
-                    for u in users {
+                SumsApi.EquipmentGroup.QueueUsers(completion: { users, error in
+                    if error != nil {
+                        let parts = error!.components(separatedBy: ":")
+                        self.alert(title: parts[0], message: parts[1], sender: sender)
+                        return
+                    }
+                    
+                    for u in users! {
                         print(u.memberName)
                         self.queueUsers[String(u.queueGroupId) + String(u.isGroup)]!.append(u)
                     }
@@ -192,6 +205,21 @@ class QueuesTVC: ISTableViewController {
                     }
                 })
                 
+            })
+        }
+    }
+
+    func alert(title: String, message: String, sender: Any?) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+        DispatchQueue.main.async {
+            self.present(alert, animated: true, completion: {
+                if sender != nil {
+                    let attributedTitle = NSAttributedString(string: "Error: Failed Refresh")
+                    (sender as! UIRefreshControl).attributedTitle = attributedTitle
+                    (sender as! UIRefreshControl).endRefreshing()
+                    self.refreshing = false
+                }
             })
         }
     }

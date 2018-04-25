@@ -148,16 +148,22 @@ class EquipmentGroupTVC: ISTableViewController, UINavigationControllerDelegate {
 
     @IBAction func refresh(_ sender: UIRefreshControl) {
         sender.attributedTitle = NSAttributedString(string: "Fetching tools...")
-        SumsApi.EquipmentGroup.Tools(completion: { (tools) in
-            self.tools = tools
-            self.backProp?(tools)
-            self.groupTools = self.getGroupTools(tools: tools)
+        SumsApi.EquipmentGroup.Tools(completion: { tools, error in
+            if error != nil {
+                let parts = error!.components(separatedBy: ":")
+                self.alert(title: parts[0], message: parts[1], sender: sender)
+                return
+            }
+            
+            self.tools = tools!
+            self.backProp?(tools!)
+            self.groupTools = self.getGroupTools(tools: tools!)
             
             // Must be called from main thread, not UIKit
             DispatchQueue.main.async {
                 self.tableView.reloadData()
                 var fLocation = true
-                for tool in tools {
+                for tool in tools! {
                     if (fLocation && tool.locationId == self.location.locationId) {
                         fLocation = false
                         //Set attributed text from HTML
@@ -178,6 +184,18 @@ class EquipmentGroupTVC: ISTableViewController, UINavigationControllerDelegate {
         })
     }
 
-    // MARK: - Navigation
+    func alert(title: String, message: String, sender: Any?) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+        DispatchQueue.main.async {
+            self.present(alert, animated: true, completion: {
+                if sender != nil {
+                    let attributedTitle = NSAttributedString(string: "Error: Failed Refresh")
+                    (sender as! UIRefreshControl).attributedTitle = attributedTitle
+                    (sender as! UIRefreshControl).endRefreshing()
+                }
+            })
+        }
+    }
 
 }

@@ -23,7 +23,7 @@ class SumsApi {
 
         //Info request
         //Returns a flattened array of user info and their associated equipment groups
-        static func Info(completion: @escaping ([UserInfo]) -> ()) {
+        static func Info(completion: @escaping ([UserInfo]?, String?) -> ()) {
             let username = UserDefaults.standard.string(forKey: "Username")!
             let userKey = UserDefaults.standard.string(forKey: "UserKey")!
 
@@ -35,17 +35,22 @@ class SumsApi {
                                   body: nil,
                                   authHeader: userKey,
                                   xApiKeyHeader: nil,
-                                  completion: { data, response in
+                                  completion: { data, response, error in
+                                    if error != nil {
+                                        completion(nil, "Error:An unknown error occurred. Please try again later.")
+                                        return
+                                    }
+
                                     //Check for unexpected status codes
-                                    if response.statusCode != 200 {
-                                        print("statusCode should be 200, but is \(response.statusCode)")
-                                        print("response: \(response)")
+                                    if response!.statusCode != 200 {
+                                        print("statusCode should be 200, but is \(response!.statusCode)")
+                                        print("response: \(response!)")
                                         return
                                     }
                                     //Automatically decode response into a JSON array
-                                    let responseArray = try! JSONDecoder().decode([UserInfo].self, from: data)
+                                    let responseArray = try! JSONDecoder().decode([UserInfo].self, from: data!)
                                     //"Return" the data to the caller's completion handler
-                                    completion(responseArray)
+                                    completion(responseArray, nil)
             })
         }
 
@@ -56,7 +61,7 @@ class SumsApi {
 
         //*Unauthenticated* Equipment Group Info request
         //Returns a JSON entry of info for the equipment group
-        static func Info(completion: @escaping (EquipmentGroupInfo) -> ()) {
+        static func Info(completion: @escaping (EquipmentGroupInfo?, String?) -> ()) {
             let equipmentGroupId = 8
 
             var url = SumsApi.siteURL + "equipmentGroup_info"
@@ -67,28 +72,33 @@ class SumsApi {
                                   body: nil,
                                   authHeader: nil,
                                   xApiKeyHeader: nil,
-                                  completion: { data, response in
+                                  completion: { data, response, error in
+                                    if error != nil {
+                                        completion(nil, "Error:An unknown error occurred. Please try again later.")
+                                        return
+                                    }
+
                                     //Check for unexpected status codes
-                                    if response.statusCode != 200 {
-                                        print("statusCode should be 200, but is \(response.statusCode)")
-                                        print("response: \(response)")
+                                    if response!.statusCode != 200 {
+                                        print("statusCode should be 200, but is \(response!.statusCode)")
+                                        print("response: \(response!)")
                                         return
                                     }
                                     //Automatically decode response into a JSON array
                                     let decoder = JSONDecoder()
                                     //Use the custom date decoder defined below to decode two possible date formats
                                     decoder.dateDecodingStrategy = .customDateDecoder()
-                                    let responseInfo = try! decoder.decode(EquipmentGroupInfo.self, from: data)
+                                    let responseInfo = try! decoder.decode(EquipmentGroupInfo.self, from: data!)
                                     responseInfo.equipmentGroupShortName = responseInfo.equipmentGroupShortName.replacingOccurrences(of: "_", with: " ")
 
                                     //"Return" the data to the caller's completion handler
-                                    completion(responseInfo)
+                                    completion(responseInfo, nil)
             })
         }
 
         //Tools request
         //Returns a flattened array of tools and their associated locations
-        static func Tools(completion: @escaping ([Tool]) -> ()) {
+        static func Tools(completion: @escaping ([Tool]?, String?) -> ()) {
             let username = UserDefaults.standard.string(forKey: "Username")!
             let userKey = UserDefaults.standard.string(forKey: "UserKey")!
             let departmentId = UserDefaults.standard.integer(forKey: "DepartmentId")
@@ -102,18 +112,23 @@ class SumsApi {
                                   body: nil,
                                   authHeader: userKey,
                                   xApiKeyHeader: nil,
-                                  completion: { data, response in
+                                  completion: { data, response, error in
+                                    if error != nil {
+                                        completion(nil, "Error:An unknown error occurred. Please try again later.")
+                                        return
+                                    }
+
                                     //Check for unexpected status codes
-                                    if response.statusCode != 200 {
-                                        print("statusCode should be 200, but is \(response.statusCode)")
-                                        print("response: \(response)")
+                                    if response!.statusCode != 200 {
+                                        print("statusCode should be 200, but is \(response!.statusCode)")
+                                        print("response: \(response!)")
                                         return
                                     }
                                     //Automatically decode response into a JSON array
                                     let decoder = JSONDecoder()
                                     //Use the custom date decoder defined below to decode two possible date formats
                                     decoder.dateDecodingStrategy = .customDateDecoder()
-                                    var responseArray = try! decoder.decode([Tool].self, from: data)
+                                    var responseArray = try! decoder.decode([Tool].self, from: data!)
 
                                     //Sort the array
                                     responseArray.sort(by: { (toolA, toolB) in
@@ -124,13 +139,13 @@ class SumsApi {
                                     })
 
                                     //"Return" the data to the caller's completion handler
-                                    completion(responseArray)
+                                    completion(responseArray, nil)
             })
         }
 
         //QueueGroups request
         //Returns an array of available queue groups and tools
-        static func QueueGroups(completion: @escaping ([QueueGroup]) -> ()) {
+        static func QueueGroups(completion: @escaping ([QueueGroup]?, String?) -> ()) {
             let username = UserDefaults.standard.string(forKey: "Username")!
             let userKey = UserDefaults.standard.string(forKey: "UserKey")!
             let departmentId = UserDefaults.standard.integer(forKey: "DepartmentId")
@@ -144,23 +159,28 @@ class SumsApi {
                                   body: nil,
                                   authHeader: userKey,
                                   xApiKeyHeader: nil,
-                                  completion: { data, response in
+                                  completion: { data, response, error in
+                                    if error != nil {
+                                        completion(nil, "Error:An unknown error occurred. Please try again later.")
+                                        return
+                                    }
+
                                     //Check for unexpected status codes
-                                    if response.statusCode != 200 {
-                                        print("statusCode should be 200, but is \(response.statusCode)")
-                                        print("response: \(response)")
+                                    if response!.statusCode != 200 {
+                                        print("statusCode should be 200, but is \(response!.statusCode)")
+                                        print("response: \(response!)")
                                         return
                                     }
                                     //Automatically decode response into a JSON array
-                                    let responseArray = try! JSONDecoder().decode([QueueGroup].self, from: data)
+                                    let responseArray = try! JSONDecoder().decode([QueueGroup].self, from: data!)
                                     //"Return" the data to the caller's completion handler
-                                    completion(responseArray)
+                                    completion(responseArray, nil)
             })
         }
 
         //QueueUsers request
         //Returns a flattened array of currently queued users and their associated queue group
-        static func QueueUsers(completion: @escaping ([QueueUser]) -> ()) {
+        static func QueueUsers(completion: @escaping ([QueueUser]?, String?) -> ()) {
             let username = UserDefaults.standard.string(forKey: "Username")!
             let userKey = UserDefaults.standard.string(forKey: "UserKey")!
             let departmentId = UserDefaults.standard.integer(forKey: "DepartmentId")
@@ -174,20 +194,26 @@ class SumsApi {
                                   body: nil,
                                   authHeader: userKey,
                                   xApiKeyHeader: nil,
-                                  completion: { data, response in
+                                  completion: { data, response, error in
+                                    if error != nil {
+                                        completion(nil, "Error:An unknown error occurred. Please try again later.")
+                                        return
+                                    }
+
                                     //Check for unexpected status codes
-                                    if response.statusCode != 200 {
-                                        print("statusCode should be 200, but is \(response.statusCode)")
-                                        print("response: \(response)")
+                                    if response!.statusCode != 200 {
+                                        print("statusCode should be 200, but is \(response!.statusCode)")
+                                        print("response: \(response!)")
                                         return
                                     }
                                     //Automatically decode response into a JSON array
                                     let decoder = JSONDecoder()
                                     //Use the custom date decoder defined below to decode two possible date formats
                                     decoder.dateDecodingStrategy = .customDateDecoder()
-                                    let responseArray = try! decoder.decode([QueueUser].self, from: data)
+                                    let responseArray = try! decoder.decode([QueueUser].self, from: data!)
                                     //"Return" the data to the caller's completion handler
-                                    completion(responseArray)
+
+                                    completion(responseArray, nil)
             })
         }
     }

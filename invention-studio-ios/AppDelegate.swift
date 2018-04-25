@@ -46,40 +46,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
 
         var initialViewController: UIViewController
         let loginSession = UserDefaults.standard.double(forKey: "LoginSession") //0 if DNE
-        //TODO: Use server time
-        let timeStamp = NSDate().timeIntervalSince1970
+
+        var timeStamp = 0
+        let timeStampEvalGroup = DispatchGroup()
+        timeStampEvalGroup.enter()
+        InventionStudioApi.Server.timestamp(completion: { time in
+            timeStamp = time
+            timeStampEvalGroup.leave()
+        })
+        timeStampEvalGroup.wait()
 
         let shouldLogin = true //For debugging purposes - To force login, set to false. For normal operation, set to true
-
-        print("GETTING SERVER TIME")
-        //Getting server time
-        // create the request
-        let url = URL(string: "https://is-apps.me.gatech.edu/api/v1-0/server/timestamp")!
-        var request = URLRequest(url: url)
-        request.httpMethod = "GET"
-        let task = URLSession.shared.dataTask(with: request) { data, response, error in
-            guard let data = data, error == nil else {
-                // check for fundamental networking error
-                print("error=\(String(describing: error))")
-                return
-            }
-            
-            if let httpStatus = response as? HTTPURLResponse, httpStatus.statusCode != 200 {
-                // check for http errors
-                print("statusCode should be 200, but is \(httpStatus.statusCode)")
-                print("response = \(String(describing: response))")
-            } else {
-                let responseString = Int(String(data: data, encoding: .utf8)!)
-                print("time = \(String(describing: responseString))")
-            }
-        }
-        task.resume()
-        print("AFTER")
-        
         
         //Check that the threshold for staying logged in has not passed
         //If the user has never logged in before, this will automatically fail since loginSession == 0
-        if timeStamp < loginSession && shouldLogin {
+        if timeStamp != 0 && Double(timeStamp) < loginSession && shouldLogin {
             initialViewController = storyboard.instantiateViewController(withIdentifier: "TabBarController")
             UserDefaults.standard.set(true, forKey: "LoggedIn")
         } else {
@@ -87,11 +68,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
                 Messaging.messaging().unsubscribe(fromTopic: "\(username)_ios")
             }
             UserDefaults.standard.set(false, forKey: "LoggedIn")
-            UserDefaults.standard.set(0, forKey: "DepartmentId")
-            UserDefaults.standard.set(nil, forKey: "Name")
-            UserDefaults.standard.set(nil, forKey: "Username")
-            UserDefaults.standard.set(nil, forKey: "UserKey")
-            UserDefaults.standard.set(0, forKey:"LoginSession")
+//            UserDefaults.standard.set(0, forKey: "DepartmentId")
+//            UserDefaults.standard.set(nil, forKey: "Name")
+//            UserDefaults.standard.set(nil, forKey: "Username")
+//            UserDefaults.standard.set(nil, forKey: "UserKey")
+//            UserDefaults.standard.set(0, forKey:"LoginSession")
 
             initialViewController = storyboard.instantiateViewController(withIdentifier: "LandingViewController")
         }

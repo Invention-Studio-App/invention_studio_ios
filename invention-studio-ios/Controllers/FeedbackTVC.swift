@@ -85,10 +85,16 @@ class FeedbackTVC: ISTableViewController, UIPickerViewDataSource, UIPickerViewDe
         let apiEvalGroup = DispatchGroup()
 
         apiEvalGroup.enter()
-        SumsApi.EquipmentGroup.Tools(completion: { (tools) in
-            self.tools = tools
+        SumsApi.EquipmentGroup.Tools(completion: { tools, error in
+            if error != nil {
+                let parts = error!.components(separatedBy: ":")
+                self.alert(title: parts[0], message: parts[1])
+                return
+            }
+
+            self.tools = tools!
             var equipmentGroups = Set<String>()
-            for tool in tools {
+            for tool in tools! {
                 if tool.locationId != 0 {
                     equipmentGroups.insert(Location(fromTool: tool).locationName)
                 }

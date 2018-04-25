@@ -100,8 +100,14 @@ class LoginVC: ISViewController, WKUIDelegate, WKNavigationDelegate, WKHTTPCooki
 
                 apiEvalGroup.enter()
                 //Asynchronus, will return and continue before completionHandler is called
-                SumsApi.User.Info(completion: { results in
-                    for u in results {
+                SumsApi.User.Info(completion: { results, error in
+                    if error != nil {
+                        let parts = error!.components(separatedBy: ":")
+                        self.alert(title: parts[0], message: parts[1])
+                        return
+                    }
+                    
+                    for u in results! {
                         //Check all of the user's tool groups
                         if u.isInventionStudio() {
                             isInventionStudio = true
@@ -180,6 +186,14 @@ class LoginVC: ISViewController, WKUIDelegate, WKNavigationDelegate, WKHTTPCooki
             if let username = UserDefaults.standard.string(forKey: "Username") {
                 Messaging.messaging().subscribe(toTopic: "\(username)_ios")
             }
+        }
+    }
+
+    func alert(title: String, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+        DispatchQueue.main.async {
+            self.present(alert, animated: true, completion: nil)
         }
     }
 }

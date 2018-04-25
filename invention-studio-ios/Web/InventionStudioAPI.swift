@@ -27,22 +27,27 @@ class InventionStudioApi {
                                   body: formData,
                                   authHeader: nil,
                                   xApiKeyHeader: InventionStudioApi.apiKey,
-                                  completion: { data, response in
+                                  completion: { data, response, error in
+                                    if error != nil {
+                                        completion("Error:An unknown error occurred. Please try again later.")
+                                        return
+                                    }
+
                                     //Check for unexpected status codes
                                     var message = ""
-                                    if response.statusCode != 200 {
-                                        print("statusCode should be 200, but is \(response.statusCode)")
-                                        print("response: \(response)")
-                                        if response.statusCode == 400 {
+                                    if response!.statusCode != 200 {
+                                        print("statusCode should be 200, but is \(response!.statusCode)")
+                                        print("response: \(response!)")
+                                        if response!.statusCode == 400 {
                                             message = "Login Error:There was an error logging in. Please try again later."
-                                        } else if response.statusCode == 500 {
+                                        } else if response!.statusCode == 500 {
                                             message = "Login Error:Internal Server Error. Please try again later."
                                         } else {
                                             message = "Error:An unknown error occurred"
                                         }
                                     } else {
                                         //Automatically decode response into a JSON array
-                                        let body = String(data: data, encoding: .utf8)!
+                                        let body = String(data: data!, encoding: .utf8)!
                                         message = "Success:\(body)"
                                     }
                                     //"Return" the data to the caller's completion handler
@@ -64,17 +69,22 @@ class InventionStudioApi {
                                   body: nil,
                                   authHeader: nil,
                                   xApiKeyHeader: InventionStudioApi.apiKey,
-                                  completion: { data, response in
+                                  completion: { data, response, error in
+                                    if error != nil {
+                                        completion(nil)
+                                        return
+                                    }
+
                                     //Check for unexpected status codes
-                                    if response.statusCode != 200 && response.statusCode != 204 {
-                                        print("statusCode should be 200 or 204, but is \(response.statusCode)")
-                                        print("response: \(response)")
+                                    if response!.statusCode != 200 && response!.statusCode != 204 {
+                                        print("statusCode should be 200 or 204, but is \(response!.statusCode)")
+                                        print("response: \(response!)")
                                         return
                                     }
                                     var responseBody: StatusMessage?
-                                    if response.statusCode == 200 {
+                                    if response!.statusCode == 200 {
                                         //Automatically decode response into a JSON array
-                                        responseBody = try? JSONDecoder().decode(StatusMessage.self, from: data)
+                                        responseBody = try? JSONDecoder().decode(StatusMessage.self, from: data!)
                                     } else {
                                         responseBody = nil
                                     }
@@ -93,15 +103,20 @@ class InventionStudioApi {
                                   body: nil,
                                   authHeader: nil,
                                   xApiKeyHeader: nil,
-                                  completion: { data, response in
+                                  completion: { data, response, error in
+                                    if error != nil {
+                                        completion(0)
+                                        return
+                                    }
+
                                     //Check for unexpected status codes
-                                    if response.statusCode != 200 {
-                                        print("statusCode should be 200, but is \(response.statusCode)")
-                                        print("response: \(response)")
+                                    if response!.statusCode != 200 {
+                                        print("statusCode should be 200, but is \(response!.statusCode)")
+                                        print("response: \(response!)")
                                         return
                                     }
                                     //Automatically decode response into a JSON array
-                                    let body = Int(String(data: data, encoding: .utf8)!)!
+                                    let body = Int(String(data: data!, encoding: .utf8)!)!
                                     //"Return" the data to the caller's completion handler
                                     completion(body)
             })
@@ -124,22 +139,27 @@ class InventionStudioApi {
                                   body: formData,
                                   authHeader: auth,
                                   xApiKeyHeader: InventionStudioApi.apiKey,
-                                  completion: { data, response in
+                                  completion: { data, response, error in
+                                    if error != nil {
+                                        completion("Error:An unknown error occurred. Please try again later.")
+                                        return
+                                    }
+
                                     //Check for unexpected status codes
                                     var message = ""
-                                    if response.statusCode != 200 {
-                                        print("statusCode should be 200, but is \(response.statusCode)")
-                                        print("response: \(response)")
-                                        if response.statusCode == 400 {
+                                    if response!.statusCode != 200 {
+                                        print("statusCode should be 200, but is \(response!.statusCode)")
+                                        print("response: \(response!)")
+                                        if response!.statusCode == 400 {
                                             message = "Error:There was an error submitting  your feedback. Please try again later."
-                                        } else if response.statusCode == 500 {
+                                        } else if response!.statusCode == 500 {
                                             message = "Error:Internal Server Error. Please try again later."
                                         } else {
                                             message = "Error:An unknown error occurred. Please try again later."
                                         }
                                     } else {
                                         //Automatically decode response into a JSON array
-                                        let body = String(data: data, encoding: .utf8)!
+                                        let body = String(data: data!, encoding: .utf8)!
                                         message = "Success:\(body)"
                                     }
                                     //"Return" the data to the caller's completion handler
@@ -161,22 +181,27 @@ class InventionStudioApi {
                                   body: formData,
                                   authHeader: auth,
                                   xApiKeyHeader: InventionStudioApi.apiKey,
-                                  completion: { data, response in
+                                  completion: { data, response, error in
+                                    if error != nil {
+                                        completion("Error:An unknown error occurred. Please try again later.")
+                                        return
+                                    }
+
                                     //Check for unexpected status codes
                                     var message = ""
-                                    if response.statusCode != 200 {
-                                        print("statusCode should be 200, but is \(response.statusCode)")
-                                        print("response: \(response)")
-                                        if response.statusCode == 400 {
+                                    if response!.statusCode != 200 {
+                                        print("statusCode should be 200, but is \(response!.statusCode)")
+                                        print("response: \(response!)")
+                                        if response!.statusCode == 400 {
                                             message = "Error:There was an error submitting your feedback. Please try again later."
-                                        } else if response.statusCode == 500 {
+                                        } else if response!.statusCode == 500 {
                                             message = "Error:Internal Server Error. Please try again later."
                                         } else {
                                             message = "Error:An unknown error occurred. Please try again later."
                                         }
                                     } else {
                                         //Automatically decode response into a JSON array
-                                        let body = String(data: data, encoding: .utf8)!
+                                        let body = String(data: data!, encoding: .utf8)!
                                         message = "Success:\(body)"
                                     }
                                     //"Return" the data to the caller's completion handler
@@ -198,22 +223,27 @@ class InventionStudioApi {
                                   body: formData,
                                   authHeader: auth,
                                   xApiKeyHeader: InventionStudioApi.apiKey,
-                                  completion: { data, response in
+                                  completion: { data, response, error in
+                                    if error != nil {
+                                        completion("Error:An unknown error occurred. Please try again later.")
+                                        return
+                                    }
+
                                     //Check for unexpected status codes
                                     var message = ""
-                                    if response.statusCode != 200 {
-                                        print("statusCode should be 200, but is \(response.statusCode)")
-                                        print("response: \(response)")
-                                        if response.statusCode == 400 {
+                                    if response!.statusCode != 200 {
+                                        print("statusCode should be 200, but is \(response!.statusCode)")
+                                        print("response: \(response!)")
+                                        if response!.statusCode == 400 {
                                             message = "Error:There was an error submitting your feedback. Please try again later."
-                                        } else if response.statusCode == 500 {
+                                        } else if response!.statusCode == 500 {
                                             message = "Error:Internal Server Error. Please try again later."
                                         } else {
                                             message = "Error:An unknown error occurred. Please try again later."
                                         }
                                     } else {
                                         //Automatically decode response into a JSON array
-                                        let body = String(data: data, encoding: .utf8)!
+                                        let body = String(data: data!, encoding: .utf8)!
                                         message = "Success:\(body)"
                                     }
                                     //"Return" the data to the caller's completion handler

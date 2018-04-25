@@ -35,7 +35,11 @@ class InventionStudioImages {
 
     private static func requestImage(url: String) -> UIImage? {
         let data = try? Data(contentsOf: URL(string: url)!)
-        return UIImage(data: data!)
+        if data != nil {
+            return UIImage(data: data!)
+        } else {
+            return UIImage()
+        }
     }
 
 }
