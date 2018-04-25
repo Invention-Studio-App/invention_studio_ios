@@ -148,7 +148,6 @@ class QueuesTVC: ISTableViewController {
                     let parts = error!.components(separatedBy: ":")
                     self.alert(title: parts[0], message: parts[1], sender: sender)
                     self.refreshing = false
-                    apiEvalGroup.leave()
                     return
                 }
 
