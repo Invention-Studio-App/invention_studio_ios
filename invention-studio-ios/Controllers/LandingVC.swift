@@ -24,6 +24,7 @@ class LandingVC: ISViewController {
         
         scrollView.refreshControl = refreshControl
         refreshControl.addTarget(self, action: #selector(refresh(_:)), for: .valueChanged)
+        refreshControl.attributedTitle = NSAttributedString(string: "Fetching home page...")
 
         if UserDefaults.standard.bool(forKey: "LoggedIn") {
             self.navigationItem.rightBarButtonItem = nil
@@ -66,6 +67,9 @@ class LandingVC: ISViewController {
     @objc func refresh(_ sender: Any?) {
         if (!refreshing) {
             refreshing = true
+            if (sender != nil) {
+                (sender as! UIRefreshControl).attributedTitle = NSAttributedString(string: "Fetching home page...")
+            }
             
             SumsApi.EquipmentGroup.Info(completion: { info, error in
                 if error != nil {
