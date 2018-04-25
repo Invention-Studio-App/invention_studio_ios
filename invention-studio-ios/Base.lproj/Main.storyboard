@@ -131,7 +131,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <connections>
-                            <action selector="refreshQueues:" destination="tWF-7Y-t6t" eventType="valueChanged" id="Kvz-4B-D79"/>
+                            <action selector="refreshQueues:" destination="tWF-7Y-t6t" eventType="valueChanged" id="kN1-Mg-Rcp"/>
                         </connections>
                     </refreshControl>
                 </tableViewController>

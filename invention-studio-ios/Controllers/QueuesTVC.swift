@@ -10,6 +10,7 @@ import UIKit
 
 class QueuesTVC: ISTableViewController {
 
+    // Declaring variables
     let items = ["3D Printers", "Laser Cutters", "Waterjet"]
     var selectedSection: Int? = nil
     var groups = [QueueGroup]()
@@ -17,19 +18,22 @@ class QueuesTVC: ISTableViewController {
     var refreshing = false
     let refreshingGroup = DispatchGroup()
 
+    // when the view loads
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        // Load the latest queue data into the table
         self.refreshQueues(nil)
     }
     
     // MARK: - Table view data source
 
+    //  Returns the number of table sections (the number of groups)
     override func numberOfSections(in tableView: UITableView) -> Int {
         return self.groups.count
-        
     }
 
+    // Retruns the number of users to display in a section (should be 2 if none, otherwise 1 + the actual amount)
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         var count = 1
         let queueGroup = self.groups[section]
@@ -42,12 +46,14 @@ class QueuesTVC: ISTableViewController {
         return count
     }
 
+    // Sets the color of the table view
     override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
             if let view = view as? UITableViewHeaderFooterView {
                 view.textLabel?.textColor = Theme.accentTertiary
             }
     }
 
+    // Sets the header text for the table
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         switch section {
         case 0:
@@ -57,6 +63,7 @@ class QueuesTVC: ISTableViewController {
         }
     }
 
+    // Sets the header dimensions for the table
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         switch section {
         case 0:
@@ -66,17 +73,19 @@ class QueuesTVC: ISTableViewController {
         }
     }
 
+    // Sets the footer height for the table
     override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return 2
     }
 
+    // Returns the correct cell based on the section and row
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "queuesPrototype", for: indexPath)
         let queueGroup = self.groups[indexPath.section]
-        if indexPath.row == 0 {
+        if indexPath.row == 0 { // this is a group
             cell.textLabel?.text = self.groups[indexPath.section].name
             cell.textLabel?.font = UIFont.boldSystemFont(ofSize: 20)
-        } else {
+        } else { // this is a user or a no user message
             cell.textLabel?.font = UIFont.systemFont(ofSize: 16)
 
             let queueUsers = self.queueUsers[queueGroup.id]!
@@ -95,6 +104,7 @@ class QueuesTVC: ISTableViewController {
         return cell
     }
 
+    // Sets the height of each cell in the table
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.row == 0 || indexPath.section == selectedSection {
             return UITableViewAutomaticDimension
@@ -103,6 +113,7 @@ class QueuesTVC: ISTableViewController {
         }
     }
 
+    // Opens and closes the correct section based on what was clicked
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.row == 0 {
             let oldSelectedSection: Int? = selectedSection
@@ -120,6 +131,7 @@ class QueuesTVC: ISTableViewController {
 
     // Refreshing the queue data
     @IBAction func refreshQueues(_ sender: Any?) {
+        // if not already refrshing
         if !refreshing {
             refreshing = true
             if (sender != nil) {
@@ -129,8 +141,7 @@ class QueuesTVC: ISTableViewController {
             // Cancelling the refresh after 5 seconds
             let failTask = DispatchWorkItem {
                 if sender != nil && (sender as! UIRefreshControl).isRefreshing {
-                    let attributes = [NSAttributedStringKey.foregroundColor: UIColor.red]
-                    let attributedTitle = NSAttributedString(string: "Error: Failed Refresh", attributes: attributes)
+                    let attributedTitle = NSAttributedString(string: "Error: Failed Refresh")
                     (sender as! UIRefreshControl).attributedTitle = attributedTitle
                     (sender as! UIRefreshControl).endRefreshing()
                     self.refreshing = false
@@ -138,8 +149,8 @@ class QueuesTVC: ISTableViewController {
             }
             DispatchQueue.main.asyncAfter(deadline: .now() + 5, execute: failTask)
             
+            // dispatch group made to ensure queue groups is loaded before the users
             let apiEvalGroup = DispatchGroup()
-
             apiEvalGroup.enter()
             // Updating the list of groups
             SumsApi.EquipmentGroup.QueueGroups(completion: { (groups) in
@@ -157,6 +168,7 @@ class QueuesTVC: ISTableViewController {
                 // Updating the list of users
                 SumsApi.EquipmentGroup.QueueUsers(completion: { (users) in
                     for u in users {
+                        print(u.memberName)
                         if u.queueName != "" {
                             self.queueUsers[u.queueGroupId]!.append(u)
                         }
@@ -167,13 +179,12 @@ class QueuesTVC: ISTableViewController {
                             userA.memberQueueLocation < userB.memberQueueLocation
                         })
                     }
-
-
+                    
+                    // reloading data, cancelling the fail task, and updating the reload text
                     DispatchQueue.main.async {
                         self.tableView.reloadData()
                         if sender != nil {
-                            let attributes = [NSAttributedStringKey.foregroundColor: UIColor.green]
-                            let attributedTitle = NSAttributedString(string: "Success", attributes: attributes)
+                            let attributedTitle = NSAttributedString(string: "Success")
                             (sender as! UIRefreshControl).attributedTitle = attributedTitle
                             (sender as! UIRefreshControl).endRefreshing()
                         }
