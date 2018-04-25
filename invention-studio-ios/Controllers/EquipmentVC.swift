@@ -36,8 +36,6 @@ class EquipmentVC: ISViewController, UITableViewDataSource, UITableViewDelegate,
     private var currentDropdownHeader: IndexPath? = nil
     private var currentDropdown: IndexPath? = nil
 
-    private var toolGroupPicker: UIPickerView = UIPickerView()
-    private var toolPicker: UIPickerView = UIPickerView()
     private var problemPicker: UIPickerView = UIPickerView()
     private var pickerSelections = ["Problem": ""]
 
@@ -45,7 +43,7 @@ class EquipmentVC: ISViewController, UITableViewDataSource, UITableViewDelegate,
     private var commentBox: UITextView? = nil
 
     var name = ""
-    var pickerValues = ["Problem": ["Nozzle Not Extruding", "Bed Shifted"]]
+    var pickerValues: Dictionary<String, Array<String>> = ["Problem": []]
     var location: Location!
     var tools = [Tool]()
     var tool: Tool!
@@ -172,6 +170,26 @@ class EquipmentVC: ISViewController, UITableViewDataSource, UITableViewDelegate,
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWasShown(_:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
 
         //Set Up PickerView
+        var problems: Array<String>
+        switch self.tool.locationName {
+        case "3D Printers":
+            problems = ["Bed Shifted", "Nozzle not extruding", "Print warping/peeling", "Out of filament", "Other"]
+            break;
+        case "Laser Cutters":
+            problems = ["Computer not connecting to laser", "Laser moving but not cutting", "Laser beeping repeatedly", "Other"]
+            break;
+        case "Specialty 3D Printers":
+            problems = ["Bed Shifted", "Nozzle not extruding", "Print warping/peeling", "Printer stopped", "Out of filament/resin", "Other"]
+            break;
+        case "Waterjets":
+            problems = ["Waterjet moving but not cutting", "Nozzle broken", "Out of garnet", "Other"]
+            break;
+        default:
+            problems = ["Other"]
+            break;
+        }
+        self.pickerValues["Problem"] = problems
+
         for picker in pickerSelections.keys {
             pickerSelections[picker] = pickerValues[picker]![0]
         }
