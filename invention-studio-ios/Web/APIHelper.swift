@@ -56,7 +56,7 @@ class APIHelper {
             }
 
             //"Return" the data to the caller's completion handler
-            completion(data, response as! HTTPURLResponse, nil)
+            completion(data, (response as! HTTPURLResponse), nil)
 
         }.resume()
     }
