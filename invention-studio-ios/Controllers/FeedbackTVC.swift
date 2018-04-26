@@ -37,7 +37,7 @@ class FeedbackTVC: ISTableViewController, UIPickerViewDataSource, UIPickerViewDe
                                    ["Rating"],
                                    ["Comments"],
                                    ["Submit"]]
-    private let generalFeedbackHeaders = ["YourName", "Feedback", "Comments", ""]
+    private let generalFeedbackHeaders = ["Your Name", "Feedback", "Comments", ""]
     private let generalFeedbackPrototypes = [["namePrototype"],
                                              ["pickerHeaderPrototype", "pickerDropdownPrototype"],
                                              ["commentsPrototype"],
@@ -305,6 +305,7 @@ class FeedbackTVC: ISTableViewController, UIPickerViewDataSource, UIPickerViewDe
         case "piNamePrototype":
             let cell = tableView.dequeueReusableCell(withIdentifier: prototype, for: indexPath) as! FeedbackPINameCell
             self.piNameField = cell.textField
+            self.piNameField?.textColor = Theme.text
             return cell
         case "ratingPrototype":
             let cell = tableView.dequeueReusableCell(withIdentifier: prototype, for: indexPath) as! FeedbackRatingCell
