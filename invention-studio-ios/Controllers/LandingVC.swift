@@ -79,11 +79,11 @@ class LandingVC: ISViewController {
                     return
                 }
                 
-                // updating image view
-                self.imageView.image = InventionStudioImages.imageForResource(group: "headers", name: "invention_studio")
-                
                 //updating text view
                 DispatchQueue.main.async {
+                    // updating image view
+                    self.imageView.image = InventionStudioImages.imageForResource(group: "headers", name: "invention_studio")
+                    
                     let attributedString = try! NSMutableAttributedString(
                         data: info!.equipmentGroupDescriptionHtml.data(using: String.Encoding.unicode, allowLossyConversion: true)!,
                         options: [.documentType: NSAttributedString.DocumentType.html],
