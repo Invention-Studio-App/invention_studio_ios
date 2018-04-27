@@ -361,6 +361,7 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Feedback" id="kf8-4G-XEi"/>
                     <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="xpO-m7-cXj">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <connections>
                             <action selector="refresh:" destination="N2K-SL-XV0" eventType="valueChanged" id="8UE-mf-5JN"/>
@@ -730,7 +731,7 @@
             </objects>
             <point key="canvasLocation" x="33" y="3131"/>
         </scene>
-        <!--Other-->
+        <!--More-->
         <scene sceneID="3Q8-1d-MEg">
             <objects>
                 <tableViewController id="ocj-cH-d0J" customClass="OtherTVC" customModule="invention_studio_ios" customModuleProvider="target" sceneMemberID="viewController">
@@ -810,7 +811,7 @@
                             <outlet property="delegate" destination="ocj-cH-d0J" id="5ky-kE-r7r"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Other" id="725-9c-YcF"/>
+                    <navigationItem key="navigationItem" title="More" id="725-9c-YcF"/>
                     <connections>
                         <segue destination="2y8-iv-5P9" kind="presentation" identifier="logoutSegue" modalTransitionStyle="flipHorizontal" id="OSp-hx-eiC"/>
                     </connections>
